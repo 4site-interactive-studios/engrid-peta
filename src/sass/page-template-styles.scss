@@ -1,18 +1,18 @@
 // The most broadly used CSS Custom Properties for quick theming.
 // Uncomment to use and reference engrid-scrips SASS files for more CSS Custom Properties.
 // All CSS Custom Properties should be scoped to the theme using CSS Data Attributes.
-[data-engrid-theme="flex2"]{
+[data-engrid-theme="peta"]{
     // TYPOGRAPHY DEFAULT
-    // --default_font-family: var(--native-fonts__sans-serif);
-    // --default_color: initial;
-    // --default_font-size: var(--root_font-size);
+    --default_font-family: "proxima-nova", sans-serif;
+    --default_color: #4f606c;
+    --default_font-size: 16px;
     // --default_font-weight: initial;
-    // --default_line-height: initial;
+    --default_line-height: 1.63;
 
     // TYPOGRAPHY H1
-    // --h1_font-family: var(--default_font-family);
-    // --h1_color: initial;
-    // --h1_font-size: calc(var(--root_font-size) * var(--scale-up_160pct));
+    --h1_font-family: "raleway", Helvetica, Roboto, Arial, sans-serif;
+    --h1_color: #418fde;
+    --h1_font-size: 20px;
     // --h1_font-weight: initial;
     // --h1_line-height: initial;
         
@@ -35,16 +35,16 @@
 
     // TYPOGRAPHY INPUT
     // --input_font-family: var(--default_font-family);
-    // --input_color: #000000;
+    --input_color: #4e606c;
     // --input_font-size: var(--root_font-size);
     // --input_font-weight: initial;
     // --input_line-height: initial;
-    // --input_background-color: #fafafa;
+    --input_background-color: #f6f7f8;
     // --input_border-width: 1px;
-    // --input_border-color: #dfdfe1;
-    // --input_border-radius: 6px;
-    // --input_placeholder-color: var(--color_light-gray);
-    // --input_box-shadow: inset 0 2px 2px -1px rgba(74, 74, 104, 0.1);
+    --input_border-color: #d7e4e7;
+    --input_border-radius: 4px;
+    --input_placeholder-color: #929ca4;
+    --input_box-shadow: none;
         
     // TYPOGRAPHY INPUT:FOCUS
     // TYPOGRAPHY INPUT:HOVER
@@ -60,7 +60,7 @@
     // --button_font-size: var(--root_font-size);
     // --button_font-weight: initial;
     // --button_line-height: initial;
-    // --button_background-color: #535b61;
+    --button_background-color: #418fde;
     // --button_border-width: 1px;
     // --button_border-color: var(--color_black);
     // --button_border-radius: 6px;
@@ -81,9 +81,107 @@
     // --recurring-frequency__button_count: 4;
     // --donation-amount__button_count: 4;
     // --give-by-select__button_count: 4;
+
+    --error__color: #c92432;
+    --error__color_faded: #fff8f7;
+    --error__background-color: #fff8f7;
 }
 
 /* Add your custom theme styles here */
-[data-engrid-theme="flex2"]{
+[data-engrid-theme="peta"]{   
+  
+  .radio-to-buttons_donationAmt{
+    --donation-amount__button_count: 3;
+  }
 
+  .en__field__label{
+    // display: none;
+  }
+
+  #DonationLightbox {
+    // max-width: 400px;
+    // margin: 0 auto;
+    form.en__component > .en__component {
+      position: relative;
+      .section-navigation {
+        position: absolute;
+        height: 100px;
+        bottom: 0;
+        width: 260px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0) 0%,
+          rgba(255, 255, 255, 1) 50%,
+          rgba(255, 255, 255, 1) 100%
+        );
+  
+        button {
+          height: 52px;
+          min-width: 52px;
+          padding: 0 12px;
+          border-radius: 2px;
+          background-color: rgba(65, 143, 222, 0.19);
+          text-transform: uppercase;
+          color: #fff;
+          border: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          font-family: "proxima-nova", sans-serif;
+          font-size: 14px;
+          font-weight: bold;
+          font-stretch: normal;
+          font-style: normal;
+          letter-spacing: 0.84px;
+          &.section-navigation__submit,
+          &.section-navigation__next {
+            background-color: #418fde;
+            opacity: 1;
+            width: 190px;
+            box-shadow: -22px 21px 29px 2px rgba(0, 172, 255, 0.13),
+              0 8px 12px 0 rgba(0, 0, 0, 0.09);
+            svg {
+              transition: 0.3s transform ease-in-out;
+              transform: translateX(15px);
+            }
+            &:hover {
+              background-color: #418fde;
+              svg {
+                transform: translateX(30px);
+              }
+            }
+          }
+          &[data-section-id="0"] {
+            width: 100%;
+          }
+          &:hover {
+            background-color: rgba(65, 143, 222, 0.32);
+          }
+        }
+      }
+      > .en__component {
+        min-width: auto;
+      }
+    }
+  }
+  [data-iframe-embedded] {
+    height: 100vh;
+    form.en__component {
+      scroll-snap-type: x mandatory;
+      margin: 0 auto;
+      display: grid;
+      grid-auto-flow: column;
+      overscroll-behavior-x: contain;
+      & > .en__component {
+        height: 100vh;
+        width: 400px;
+        padding: 50px 70px;
+        scroll-snap-align: start;
+      }
+    }
+  }
 }
