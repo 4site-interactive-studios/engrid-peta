@@ -139,7 +139,7 @@
     }
   }
 
-  .en__field > .en__field__label{
+  &:not(#en__pagebuilder) .en__field > .en__field__label{
     display: none;
   }
 

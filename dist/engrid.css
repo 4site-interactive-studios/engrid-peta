@@ -6439,7 +6439,7 @@ body:not(#en__pagebuilder) .body-banner:empty,body:not(#en__pagebuilder) .body-b
   flex-basis:100%;
 }
 
-[data-engrid-theme=peta] .en__field>.en__field__label{
+[data-engrid-theme=peta]:not(#en__pagebuilder) .en__field>.en__field__label{
   display:none;
 }
 
