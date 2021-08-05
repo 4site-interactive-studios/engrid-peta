@@ -2,6 +2,13 @@
 import { Options, App } from "../../engrid-scripts/packages/common"; // Uses ENGrid via Visual Studio Workspace
 import "./sass/main.scss";
 
+import DonationLightboxForm from "./scripts/donation-lightbox-form";
+
+window.addEventListener("load", function () {
+  (<any>window).DonationLightboxForm = DonationLightboxForm;
+  new DonationLightboxForm();
+});
+
 const options: Options = {
   applePay: false,
   CapitalizeFields: true,

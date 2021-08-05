@@ -12,6 +12,13 @@
 <title>${page~title} | ${engrid_organizational-name}</title>
 <meta name="title" content="${page~title} | ${engrid_organizational-name}">
 
+<!-- Quickly check to see if the page is in an iFrame and if so set the corresponding Custom Attribute so it can also set the background-color. Must be after <body> otherwise there will be a flash of color -->
+  <script>
+    if(window.self !== window.top){
+        document.getElementsByTagName("BODY")[0].setAttribute("data-engrid-embedded", "");
+    };
+</script> 
+
 <!-- Update as needed -->
 <link href="https://e-activist.com/ea-demo/frontend/pbAssets/build/css/enPage.css?v=3.62.0" rel="stylesheet" type="text/css">
 <script src="https://e-activist.com/ea-demo/frontend/pbAssets/build/js/enPage.js?v=3.62.0"></script>

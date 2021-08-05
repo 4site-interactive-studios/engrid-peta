@@ -122,6 +122,8 @@
     --error__color: #c92432;
     --error__color_faded: #fff8f7;
     --error__background-color: #fff8f7;
+
+    --engrid__body-main_padding: 0;
 }
 
 /* Add your custom theme styles here */
@@ -171,77 +173,76 @@
     display: none;
   }
 
-  #DonationLightbox {
-    // max-width: 400px;
-    // margin: 0 auto;
-    form.en__component > .en__component {
-      position: relative;
-      .section-navigation {
-        position: absolute;
-        height: 100px;
-        bottom: 0;
-        width: 260px;
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        background: linear-gradient(
-          to bottom,
-          rgba(0, 0, 0, 0) 0%,
-          rgba(255, 255, 255, 1) 50%,
-          rgba(255, 255, 255, 1) 100%
-        );
   
-        button {
-          height: 52px;
-          min-width: 52px;
-          padding: 0 12px;
-          border-radius: 2px;
-          background-color: rgba(65, 143, 222, 0.19);
-          text-transform: uppercase;
-          color: #fff;
-          border: 0;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-          font-family: "proxima-nova", sans-serif;
-          font-size: 14px;
-          font-weight: bold;
-          font-stretch: normal;
-          font-style: normal;
-          letter-spacing: 0.84px;
-          &.section-navigation__submit,
-          &.section-navigation__next {
-            background-color: #418fde;
-            opacity: 1;
-            width: 190px;
-            box-shadow: -22px 21px 29px 2px rgba(0, 172, 255, 0.13),
-              0 8px 12px 0 rgba(0, 0, 0, 0.09);
-            svg {
-              transition: 0.3s transform ease-in-out;
-              transform: translateX(15px);
-            }
-            &:hover {
-              background-color: #418fde;
-              svg {
-                transform: translateX(30px);
-              }
-            }
-          }
-          &[data-section-id="0"] {
-            width: 100%;
+  form.en__component > .en__component {
+    position: relative;
+    
+    .section-navigation {
+      position: absolute;
+      // height: 100px;
+      bottom: 0;
+      width: 260px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(255, 255, 255, 1) 50%,
+        rgba(255, 255, 255, 1) 100%
+      );
+
+      button {
+        height: 52px;
+        min-width: 52px;
+        padding: 0 12px;
+        border-radius: 2px;
+        background-color: rgba(65, 143, 222, 0.19);
+        text-transform: uppercase;
+        color: #fff;
+        border: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-family: "proxima-nova", sans-serif;
+        font-size: 14px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        letter-spacing: 0.84px;
+        &.section-navigation__submit,
+        &.section-navigation__next {
+          background-color: #418fde;
+          opacity: 1;
+          width: 190px;
+          box-shadow: -22px 21px 29px 2px rgba(0, 172, 255, 0.13),
+            0 8px 12px 0 rgba(0, 0, 0, 0.09);
+          svg {
+            transition: 0.3s transform ease-in-out;
+            transform: translateX(15px);
           }
           &:hover {
-            background-color: rgba(65, 143, 222, 0.32);
+            background-color: #418fde;
+            svg {
+              transform: translateX(30px);
+            }
           }
         }
-      }
-      > .en__component {
-        min-width: auto;
+        &[data-section-id="0"] {
+          width: 100%;
+        }
+        &:hover {
+          background-color: rgba(65, 143, 222, 0.32);
+        }
       }
     }
+    > .en__component {
+      min-width: auto;
+    }
   }
-  [data-iframe-embedded] {
+
+  &[data-engrid-embedded] {
     height: 100vh;
     form.en__component {
       scroll-snap-type: x mandatory;
@@ -249,12 +250,32 @@
       display: grid;
       grid-auto-flow: column;
       overscroll-behavior-x: contain;
+
       & > .en__component {
         height: 100vh;
-        width: 400px;
+        width: $one_col_body-column_max-width + 70px + 70px;
         padding: 50px 70px;
         scroll-snap-align: start;
+
+        & > .en__component {
+          height: 100%;
+        }
       }
+
+      .en__component--row > .en__component--column .en__component:first-of-type > *:first-child{
+        margin-top: 0;
+        padding-top: 0;
+      }
+
+      .en__component--row > .en__component--column .en__component:last-of-type > *:last-child{
+        margin-bottom: 0;
+        padding-bottom: 0;
+      }
+    }
+
+    .en__submit{
+      display: none;
     }
   }
 }
+  
