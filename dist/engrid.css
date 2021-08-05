@@ -6367,13 +6367,29 @@ body:not(#en__pagebuilder) .body-banner:empty,body:not(#en__pagebuilder) .body-b
   --input_border-radius:4px;
   --input_placeholder-color:#929ca4;
   --input_box-shadow:none;
-  --button_background-color:#418fde;
+  --button_color:var(--input_color);
+  --button_background-color:var(--input_background-color);
+  --button_border-color:var(--input_border-color);
+  --button_background-color_hover:var(--button_background-color);
+  --button_border-color_hover:var(--button_border-color);
+  --button_color_checked:#fff;
+  --button_background-color_checked:#418fde;
+  --donation-amount__button_background-color_checked:var(--button_background-color_checked);
+  --donation-amount__button_border-color_checked:var(--button_background-color_checked);
+  --donation-amount__button_color_checked:var(--button_color_checked);
+  --recurring-frequency__button_background-color_checked:var(--button_background-color_checked);
+  --recurring-frequency__button_border-color_checked:var(--button_background-color_checked);
+  --recurring-frequency__button_color_checked:var(--button_color_checked);
   --error__color:#c92432;
   --error__color_faded:#fff8f7;
   --error__background-color:#fff8f7;
 }
 [data-engrid-theme=peta] .radio-to-buttons_donationAmt{
   --donation-amount__button_count:3;
+}
+
+[data-engrid-theme=peta] .radio-to-buttons_donationAmt .en__field--radio.en__field--withOther.en__field--donationAmt .en__field__item--other{
+  flex-basis:100%;
 }
 
 [data-engrid-theme=peta] #DonationLightbox form.en__component>.en__component{

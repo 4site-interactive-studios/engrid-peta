@@ -56,23 +56,23 @@
 
     // TYPOGRAPHY BUTTON
     // --button_font-family: var(--default_font-family);
-    // --button_color: var(--color_white);
+    --button_color: var(--input_color);
     // --button_font-size: var(--root_font-size);
     // --button_font-weight: initial;
     // --button_line-height: initial;
-    --button_background-color: #418fde;
+    --button_background-color: var(--input_background-color);
     // --button_border-width: 1px;
-    // --button_border-color: var(--color_black);
+    --button_border-color: var(--input_border-color);
     // --button_border-radius: 6px;
 
     // TYPOGRAPHY BUTTON:HOVER
     // --button_color_hover: var(--button_color);
-    // --button_background-color_hover: var(--color_black);
-    // --button_border-color_hover: var(--button_background-color_hover);
+    --button_background-color_hover: var(--button_background-color);
+    --button_border-color_hover: var(--button_border-color);
 
     // TYPOGRAPHY BUTTON:SELECTED
-    // --button_color_checked: var(--button_color_hover);
-    // --button_background-color_checked: var(--button_background-color_hover);
+    --button_color_checked: #ffffff;
+    --button_background-color_checked: #418fde;
     // --button_border-color_checked: var(--button_border-color_hover);
 
     // DONATION PAGE
@@ -81,6 +81,12 @@
     // --recurring-frequency__button_count: 4;
     // --donation-amount__button_count: 4;
     // --give-by-select__button_count: 4;
+    --donation-amount__button_background-color_checked: var(--button_background-color_checked);
+    --donation-amount__button_border-color_checked: var(--button_background-color_checked);
+    --donation-amount__button_color_checked: var(--button_color_checked);
+    --recurring-frequency__button_background-color_checked: var(--button_background-color_checked);
+    --recurring-frequency__button_border-color_checked: var(--button_background-color_checked);
+    --recurring-frequency__button_color_checked: var(--button_color_checked);
 
     --error__color: #c92432;
     --error__color_faded: #fff8f7;
@@ -92,11 +98,17 @@
   
   .radio-to-buttons_donationAmt{
     --donation-amount__button_count: 3;
+
+    .en__field--radio.en__field--withOther.en__field--donationAmt .en__field__item--other{
+      flex-basis: 100%;
+    }
   }
 
   .en__field__label{
     // display: none;
   }
+
+
 
   #DonationLightbox {
     // max-width: 400px;
