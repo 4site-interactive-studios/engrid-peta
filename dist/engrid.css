@@ -2014,8 +2014,8 @@ a:focus,a:hover{
 }
 
 [data-engrid-theme]{
-  --fields_horizontal_spacing:0.5rem;
-  --fields_vertical_spacing:0.5rem;
+  --fields_spacing-inline:0.5rem;
+  --fields_spacing-block:0.5rem;
   --label-font-family:var(--default_font-family);
   --label-font-size:var(--root_font-size);
   --label-font-weight:initial;
@@ -2068,13 +2068,13 @@ a:focus,a:hover{
   display:flex;
   flex-wrap:wrap;
   justify-content:flex-start;
-  margin-left:calc(var(--fields_horizontal_spacing)*-1);
-  margin-right:calc(var(--fields_horizontal_spacing)*-1);
+  margin-left:calc(var(--fields_spacing-inline)*-1);
+  margin-right:calc(var(--fields_spacing-inline)*-1);
 }
 
 .en__component--formblock>*,.en__component--svblock>*{
-  padding-left:var(--fields_horizontal_spacing);
-  padding-right:var(--fields_horizontal_spacing);
+  padding-left:var(--fields_spacing-inline);
+  padding-right:var(--fields_spacing-inline);
 }
 
 .en__component--formblock .en__field,.en__component--svblock .en__field{
@@ -2082,7 +2082,7 @@ a:focus,a:hover{
   display:flex;
   flex-basis:100%;
   flex-direction:column;
-  margin-bottom:var(--fields_horizontal_spacing);
+  margin-bottom:var(--fields_spacing-inline);
   padding-bottom:0;
 }
 
@@ -2098,38 +2098,38 @@ a:focus,a:hover{
 }
 
 .en__component--formblock .en__field .en__field__element .en__submit,.en__component--svblock .en__field .en__field__element .en__submit{
-  padding-left:var(--fields_horizontal_spacing);
-  padding-right:var(--fields_horizontal_spacing);
+  padding-left:var(--fields_spacing-inline);
+  padding-right:var(--fields_spacing-inline);
 }
 
 .en__component--formblock .en__field .en__field__element .en__submit.en__rangeFieldLabels,.en__component--svblock .en__field .en__field__element .en__submit.en__rangeFieldLabels{
-  margin-bottom:var(--fields_horizontal_spacing);
+  margin-bottom:var(--fields_spacing-inline);
   padding-left:0;
   padding-right:0;
 }
 
 .en__component--formblock .en__field .en__field__element.en__field__element--checkbox,.en__component--formblock .en__field .en__field__element.en__field__element--imgselect,.en__component--formblock .en__field .en__field__element.en__field__element--radio,.en__component--formblock .en__field .en__field__element.en__field__element--rating,.en__component--formblock .en__field .en__field__element.en__field__element--splitselect,.en__component--formblock .en__field .en__field__element.en__field__element--splittext,.en__component--formblock .en__field .en__field__element.en__field__element--tripleselect,.en__component--formblock .en__field .en__field__element.en__field__element--tripletext,.en__component--formblock .en__field .en__field__element.en__field__element--withOther,.en__component--svblock .en__field .en__field__element.en__field__element--checkbox,.en__component--svblock .en__field .en__field__element.en__field__element--imgselect,.en__component--svblock .en__field .en__field__element.en__field__element--radio,.en__component--svblock .en__field .en__field__element.en__field__element--rating,.en__component--svblock .en__field .en__field__element.en__field__element--splitselect,.en__component--svblock .en__field .en__field__element.en__field__element--splittext,.en__component--svblock .en__field .en__field__element.en__field__element--tripleselect,.en__component--svblock .en__field .en__field__element.en__field__element--tripletext,.en__component--svblock .en__field .en__field__element.en__field__element--withOther{
-  margin-left:calc(var(--fields_horizontal_spacing)*-1);
-  margin-right:calc(var(--fields_horizontal_spacing)*-1);
+  margin-left:calc(var(--fields_spacing-inline)*-1);
+  margin-right:calc(var(--fields_spacing-inline)*-1);
 }
 
 .en__component--formblock .en__field .en__field__element.en__field__element--checkbox .en__field__item,.en__component--formblock .en__field .en__field__element.en__field__element--imgselect .en__field__item,.en__component--formblock .en__field .en__field__element.en__field__element--radio .en__field__item,.en__component--formblock .en__field .en__field__element.en__field__element--rating .en__field__item,.en__component--formblock .en__field .en__field__element.en__field__element--splitselect .en__field__item,.en__component--formblock .en__field .en__field__element.en__field__element--splittext .en__field__item,.en__component--formblock .en__field .en__field__element.en__field__element--tripleselect .en__field__item,.en__component--formblock .en__field .en__field__element.en__field__element--tripletext .en__field__item,.en__component--formblock .en__field .en__field__element.en__field__element--withOther .en__field__item,.en__component--svblock .en__field .en__field__element.en__field__element--checkbox .en__field__item,.en__component--svblock .en__field .en__field__element.en__field__element--imgselect .en__field__item,.en__component--svblock .en__field .en__field__element.en__field__element--radio .en__field__item,.en__component--svblock .en__field .en__field__element.en__field__element--rating .en__field__item,.en__component--svblock .en__field .en__field__element.en__field__element--splitselect .en__field__item,.en__component--svblock .en__field .en__field__element.en__field__element--splittext .en__field__item,.en__component--svblock .en__field .en__field__element.en__field__element--tripleselect .en__field__item,.en__component--svblock .en__field .en__field__element.en__field__element--tripletext .en__field__item,.en__component--svblock .en__field .en__field__element.en__field__element--withOther .en__field__item{
-  padding:var(--fields_vertical_spacing) var(--fields_horizontal_spacing);
+  padding:var(--fields_spacing-block) var(--fields_spacing-inline);
 }
 
 .en__component--formblock .en__field .en__field__element>input,.en__component--formblock .en__field .en__field__element>select,.en__component--formblock .en__field .en__field__element>textarea,.en__component--svblock .en__field .en__field__element>input,.en__component--svblock .en__field .en__field__element>select,.en__component--svblock .en__field .en__field__element>textarea{
-  margin-bottom:var(--fields_horizontal_spacing);
-  margin-top:var(--fields_horizontal_spacing);
+  margin-bottom:var(--fields_spacing-inline);
+  margin-top:var(--fields_spacing-inline);
 }
 
 .en__component--formblock .en__field.en__field--withOther .en__field__element,.en__component--svblock .en__field.en__field--withOther .en__field__element{
-  margin-left:calc(var(--fields_horizontal_spacing)*-1);
-  margin-right:calc(var(--fields_horizontal_spacing)*-1);
+  margin-left:calc(var(--fields_spacing-inline)*-1);
+  margin-right:calc(var(--fields_spacing-inline)*-1);
 }
 
 .en__component--formblock .en__field.en__field--withOther .en__field__element .en__field__item,.en__component--svblock .en__field.en__field--withOther .en__field__element .en__field__item{
-  padding-left:var(--fields_horizontal_spacing);
-  padding-right:var(--fields_horizontal_spacing);
+  padding-left:var(--fields_spacing-inline);
+  padding-right:var(--fields_spacing-inline);
 }
 label{
   color:var(--label-color);
@@ -2145,7 +2145,7 @@ label{
 label a.label-tooltip{
   color:var(--label-color);
   font-weight:400;
-  padding-right:var(--fields_horizontal_spacing);
+  padding-right:var(--fields_spacing-inline);
   position:absolute;
   right:0;
   text-decoration:underline;
@@ -2220,7 +2220,7 @@ input[type=radio]+label:before{
   display:inline-flex;
   height:var(--radio_height);
   justify-content:center;
-  margin-right:var(--fields_horizontal_spacing);
+  margin-right:var(--fields_spacing-inline);
   width:var(--radio_width);
 }
 
@@ -2261,7 +2261,7 @@ input[type=checkbox]+label:before{
   font-weight:var(--checkbox_font-weight);
   height:var(--checkbox_height);
   justify-content:center;
-  margin-right:var(--fields_horizontal_spacing);
+  margin-right:var(--fields_spacing-inline);
   width:var(--checkbox_width);
 }
 
@@ -2375,7 +2375,7 @@ input.en__contactDetails__select,input.en__field__input--checkbox,input.en__fiel
 
 .en__contactDetails__select:focus+.en__contactDetails__rows,.en__field__input--checkbox:focus+.en__field__label,.en__field__input--radio:focus+.en__field__label{
   outline:1px auto -webkit-focus-ring-color;
-  outline-offset:calc(max(var(--fields_horizontal_spacing), var(--fields_vertical_spacing)) - 3px);
+  outline-offset:calc(max(var(--fields_spacing-inline), var(--fields_spacing-block)) - 3px);
 }
 select,select.en__field__input--select,select.en__field__input--splitselect,select.en__field__input--tripleselect{
   -webkit-appearance:none;
@@ -2452,7 +2452,7 @@ select.en__field__input--select:focus,select.en__field__input--select:hover,sele
   flex-basis:33.33333%;
 }
 .en__imageSelectField__image{
-  padding-bottom:var(--fields_vertical_spacing);
+  padding-bottom:var(--fields_spacing-block);
 }
 
 .en__field__element--imgselect{
@@ -2482,7 +2482,7 @@ select.en__field__input--select:focus,select.en__field__input--select:hover,sele
   align-items:flex-start;
   flex-basis:100%;
   flex-direction:column;
-  margin-left:calc(var(--checkbox_width) + var(--fields_horizontal_spacing));
+  margin-left:calc(var(--checkbox_width) + var(--fields_spacing-inline));
   width:100%;
 }
 
@@ -6381,8 +6381,8 @@ body:not(#en__pagebuilder) .body-banner:empty,body:not(#en__pagebuilder) .body-b
   --h2_color:#418fde;
   --h2_font-size:20px;
   --h2_font-weight:bold;
-  --fields_horizontal_spacing:0.16rem;
-  --fields_vertical_spacing:0.16rem;
+  --fields_spacing-inline:0.16rem;
+  --fields_spacing-block:0.16rem;
   --input_color:#4e606c;
   --input_background-color:#f6f7f8;
   --input_border-color:#d7e4e7;
