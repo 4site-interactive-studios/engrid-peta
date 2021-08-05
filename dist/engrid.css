@@ -4658,6 +4658,7 @@ header .indicator__percentage{
   --engrid__page-alert_margin:var(--engrid__page_margin);
   --engrid__content-header_padding:var(--engrid__content_padding);
   --engrid__content-header_margin:var(--engrid__content_margin);
+  --engrid__body_box-shadow:0 36px 36px -5px #0003, 0 1px 1px -5px #00000024, 0 2px 1px -5px #0000001f;
   --engrid__body-headerOutside_padding:var(--engrid__body_padding);
   --engrid__body-headerOutside_margin:var(--engrid__body_margin);
   --engrid__body-header_padding:var(--engrid__body_padding);
@@ -4907,7 +4908,7 @@ body:not(#en__pagebuilder) .body-bannerOverlay:empty{
 
 div:not(.pboAdvancedRow__preview)>.en__component--advrow>.body-banner:before,div:not(.pboAdvancedRow__preview)>.en__component--advrow>.body-bottom:before,div:not(.pboAdvancedRow__preview)>.en__component--advrow>.body-footer:before,div:not(.pboAdvancedRow__preview)>.en__component--advrow>.body-header:before,div:not(.pboAdvancedRow__preview)>.en__component--advrow>.body-main:before,div:not(.pboAdvancedRow__preview)>.en__component--advrow>.body-side:before,div:not(.pboAdvancedRow__preview)>.en__component--advrow>.body-title:before,div:not(.pboAdvancedRow__preview)>.en__component--advrow>.body-top:before{
   bottom:0;
-  box-shadow:0 36px 36px -5px #0003,0 1px 1px -5px #00000024,0 2px 1px -5px #0000001f;
+  box-shadow:var(--engrid__body_box-shadow);
   content:"";
   left:0;
   position:absolute;
@@ -5207,6 +5208,7 @@ body:not(#en__pagebuilder) .body-banner:empty,body:not(#en__pagebuilder) .body-b
   --engrid__page-backgroundImage_background-color:var(--color_transparent) !important;
   --engrid__page-backgroundImageOverlay_background-color:var(--color_transparent) !important;
   --engrid__page-customCode_background-color:var(--color_transparent) !important;
+  --engrid__body_box-shadow:none !important;
   background-image:none;
 }
 
