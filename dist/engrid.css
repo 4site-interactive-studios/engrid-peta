@@ -6438,6 +6438,18 @@ body:not(#en__pagebuilder) .body-banner:empty,body:not(#en__pagebuilder) .body-b
 
 [data-engrid-theme=peta] .radio-to-buttons_donationAmt .en__field--radio.en__field--withOther.en__field--donationAmt .en__field__item--other{
   flex-basis:100%;
+  padding-left:1.5rem;
+  padding-right:1rem;
+}
+
+[data-engrid-theme=peta] .radio-to-buttons_donationAmt .en__field--radio.en__field--withOther.en__field--donationAmt .en__field__item--other:before{
+  color:var(--h1_color);
+  content:"$";
+}
+
+[data-engrid-theme=peta] .radio-to-buttons_donationAmt .en__field--radio.en__field--withOther.en__field--donationAmt .en__field__item--other:after{
+  content:"USD";
+  font-size:50%;
 }
 
 [data-engrid-theme=peta]:not(#en__pagebuilder) .en__field>.en__field__label{
