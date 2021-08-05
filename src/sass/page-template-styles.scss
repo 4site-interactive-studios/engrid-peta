@@ -138,18 +138,47 @@
 
     .en__field--radio.en__field--withOther.en__field--donationAmt .en__field__item--other{
       flex-basis: 100%;
-      padding-left: 1.5rem;
-      padding-right: 1rem;
+      position: relative;
+
       &:before{
         content: "$";
+        display: block;
+        // font-family: inherit;
+        font-size: 20px;
+        font-weight: 700;
+        height: 0;
+        left: 19px;
+        line-height: 0;
+        position: absolute;
+        top: 50%;
         color: var(--h1_color);
       }
 
       &:after{
         content: "USD";
-        font-size: 50%;
+        display: block;
+        // font-family: inherit;
+        font-size: 12px;
+        font-weight: 700;
+        height: 0;
+        right: 19px;
+        line-height: 0;
+        position: absolute;
+        top: 50%;
+        color: #254d68;
+        opacity: 0.8;
+      }
+
+      input{
+        padding-left: 39px;
+        padding-right: 58px;
       }
     }
+  }
+
+  .monthly-upsell-message{
+    font-size: 14px;
+    line-height: 1.43;
   }
 
   &:not(#en__pagebuilder) .en__field > .en__field__label{

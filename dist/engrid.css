@@ -6438,18 +6438,44 @@ body:not(#en__pagebuilder) .body-banner:empty,body:not(#en__pagebuilder) .body-b
 
 [data-engrid-theme=peta] .radio-to-buttons_donationAmt .en__field--radio.en__field--withOther.en__field--donationAmt .en__field__item--other{
   flex-basis:100%;
-  padding-left:1.5rem;
-  padding-right:1rem;
+  position:relative;
 }
 
 [data-engrid-theme=peta] .radio-to-buttons_donationAmt .en__field--radio.en__field--withOther.en__field--donationAmt .en__field__item--other:before{
   color:var(--h1_color);
   content:"$";
+  display:block;
+  font-size:20px;
+  font-weight:700;
+  height:0;
+  left:19px;
+  line-height:0;
+  position:absolute;
+  top:50%;
 }
 
 [data-engrid-theme=peta] .radio-to-buttons_donationAmt .en__field--radio.en__field--withOther.en__field--donationAmt .en__field__item--other:after{
+  color:#254d68;
   content:"USD";
-  font-size:50%;
+  display:block;
+  font-size:12px;
+  font-weight:700;
+  height:0;
+  line-height:0;
+  opacity:.8;
+  position:absolute;
+  right:19px;
+  top:50%;
+}
+
+[data-engrid-theme=peta] .radio-to-buttons_donationAmt .en__field--radio.en__field--withOther.en__field--donationAmt .en__field__item--other input{
+  padding-left:39px;
+  padding-right:58px;
+}
+
+[data-engrid-theme=peta] .monthly-upsell-message{
+  font-size:14px;
+  line-height:1.43;
 }
 
 [data-engrid-theme=peta]:not(#en__pagebuilder) .en__field>.en__field__label{
