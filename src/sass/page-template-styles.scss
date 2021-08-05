@@ -42,7 +42,7 @@
     --input_background-color: #f6f7f8;
     // --input_border-width: 1px;
     --input_border-color: #d7e4e7;
-    --input_border-radius: 4px;
+    --input_border-radius: 2px;
     --input_placeholder-color: #929ca4;
     --input_box-shadow: none;
         
@@ -63,7 +63,7 @@
     --button_background-color: var(--input_background-color);
     // --button_border-width: 1px;
     --button_border-color: var(--input_border-color);
-    // --button_border-radius: 6px;
+    --button_border-radius: 2px;
 
     // TYPOGRAPHY BUTTON:HOVER
     // --button_color_hover: var(--button_color);
@@ -94,7 +94,11 @@
 }
 
 /* Add your custom theme styles here */
-[data-engrid-theme="peta"]{   
+[data-engrid-theme="peta"]{  
+  
+  .radio-to-buttons_recurrfreq{
+    --recurring-frequency__button_count: 2;
+  }
   
   .radio-to-buttons_donationAmt{
     --donation-amount__button_count: 3;
