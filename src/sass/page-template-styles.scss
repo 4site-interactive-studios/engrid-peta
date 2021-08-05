@@ -13,9 +13,16 @@
     --h1_font-family: "raleway", Helvetica, Roboto, Arial, sans-serif;
     --h1_color: #418fde;
     --h1_font-size: 20px;
-    // --h1_font-weight: initial;
+    --h1_font-weight: bold;
     // --h1_line-height: initial;
-        
+       
+    
+    // TYPOGRAPHY H2
+    --h2_color: #418fde;
+    --h2_font-size: 20px;
+    --h2_font-weight: bold;
+    // --h2_line-height: initial;
+
     // TYPOGRAPHY P
     // --p_font-family: var(--default_font-family);
     // --p_color: initial;
@@ -75,6 +82,13 @@
     --button_background-color_checked: #418fde;
     // --button_border-color_checked: var(--button_border-color_hover);
 
+    --submit__button_color: var(--button_color_checked);
+    --submit__button_border-color: var(--button_background-color_checked);
+    --submit__button_background-color: var(--button_background-color_checked);
+    --submit__button_color_hover: #ffffff;
+    --submit__button_background-color_hover: #000000;
+    --submit__button_border-color_hover: #000000;
+
     // DONATION PAGE
     // --give-monthly-donation-amount-appended-label: "/mo";
     // --give-annual-donation-amount-appended-label: "/yr";  
@@ -87,6 +101,11 @@
     --recurring-frequency__button_background-color_checked: var(--button_background-color_checked);
     --recurring-frequency__button_border-color_checked: var(--button_background-color_checked);
     --recurring-frequency__button_color_checked: var(--button_color_checked);
+
+    --checkbox_border-radius: 5px;
+    --checkbox_background-color_checked: #418fde;
+    --checkbox_border-color_checked: #418fde;
+    --checkbox_color_checked: #ffffff;
 
     --error__color: #c92432;
     --error__color_faded: #fff8f7;
@@ -108,8 +127,12 @@
     }
   }
 
-  .en__field__label{
-    // display: none;
+  .en__field > .en__field__label{
+    display: none;
+  }
+
+  h2{
+    text-align: center;
   }
 
 

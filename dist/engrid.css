@@ -2014,6 +2014,8 @@ a:focus,a:hover{
 }
 
 [data-engrid-theme]{
+  --fields_horizontal_spacing:0.5em;
+  --fields_vertical_spacing:0.5em;
   --label-font-family:var(--default_font-family);
   --label-font-size:var(--root_font-size);
   --label-font-weight:initial;
@@ -2747,6 +2749,9 @@ body{
 }
 
 .en__submit .button,.en__submit button{
+  background-color:var(--submit__button_background-color);
+  border-color:var(--submit__button_border-color);
+  color:var(--submit__button_color);
   font-size:var(--submit__button_font-size);
   margin-top:2rem;
   padding-bottom:var(--submit__button_padding-bottom);
@@ -3517,6 +3522,9 @@ button.en__ecarditems__prevclose{
   order:3;
   padding:.25rem .5rem 0 0;
 }
+.en__field--validationFailed:not(.has-focus):not(.has-value){
+  --input_placeholder-color:var(--error__color);
+}
 body.error-jump-assist .en__component .en__field__error{
   order:1;
 }
@@ -3525,7 +3533,7 @@ body.error-jump-assist .en__component .en__field__error{
   color:var(--error__color);
 }
 
-.en__field--validationFailed [type],.en__field--validationFailed select,.en__field--validationFailed textarea{
+.en__field--validationFailed:not(.has-value):not(.has-focus) [type],.en__field--validationFailed:not(.has-value):not(.has-focus) select,.en__field--validationFailed:not(.has-value):not(.has-focus) textarea{
   background-color:var(--error__color_faded);
   border-color:var(--error__color);
 }
@@ -3578,11 +3586,6 @@ body.error-jump-assist .en__component .en__field__error{
 .en__field--radio.en__field--validationFailed
 .en__field--checkbox.en__field--validationFailed{
   border-color:var(--error__color);
-}
-
-.en__field--select.en__field--validationFailed.has-value select,.en__field--validationFailed.has-value input,.en__field--validationFailed.has-value textarea{
-  background-color:initial;
-  border-color:var(--error__color_grayscale);
 }
 
 .radio-to-buttons_donationAmt .en__field--donationAmt.en__field--withOther.en__field--validationFailed
@@ -6361,6 +6364,10 @@ body:not(#en__pagebuilder) .body-banner:empty,body:not(#en__pagebuilder) .body-b
   --h1_font-family:"raleway", Helvetica, Roboto, Arial, sans-serif;
   --h1_color:#418fde;
   --h1_font-size:20px;
+  --h1_font-weight:bold;
+  --h2_color:#418fde;
+  --h2_font-size:20px;
+  --h2_font-weight:bold;
   --input_color:#4e606c;
   --input_background-color:#f6f7f8;
   --input_border-color:#d7e4e7;
@@ -6375,12 +6382,22 @@ body:not(#en__pagebuilder) .body-banner:empty,body:not(#en__pagebuilder) .body-b
   --button_border-color_hover:var(--button_border-color);
   --button_color_checked:#fff;
   --button_background-color_checked:#418fde;
+  --submit__button_color:var(--button_color_checked);
+  --submit__button_border-color:var(--button_background-color_checked);
+  --submit__button_background-color:var(--button_background-color_checked);
+  --submit__button_color_hover:#fff;
+  --submit__button_background-color_hover:#000;
+  --submit__button_border-color_hover:#000;
   --donation-amount__button_background-color_checked:var(--button_background-color_checked);
   --donation-amount__button_border-color_checked:var(--button_background-color_checked);
   --donation-amount__button_color_checked:var(--button_color_checked);
   --recurring-frequency__button_background-color_checked:var(--button_background-color_checked);
   --recurring-frequency__button_border-color_checked:var(--button_background-color_checked);
   --recurring-frequency__button_color_checked:var(--button_color_checked);
+  --checkbox_border-radius:5px;
+  --checkbox_background-color_checked:#418fde;
+  --checkbox_border-color_checked:#418fde;
+  --checkbox_color_checked:#fff;
   --error__color:#c92432;
   --error__color_faded:#fff8f7;
   --error__background-color:#fff8f7;
@@ -6395,6 +6412,14 @@ body:not(#en__pagebuilder) .body-banner:empty,body:not(#en__pagebuilder) .body-b
 
 [data-engrid-theme=peta] .radio-to-buttons_donationAmt .en__field--radio.en__field--withOther.en__field--donationAmt .en__field__item--other{
   flex-basis:100%;
+}
+
+[data-engrid-theme=peta] .en__field>.en__field__label{
+  display:none;
+}
+
+[data-engrid-theme=peta] h2{
+  text-align:center;
 }
 
 [data-engrid-theme=peta] #DonationLightbox form.en__component>.en__component{
