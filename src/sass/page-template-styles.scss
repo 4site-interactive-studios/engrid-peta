@@ -40,6 +40,9 @@
     // --a_color_hover: var(--a_color);
     // --a_text-decoration_hover: initial;
 
+    --fields_horizontal_spacing: 0.16rem;
+    --fields_vertical_spacing: 0.16rem;
+
     // TYPOGRAPHY INPUT
     // --input_font-family: var(--default_font-family);
     --input_color: #4e606c;
@@ -65,12 +68,14 @@
     // --button_font-family: var(--default_font-family);
     --button_color: var(--input_color);
     // --button_font-size: var(--root_font-size);
-    // --button_font-weight: initial;
+    --button_font-weight: 600;
     // --button_line-height: initial;
     --button_background-color: var(--input_background-color);
     // --button_border-width: 1px;
     --button_border-color: var(--input_border-color);
     --button_border-radius: 2px;
+    --button_text-transform: uppercase;
+    --button_padding: 1ch .2ch;
 
     // TYPOGRAPHY BUTTON:HOVER
     // --button_color_hover: var(--button_color);
@@ -85,6 +90,7 @@
     --submit__button_color: var(--button_color_checked);
     --submit__button_border-color: var(--button_background-color_checked);
     --submit__button_background-color: var(--button_background-color_checked);
+    --submit__button_font-weight: var(--button_font-weight);
     --submit__button_color_hover: #ffffff;
     --submit__button_background-color_hover: #000000;
     --submit__button_border-color_hover: #000000;
@@ -95,12 +101,18 @@
     // --recurring-frequency__button_count: 4;
     // --donation-amount__button_count: 4;
     // --give-by-select__button_count: 4;
+    --recurring-frequency__button_font-size: 14px;
     --donation-amount__button_background-color_checked: var(--button_background-color_checked);
     --donation-amount__button_border-color_checked: var(--button_background-color_checked);
     --donation-amount__button_color_checked: var(--button_color_checked);
+    --donation-amount__button_font-weight: var(--button_font-weight);
     --recurring-frequency__button_background-color_checked: var(--button_background-color_checked);
     --recurring-frequency__button_border-color_checked: var(--button_background-color_checked);
     --recurring-frequency__button_color_checked: var(--button_color_checked);
+    --recurring-frequency__button_font-weight: var(--button_font-weight);
+    --recurring-frequency__button_padding: 1.75ch 0.2ch;
+    --submit__button_padding-top: 1.75ch;
+    --submit__button_padding-bottom: 1.75ch;
 
     --checkbox_border-radius: 5px;
     --checkbox_background-color_checked: #418fde;
@@ -135,7 +147,29 @@
     text-align: center;
   }
 
+  &[data-engrid-transaction-recurring-frequency=monthly] .radio-to-buttons_donationAmt .en__field--donationAmt div:not(.en__field__item--other) .en__field__label--item:after{
+    font-size: calc(var(--donation-amount__button_font-size) * (1 / 1.75));
+    margin-left: 0px;
+    position: relative;
+    top: 2px;
+    text-transform: lowercase;
+  }
 
+  select,
+  select.en__field__input--select,
+  select.en__field__input--splitselect,
+  select.en__field__input--tripleselect{
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='32' height='24' viewBox='0 0 32 24'><polygon points='0,0 32,0 16,24' style='fill: rgb(79, 96, 108)'></polygon></svg>");
+    
+    &:focus,
+    &:hover{
+        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='32' height='24' viewBox='0 0 32 24'><polygon points='0,0 32,0 16,24' style='fill: rgb(79, 96, 108)'></polygon></svg>");
+    }
+  }
+
+  .en__field--validationFailed .en__field__error{
+    display: none;
+  }
 
   #DonationLightbox {
     // max-width: 400px;
