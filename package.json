@@ -5,7 +5,7 @@
   "description": "Page Template Framework for Engaging Networks",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server  --config webpack.dev.js",
+    "start": "webpack --watch  --config webpack.prod.js",
     "build": "npm run production & npm run minify",
     "production": "webpack --config webpack.prod.js",
     "minify": "webpack --config webpack.min.js"
