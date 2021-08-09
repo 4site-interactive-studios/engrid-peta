@@ -6608,7 +6608,6 @@ div:not(.en__field__item--other)
 
 [data-engrid-theme=peta] form.en__component>.en__component .section-navigation{
   align-items:flex-start;
-  background:linear-gradient(180deg, #0000 0, #fff 50%, #fff);
   bottom:0;
   display:flex;
   justify-content:space-between;
@@ -6618,6 +6617,7 @@ div:not(.en__field__item--other)
 
 [data-engrid-theme=peta] form.en__component>.en__component .section-navigation button{
   align-items:center;
+  -webkit-backface-visibility:hidden;
   background-color:#418fde30;
   border:0;
   border-radius:2px;
@@ -6636,6 +6636,7 @@ div:not(.en__field__item--other)
   min-width:52px;
   padding:0 12px;
   text-transform:uppercase;
+  -webkit-transform:translateZ(0);
 }
 
 [data-engrid-theme=peta] form.en__component>.en__component .section-navigation button small{

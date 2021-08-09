@@ -338,12 +338,6 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      background: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0) 0%,
-        rgba(255, 255, 255, 1) 50%,
-        rgba(255, 255, 255, 1) 100%
-      );
 
       button {
         height: 52px;
@@ -365,6 +359,8 @@
         font-style: normal;
         letter-spacing: 0.84px;
         margin-bottom: 0;
+        -webkit-transform: translateZ(0);
+        -webkit-backface-visibility: hidden;
         small {
           font-size: 10px;
           font-weight: 400;
