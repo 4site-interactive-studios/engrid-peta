@@ -2649,7 +2649,7 @@ class App extends engrid_ENGrid {
 
     this.shouldScroll = () => {
       // If you find a error, scroll
-      if (document.querySelector('.en__errorHeader')) {
+      if (document.querySelector(".en__errorHeader")) {
         return true;
       } // Try to match the iframe referrer URL by testing valid EN Page URLs
 
@@ -2685,7 +2685,7 @@ class App extends engrid_ENGrid {
 
   run() {
     // Enable debug if available is the first thing
-    if (this.options.Debug || App.getUrlParameter('debug') == 'true') App.setBodyData('debug', ''); // IE Warning
+    if (this.options.Debug || App.getUrlParameter("debug") == "true") App.setBodyData("debug", ""); // IE Warning
 
     new IE(); // Page Background
 
@@ -2717,9 +2717,9 @@ class App extends engrid_ENGrid {
 
     this._frequency.onFrequencyChange.subscribe(s => console.log(`Live Frequency: ${s}`));
 
-    this._form.onSubmit.subscribe(s => console.log('Submit: ', s));
+    this._form.onSubmit.subscribe(s => console.log("Submit: ", s));
 
-    this._form.onError.subscribe(s => console.log('Error:', s));
+    this._form.onError.subscribe(s => console.log("Error:", s));
 
     window.enOnSubmit = () => {
       this._form.dispatchSubmit();
@@ -2815,7 +2815,7 @@ class App extends engrid_ENGrid {
     }
 
     if (this.inIframe()) {
-      sendIframeFormStatus('submit');
+      sendIframeFormStatus("submit");
     }
   }
 
@@ -2847,8 +2847,13 @@ class App extends engrid_ENGrid {
 
   setDataAttributes() {
     // Add a body banner data attribute if it's empty
-    if (!document.querySelector('.body-banner img')) {
-      App.setBodyData('body-banner', 'empty');
+    if (!document.querySelector(".body-banner img")) {
+      App.setBodyData("body-banner", "empty");
+    } // Add a body title data attribute if it is empty
+
+
+    if (document.querySelector(".body-title *")) {
+      App.setBodyData("has-body-title", "");
     }
   }
 
@@ -4648,21 +4653,19 @@ class ShowHideRadioCheckboxes {
 // This class works when the user has added ".simple_country_select" as a class in page builder for the Country select
 class SimpleCountrySelect {
   constructor() {
-    var _a;
-
     this.countryWrapper = document.querySelector('.simple_country_select');
-    this.countrySelect = document.querySelector('#en__field_supporter_country');
+    this.countrySelect = document.querySelector('#en__field_supporter_country'); // @TODO Check if there is a country select AN an address1 label, otherwise we can abort the function
 
     if (this.countrySelect) {
-      let countrySelecLabel = this.countrySelect.options[this.countrySelect.selectedIndex].innerHTML;
-      let countrySelecValue = this.countrySelect.options[this.countrySelect.selectedIndex].value;
+      let countrySelectLabel = this.countrySelect.options[this.countrySelect.selectedIndex].innerHTML;
+      let countrySelectValue = this.countrySelect.options[this.countrySelect.selectedIndex].value; // @TODO Update so that it reads "(Outside X?)" where X is the Value of the Country Select. No need for long form version of it.
 
-      if (countrySelecValue == "US") {
-        countrySelecValue = " US";
+      if (countrySelectValue == "US") {
+        countrySelectValue = " US";
       }
 
-      if (countrySelecLabel == "United States") {
-        countrySelecLabel = "the United States";
+      if (countrySelectLabel == "United States") {
+        countrySelectLabel = "the United States";
       }
 
       let countryWrapper = document.querySelector('.simple_country_select');
@@ -4671,8 +4674,8 @@ class SimpleCountrySelect {
         // Remove Country Select tab index
         this.countrySelect.tabIndex = -1; // Find the address label
 
-        let addressLabel = document.querySelector('.en__field--address1 label');
-        let addressWrapper = (_a = addressLabel.parentElement) === null || _a === void 0 ? void 0 : _a.parentElement; // EN does not enforce a labels on fields so we have to check for it
+        let addressLabel = document.querySelector('.en__field--address1 label'); // EN does not enforce a labels on fields so we have to check for it
+        // @TODO Update so that this follows the same pattern / HTML structure as the Tippy tooltips which are added to labels. REF: https://github.com/4site-interactive-studios/engrid-aiusa/blob/6e4692d4f9a28b9668d6c1bfed5622ac0cc5bdb9/src/scripts/main.js#L42
 
         if (addressLabel) {
           // Wrap the address label in a div to break out of the flexbox
@@ -4680,7 +4683,7 @@ class SimpleCountrySelect {
           // Includes both long form and short form variants
 
           let newEl = document.createElement('span');
-          newEl.innerHTML = ' <label id="en_custom_field_simple_country_select_long" class="en__field__label"><a href="javascript:void(0)">(Outside ' + countrySelecLabel + '?)</a></label><label id="en_custom_field_simple_country_select_short" class="en__field__label"><a href="javascript:void(0)">(Outside ' + countrySelecValue + '?)</a></label>';
+          newEl.innerHTML = ' <label id="en_custom_field_simple_country_select_long" class="en__field__label"><a href="javascript:void(0)">(Outside ' + countrySelectLabel + '?)</a></label><label id="en_custom_field_simple_country_select_short" class="en__field__label"><a href="javascript:void(0)">(Outside ' + countrySelectValue + '?)</a></label>';
           newEl.querySelectorAll("a").forEach(el => {
             el.addEventListener("click", this.showCountrySelect.bind(this));
           });
@@ -4800,38 +4803,43 @@ class SrcDefer {
     for (let i = 0; i < this.videoBackground.length; i++) {
       let video = this.videoBackground[i]; // Process one or more defined sources in the <video> tag
 
-      let videoBackgroundSource = video.querySelectorAll("source");
-      let videoBackgroundSourcedDataSrc = this.videoBackgroundSource[i].getAttribute("data-src");
+      this.videoBackgroundSource = video.querySelectorAll("source");
 
-      if (videoBackgroundSource) {
-        for (let i = 0; i < this.videoBackgroundSource.length; i++) {
-          // Construct the <video> tags new <source>
-          if (videoBackgroundSourcedDataSrc) {
-            this.videoBackgroundSource[i].setAttribute("src", videoBackgroundSourcedDataSrc);
-            this.videoBackgroundSource[i].setAttribute("data-engrid-data-src-processed", "true"); // Sets an attribute to mark that it has been processed by ENGrid
+      if (this.videoBackgroundSource) {
+        // loop through all the sources
+        for (let j = 0; j < this.videoBackgroundSource.length; j++) {
+          let videoSource = this.videoBackgroundSource[j];
 
-            this.videoBackgroundSource[i].removeAttribute("data-src"); // Removes the data-source
-          } // To get the browser to request the video asset defined we need to remove the <video> tag and re-add it
+          if (videoSource) {
+            let videoBackgroundSourcedDataSrc = videoSource.getAttribute("data-src");
 
+            if (videoBackgroundSourcedDataSrc) {
+              videoSource.setAttribute("src", videoBackgroundSourcedDataSrc);
+              videoSource.setAttribute("data-engrid-data-src-processed", "true"); // Sets an attribute to mark that it has been processed by ENGrid
 
-          let videoBackgroundParent = video.parentNode; // Determine the parent of the <video> tag
-
-          let copyOfVideoBackground = video; // Copy the <video> tag
-
-          if (videoBackgroundParent && copyOfVideoBackground) {
-            videoBackgroundParent.replaceChild(copyOfVideoBackground, this.videoBackground[i]); // Replace the <video> with the copy of itself
-            // Update the video to auto play, mute, loop
-
-            video.muted = true; // Mute the video by default
-
-            video.controls = false; // Hide the browser controls
-
-            video.loop = true; // Loop the video
-
-            video.playsInline = true; // Encourage the user agent to display video content within the element's playback area
-
-            video.play(); // Plays the video
+              videoSource.removeAttribute("data-src"); // Removes the data-source
+            }
           }
+        } // To get the browser to request the video asset defined we need to remove the <video> tag and re-add it
+
+
+        let videoBackgroundParent = video.parentNode; // Determine the parent of the <video> tag
+
+        let copyOfVideoBackground = video; // Copy the <video> tag
+
+        if (videoBackgroundParent && copyOfVideoBackground) {
+          videoBackgroundParent.replaceChild(copyOfVideoBackground, video); // Replace the <video> with the copy of itself
+          // Update the video to auto play, mute, loop
+
+          video.muted = true; // Mute the video by default
+
+          video.controls = false; // Hide the browser controls
+
+          video.loop = true; // Loop the video
+
+          video.playsInline = true; // Encourage the user agent to display video content within the element's playback area
+
+          video.play(); // Plays the video
         }
       }
     }
