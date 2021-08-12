@@ -7079,6 +7079,11 @@ div:not(.en__field__item--other)
   animation:pulse 2s linear infinite forwards;
 }
 
+[data-engrid-theme=peta][data-thank-you] form.en__component>.en__component{
+  margin:auto;
+  padding:60px 45px;
+}
+
 [data-engrid-theme=peta][data-thank-you] footer{
   background-image:url('data:image/svg+xml;utf8,<svg fill="none" height="132" viewBox="0 0 400 132" width="400" xmlns="http://www.w3.org/2000/svg"> <path d="M0 110.582L400 0v128c0 2.209-1.791 4-4 4H0v-21.418z" fill="%23A3D1D6"></path> <path d="M0 73.5L400 132H0V73.5z" fill="%23418FDE"></path></svg>');
   background-position:bottom;
@@ -7089,6 +7094,7 @@ div:not(.en__field__item--other)
   left:0;
   position:fixed;
   width:100vw;
+  z-index:-1;
 }
 
 [data-engrid-theme=peta][data-thank-you] footer svg{

@@ -704,6 +704,12 @@
         animation: pulse 2s linear forwards infinite;
       }
     }
+    form.en__component {
+      & > .en__component {
+        padding: 60px 45px;
+        margin: auto;
+      }
+    }
     footer {
       position: fixed;
       left: 0;
@@ -714,6 +720,7 @@
       background-size: contain;
       background-position: bottom;
       background-repeat: no-repeat;
+      z-index: -1;
       svg {
         display: none;
       }
