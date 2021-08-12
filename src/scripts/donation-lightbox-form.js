@@ -1,3 +1,4 @@
+import { elementScrollIntoView } from "seamless-scroll-polyfill";
 export default class DonationLightboxForm {
   constructor(DonationAmount, DonationFrequency) {
     this.amount = DonationAmount;
@@ -13,6 +14,27 @@ export default class DonationLightboxForm {
       this.sendMessage("status", "celebrate");
       this.sendMessage("class", "thank-you");
       document.querySelector("body").dataset.thankYou = "true";
+      // Get Query Strings
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get("name")) {
+        let engrid = document.querySelector("#engrid");
+        if (engrid) {
+          let engridContent = engrid.innerHTML;
+          engridContent = engridContent.replace(
+            "{user_data~First Name}",
+            urlParams.get("name")
+          );
+          engridContent = engridContent.replace(
+            "{receipt_data~recurringFrequency}",
+            urlParams.get("frequency")
+          );
+          engridContent = engridContent.replace(
+            "{receipt_data~amount}",
+            "$" + urlParams.get("amount")
+          );
+          engrid.innerHTML = engridContent;
+        }
+      }
       return false;
     }
     if (!this.sections.length) {
@@ -149,6 +171,17 @@ export default class DonationLightboxForm {
           e.preventDefault();
           // Validate the entire form again
           if (this.validateForm()) {
+            // Send Basic User Data to Parent
+            this.sendMessage(
+              "donationinfo",
+              JSON.stringify({
+                name: document.querySelector("#en__field_supporter_firstName")
+                  .value,
+                amount:
+                  EngagingNetworks.require._defined.enjs.getDonationTotal(),
+                frequency: this.frequency.getInstance().frequency,
+              })
+            );
             // Only shows cortain if payment is not paypal
             const paymentType = document.querySelector(
               "#en__field_transaction_paymenttype"
@@ -179,7 +212,7 @@ export default class DonationLightboxForm {
     const section = document.querySelector(`[data-section-id="${sectionId}"]`);
     if (this.sections[sectionId]) {
       console.log(section);
-      this.sections[sectionId].scrollIntoView({
+      elementScrollIntoView(this.sections[sectionId], {
         behavior: "smooth",
         block: "start",
         inline: "start",

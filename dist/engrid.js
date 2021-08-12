@@ -2846,14 +2846,137 @@ class App extends engrid_ENGrid {
 
 
   setDataAttributes() {
-    // Add a body banner data attribute if it's empty
+    // Add a body banner data attribute if the banner contains no image
+    // @TODO Should this account for video?
+    // @TODO Should we merge this with the script that checks the background image?
     if (!document.querySelector(".body-banner img")) {
       App.setBodyData("body-banner", "empty");
-    } // Add a body title data attribute if it is empty
+    } // Add a page-alert data attribute if it is empty
+
+
+    if (document.querySelector(".page-alert *")) {
+      App.setBodyData("has-page-alert", "");
+    } else {
+      App.setBodyData("does-not-have-page-alert", "");
+    } // Add a content-header data attribute if it is empty
+
+
+    if (document.querySelector(".content-header *")) {
+      App.setBodyData("has-content-header", "");
+    } else {
+      App.setBodyData("does-not-have-content-header", "");
+    } // Add a body-headerOutside data attribute if it is empty
+
+
+    if (document.querySelector(".body-headerOutside *")) {
+      App.setBodyData("has-body-headerOutside", "");
+    } else {
+      App.setBodyData("does-not-have-body-headerOutside", "");
+    } // Add a body-header data attribute if it is empty
+
+
+    if (document.querySelector(".body-header *")) {
+      App.setBodyData("has-body-header", "");
+    } else {
+      App.setBodyData("does-not-have-body-header", "");
+    } // Add a body-title data attribute if it is empty
 
 
     if (document.querySelector(".body-title *")) {
       App.setBodyData("has-body-title", "");
+    } else {
+      App.setBodyData("does-not-have-body-title", "");
+    } // Add a body-banner data attribute if it is empty
+
+
+    if (document.querySelector(".body-banner *")) {
+      App.setBodyData("has-body-banner", "");
+    } else {
+      App.setBodyData("does-not-have-body-banner", "");
+    } // Add a body-bannerOverlay data attribute if it is empty
+
+
+    if (document.querySelector(".body-bannerOverlay *")) {
+      App.setBodyData("has-body-bannerOverlay", "");
+    } else {
+      App.setBodyData("does-not-have-body-bannerOverlay", "");
+    } // Add a body-top data attribute if it is empty
+
+
+    if (document.querySelector(".body-top *")) {
+      App.setBodyData("has-body-top", "");
+    } else {
+      App.setBodyData("does-not-have-body-top", "");
+    } // Add a body-main data attribute if it is empty
+
+
+    if (document.querySelector(".body-main *")) {
+      App.setBodyData("has-body-main", "");
+    } else {
+      App.setBodyData("does-not-have-body-main", "");
+    } // Add a body-bottom data attribute if it is empty
+
+
+    if (document.querySelector(".body-bottom *")) {
+      App.setBodyData("has-body-bottom", "");
+    } else {
+      App.setBodyData("does-not-have-body-bottom", "");
+    } // Add a body-footer data attribute if it is empty
+
+
+    if (document.querySelector(".body-footer *")) {
+      App.setBodyData("has-body-footer", "");
+    } else {
+      App.setBodyData("does-not-have-body-footer", "");
+    } // Add a body-footerOutside data attribute if it is empty
+
+
+    if (document.querySelector(".body-footerOutside *")) {
+      App.setBodyData("has-body-footerOutside", "");
+    } else {
+      App.setBodyData("does-not-have-body-footerOutside", "");
+    } // Add a content-footerSpacer data attribute if it is empty
+
+
+    if (document.querySelector(".content-footerSpacer *")) {
+      App.setBodyData("has-content-footerSpacer", "");
+    } else {
+      App.setBodyData("does-not-have-content-footerSpacer", "");
+    } // Add a content-preFooter data attribute if it is empty
+
+
+    if (document.querySelector(".content-preFooter *")) {
+      App.setBodyData("has-content-preFooter", "");
+    } else {
+      App.setBodyData("does-not-have-content-preFooter", "");
+    } // Add a content-footer data attribute if it is empty
+
+
+    if (document.querySelector(".content-footer *")) {
+      App.setBodyData("has-content-footer", "");
+    } else {
+      App.setBodyData("does-not-have-content-footer", "");
+    } // Add a page-backgroundImage data attribute if it is empty
+
+
+    if (document.querySelector(".page-backgroundImage *")) {
+      App.setBodyData("has-page-backgroundImage", "");
+    } else {
+      App.setBodyData("does-not-have-page-backgroundImage", "");
+    } // Add a page-backgroundImageOverlay data attribute if it is empty
+
+
+    if (document.querySelector(".page-backgroundImageOverlay *")) {
+      App.setBodyData("has-page-backgroundImageOverlay", "");
+    } else {
+      App.setBodyData("does-not-have-page-backgroundImageOverlay", "");
+    } // Add a page-customCode data attribute if it is empty
+
+
+    if (document.querySelector(".page-customCode *")) {
+      App.setBodyData("has-page-customCode", "");
+    } else {
+      App.setBodyData("does-not-have-page-customCode", "");
     }
   }
 
@@ -4386,7 +4509,7 @@ class UpsellLightbox {
                 </p>
                 <!-- YES BUTTON -->
                 <div id="upsellYesButton">
-                  <a href="#">
+                  <a class="pseduo__en__submit_button" href="#">
                     <div>
                     <span class='loader-wrapper'><span class='loader loader-quart'></span></span>
                     <span class='label'>${yes}</span>
@@ -4653,8 +4776,8 @@ class ShowHideRadioCheckboxes {
 // This class works when the user has added ".simple_country_select" as a class in page builder for the Country select
 class SimpleCountrySelect {
   constructor() {
-    this.countryWrapper = document.querySelector('.simple_country_select');
-    this.countrySelect = document.querySelector('#en__field_supporter_country'); // @TODO Check if there is a country select AN an address1 label, otherwise we can abort the function
+    this.countryWrapper = document.querySelector(".simple_country_select");
+    this.countrySelect = document.querySelector("#en__field_supporter_country"); // @TODO Check if there is a country select AN an address1 label, otherwise we can abort the function
 
     if (this.countrySelect) {
       let countrySelectLabel = this.countrySelect.options[this.countrySelect.selectedIndex].innerHTML;
@@ -4668,26 +4791,27 @@ class SimpleCountrySelect {
         countrySelectLabel = "the United States";
       }
 
-      let countryWrapper = document.querySelector('.simple_country_select');
+      let countryWrapper = document.querySelector(".simple_country_select");
 
       if (countryWrapper) {
         // Remove Country Select tab index
         this.countrySelect.tabIndex = -1; // Find the address label
 
-        let addressLabel = document.querySelector('.en__field--address1 label'); // EN does not enforce a labels on fields so we have to check for it
+        let addressLabel = document.querySelector(".en__field--address1 label"); // EN does not enforce a labels on fields so we have to check for it
         // @TODO Update so that this follows the same pattern / HTML structure as the Tippy tooltips which are added to labels. REF: https://github.com/4site-interactive-studios/engrid-aiusa/blob/6e4692d4f9a28b9668d6c1bfed5622ac0cc5bdb9/src/scripts/main.js#L42
 
         if (addressLabel) {
-          // Wrap the address label in a div to break out of the flexbox
-          this.wrap(addressLabel, document.createElement('div')); // Add our link after the address label
+          let labelText = addressLabel.innerHTML; // Wrap the address label in a div to break out of the flexbox
+
+          this.wrap(addressLabel, document.createElement("div")); // Add our link INSIDE the address label
           // Includes both long form and short form variants
 
-          let newEl = document.createElement('span');
-          newEl.innerHTML = ' <label id="en_custom_field_simple_country_select_long" class="en__field__label"><a href="javascript:void(0)">(Outside ' + countrySelectLabel + '?)</a></label><label id="en_custom_field_simple_country_select_short" class="en__field__label"><a href="javascript:void(0)">(Outside ' + countrySelectValue + '?)</a></label>';
-          newEl.querySelectorAll("a").forEach(el => {
+          let newEl = document.createElement("span");
+          newEl.innerHTML = ' <label id="en_custom_field_simple_country_select_long" class="en__field__label"><a href="javascript:void(0)">(Outside ' + countrySelectLabel + '?)</a></label><label id="en_custom_field_simple_country_select_short" class="en__field__label"><a href="javascript:void(0)">(Outside ' + countrySelectValue + "?)</a></label>";
+          addressLabel.innerHTML = `${labelText}${newEl.innerHTML}`;
+          addressLabel.querySelectorAll("a").forEach(el => {
             el.addEventListener("click", this.showCountrySelect.bind(this));
-          });
-          this.insertAfter(newEl, addressLabel);
+          }); //this.insertAfter(newEl, addressLabel);
         }
       }
     }
@@ -4711,7 +4835,7 @@ class SimpleCountrySelect {
 
     e.preventDefault();
     this.countryWrapper.classList.add("country-select-visible");
-    let addressLabel = document.querySelector('.en__field--address1 label');
+    let addressLabel = document.querySelector(".en__field--address1 label");
     let addressWrapper = (_a = addressLabel.parentElement) === null || _a === void 0 ? void 0 : _a.parentElement;
     addressWrapper.classList.add("country-select-visible");
     this.countrySelect.focus(); // Reinstate Country Select tab index
@@ -5235,7 +5359,622 @@ class ProgressBar {
  // Events
 
 
+;// CONCATENATED MODULE: ./node_modules/seamless-scroll-polyfill/dist/esm/common.js
+const ease = (k) => {
+    return 0.5 * (1 - Math.cos(Math.PI * k));
+};
+const DURATION = 500;
+const common_isScrollBehaviorSupported = () => "scrollBehavior" in document.documentElement.style;
+const common_original = {
+    _elementScroll: undefined,
+    get elementScroll() {
+        return (this._elementScroll || (this._elementScroll = HTMLElement.prototype.scroll ||
+            HTMLElement.prototype.scrollTo ||
+            function (x, y) {
+                this.scrollLeft = x;
+                this.scrollTop = y;
+            }));
+    },
+    _elementScrollIntoView: undefined,
+    get elementScrollIntoView() {
+        return (this._elementScrollIntoView || (this._elementScrollIntoView = HTMLElement.prototype.scrollIntoView));
+    },
+    _windowScroll: undefined,
+    get windowScroll() {
+        return (this._windowScroll || (this._windowScroll = window.scroll || window.scrollTo));
+    },
+};
+const common_modifyPrototypes = (modification) => {
+    const prototypes = [HTMLElement.prototype, SVGElement.prototype, Element.prototype];
+    prototypes.forEach((prototype) => modification(prototype));
+};
+const now = () => { var _a, _b, _c; return (_c = (_b = (_a = window.performance) === null || _a === void 0 ? void 0 : _a.now) === null || _b === void 0 ? void 0 : _b.call(_a)) !== null && _c !== void 0 ? _c : Date.now(); };
+const step = (context) => {
+    const currentTime = now();
+    const elapsed = (currentTime - context.timeStamp) / (context.duration || DURATION);
+    if (elapsed > 1) {
+        context.method(context.targetX, context.targetY);
+        context.callback();
+        return;
+    }
+    const value = (context.timingFunc || ease)(elapsed);
+    const currentX = context.startX + (context.targetX - context.startX) * value;
+    const currentY = context.startY + (context.targetY - context.startY) * value;
+    context.method(currentX, currentY);
+    context.rafId = requestAnimationFrame(() => {
+        step(context);
+    });
+};
+// https://drafts.csswg.org/cssom-view/#normalize-non-finite-values
+const nonFinite = (value) => {
+    if (!isFinite(value)) {
+        return 0;
+    }
+    return Number(value);
+};
+const common_isObject = (value) => {
+    const type = typeof value;
+    return value !== null && (type === "object" || type === "function");
+};
+//# sourceMappingURL=common.js.map
+;// CONCATENATED MODULE: ./node_modules/seamless-scroll-polyfill/dist/esm/Element.scroll.js
+
+const elementScroll = (element, options) => {
+    var _a, _b;
+    const originalBoundFunc = common_original.elementScroll.bind(element);
+    if (options.left === undefined && options.top === undefined) {
+        return;
+    }
+    const startX = element.scrollLeft;
+    const startY = element.scrollTop;
+    const targetX = nonFinite((_a = options.left) !== null && _a !== void 0 ? _a : startX);
+    const targetY = nonFinite((_b = options.top) !== null && _b !== void 0 ? _b : startY);
+    if (options.behavior !== "smooth") {
+        return originalBoundFunc(targetX, targetY);
+    }
+    const removeEventListener = () => {
+        window.removeEventListener("wheel", cancelScroll);
+        window.removeEventListener("touchmove", cancelScroll);
+    };
+    const context = {
+        timeStamp: now(),
+        duration: options.duration,
+        startX,
+        startY,
+        targetX,
+        targetY,
+        rafId: 0,
+        method: originalBoundFunc,
+        timingFunc: options.timingFunc,
+        callback: removeEventListener,
+    };
+    const cancelScroll = () => {
+        cancelAnimationFrame(context.rafId);
+        removeEventListener();
+    };
+    window.addEventListener("wheel", cancelScroll, {
+        passive: true,
+        once: true,
+    });
+    window.addEventListener("touchmove", cancelScroll, {
+        passive: true,
+        once: true,
+    });
+    step(context);
+};
+const elementScrollPolyfill = (animationOptions) => {
+    if (isScrollBehaviorSupported()) {
+        return;
+    }
+    const originalFunc = original.elementScroll;
+    modifyPrototypes((prototype) => (prototype.scroll = function scroll() {
+        if (arguments.length === 1) {
+            const scrollOptions = arguments[0];
+            if (!isObject(scrollOptions)) {
+                throw new TypeError("Failed to execute 'scroll' on 'Element': parameter 1 ('options') is not an object.");
+            }
+            return elementScroll(this, { ...scrollOptions, ...animationOptions });
+        }
+        return originalFunc.apply(this, arguments);
+    }));
+};
+//# sourceMappingURL=Element.scroll.js.map
+;// CONCATENATED MODULE: ./node_modules/seamless-scroll-polyfill/dist/esm/Element.scrollIntoView.js
+
+
+// https://drafts.csswg.org/css-writing-modes-4/#block-flow
+const normalizeWritingMode = (writingMode) => {
+    switch (writingMode) {
+        case "horizontal-tb":
+        case "lr":
+        case "lr-tb":
+        case "rl":
+        case "rl-tb":
+            return 0 /* HorizontalTb */;
+        case "vertical-rl":
+        case "tb":
+        case "tb-rl":
+            return 1 /* VerticalRl */;
+        case "vertical-lr":
+        case "tb-lr":
+            return 2 /* VerticalLr */;
+        case "sideways-rl":
+            return 3 /* SidewaysRl */;
+        case "sideways-lr":
+            return 4 /* SidewaysLr */;
+    }
+    return 0 /* HorizontalTb */;
+};
+// https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/core/dom/element.cc;l=1097-1189;drc=6a7533d4a1e9f2372223a9d912a9e53a6fa35ae0
+const toPhysicalAlignment = (options, writingMode, isLTR) => {
+    let [xPos, yPos] = [options.block || "start", options.inline || "nearest"];
+    /**  0b{vertical}{horizontal}  0: normal, 1: reverse */
+    let layout = 0b00;
+    /**
+     * WritingMode.VerticalLr: ↓→
+     * | 1 | 4 |   |
+     * | 2 | 5 |   |
+     * | 3 |   |   |
+     *
+     * RTL: ↑→
+     * | 3 |   |   |
+     * | 2 | 5 |   |
+     * | 1 | 4 |   |
+     */
+    if (!isLTR) {
+        layout ^= 2 /* ReverseVertical */;
+    }
+    switch (writingMode) {
+        /**
+         * ↓→
+         * | 1 | 2 | 3 |
+         * | 4 | 5 |   |
+         * |   |   |   |
+         *
+         * RTL: ↓←
+         * | 3 | 2 | 1 |
+         * |   | 5 | 4 |
+         * |   |   |   |
+         */
+        case 0 /* HorizontalTb */:
+            // swap horizontal and vertical
+            layout = (layout >> 1) | ((layout & 1) << 1);
+            [xPos, yPos] = [yPos, xPos];
+            break;
+        /**
+         * ↓←
+         * |   | 4 | 1 |
+         * |   | 5 | 2 |
+         * |   |   | 3 |
+         *
+         * RTL: ↑←
+         * |   |   | 3 |
+         * |   | 5 | 2 |
+         * |   | 4 | 1 |
+         */
+        case 1 /* VerticalRl */:
+        case 3 /* SidewaysRl */:
+            //  reverse horizontal
+            layout ^= 1 /* ReverseHorizontal */;
+            break;
+        /**
+         * ↑→
+         * | 3 |   |   |
+         * | 2 | 5 |   |
+         * | 1 | 4 |   |
+         *
+         * RTL: ↓→
+         * | 1 | 4 |   |
+         * | 2 | 5 |   |
+         * | 3 |   |   |
+         */
+        case 4 /* SidewaysLr */:
+            // reverse vertical
+            layout ^= 2 /* ReverseVertical */;
+            break;
+    }
+    return [xPos, yPos].map((value, index) => {
+        switch (value) {
+            case "center":
+                return 1 /* CenterAlways */;
+            case "nearest":
+                return 0 /* ToEdgeIfNeeded */;
+            default: {
+                const reverse = (layout >> index) & 1;
+                return (value === "start") === !reverse ? 2 /* LeftOrTop */ : 3 /* RightOrBottom */;
+            }
+        }
+    });
+};
+// code from stipsan/compute-scroll-into-view
+// https://github.com/stipsan/compute-scroll-into-view/blob/5396c6b78af5d0bbce11a7c4e93cc3146546fcd3/src/index.ts
+/**
+ * Find out which edge to align against when logical scroll position is "nearest"
+ * Interesting fact: "nearest" works similarily to "if-needed", if the element is fully visible it will not scroll it
+ *
+ * Legends:
+ * ┌────────┐ ┏ ━ ━ ━ ┓
+ * │ target │   frame
+ * └────────┘ ┗ ━ ━ ━ ┛
+ */
+const alignNearest = (scrollingEdgeStart, scrollingEdgeEnd, scrollingSize, scrollingBorderStart, scrollingBorderEnd, elementEdgeStart, elementEdgeEnd, elementSize) => {
+    /**
+     * If element edge A and element edge B are both outside scrolling box edge A and scrolling box edge B
+     *
+     *          ┌──┐
+     *        ┏━│━━│━┓
+     *          │  │
+     *        ┃ │  │ ┃        do nothing
+     *          │  │
+     *        ┗━│━━│━┛
+     *          └──┘
+     *
+     *  If element edge C and element edge D are both outside scrolling box edge C and scrolling box edge D
+     *
+     *    ┏ ━ ━ ━ ━ ┓
+     *   ┌───────────┐
+     *   │┃         ┃│        do nothing
+     *   └───────────┘
+     *    ┗ ━ ━ ━ ━ ┛
+     */
+    if ((elementEdgeStart < scrollingEdgeStart && elementEdgeEnd > scrollingEdgeEnd) ||
+        (elementEdgeStart > scrollingEdgeStart && elementEdgeEnd < scrollingEdgeEnd)) {
+        return 0;
+    }
+    /**
+     * If element edge A is outside scrolling box edge A and element height is less than scrolling box height
+     *
+     *          ┌──┐
+     *        ┏━│━━│━┓         ┏━┌━━┐━┓
+     *          └──┘             │  │
+     *  from  ┃      ┃     to  ┃ └──┘ ┃
+     *
+     *        ┗━ ━━ ━┛         ┗━ ━━ ━┛
+     *
+     * If element edge B is outside scrolling box edge B and element height is greater than scrolling box height
+     *
+     *        ┏━ ━━ ━┓         ┏━┌━━┐━┓
+     *                           │  │
+     *  from  ┃ ┌──┐ ┃     to  ┃ │  │ ┃
+     *          │  │             │  │
+     *        ┗━│━━│━┛         ┗━│━━│━┛
+     *          │  │             └──┘
+     *          │  │
+     *          └──┘
+     *
+     * If element edge C is outside scrolling box edge C and element width is less than scrolling box width
+     *
+     *       from                 to
+     *    ┏ ━ ━ ━ ━ ┓         ┏ ━ ━ ━ ━ ┓
+     *  ┌───┐                 ┌───┐
+     *  │ ┃ │       ┃         ┃   │     ┃
+     *  └───┘                 └───┘
+     *    ┗ ━ ━ ━ ━ ┛         ┗ ━ ━ ━ ━ ┛
+     *
+     * If element edge D is outside scrolling box edge D and element width is greater than scrolling box width
+     *
+     *       from                 to
+     *    ┏ ━ ━ ━ ━ ┓         ┏ ━ ━ ━ ━ ┓
+     *        ┌───────────┐   ┌───────────┐
+     *    ┃   │     ┃     │   ┃         ┃ │
+     *        └───────────┘   └───────────┘
+     *    ┗ ━ ━ ━ ━ ┛         ┗ ━ ━ ━ ━ ┛
+     */
+    if ((elementEdgeStart <= scrollingEdgeStart && elementSize <= scrollingSize) ||
+        (elementEdgeEnd >= scrollingEdgeEnd && elementSize >= scrollingSize)) {
+        return elementEdgeStart - scrollingEdgeStart - scrollingBorderStart;
+    }
+    /**
+     * If element edge B is outside scrolling box edge B and element height is less than scrolling box height
+     *
+     *        ┏━ ━━ ━┓         ┏━ ━━ ━┓
+     *
+     *  from  ┃      ┃     to  ┃ ┌──┐ ┃
+     *          ┌──┐             │  │
+     *        ┗━│━━│━┛         ┗━└━━┘━┛
+     *          └──┘
+     *
+     * If element edge A is outside scrolling box edge A and element height is greater than scrolling box height
+     *
+     *          ┌──┐
+     *          │  │
+     *          │  │             ┌──┐
+     *        ┏━│━━│━┓         ┏━│━━│━┓
+     *          │  │             │  │
+     *  from  ┃ └──┘ ┃     to  ┃ │  │ ┃
+     *                           │  │
+     *        ┗━ ━━ ━┛         ┗━└━━┘━┛
+     *
+     * If element edge C is outside scrolling box edge C and element width is greater than scrolling box width
+     *
+     *           from                 to
+     *        ┏ ━ ━ ━ ━ ┓         ┏ ━ ━ ━ ━ ┓
+     *  ┌───────────┐           ┌───────────┐
+     *  │     ┃     │   ┃       │ ┃         ┃
+     *  └───────────┘           └───────────┘
+     *        ┗ ━ ━ ━ ━ ┛         ┗ ━ ━ ━ ━ ┛
+     *
+     * If element edge D is outside scrolling box edge D and element width is less than scrolling box width
+     *
+     *           from                 to
+     *        ┏ ━ ━ ━ ━ ┓         ┏ ━ ━ ━ ━ ┓
+     *                ┌───┐             ┌───┐
+     *        ┃       │ ┃ │       ┃     │   ┃
+     *                └───┘             └───┘
+     *        ┗ ━ ━ ━ ━ ┛         ┗ ━ ━ ━ ━ ┛
+     *
+     */
+    if ((elementEdgeEnd > scrollingEdgeEnd && elementSize < scrollingSize) ||
+        (elementEdgeStart < scrollingEdgeStart && elementSize > scrollingSize)) {
+        return elementEdgeEnd - scrollingEdgeEnd + scrollingBorderEnd;
+    }
+    return 0;
+};
+const canOverflow = (overflow) => {
+    return overflow !== "visible" && overflow !== "clip";
+};
+const getFrameElement = (element) => {
+    if (!element.ownerDocument || !element.ownerDocument.defaultView) {
+        return null;
+    }
+    try {
+        return element.ownerDocument.defaultView.frameElement;
+    }
+    catch (e) {
+        return null;
+    }
+};
+const isHiddenByFrame = (element) => {
+    const frame = getFrameElement(element);
+    if (!frame) {
+        return false;
+    }
+    return frame.clientHeight < element.scrollHeight || frame.clientWidth < element.scrollWidth;
+};
+const isScrollable = (element, computedStyle) => {
+    if (element.clientHeight < element.scrollHeight || element.clientWidth < element.scrollWidth) {
+        return canOverflow(computedStyle.overflowY) || canOverflow(computedStyle.overflowX) || isHiddenByFrame(element);
+    }
+    return false;
+};
+const parentElement = (element) => {
+    const parentNode = element.parentNode;
+    if (parentNode !== null && parentNode.nodeType === Node.DOCUMENT_FRAGMENT_NODE) {
+        return parentNode.host;
+    }
+    return parentNode;
+};
+const clamp = (value, width) => {
+    if (value < -width) {
+        return -width;
+    }
+    if (value > width) {
+        return width;
+    }
+    return value;
+};
+const isCSSPropertySupported = (property) => property in document.documentElement.style;
+const getSupportedScrollMarginProperty = () => {
+    // Webkit uses "scroll-snap-margin" https://bugs.webkit.org/show_bug.cgi?id=189265.
+    return ["scroll-margin", "scroll-snap-margin"].filter(isCSSPropertySupported)[0];
+};
+const getElementScrollSnapArea = (element, computedStyle) => {
+    const { top, right, bottom, left } = element.getBoundingClientRect();
+    const [scrollMarginTop, scrollMarginRight, scrollMarginBottom, scrollMarginLeft] = [
+        "top",
+        "right",
+        "bottom",
+        "left",
+    ].map((edge) => {
+        const scrollProperty = getSupportedScrollMarginProperty();
+        const value = computedStyle.getPropertyValue(`${scrollProperty}-${edge}`);
+        return parseInt(value, 10) || 0;
+    });
+    return [top - scrollMarginTop, right + scrollMarginRight, bottom + scrollMarginBottom, left - scrollMarginLeft];
+};
+const elementScrollIntoView = (element, options) => {
+    if (element.isConnected === false) {
+        return;
+    }
+    // On Chrome and Firefox, document.scrollingElement will return the <html> element.
+    // Safari, document.scrollingElement will return the <body> element.
+    // On Edge, document.scrollingElement will return the <body> element.
+    // IE11 does not support document.scrollingElement, but you can assume its <html>.
+    // Used to handle the top most element that can be scrolled
+    const scrollingElement = document.scrollingElement || document.documentElement;
+    // Collect all the scrolling boxes, as defined in the spec: https://drafts.csswg.org/cssom-view/#scrolling-box
+    const frames = [];
+    const documentElementStyle = getComputedStyle(document.documentElement);
+    for (let cursor = parentElement(element); cursor !== null; cursor = parentElement(cursor)) {
+        // Stop when we reach the viewport
+        if (cursor === scrollingElement) {
+            frames.push(cursor);
+            break;
+        }
+        const cursorStyle = getComputedStyle(cursor);
+        // Skip document.body if it's not the scrollingElement and documentElement isn't independently scrollable
+        if (cursor === document.body &&
+            isScrollable(cursor, cursorStyle) &&
+            !isScrollable(document.documentElement, documentElementStyle)) {
+            continue;
+        }
+        // Now we check if the element is scrollable,
+        // this code only runs if the loop haven't already hit the viewport or a custom boundary
+        if (isScrollable(cursor, cursorStyle)) {
+            frames.push(cursor);
+        }
+        if (cursorStyle.position === "fixed") {
+            break;
+        }
+    }
+    // Support pinch-zooming properly, making sure elements scroll into the visual viewport
+    // Browsers that don't support visualViewport
+    // will report the layout viewport dimensions on document.documentElement.clientWidth/Height
+    // and viewport dimensions on window.innerWidth/Height
+    // https://www.quirksmode.org/mobile/viewports2.html
+    // https://bokand.github.io/viewport/index.html
+    const viewportWidth = window.visualViewport ? window.visualViewport.width : innerWidth;
+    const viewportHeight = window.visualViewport ? window.visualViewport.height : innerHeight;
+    // Newer browsers supports scroll[X|Y], page[X|Y]Offset is
+    const viewportX = window.scrollX || window.pageXOffset;
+    const viewportY = window.scrollY || window.pageYOffset;
+    const computedStyle = getComputedStyle(element);
+    const [targetTop, targetRight, targetBottom, targetLeft] = getElementScrollSnapArea(element, computedStyle);
+    const targetHeight = targetBottom - targetTop;
+    const targetWidth = targetRight - targetLeft;
+    const writingMode = normalizeWritingMode(computedStyle.writingMode ||
+        computedStyle.getPropertyValue("-webkit-writing-mode") ||
+        computedStyle.getPropertyValue("-ms-writing-mode"));
+    const isLTR = computedStyle.direction !== "rtl";
+    const [alignX, alignY] = toPhysicalAlignment(options, writingMode, isLTR);
+    let targetBlock = (() => {
+        switch (alignY) {
+            case 1 /* CenterAlways */:
+                return targetTop + targetHeight / 2;
+            case 2 /* LeftOrTop */:
+            case 0 /* ToEdgeIfNeeded */:
+                return targetTop;
+            case 3 /* RightOrBottom */:
+                return targetBottom;
+        }
+    })();
+    let targetInline = (() => {
+        switch (alignX) {
+            case 1 /* CenterAlways */:
+                return targetLeft + targetWidth / 2;
+            case 3 /* RightOrBottom */:
+                return targetRight;
+            case 2 /* LeftOrTop */:
+            case 0 /* ToEdgeIfNeeded */:
+                return targetLeft;
+        }
+    })();
+    const actions = [];
+    frames.forEach((frame) => {
+        const { height, width, top, right, bottom, left } = frame.getBoundingClientRect();
+        const frameStyle = getComputedStyle(frame);
+        const borderLeft = parseInt(frameStyle.borderLeftWidth, 10);
+        const borderTop = parseInt(frameStyle.borderTopWidth, 10);
+        const borderRight = parseInt(frameStyle.borderRightWidth, 10);
+        const borderBottom = parseInt(frameStyle.borderBottomWidth, 10);
+        let blockScroll = 0;
+        let inlineScroll = 0;
+        // The property existance checks for offfset[Width|Height] is because only HTMLElement objects have them,
+        // but any Element might pass by here
+        // @TODO find out if the "as HTMLElement" overrides can be dropped
+        const scrollbarWidth = "offsetWidth" in frame
+            ? frame.offsetWidth - frame.clientWidth - borderLeft - borderRight
+            : 0;
+        const scrollbarHeight = "offsetHeight" in frame
+            ? frame.offsetHeight - frame.clientHeight - borderTop - borderBottom
+            : 0;
+        if (scrollingElement === frame) {
+            // Handle viewport logic (document.documentElement or document.body)
+            switch (alignY) {
+                case 2 /* LeftOrTop */: {
+                    blockScroll = targetBlock;
+                    break;
+                }
+                case 3 /* RightOrBottom */: {
+                    blockScroll = targetBlock - viewportHeight;
+                    break;
+                }
+                case 1 /* CenterAlways */: {
+                    blockScroll = targetBlock - viewportHeight / 2;
+                    break;
+                }
+                case 0 /* ToEdgeIfNeeded */: {
+                    blockScroll = alignNearest(viewportY, viewportY + viewportHeight, viewportHeight, borderTop, borderBottom, viewportY + targetBlock, viewportY + targetBlock + targetHeight, targetHeight);
+                    break;
+                }
+            }
+            switch (alignX) {
+                case 2 /* LeftOrTop */: {
+                    inlineScroll = targetInline;
+                    break;
+                }
+                case 3 /* RightOrBottom */: {
+                    inlineScroll = targetInline - viewportWidth;
+                    break;
+                }
+                case 1 /* CenterAlways */: {
+                    inlineScroll = targetInline - viewportWidth / 2;
+                    break;
+                }
+                case 0 /* ToEdgeIfNeeded */: {
+                    inlineScroll = alignNearest(viewportX, viewportX + viewportWidth, viewportWidth, borderLeft, borderRight, viewportX + targetInline, viewportX + targetInline + targetWidth, targetWidth);
+                    break;
+                }
+            }
+            blockScroll += viewportY;
+            inlineScroll += viewportX;
+        }
+        else {
+            // Handle each scrolling frame that might exist between the target and the viewport
+            switch (alignY) {
+                case 2 /* LeftOrTop */: {
+                    blockScroll = targetBlock - top - borderTop;
+                    break;
+                }
+                case 3 /* RightOrBottom */: {
+                    blockScroll = targetBlock - bottom + borderBottom + scrollbarHeight;
+                    break;
+                }
+                case 1 /* CenterAlways */: {
+                    blockScroll = targetBlock - (top + height / 2) + scrollbarHeight / 2;
+                    break;
+                }
+                case 0 /* ToEdgeIfNeeded */: {
+                    blockScroll = alignNearest(top, bottom, height, borderTop, borderBottom + scrollbarHeight, targetBlock, targetBlock + targetHeight, targetHeight);
+                    break;
+                }
+            }
+            switch (alignX) {
+                case 2 /* LeftOrTop */: {
+                    inlineScroll = targetInline - left - borderLeft;
+                    break;
+                }
+                case 3 /* RightOrBottom */: {
+                    inlineScroll = targetInline - right + borderRight + scrollbarWidth;
+                    break;
+                }
+                case 1 /* CenterAlways */: {
+                    inlineScroll = targetInline - (left + width / 2) + scrollbarWidth / 2;
+                    break;
+                }
+                case 0 /* ToEdgeIfNeeded */: {
+                    inlineScroll = alignNearest(left, right, width, borderLeft, borderRight + scrollbarWidth, targetInline, targetInline + targetWidth, targetWidth);
+                    break;
+                }
+            }
+            const { scrollLeft, scrollTop } = frame;
+            // Ensure scroll coordinates are not out of bounds while applying scroll offsets
+            blockScroll = clamp(scrollTop + blockScroll, frame.scrollHeight - height + scrollbarHeight);
+            inlineScroll = clamp(scrollLeft + inlineScroll, frame.scrollWidth - width + scrollbarWidth);
+            // Cache the offset so that parent frames can scroll this into view correctly
+            targetBlock += scrollTop - blockScroll;
+            targetInline += scrollLeft - inlineScroll;
+        }
+        actions.push(() => elementScroll(frame, { ...options, top: blockScroll, left: inlineScroll }));
+    });
+    actions.forEach((run) => run());
+};
+const elementScrollIntoViewPolyfill = (animationOptions) => {
+    if (isScrollBehaviorSupported()) {
+        return;
+    }
+    const originalFunc = original.elementScrollIntoView;
+    modifyPrototypes((prototype) => (prototype.scrollIntoView = function scrollIntoView() {
+        const scrollIntoViewOptions = arguments[0];
+        if (arguments.length === 1 && isObject(scrollIntoViewOptions)) {
+            return elementScrollIntoView(this, { ...scrollIntoViewOptions, ...animationOptions });
+        }
+        return originalFunc.apply(this, arguments);
+    }));
+};
+//# sourceMappingURL=Element.scrollIntoView.js.map
 ;// CONCATENATED MODULE: ./src/scripts/donation-lightbox-form.js
+
 class DonationLightboxForm {
   constructor(DonationAmount, DonationFrequency) {
     this.amount = DonationAmount;
@@ -5248,7 +5987,22 @@ class DonationLightboxForm {
       this.sendMessage("status", "loaded");
       this.sendMessage("status", "celebrate");
       this.sendMessage("class", "thank-you");
-      document.querySelector("body").dataset.thankYou = "true";
+      document.querySelector("body").dataset.thankYou = "true"; // Get Query Strings
+
+      const urlParams = new URLSearchParams(window.location.search);
+
+      if (urlParams.get("name")) {
+        let engrid = document.querySelector("#engrid");
+
+        if (engrid) {
+          let engridContent = engrid.innerHTML;
+          engridContent = engridContent.replace("{user_data~First Name}", urlParams.get("name"));
+          engridContent = engridContent.replace("{receipt_data~recurringFrequency}", urlParams.get("frequency"));
+          engridContent = engridContent.replace("{receipt_data~amount}", "$" + urlParams.get("amount"));
+          engrid.innerHTML = engridContent;
+        }
+      }
+
       return false;
     }
 
@@ -5376,7 +6130,13 @@ class DonationLightboxForm {
         e.preventDefault(); // Validate the entire form again
 
         if (this.validateForm()) {
-          // Only shows cortain if payment is not paypal
+          // Send Basic User Data to Parent
+          this.sendMessage("donationinfo", JSON.stringify({
+            name: document.querySelector("#en__field_supporter_firstName").value,
+            amount: EngagingNetworks.require._defined.enjs.getDonationTotal(),
+            frequency: this.frequency.getInstance().frequency
+          })); // Only shows cortain if payment is not paypal
+
           const paymentType = document.querySelector("#en__field_transaction_paymenttype").value;
 
           if (paymentType != "paypal") {
@@ -5408,7 +6168,7 @@ class DonationLightboxForm {
 
     if (this.sections[sectionId]) {
       console.log(section);
-      this.sections[sectionId].scrollIntoView({
+      elementScrollIntoView(this.sections[sectionId], {
         behavior: "smooth",
         block: "start",
         inline: "start"

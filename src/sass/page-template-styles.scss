@@ -629,6 +629,7 @@
       display: grid;
       grid-auto-flow: column;
       overscroll-behavior-x: contain;
+      // scroll-behavior: smooth;
 
       & > .en__component {
         height: 100vh;
