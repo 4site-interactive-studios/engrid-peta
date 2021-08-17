@@ -59,6 +59,8 @@
 // Uncomment to use and reference engrid-scrips SASS files for more CSS Custom Properties.
 // All CSS Custom Properties should be scoped to the theme using CSS Data Attributes.
 [data-engrid-theme="peta"] {
+  --color_primary: #418fde;
+
   // TYPOGRAPHY DEFAULT
   --default_font-family: "proxima-nova", sans-serif;
   --default_color: #4f606c;
@@ -68,13 +70,13 @@
 
   // TYPOGRAPHY H1
   --h1_font-family: "Raleway", Helvetica, Roboto, Arial, sans-serif;
-  --h1_color: #418fde;
+  --h1_color: var(--color_primary);
   --h1_font-size: 20px;
   --h1_font-weight: bold;
   // --h1_line-height: initial;
 
   // TYPOGRAPHY H2
-  --h2_color: #418fde;
+  --h2_color: var(--color_primary);
   --h2_font-size: 20px;
   --h2_font-weight: bold;
   // --h2_line-height: initial;
@@ -141,7 +143,7 @@
 
   // TYPOGRAPHY BUTTON:SELECTED
   --button_color_checked: #ffffff;
-  --button_background-color_checked: #418fde;
+  --button_background-color_checked: var(--color_primary);
   // --button_border-color_checked: var(--button_border-color_hover);
 
   --submit__button_color: var(--button_color_checked);
@@ -167,9 +169,7 @@
   );
   --donation-amount__button_color_checked: var(--button_color_checked);
   --donation-amount__button_font-weight: var(--button_font-weight);
-  --recurring-frequency__button_background-color_checked: var(
-    --button_background-color_checked
-  );
+  --recurring-frequency__button_background-color_checked: var(--color_primary);
   --recurring-frequency__button_border-color_checked: var(
     --button_background-color_checked
   );
@@ -180,8 +180,8 @@
   --submit__button_padding-bottom: 1.75ch;
 
   --checkbox_border-radius: 5px;
-  --checkbox_background-color_checked: #418fde;
-  --checkbox_border-color_checked: #418fde;
+  --checkbox_background-color_checked: var(--color_primary);
+  --checkbox_border-color_checked: var(--color_primary);
   --checkbox_color_checked: #ffffff;
 
   --error__color: #c92533;
@@ -213,7 +213,7 @@
       position: relative;
 
       &:before {
-        content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="11" height="20" fill="none" viewBox="0 0 11 20"><path fill="%23418FDE" d="M10.268 12.176c-.097-.327-.214-.612-.352-.853-.138-.242-.335-.478-.591-.71-.257-.23-.488-.416-.692-.557-.205-.142-.486-.3-.843-.475s-.64-.305-.848-.39c-.208-.086-.51-.203-.904-.352-.35-.134-.61-.236-.782-.307-.17-.07-.396-.17-.675-.301-.279-.13-.487-.246-.625-.346-.137-.1-.284-.223-.44-.368-.157-.145-.267-.3-.33-.463-.063-.164-.095-.343-.095-.536 0-.506.223-.919.67-1.239.446-.32 1.023-.48 1.73-.48.312 0 .63.043.954.129.324.085.6.182.831.29.231.108.449.227.654.357.204.13.35.229.435.296.085.067.14.111.162.134.097.074.197.1.301.078.112-.008.197-.067.257-.179l.904-1.63c.09-.148.07-.29-.056-.423-.044-.045-.1-.097-.167-.157s-.212-.167-.436-.323c-.223-.157-.46-.296-.708-.419-.25-.123-.573-.247-.972-.374-.397-.126-.809-.212-1.233-.256V.357c0-.104-.033-.19-.1-.257C6.25.034 6.164 0 6.06 0H4.553c-.096 0-.18.035-.25.106-.071.07-.107.154-.107.251v2.01c-1.168.222-2.117.72-2.846 1.495-.729.773-1.094 1.674-1.094 2.7 0 .306.032.596.095.87.063.276.142.524.235.743.093.22.225.435.396.648.171.212.333.394.485.546.153.153.352.311.597.475.246.163.456.296.631.396.175.1.408.216.698.346.29.13.519.229.686.296.168.066.396.16.687.278.401.157.7.278.893.363.193.086.439.205.736.357.298.153.515.292.653.419.138.126.262.283.374.469.112.186.168.383.168.591 0 .588-.23 1.042-.687 1.361-.457.32-.988.48-1.59.48-.275 0-.55-.03-.826-.089-.967-.193-1.871-.658-2.712-1.395l-.022-.022c-.067-.082-.157-.115-.268-.1-.12.014-.205.06-.257.134l-1.15 1.506c-.111.149-.104.302.023.458.037.044.102.112.195.2.093.09.266.23.52.42.252.19.527.368.825.535.298.168.675.333 1.133.497.458.163.932.279 1.423.346v1.953c0 .097.035.18.106.251.07.07.154.106.251.106h1.507c.104 0 .19-.033.257-.1s.1-.153.1-.257V17.69c1.183-.194 2.145-.702 2.885-1.524.74-.822 1.11-1.802 1.11-2.94 0-.373-.048-.722-.146-1.05z"/></svg>');
+        content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="11" height="20" fill="none" viewBox="0 0 11 20"><path fill="%234f606c" d="M10.268 12.176c-.097-.327-.214-.612-.352-.853-.138-.242-.335-.478-.591-.71-.257-.23-.488-.416-.692-.557-.205-.142-.486-.3-.843-.475s-.64-.305-.848-.39c-.208-.086-.51-.203-.904-.352-.35-.134-.61-.236-.782-.307-.17-.07-.396-.17-.675-.301-.279-.13-.487-.246-.625-.346-.137-.1-.284-.223-.44-.368-.157-.145-.267-.3-.33-.463-.063-.164-.095-.343-.095-.536 0-.506.223-.919.67-1.239.446-.32 1.023-.48 1.73-.48.312 0 .63.043.954.129.324.085.6.182.831.29.231.108.449.227.654.357.204.13.35.229.435.296.085.067.14.111.162.134.097.074.197.1.301.078.112-.008.197-.067.257-.179l.904-1.63c.09-.148.07-.29-.056-.423-.044-.045-.1-.097-.167-.157s-.212-.167-.436-.323c-.223-.157-.46-.296-.708-.419-.25-.123-.573-.247-.972-.374-.397-.126-.809-.212-1.233-.256V.357c0-.104-.033-.19-.1-.257C6.25.034 6.164 0 6.06 0H4.553c-.096 0-.18.035-.25.106-.071.07-.107.154-.107.251v2.01c-1.168.222-2.117.72-2.846 1.495-.729.773-1.094 1.674-1.094 2.7 0 .306.032.596.095.87.063.276.142.524.235.743.093.22.225.435.396.648.171.212.333.394.485.546.153.153.352.311.597.475.246.163.456.296.631.396.175.1.408.216.698.346.29.13.519.229.686.296.168.066.396.16.687.278.401.157.7.278.893.363.193.086.439.205.736.357.298.153.515.292.653.419.138.126.262.283.374.469.112.186.168.383.168.591 0 .588-.23 1.042-.687 1.361-.457.32-.988.48-1.59.48-.275 0-.55-.03-.826-.089-.967-.193-1.871-.658-2.712-1.395l-.022-.022c-.067-.082-.157-.115-.268-.1-.12.014-.205.06-.257.134l-1.15 1.506c-.111.149-.104.302.023.458.037.044.102.112.195.2.093.09.266.23.52.42.252.19.527.368.825.535.298.168.675.333 1.133.497.458.163.932.279 1.423.346v1.953c0 .097.035.18.106.251.07.07.154.106.251.106h1.507c.104 0 .19-.033.257-.1s.1-.153.1-.257V17.69c1.183-.194 2.145-.702 2.885-1.524.74-.822 1.11-1.802 1.11-2.94 0-.373-.048-.722-.146-1.05z"/></svg>');
         position: absolute;
         width: 11px;
         height: 20px;
@@ -257,7 +257,7 @@
       font-size: 14px;
       line-height: 1.43;
       font-family: "Kalam", sans-serif;
-      color: #418fde;
+      color: var(--color_primary);
       font-weight: 400;
       padding: 0 5px;
       margin-top: 5px;
@@ -272,8 +272,8 @@
         display: inline-block;
       }
     }
-    &::before {
-      content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="21" height="40" fill="none" viewBox="0 0 21 40"><path fill="%23418FDE" d="M16.578 4.68c-.581-.596-1.748-1.65-2.638-1.094-.553.344-.847 1.109-1.171 1.667-.371.641-.738 1.283-1.1 1.93-.695 1.248-1.365 2.51-1.99 3.794-1.206 2.492-2.228 5.146-2.825 7.855-.96 4.35-.574 9.438.985 13.607.981 2.622 2.461 5.004 4.555 6.883.39.352 1.42 1.11 1.781.354.344-.72-.748-1.92-1.182-2.322-1.37-1.266-2.264-3.404-2.693-5.502-.49-2.394-.429-4.934.037-7.327.552-2.836 1.607-5.558 2.882-8.14.703-1.425 1.457-2.825 2.252-4.199.398-.685.806-1.365 1.22-2.042.451-.738 1.168-1.555 1.31-2.41.186-1.146-.673-2.29-1.423-3.055z"/><path fill="%23418FDE" d="M19.44 1.424C18.95.862 17.91-.183 17.064.028c-1.897.471-3.446 1.651-4.945 2.849-1.424 1.136-2.846 2.276-4.25 3.435-2.826 2.333-5.823 4.69-7.78 7.84-.654 1.056 2.438 4.04 3.053 3.117 1.984-2.983 5.07-5.029 8.061-6.895 1.422-.886 2.875-1.734 4.169-2.807.22-.183.442-.372.666-.564-.062 1.105-.104 2.214-.12 3.33-.019 1.621-.017 3.246.002 4.867.02 1.686-.054 3.421.107 5.1.11 1.153 1.024 2.277 1.905 2.955.33.255 2.036 1.328 2.15.269.347-3.215-.033-6.574-.072-9.806-.039-3.224-.087-6.564.48-9.75.165-.915-.482-1.889-1.052-2.544z"/></svg>');
+    svg {
+      color: var(--color_primary);
       position: absolute;
       top: -30px;
       left: -30px;
@@ -281,7 +281,7 @@
       height: 40px;
     }
     &.bounce {
-      &::before {
+      svg {
         animation: bounce 0.5s infinite;
       }
     }
@@ -347,11 +347,12 @@
       align-items: flex-start;
 
       button {
+        position: relative;
         height: 52px;
         min-width: 52px;
         padding: 0 12px;
         border-radius: 2px;
-        background-color: rgba(65, 143, 222, 0.19);
+        background-color: rgba(var(--color_primary), 0.3);
         text-transform: uppercase;
         color: #fff;
         border: 0;
@@ -372,19 +373,39 @@
           font-size: 10px;
           font-weight: 400;
         }
+        &.section-navigation__previous {
+          &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background-color: var(--color_primary);
+            opacity: 0.3;
+            transition: opacity 0.2s;
+            border-radius: 2px;
+          }
+          &:hover {
+            &::before {
+              opacity: 0.5;
+            }
+          }
+        }
+
         &.section-navigation__submit,
         &.section-navigation__next {
-          background-color: #418fde;
+          background-color: var(--color_primary);
           opacity: 1;
           width: 190px;
-          box-shadow: -22px 21px 29px 2px rgba(0, 172, 255, 0.13),
+          box-shadow: -22px 21px 29px 2px rgba(0, 0, 0, 0.13),
             0 8px 12px 0 rgba(0, 0, 0, 0.09);
           svg {
             transition: 0.3s transform ease-in-out;
             transform: translateX(15px);
           }
           &:hover {
-            background-color: #418fde;
+            background-color: var(--color_primary);
             svg {
               transform: translateX(30px);
             }
@@ -392,9 +413,6 @@
         }
         &[data-section-id="0"] {
           width: 100%;
-        }
-        &:hover {
-          background-color: rgba(65, 143, 222, 0.32);
         }
       }
     }
@@ -617,7 +635,7 @@
       margin-bottom: 6px;
     }
     a {
-      color: #418fde;
+      color: var(--color_primary);
     }
   }
 
@@ -734,7 +752,7 @@
       line-height: 0.83;
       letter-spacing: normal;
       text-align: left;
-      color: #418fde;
+      color: var(--color_primary);
       margin-bottom: 15px;
     }
     p {
