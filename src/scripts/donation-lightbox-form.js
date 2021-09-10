@@ -312,8 +312,8 @@ export default class DonationLightboxForm {
         }
         return false;
       }
-      // If payment type is not paypal or apple pay, check credit card expiration and cvv
-      if (paymentType.value !== "paypal" && paymentType.value !== "applepay") {
+      // If payment type is not paypal, check credit card expiration and cvv
+      if (paymentType.value !== "paypal") {
         if (!ccnumber || !ccnumber.value) {
           this.scrollToElement(ccnumber);
           this.sendMessage("error", "Please add your credit card information");
