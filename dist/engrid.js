@@ -2411,8 +2411,14 @@ class engrid_ENGrid {
 
 
   static setBodyData(dataName, value) {
-    const body = document.querySelector("body");
-    body.setAttribute(`data-engrid-${dataName}`, value);
+    const body = document.querySelector("body"); // If value is boolean
+
+    if (typeof value === "boolean" && value === false) {
+      body.removeAttribute(`data-engrid-${dataName}`);
+      return;
+    }
+
+    body.setAttribute(`data-engrid-${dataName}`, value.toString());
   } // Get body engrid data attributes
 
 
@@ -2469,6 +2475,33 @@ class engrid_ENGrid {
     }
 
     return s.join(dec);
+  }
+
+  static disableSubmit(label = "") {
+    const submit = document.querySelector(".en__submit button");
+    submit.dataset.originalText = submit.innerText;
+    let submitButtonProcessingHTML = "<span class='loader-wrapper'><span class='loader loader-quart'></span><span class='submit-button-text-wrapper'>" + label + "</span></span>";
+
+    if (submit) {
+      submit.disabled = true;
+      submit.innerHTML = submitButtonProcessingHTML;
+      return true;
+    }
+
+    return false;
+  }
+
+  static enableSubmit() {
+    const submit = document.querySelector(".en__submit button");
+
+    if (submit.dataset.originalText) {
+      submit.disabled = false;
+      submit.innerText = submit.dataset.originalText;
+      delete submit.dataset.originalText;
+      return true;
+    }
+
+    return false;
   }
 
 }
@@ -4609,6 +4642,7 @@ class UpsellLightbox {
     this.overlay = document.createElement("div");
     this._form = EnForm.getInstance();
     this._amount = DonationAmount.getInstance();
+    this._fees = ProcessingFees.getInstance();
     this._frequency = DonationFrequency.getInstance();
     let options = "EngridUpsell" in window ? window.EngridUpsell : {};
     this.options = Object.assign(Object.assign({}, UpsellOptionsDefaults), options);
@@ -4704,7 +4738,7 @@ class UpsellLightbox {
     // const hideModal = cookie.get("hideUpsell"); // Get cookie
     // if it's a first page of a Donation page
     return (// !hideModal &&
-      'EngridUpsell' in window && !!window.pageJson && window.pageJson.pageNumber == 1 && ['donation', 'premiumgift'].includes(window.pageJson.pageType)
+      "EngridUpsell" in window && !!window.pageJson && window.pageJson.pageNumber == 1 && ["donation", "premiumgift"].includes(window.pageJson.pageType)
     );
   }
 
@@ -4715,18 +4749,20 @@ class UpsellLightbox {
     const live_upsell_amount = document.querySelectorAll("#upsellYesButton .upsell_suggestion");
 
     if (!isNaN(value) && value > 0) {
-      live_upsell_amount.forEach(elem => elem.innerHTML = "$" + value.toFixed(2));
+      live_upsell_amount.forEach(elem => elem.innerHTML = this.getAmountTxt(value));
     } else {
-      live_upsell_amount.forEach(elem => elem.innerHTML = "$" + this.getUpsellAmount().toFixed(2));
+      live_upsell_amount.forEach(elem => elem.innerHTML = this.getAmountTxt(this.getUpsellAmount()));
     }
   }
 
   liveAmounts() {
     const live_upsell_amount = document.querySelectorAll(".upsell_suggestion");
     const live_amount = document.querySelectorAll(".upsell_amount");
-    const suggestedAmount = this.getUpsellAmount();
-    live_upsell_amount.forEach(elem => elem.innerHTML = "$" + suggestedAmount.toFixed(2));
-    live_amount.forEach(elem => elem.innerHTML = "$" + this._amount.amount.toFixed(2));
+
+    const suggestedAmount = this.getUpsellAmount() + this._fees.fee;
+
+    live_upsell_amount.forEach(elem => elem.innerHTML = this.getAmountTxt(suggestedAmount));
+    live_amount.forEach(elem => elem.innerHTML = this.getAmountTxt(this._amount.amount + this._fees.fee));
   } // Return the Suggested Upsell Amount
 
 
@@ -4748,9 +4784,9 @@ class UpsellLightbox {
       if (upsellAmount == 0 && amount <= val.max) {
         upsellAmount = val.suggestion;
 
-        if (typeof upsellAmount !== 'number') {
+        if (typeof upsellAmount !== "number") {
           const suggestionMath = upsellAmount.replace("amount", amount.toFixed(2));
-          upsellAmount = parseFloat(Function('"use strict";return (' + suggestionMath + ')')());
+          upsellAmount = parseFloat(Function('"use strict";return (' + suggestionMath + ")")());
         }
 
         break;
@@ -4786,9 +4822,9 @@ class UpsellLightbox {
     if (!this.shouldOpen()) {
       // In the circumstance when the form fails to validate via server-side validation, the page will reload
       // When that happens, we should place the original amount saved in sessionStorage into the upsell original amount field
-      let original = window.sessionStorage.getItem('original');
+      let original = window.sessionStorage.getItem("original");
 
-      if (original && document.querySelectorAll('.en__errorList .en__error').length > 0) {
+      if (original && document.querySelectorAll(".en__errorList .en__error").length > 0) {
         this.setOriginalAmount(original);
       } // Returning true will give the "go ahead" to submit the form
 
@@ -4800,6 +4836,7 @@ class UpsellLightbox {
     this.liveAmounts();
     this.overlay.classList.remove("is-hidden");
     this._form.submit = false;
+    engrid_ENGrid.setBodyData("has-lightbox", "");
     return false;
   } // Set the original amount into a hidden field using the upsellOriginalGiftAmountFieldName, if provided
 
@@ -4815,7 +4852,7 @@ class UpsellLightbox {
           let input = document.createElement("input");
           input.setAttribute("type", "hidden");
           input.setAttribute("name", this.options.upsellOriginalGiftAmountFieldName);
-          input.classList.add('en__field__input', 'en__field__input--hidden');
+          input.classList.add("en__field__input", "en__field__input--hidden");
           pageform.appendChild(input);
           enFieldUpsellOriginalAmount = document.querySelector('.en__field__input.en__field__input--hidden[name="' + this.options.upsellOriginalGiftAmountFieldName + '"]');
         }
@@ -4823,7 +4860,7 @@ class UpsellLightbox {
 
       if (enFieldUpsellOriginalAmount) {
         // save it to a session variable just in case this page reloaded due to server-side validation error
-        window.sessionStorage.setItem('original', original);
+        window.sessionStorage.setItem("original", original);
         enFieldUpsellOriginalAmount.setAttribute("value", original);
       }
     }
@@ -4844,8 +4881,8 @@ class UpsellLightbox {
 
       this._amount.setAmount(upsoldAmount);
     } else {
-      this.setOriginalAmount('');
-      window.sessionStorage.removeItem('original');
+      this.setOriginalAmount("");
+      window.sessionStorage.removeItem("original");
     }
 
     this._form.submitForm();
@@ -4856,12 +4893,24 @@ class UpsellLightbox {
     e.preventDefault(); // cookie.set("hideUpsell", "1", { expires: 1 }); // Create one day cookie
 
     this.overlay.classList.add("is-hidden");
+    engrid_ENGrid.setBodyData("has-lightbox", false);
 
     if (this.options.submitOnClose) {
       this._form.submitForm();
     } else {
       this._form.dispatchError();
     }
+  }
+
+  getAmountTxt(amount = 0) {
+    var _a, _b, _c, _d;
+
+    const symbol = (_a = engrid_ENGrid.getOption("CurrencySymbol")) !== null && _a !== void 0 ? _a : "$";
+    const dec_separator = (_b = engrid_ENGrid.getOption("DecimalSeparator")) !== null && _b !== void 0 ? _b : ".";
+    const thousands_separator = (_c = engrid_ENGrid.getOption("ThousandsSeparator")) !== null && _c !== void 0 ? _c : "";
+    const dec_places = amount % 1 == 0 ? 0 : (_d = engrid_ENGrid.getOption("DecimalPlaces")) !== null && _d !== void 0 ? _d : 2;
+    const amountTxt = engrid_ENGrid.formatNumber(amount, dec_places, dec_separator, thousands_separator);
+    return amount > 0 ? symbol + amountTxt : "";
   }
 
 }
@@ -5234,7 +5283,7 @@ class NeverBounce {
       acceptedMessage: "Email validated!",
       feedback: false
     };
-    engrid_ENGrid.loadJS('https://cdn.neverbounce.com/widget/dist/NeverBounce.js');
+    engrid_ENGrid.loadJS("https://cdn.neverbounce.com/widget/dist/NeverBounce.js");
     this.init();
     this.form.onValidate.subscribe(() => this.form.validate = this.validate());
   }
@@ -5245,16 +5294,16 @@ class NeverBounce {
     if (this.statusField && document.getElementsByName(this.statusField).length) this.nbStatus = document.querySelector("[name='" + this.statusField + "']");
 
     if (!this.emailField) {
-      if (engrid_ENGrid.debug) console.log('Engrid Neverbounce: E-mail Field Not Found');
+      if (engrid_ENGrid.debug) console.log("Engrid Neverbounce: E-mail Field Not Found");
       return;
     }
 
     if (!this.emailField) {
-      if (engrid_ENGrid.debug) console.log('Engrid Neverbounce: E-mail Field Not Found', this.emailField);
+      if (engrid_ENGrid.debug) console.log("Engrid Neverbounce: E-mail Field Not Found", this.emailField);
       return;
     }
 
-    if (engrid_ENGrid.debug) console.log('Engrid Neverbounce External Script Loaded');
+    if (engrid_ENGrid.debug) console.log("Engrid Neverbounce External Script Loaded");
     this.wrap(this.emailField, document.createElement("div"));
     const parentNode = this.emailField.parentNode;
     parentNode.id = "nb-wrapper"; // Define HTML structure for a Custom NB Message and insert it after Email field
@@ -5265,10 +5314,14 @@ class NeverBounce {
     const NBClass = this;
     window.addEventListener("load", function () {
       document.getElementsByTagName("body")[0].addEventListener("nb:registered", function (event) {
-        const field = document.querySelector('[data-nb-id="' + event.detail.id + '"]'); // Never Bounce: Do work when input changes or when API responds with an error
+        const field = document.querySelector('[data-nb-id="' + event.detail.id + '"]');
+        field.addEventListener("nb:loading", function (e) {
+          engrid_ENGrid.disableSubmit("Validating Your Email");
+        }); // Never Bounce: Do work when input changes or when API responds with an error
 
         field.addEventListener("nb:clear", function (e) {
           NBClass.setEmailStatus("clear");
+          engrid_ENGrid.enableSubmit();
           if (NBClass.nbDate) NBClass.nbDate.value = "";
           if (NBClass.nbStatus) NBClass.nbStatus.value = "";
         }); // Never Bounce: Do work when results have an input that does not look like an email (i.e. missing @ or no .com/.net/etc...)
@@ -5277,21 +5330,33 @@ class NeverBounce {
           NBClass.setEmailStatus("soft-result");
           if (NBClass.nbDate) NBClass.nbDate.value = "";
           if (NBClass.nbStatus) NBClass.nbStatus.value = "";
+          engrid_ENGrid.enableSubmit();
         }); // Never Bounce: When results have been received
 
         field.addEventListener("nb:result", function (e) {
           if (e.detail.result.is(window._nb.settings.getAcceptedStatusCodes())) {
             NBClass.setEmailStatus("valid");
-            if (NBClass.nbDate) NBClass.nbDate.value = new Date().toLocaleDateString('en-US', {
-              year: 'numeric',
-              month: '2-digit',
-              day: '2-digit'
+            if (NBClass.nbDate) NBClass.nbDate.value = new Date().toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "2-digit",
+              day: "2-digit"
             });
+            if (NBClass.nbStatus) NBClass.nbStatus.value = e.detail.result.response.result;
           } else {
             NBClass.setEmailStatus("invalid");
             if (NBClass.nbDate) NBClass.nbDate.value = "";
+            if (NBClass.nbStatus) NBClass.nbStatus.value = "";
           }
+
+          engrid_ENGrid.enableSubmit();
         });
+
+        if (field.value) {
+          console.log(field);
+          setTimeout(function () {
+            window._nb.fields.get(document.querySelector("[data-nb-id]"))[0].forceUpdate();
+          }, 100);
+        }
       }); // Never Bounce: Register field with the widget and broadcast nb:registration event
 
       window._nb.fields.registerListener(NBClass.emailField, true);
@@ -5300,7 +5365,7 @@ class NeverBounce {
 
   clearStatus() {
     if (!this.emailField) {
-      if (engrid_ENGrid.debug) console.log('Engrid Neverbounce: E-mail Field Not Found');
+      if (engrid_ENGrid.debug) console.log("Engrid Neverbounce: E-mail Field Not Found");
       return;
     }
 
@@ -5324,14 +5389,14 @@ class NeverBounce {
     if (engrid_ENGrid.debug) console.log("Neverbounce Status:", status);
 
     if (!this.emailField) {
-      if (engrid_ENGrid.debug) console.log('Engrid Neverbounce: E-mail Field Not Found');
+      if (engrid_ENGrid.debug) console.log("Engrid Neverbounce: E-mail Field Not Found");
       return;
     } // Search page for the NB Wrapper div and set as variable
 
 
     const nb_email_field_wrapper = document.getElementById("nb-wrapper"); // Search page for the NB Feedback div and set as variable
 
-    const nb_email_feedback_field = document.getElementById("nb-feedback"); // classes to add or remove based on neverbounce results
+    let nb_email_feedback_field = document.getElementById("nb-feedback"); // classes to add or remove based on neverbounce results
 
     const nb_email_field_wrapper_success = "nb-success";
     const nb_email_field_wrapper_error = "nb-error";
@@ -5340,8 +5405,9 @@ class NeverBounce {
     const nb_email_field_error = "rm-error";
 
     if (!nb_email_feedback_field) {
-      const nbWrapperDiv = nb_email_field_wrapper.querySelector('div');
+      const nbWrapperDiv = nb_email_field_wrapper.querySelector("div");
       if (nbWrapperDiv) nbWrapperDiv.innerHTML = '<div id="nb-feedback" class="en__field__error nb-hidden">Enter a valid email.</div>';
+      nb_email_feedback_field = document.getElementById("nb-feedback");
     }
 
     if (status == "valid") {
@@ -5415,7 +5481,7 @@ class NeverBounce {
     var _a;
 
     if (!this.emailField) {
-      if (engrid_ENGrid.debug) console.log('Engrid Neverbounce validate(): E-mail Field Not Found. Returning true.');
+      if (engrid_ENGrid.debug) console.log("Engrid Neverbounce validate(): E-mail Field Not Found. Returning true.");
       return true;
     }
 
@@ -5423,7 +5489,7 @@ class NeverBounce {
       this.nbStatus.value = engrid_ENGrid.getFieldValue("nb-result");
     }
 
-    if (!['catchall', 'valid'].includes(engrid_ENGrid.getFieldValue('nb-result'))) {
+    if (!["catchall", "unknown", "valid"].includes(engrid_ENGrid.getFieldValue("nb-result"))) {
       this.setEmailStatus("required");
       (_a = this.emailField) === null || _a === void 0 ? void 0 : _a.focus();
       return false;
@@ -6126,6 +6192,7 @@ class DonationLightboxForm {
   constructor(DonationAmount, DonationFrequency) {
     this.amount = DonationAmount;
     this.frequency = DonationFrequency;
+    this.ipCountry = "";
     console.log("DonationLightboxForm: constructor"); // Each EN Row is a Section
 
     this.sections = document.querySelectorAll("form.en__component > .en__component"); // Check if we're on the Thank You page
@@ -6206,6 +6273,23 @@ class DonationLightboxForm {
 
     if (urlParams.get("color")) {
       document.body.style.setProperty("--color_primary", urlParams.get("color"));
+    } // Check your IP Country
+
+
+    fetch("https://www.cloudflare.com/cdn-cgi/trace").then(res => res.text()).then(t => {
+      let data = t.replace(/[\r\n]+/g, '","').replace(/\=+/g, '":"');
+      data = '{"' + data.slice(0, data.lastIndexOf('","')) + '"}';
+      const jsondata = JSON.parse(data);
+      this.ipCountry = jsondata.loc;
+      this.canadaOnly();
+      console.log("Country:", this.ipCountry);
+    });
+    const countryField = document.querySelector("#en__field_supporter_country");
+
+    if (countryField) {
+      countryField.addEventListener("change", e => {
+        this.canadaOnly();
+      });
     }
   } // Send iframe message to parent
 
@@ -6530,9 +6614,133 @@ class DonationLightboxForm {
 
     if (hasError) {
       return false;
+    } // Validate City Characters Limit
+
+
+    const city = form.querySelector("#en__field_supporter_city");
+    const cityBlock = form.querySelector(".en__field--city");
+
+    if (!this.checkCharsLimit("#en__field_supporter_city", 100)) {
+      this.scrollToElement(city);
+      this.sendMessage("error", "This field only allows up to 100 characters");
+
+      if (cityBlock) {
+        cityBlock.classList.add("has-error");
+      }
+
+      return false;
+    } else {
+      if (cityBlock) {
+        cityBlock.classList.remove("has-error");
+      }
+    } // Validate Street Address line 1 Characters Limit
+
+
+    const streetAddress1 = form.querySelector("#en__field_supporter_address1");
+    const streetAddress1Block = form.querySelector(".en__field--address1");
+
+    if (!this.checkCharsLimit("#en__field_supporter_address1", 35)) {
+      this.scrollToElement(streetAddress1);
+      this.sendMessage("error", "This field only allows up to 35 characters. Longer street addresses can be broken up between Lines 1 and 2.");
+
+      if (streetAddress1Block) {
+        streetAddress1Block.classList.add("has-error");
+      }
+
+      return false;
+    } else {
+      if (streetAddress1Block) {
+        streetAddress1Block.classList.remove("has-error");
+      }
+    } // Validate Street Address line 2 Characters Limit
+
+
+    const streetAddress2 = form.querySelector("#en__field_supporter_address2");
+    const streetAddress2Block = form.querySelector(".en__field--address2");
+
+    if (!this.checkCharsLimit("#en__field_supporter_address2", 35)) {
+      this.scrollToElement(streetAddress2);
+      this.sendMessage("error", "This field only allows up to 35 characters. Longer street addresses can be broken up between Lines 1 and 2.");
+
+      if (streetAddress2Block) {
+        streetAddress2Block.classList.add("has-error");
+      }
+
+      return false;
+    } else {
+      if (streetAddress2Block) {
+        streetAddress2Block.classList.remove("has-error");
+      }
+    } // Validate Zip Code Characters Limit
+
+
+    const zipCode = form.querySelector("#en__field_supporter_postcode");
+    const zipCodeBlock = form.querySelector(".en__field--postcode");
+
+    if (!this.checkCharsLimit("#en__field_supporter_postcode", 20)) {
+      this.scrollToElement(zipCode);
+      this.sendMessage("error", "This field only allows up to 20 characters");
+
+      if (zipCodeBlock) {
+        zipCodeBlock.classList.add("has-error");
+      }
+
+      return false;
+    } else {
+      if (zipCodeBlock) {
+        zipCodeBlock.classList.remove("has-error");
+      }
+    } // Validate First Name Characters Limit
+
+
+    const firstName = form.querySelector("#en__field_supporter_firstName");
+    const firstNameBlock = form.querySelector(".en__field--firstName");
+
+    if (!this.checkCharsLimit("#en__field_supporter_firstName", 100)) {
+      this.scrollToElement(firstName);
+      this.sendMessage("error", "This field only allows up to 100 characters");
+
+      if (firstNameBlock) {
+        firstNameBlock.classList.add("has-error");
+      }
+
+      return false;
+    } else {
+      if (firstNameBlock) {
+        firstNameBlock.classList.remove("has-error");
+      }
+    } // Validate Last Name Characters Limit
+
+
+    const lastName = form.querySelector("#en__field_supporter_lastName");
+    const lastNameBlock = form.querySelector(".en__field--lastName");
+
+    if (!this.checkCharsLimit("#en__field_supporter_lastName", 100)) {
+      this.scrollToElement(lastName);
+      this.sendMessage("error", "This field only allows up to 100 characters");
+
+      if (lastNameBlock) {
+        lastNameBlock.classList.add("has-error");
+      }
+
+      return false;
+    } else {
+      if (lastNameBlock) {
+        lastNameBlock.classList.remove("has-error");
+      }
     }
 
     console.log("DonationLightboxForm: validateForm PASSED");
+    return true;
+  }
+
+  checkCharsLimit(field, max) {
+    const fieldElement = document.querySelector(field);
+
+    if (fieldElement && fieldElement.value.length > max) {
+      return false;
+    }
+
     return true;
   } // Bounce Arrow Up and Down
 
@@ -6597,6 +6805,59 @@ class DonationLightboxForm {
       svg.innerHTML = `<path fill="currentColor" d="M16.578 4.68c-.581-.596-1.748-1.65-2.638-1.094-.553.344-.847 1.109-1.171 1.667-.371.641-.738 1.283-1.1 1.93-.695 1.248-1.365 2.51-1.99 3.794-1.206 2.492-2.228 5.146-2.825 7.855-.96 4.35-.574 9.438.985 13.607.981 2.622 2.461 5.004 4.555 6.883.39.352 1.42 1.11 1.781.354.344-.72-.748-1.92-1.182-2.322-1.37-1.266-2.264-3.404-2.693-5.502-.49-2.394-.429-4.934.037-7.327.552-2.836 1.607-5.558 2.882-8.14.703-1.425 1.457-2.825 2.252-4.199.398-.685.806-1.365 1.22-2.042.451-.738 1.168-1.555 1.31-2.41.186-1.146-.673-2.29-1.423-3.055z"/>
         <path fill="currentColor" d="M19.44 1.424C18.95.862 17.91-.183 17.064.028c-1.897.471-3.446 1.651-4.945 2.849-1.424 1.136-2.846 2.276-4.25 3.435-2.826 2.333-5.823 4.69-7.78 7.84-.654 1.056 2.438 4.04 3.053 3.117 1.984-2.983 5.07-5.029 8.061-6.895 1.422-.886 2.875-1.734 4.169-2.807.22-.183.442-.372.666-.564-.062 1.105-.104 2.214-.12 3.33-.019 1.621-.017 3.246.002 4.867.02 1.686-.054 3.421.107 5.1.11 1.153 1.024 2.277 1.905 2.955.33.255 2.036 1.328 2.15.269.347-3.215-.033-6.574-.072-9.806-.039-3.224-.087-6.564.48-9.75.165-.915-.482-1.889-1.052-2.544z"/>`;
       arrow.appendChild(svg);
+    }
+  } // Return true if you are in Canada, checking 3 conditions
+  // 1 - You are using a Canadian ip address
+  // 2 - You choose Canada as your country
+  // 3 - Your browser language is en-CA
+
+
+  isCanada() {
+    const country = document.querySelector("#en__field_supporter_country");
+
+    if (country) {
+      if (country.value === "CA") {
+        return true;
+      }
+    }
+
+    const lang = window.navigator.userLanguage || window.navigator.language;
+
+    if (lang === "en-CA" || this.ipCountry === "CA") {
+      return true;
+    }
+
+    return false;
+  } // Display and check the class canada-only if you are in Canada
+
+
+  canadaOnly() {
+    const canadaOnly = document.querySelectorAll(".canada-only");
+
+    if (canadaOnly.length) {
+      if (this.isCanada()) {
+        canadaOnly.forEach(item => {
+          item.style.display = "";
+          const input = item.querySelectorAll("input[type='checkbox']");
+
+          if (input.length) {
+            input.forEach(input => {
+              input.checked = false;
+            });
+          }
+        });
+      } else {
+        canadaOnly.forEach(item => {
+          item.style.display = "none";
+          const input = item.querySelectorAll("input[type='checkbox']");
+
+          if (input.length) {
+            input.forEach(input => {
+              input.checked = true;
+            });
+          }
+        });
+      }
     }
   }
 

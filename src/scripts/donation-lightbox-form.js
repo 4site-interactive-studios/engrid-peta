@@ -3,6 +3,7 @@ export default class DonationLightboxForm {
   constructor(DonationAmount, DonationFrequency) {
     this.amount = DonationAmount;
     this.frequency = DonationFrequency;
+    this.ipCountry = "";
     console.log("DonationLightboxForm: constructor");
     // Each EN Row is a Section
     this.sections = document.querySelectorAll(
@@ -105,6 +106,23 @@ export default class DonationLightboxForm {
         "--color_primary",
         urlParams.get("color")
       );
+    }
+    // Check your IP Country
+    fetch("https://www.cloudflare.com/cdn-cgi/trace")
+      .then((res) => res.text())
+      .then((t) => {
+        let data = t.replace(/[\r\n]+/g, '","').replace(/\=+/g, '":"');
+        data = '{"' + data.slice(0, data.lastIndexOf('","')) + '"}';
+        const jsondata = JSON.parse(data);
+        this.ipCountry = jsondata.loc;
+        this.canadaOnly();
+        console.log("Country:", this.ipCountry);
+      });
+    const countryField = document.querySelector("#en__field_supporter_country");
+    if (countryField) {
+      countryField.addEventListener("change", (e) => {
+        this.canadaOnly();
+      });
     }
   }
   // Send iframe message to parent
@@ -412,9 +430,114 @@ export default class DonationLightboxForm {
     if (hasError) {
       return false;
     }
+    // Validate City Characters Limit
+    const city = form.querySelector("#en__field_supporter_city");
+    const cityBlock = form.querySelector(".en__field--city");
+    if (!this.checkCharsLimit("#en__field_supporter_city", 100)) {
+      this.scrollToElement(city);
+      this.sendMessage("error", "This field only allows up to 100 characters");
+      if (cityBlock) {
+        cityBlock.classList.add("has-error");
+      }
+      return false;
+    } else {
+      if (cityBlock) {
+        cityBlock.classList.remove("has-error");
+      }
+    }
+    // Validate Street Address line 1 Characters Limit
+    const streetAddress1 = form.querySelector("#en__field_supporter_address1");
+    const streetAddress1Block = form.querySelector(".en__field--address1");
+    if (!this.checkCharsLimit("#en__field_supporter_address1", 35)) {
+      this.scrollToElement(streetAddress1);
+      this.sendMessage(
+        "error",
+        "This field only allows up to 35 characters. Longer street addresses can be broken up between Lines 1 and 2."
+      );
+      if (streetAddress1Block) {
+        streetAddress1Block.classList.add("has-error");
+      }
+      return false;
+    } else {
+      if (streetAddress1Block) {
+        streetAddress1Block.classList.remove("has-error");
+      }
+    }
+    // Validate Street Address line 2 Characters Limit
+    const streetAddress2 = form.querySelector("#en__field_supporter_address2");
+    const streetAddress2Block = form.querySelector(".en__field--address2");
+    if (!this.checkCharsLimit("#en__field_supporter_address2", 35)) {
+      this.scrollToElement(streetAddress2);
+      this.sendMessage(
+        "error",
+        "This field only allows up to 35 characters. Longer street addresses can be broken up between Lines 1 and 2."
+      );
+      if (streetAddress2Block) {
+        streetAddress2Block.classList.add("has-error");
+      }
+      return false;
+    } else {
+      if (streetAddress2Block) {
+        streetAddress2Block.classList.remove("has-error");
+      }
+    }
+    // Validate Zip Code Characters Limit
+    const zipCode = form.querySelector("#en__field_supporter_postcode");
+    const zipCodeBlock = form.querySelector(".en__field--postcode");
+    if (!this.checkCharsLimit("#en__field_supporter_postcode", 20)) {
+      this.scrollToElement(zipCode);
+      this.sendMessage("error", "This field only allows up to 20 characters");
+      if (zipCodeBlock) {
+        zipCodeBlock.classList.add("has-error");
+      }
+      return false;
+    } else {
+      if (zipCodeBlock) {
+        zipCodeBlock.classList.remove("has-error");
+      }
+    }
+
+    // Validate First Name Characters Limit
+    const firstName = form.querySelector("#en__field_supporter_firstName");
+    const firstNameBlock = form.querySelector(".en__field--firstName");
+    if (!this.checkCharsLimit("#en__field_supporter_firstName", 100)) {
+      this.scrollToElement(firstName);
+      this.sendMessage("error", "This field only allows up to 100 characters");
+      if (firstNameBlock) {
+        firstNameBlock.classList.add("has-error");
+      }
+      return false;
+    } else {
+      if (firstNameBlock) {
+        firstNameBlock.classList.remove("has-error");
+      }
+    }
+    // Validate Last Name Characters Limit
+    const lastName = form.querySelector("#en__field_supporter_lastName");
+    const lastNameBlock = form.querySelector(".en__field--lastName");
+    if (!this.checkCharsLimit("#en__field_supporter_lastName", 100)) {
+      this.scrollToElement(lastName);
+      this.sendMessage("error", "This field only allows up to 100 characters");
+      if (lastNameBlock) {
+        lastNameBlock.classList.add("has-error");
+      }
+      return false;
+    } else {
+      if (lastNameBlock) {
+        lastNameBlock.classList.remove("has-error");
+      }
+    }
     console.log("DonationLightboxForm: validateForm PASSED");
     return true;
   }
+  checkCharsLimit(field, max) {
+    const fieldElement = document.querySelector(field);
+    if (fieldElement && fieldElement.value.length > max) {
+      return false;
+    }
+    return true;
+  }
+
   // Bounce Arrow Up and Down
   bounceArrow(freq) {
     const arrow = document.querySelector(".monthly-upsell-message");
@@ -473,6 +596,50 @@ export default class DonationLightboxForm {
       svg.innerHTML = `<path fill="currentColor" d="M16.578 4.68c-.581-.596-1.748-1.65-2.638-1.094-.553.344-.847 1.109-1.171 1.667-.371.641-.738 1.283-1.1 1.93-.695 1.248-1.365 2.51-1.99 3.794-1.206 2.492-2.228 5.146-2.825 7.855-.96 4.35-.574 9.438.985 13.607.981 2.622 2.461 5.004 4.555 6.883.39.352 1.42 1.11 1.781.354.344-.72-.748-1.92-1.182-2.322-1.37-1.266-2.264-3.404-2.693-5.502-.49-2.394-.429-4.934.037-7.327.552-2.836 1.607-5.558 2.882-8.14.703-1.425 1.457-2.825 2.252-4.199.398-.685.806-1.365 1.22-2.042.451-.738 1.168-1.555 1.31-2.41.186-1.146-.673-2.29-1.423-3.055z"/>
         <path fill="currentColor" d="M19.44 1.424C18.95.862 17.91-.183 17.064.028c-1.897.471-3.446 1.651-4.945 2.849-1.424 1.136-2.846 2.276-4.25 3.435-2.826 2.333-5.823 4.69-7.78 7.84-.654 1.056 2.438 4.04 3.053 3.117 1.984-2.983 5.07-5.029 8.061-6.895 1.422-.886 2.875-1.734 4.169-2.807.22-.183.442-.372.666-.564-.062 1.105-.104 2.214-.12 3.33-.019 1.621-.017 3.246.002 4.867.02 1.686-.054 3.421.107 5.1.11 1.153 1.024 2.277 1.905 2.955.33.255 2.036 1.328 2.15.269.347-3.215-.033-6.574-.072-9.806-.039-3.224-.087-6.564.48-9.75.165-.915-.482-1.889-1.052-2.544z"/>`;
       arrow.appendChild(svg);
+    }
+  }
+  // Return true if you are in Canada, checking 3 conditions
+  // 1 - You are using a Canadian ip address
+  // 2 - You choose Canada as your country
+  // 3 - Your browser language is en-CA
+  isCanada() {
+    const country = document.querySelector("#en__field_supporter_country");
+    if (country) {
+      if (country.value === "CA") {
+        return true;
+      }
+    }
+    const lang = window.navigator.userLanguage || window.navigator.language;
+    if (lang === "en-CA" || this.ipCountry === "CA") {
+      return true;
+    }
+    return false;
+  }
+  // Display and check the class canada-only if you are in Canada
+  canadaOnly() {
+    const canadaOnly = document.querySelectorAll(".canada-only");
+    if (canadaOnly.length) {
+      if (this.isCanada()) {
+        canadaOnly.forEach((item) => {
+          item.style.display = "";
+          const input = item.querySelectorAll("input[type='checkbox']");
+          if (input.length) {
+            input.forEach((input) => {
+              input.checked = false;
+            });
+          }
+        });
+      } else {
+        canadaOnly.forEach((item) => {
+          item.style.display = "none";
+          const input = item.querySelectorAll("input[type='checkbox']");
+          if (input.length) {
+            input.forEach((input) => {
+              input.checked = true;
+            });
+          }
+        });
+      }
     }
   }
 }
