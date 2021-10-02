@@ -124,6 +124,37 @@ export default class DonationLightboxForm {
         this.canadaOnly();
       });
     }
+    // Email validator tool
+    const emailField = document.querySelector(
+      "#en__field_supporter_emailAddress"
+    );
+    if (emailField) {
+      "change paste".split(" ").forEach((e) => {
+        emailField.addEventListener(e, (event) => {
+          // Run after 50ms
+          setTimeout(() => {
+            this.validateEmail(emailField.value);
+          }, 50);
+        });
+      });
+      const emailWrapper = emailField.closest(".en__field");
+      const emailError = document.createElement("div");
+      emailError.id = "petaEmailValidator";
+      emailError.classList.add("email-validator");
+      emailError.innerHTML = `<span class="message"></span><a href="#" class="close">Close</a>`;
+      emailWrapper.appendChild(emailError);
+      emailError.addEventListener("click", (e) => {
+        if (e.target.classList.contains("close")) {
+          e.preventDefault();
+          emailError.classList.remove("show");
+        }
+        if (e.target.classList.contains("set-suggestion")) {
+          e.preventDefault();
+          emailField.value = e.target.innerHTML;
+          emailError.classList.remove("show");
+        }
+      });
+    }
   }
   // Send iframe message to parent
   sendMessage(key, value) {
@@ -641,5 +672,26 @@ export default class DonationLightboxForm {
         });
       }
     }
+  }
+  // Email validation
+  validateEmail(email) {
+    const url = `https://services.peta.org/api/v1/validate/email?email=${email}&lang=en`;
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        const petaEmailValidator = document.querySelector(
+          "#petaEmailValidator"
+        );
+        if (petaEmailValidator) {
+          if (data.suggestion) {
+            const message = `Did you mean <a href="#" class="set-suggestion">${data.suggestion.match}</a>?`;
+            petaEmailValidator.querySelector(".message").innerHTML = message;
+            petaEmailValidator.classList.add("show");
+          } else {
+            petaEmailValidator.classList.remove("show");
+          }
+        }
+      });
   }
 }
