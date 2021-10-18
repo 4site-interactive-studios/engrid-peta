@@ -34,7 +34,31 @@ export default class DonationLightboxForm {
             "$" + urlParams.get("amount")
           );
           engrid.innerHTML = engridContent;
+          this.sendMessage("firstname", urlParams.get("name"));
         }
+      } else {
+        // Try to get the first name
+        const thisClass = this;
+        const pageDataUrl =
+          location.protocol +
+          "//" +
+          location.host +
+          location.pathname +
+          "/pagedata";
+        fetch(pageDataUrl)
+          .then(function (response) {
+            return response.json();
+          })
+          .then(function (json) {
+            if (json.hasOwnProperty("firstName") && json.firstName !== null) {
+              thisClass.sendMessage("firstname", json.firstName);
+            } else {
+              thisClass.sendMessage("firstname", "Friend");
+            }
+          })
+          .catch((error) => {
+            console.error("PageData Error:", error);
+          });
       }
       return false;
     }
@@ -679,7 +703,7 @@ export default class DonationLightboxForm {
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         const petaEmailValidator = document.querySelector(
           "#petaEmailValidator"
         );
