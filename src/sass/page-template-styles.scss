@@ -705,12 +705,6 @@
         width: 46px;
         height: 38px;
       }
-      &::before {
-        animation: float 2s linear forwards infinite;
-      }
-      &::after {
-        animation: pulse 2s linear forwards infinite;
-      }
     }
     form.en__component {
       & > .en__component {
