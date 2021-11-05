@@ -12012,8 +12012,9 @@ class DonationLightboxForm {
       // If iFrame
       this.buildSectionNavigation(); // If Form Submission Failed
 
-      if (EngagingNetworks.require._defined.enjs.checkSubmissionFailed()) {
-        // Submission failed
+      if (this.checkNested(EngagingNetworks, "require", "_defined", "enjs", "checkSubmissionFailed") && EngagingNetworks.require._defined.enjs.checkSubmissionFailed()) {
+        console.log("DonationLightboxForm: Submission Failed"); // Submission failed
+
         if (this.validateForm()) {
           // Front-End Validation Passed, get first Error Message
           const error = document.querySelector("li.en__error");
@@ -12690,6 +12691,12 @@ class DonationLightboxForm {
         }
       }
     });
+  }
+
+  checkNested(obj, level, ...rest) {
+    if (obj === undefined) return false;
+    if (rest.length == 0 && obj.hasOwnProperty(level)) return true;
+    return this.checkNested(obj[level], ...rest);
   }
 
 }
