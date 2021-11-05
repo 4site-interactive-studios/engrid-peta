@@ -6605,7 +6605,9 @@ class EnForm {
 ;// CONCATENATED MODULE: ../engrid-scripts/packages/common/dist/events/donation-amount.js
 
 class DonationAmount {
-  constructor(radios = "transaction.donationAmt", other = "transaction.donationAmt.other") {
+  constructor() {
+    let radios = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "transaction.donationAmt";
+    let other = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "transaction.donationAmt.other";
     this._onAmountChange = new dist/* SimpleEventDispatcher */.FK();
     this._amount = 0;
     this._radios = "";
@@ -6633,7 +6635,10 @@ class DonationAmount {
     }
   }
 
-  static getInstance(radios = "transaction.donationAmt", other = "transaction.donationAmt.other") {
+  static getInstance() {
+    let radios = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "transaction.donationAmt";
+    let other = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "transaction.donationAmt.other";
+
     if (!DonationAmount.instance) {
       DonationAmount.instance = new DonationAmount(radios, other);
     }
@@ -6673,7 +6678,9 @@ class DonationAmount {
   } // Force a new amount
 
 
-  setAmount(amount, dispatch = true) {
+  setAmount(amount) {
+    let dispatch = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+
     // Run only if it is a Donation Page with a Donation Amount field
     if (!document.getElementsByName(this._radios).length) {
       return;
@@ -6877,7 +6884,9 @@ class engrid_ENGrid {
   } // Load an external script
 
 
-  static loadJS(url, onload = null, head = true) {
+  static loadJS(url) {
+    let onload = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+    let head = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
     const scriptTag = document.createElement("script");
     scriptTag.src = url;
     scriptTag.onload = onload;
@@ -6892,7 +6901,10 @@ class engrid_ENGrid {
   } // Format a number
 
 
-  static formatNumber(number, decimals = 2, dec_point = ".", thousands_sep = ",") {
+  static formatNumber(number) {
+    let decimals = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2;
+    let dec_point = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : ".";
+    let thousands_sep = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : ",";
     // Strip all characters but numerical ones.
     number = (number + "").replace(/[^0-9+\-Ee.]/g, "");
     const n = !isFinite(+number) ? 0 : +number;
@@ -6921,7 +6933,8 @@ class engrid_ENGrid {
     return s.join(dec);
   }
 
-  static disableSubmit(label = "") {
+  static disableSubmit() {
+    let label = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
     const submit = document.querySelector(".en__submit button");
     submit.dataset.originalText = submit.innerText;
     let submitButtonProcessingHTML = "<span class='loader-wrapper'><span class='loader loader-quart'></span><span class='submit-button-text-wrapper'>" + label + "</span></span>";
@@ -6948,7 +6961,8 @@ class engrid_ENGrid {
     return false;
   }
 
-  static formatDate(date, format = "MM/DD/YYYY") {
+  static formatDate(date) {
+    let format = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "MM/DD/YYYY";
     const dateAray = date.toLocaleDateString("en-US", {
       year: "numeric",
       month: "2-digit",
@@ -6956,6 +6970,28 @@ class engrid_ENGrid {
     }).split("/");
     const dateString = format.replace(/YYYY/g, dateAray[2]).replace(/MM/g, dateAray[0]).replace(/DD/g, dateAray[1]).replace(/YY/g, dateAray[2].substr(2, 2));
     return dateString;
+  }
+  /**
+   * Check if the provided object has ALL the provided properties
+   * Example: checkNested(EngagingNetworks, 'require', '_defined', 'enjs', 'checkSubmissionFailed')
+   * will return true if EngagingNetworks.require._defined.enjs.checkSubmissionFailed is defined
+   */
+
+
+  static checkNested(obj) {
+    for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      args[_key - 1] = arguments[_key];
+    }
+
+    for (let i = 0; i < args.length; i++) {
+      if (!obj || !obj.hasOwnProperty(args[i])) {
+        return false;
+      }
+
+      obj = obj[args[i]];
+    }
+
+    return true;
   }
 
 }
@@ -7027,7 +7063,9 @@ class DonationFrequency {
   } // Force a new recurrency
 
 
-  setRecurrency(recurr, dispatch = true) {
+  setRecurrency(recurr) {
+    let dispatch = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+
     // Run only if it is a Donation Page with a Recurrency
     if (!document.getElementsByName("transaction.recurrpay").length) {
       return;
@@ -7041,7 +7079,9 @@ class DonationFrequency {
   } // Force a new frequency
 
 
-  setFrequency(freq, dispatch = true) {
+  setFrequency(freq) {
+    let dispatch = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+
     // Run only if it is a Donation Page with a Frequency
     if (!document.getElementsByName("transaction.recurrfreq").length) {
       return;
@@ -7125,7 +7165,9 @@ class ProcessingFees {
     this._onFeeChange.dispatch(this._fee);
   }
 
-  calculateFees(amount = 0) {
+  calculateFees() {
+    let amount = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+
     var _a;
 
     if (this._field instanceof HTMLInputElement && this._field.checked) {
@@ -7214,8 +7256,14 @@ class App extends engrid_ENGrid {
     } // Window Load
 
 
-    window.onload = () => {
+    let onLoad = typeof window.onload === "function" ? window.onload : null;
+
+    window.onload = e => {
       this.onLoad();
+
+      if (onLoad) {
+        onLoad.bind(window, e);
+      }
     }; // Window Resize
 
 
@@ -7726,7 +7774,11 @@ class CapitalizeFields {
     this._form.onSubmit.subscribe(() => this.capitalizeFields("en__field_supporter_firstName", "en__field_supporter_lastName", "en__field_supporter_address1", "en__field_supporter_city"));
   }
 
-  capitalizeFields(...fields) {
+  capitalizeFields() {
+    for (var _len = arguments.length, fields = new Array(_len), _key = 0; _key < _len; _key++) {
+      fields[_key] = arguments[_key];
+    }
+
     fields.forEach(f => this.capitalize(f));
   }
 
@@ -8949,7 +9001,9 @@ class LiveVariables {
     });
   }
 
-  getAmountTxt(amount = 0) {
+  getAmountTxt() {
+    let amount = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+
     var _a, _b, _c, _d;
 
     const symbol = (_a = this.options.CurrencySymbol) !== null && _a !== void 0 ? _a : "$";
@@ -8960,7 +9014,9 @@ class LiveVariables {
     return amount > 0 ? symbol + amountTxt : "";
   }
 
-  getUpsellAmountTxt(amount = 0) {
+  getUpsellAmountTxt() {
+    let amount = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+
     var _a, _b, _c, _d;
 
     const symbol = (_a = this.options.CurrencySymbol) !== null && _a !== void 0 ? _a : "$";
@@ -8971,7 +9027,8 @@ class LiveVariables {
     return amount > 0 ? symbol + amountTxt : "";
   }
 
-  getUpsellAmountRaw(amount = 0) {
+  getUpsellAmountRaw() {
+    let amount = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
     const amountRaw = Math.ceil(amount / 5) * 5;
     return amount > 0 ? amountRaw.toString() : "";
   }
@@ -9384,7 +9441,9 @@ class UpsellLightbox {
     }
   }
 
-  getAmountTxt(amount = 0) {
+  getAmountTxt() {
+    let amount = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+
     var _a, _b, _c, _d;
 
     const symbol = (_a = engrid_ENGrid.getOption("CurrencySymbol")) !== null && _a !== void 0 ? _a : "$";
@@ -10349,6 +10408,7 @@ class TranslateFields {
 ;// CONCATENATED MODULE: ../engrid-scripts/packages/common/dist/simple-country-select.js
 // This class works when the user has added ".simple_country_select" as a class in page builder for the Country select
 
+
 class SimpleCountrySelect {
   constructor() {
     this.countryWrapper = document.querySelector(".simple_country_select");
@@ -10357,10 +10417,11 @@ class SimpleCountrySelect {
       type: "region"
     });
     this.country = null;
-    const engridAutofill = get("engrid-autofill"); // Only run if there's no engrid-autofill cookie
+    const engridAutofill = get("engrid-autofill");
+    const submissionFailed = !!(engrid_ENGrid.checkNested(window.EngagingNetworks, "require", "_defined", "enjs", "checkSubmissionFailed") && window.EngagingNetworks.require._defined.enjs.checkSubmissionFailed()); // Only run if there's no engrid-autofill cookie
 
-    if (!engridAutofill && !window.EngagingNetworks.require._defined.enjs.checkSubmissionFailed()) {
-      fetch("https://www.cloudflare.com/cdn-cgi/trace").then(res => res.text()).then(t => {
+    if (!engridAutofill && !submissionFailed) {
+      fetch(`https://${window.location.hostname}/cdn-cgi/trace`).then(res => res.text()).then(t => {
         let data = t.replace(/[\r\n]+/g, '","').replace(/\=+/g, '":"');
         data = '{"' + data.slice(0, data.lastIndexOf('","')) + '"}';
         const jsondata = JSON.parse(data);
@@ -10708,7 +10769,10 @@ class PageBackground {
 
 
 class NeverBounce {
-  constructor(apiKey, dateField = null, statusField = null, dateFormat) {
+  constructor(apiKey) {
+    let dateField = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+    let statusField = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+    let dateFormat = arguments.length > 3 ? arguments[3] : undefined;
     this.apiKey = apiKey;
     this.dateField = dateField;
     this.statusField = statusField;
@@ -10987,7 +11051,7 @@ class ProgressBar {
 
 
 
-const tippy = __webpack_require__(465)/* .default */ .ZP;
+const tippy = (__webpack_require__(465)/* ["default"] */ .ZP);
 
 class RememberMe {
   constructor(options) {
@@ -11250,7 +11314,9 @@ class RememberMe {
     }
   }
 
-  setFieldValue(field, value, overwrite = false) {
+  setFieldValue(field, value) {
+    let overwrite = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+
     if (field && value !== undefined) {
       if (field.value && overwrite || !field.value) {
         field.value = value;
@@ -11272,7 +11338,9 @@ class RememberMe {
     this.writeFields(true);
   }
 
-  writeFields(overwrite = false) {
+  writeFields() {
+    let overwrite = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+
     for (let i = 0; i < this.fieldNames.length; i++) {
       let fieldSelector = "[name='" + this.fieldNames[i] + "']";
       let field = document.querySelector(fieldSelector);
@@ -12057,7 +12125,7 @@ class DonationLightboxForm {
     } // Check your IP Country
 
 
-    fetch("https://www.cloudflare.com/cdn-cgi/trace").then(res => res.text()).then(t => {
+    fetch(`https://${window.location.hostname}/cdn-cgi/trace`).then(res => res.text()).then(t => {
       let data = t.replace(/[\r\n]+/g, '","').replace(/\=+/g, '":"');
       data = '{"' + data.slice(0, data.lastIndexOf('","')) + '"}';
       const jsondata = JSON.parse(data);
@@ -12248,7 +12316,8 @@ class DonationLightboxForm {
   } // Validate the form
 
 
-  validateForm(sectionId = false) {
+  validateForm() {
+    let sectionId = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
     const form = document.querySelector("form.en__component"); // Validate Frequency
 
     const frequency = form.querySelector("[name='transaction.recurrfreq']:checked");
@@ -12693,8 +12762,13 @@ class DonationLightboxForm {
     });
   }
 
-  checkNested(obj, level, ...rest) {
+  checkNested(obj, level) {
     if (obj === undefined) return false;
+
+    for (var _len = arguments.length, rest = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
+      rest[_key - 2] = arguments[_key];
+    }
+
     if (rest.length == 0 && obj.hasOwnProperty(level)) return true;
     return this.checkNested(obj[level], ...rest);
   }

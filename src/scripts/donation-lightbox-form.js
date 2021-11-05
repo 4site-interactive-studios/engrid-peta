@@ -142,7 +142,7 @@ export default class DonationLightboxForm {
       );
     }
     // Check your IP Country
-    fetch("https://www.cloudflare.com/cdn-cgi/trace")
+    fetch(`https://${window.location.hostname}/cdn-cgi/trace`)
       .then((res) => res.text())
       .then((t) => {
         let data = t.replace(/[\r\n]+/g, '","').replace(/\=+/g, '":"');
