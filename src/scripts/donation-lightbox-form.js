@@ -311,6 +311,9 @@ export default class DonationLightboxForm {
         inline: "start",
       });
     }
+    if (sectionId > 0) {
+      this.sendMessage("status", "footer");
+    }
   }
   // Scroll to an element's section
   scrollToElement(element) {

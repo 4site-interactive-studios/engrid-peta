@@ -13,6 +13,45 @@ __webpack_require__.d(__webpack_exports__, {
 
 // UNUSED EXPORTS: animateFill, createSingleton, delegate, followCursor, hideAll, inlinePositioning, roundArrow, sticky
 
+;// CONCATENATED MODULE: ../engrid-scripts/node_modules/@popperjs/core/lib/dom-utils/getBoundingClientRect.js
+// import { isHTMLElement } from './instanceOf';
+function getBoundingClientRect(element, // eslint-disable-next-line unused-imports/no-unused-vars
+includeScale) {
+  if (includeScale === void 0) {
+    includeScale = false;
+  }
+
+  var rect = element.getBoundingClientRect();
+  var scaleX = 1;
+  var scaleY = 1; // FIXME:
+  // `offsetWidth` returns an integer while `getBoundingClientRect`
+  // returns a float. This results in `scaleX` or `scaleY` being
+  // non-1 when it should be for elements that aren't a full pixel in
+  // width or height.
+  // if (isHTMLElement(element) && includeScale) {
+  //   const offsetHeight = element.offsetHeight;
+  //   const offsetWidth = element.offsetWidth;
+  //   // Do not attempt to divide by 0, otherwise we get `Infinity` as scale
+  //   // Fallback to 1 in case both values are `0`
+  //   if (offsetWidth > 0) {
+  //     scaleX = rect.width / offsetWidth || 1;
+  //   }
+  //   if (offsetHeight > 0) {
+  //     scaleY = rect.height / offsetHeight || 1;
+  //   }
+  // }
+
+  return {
+    width: rect.width / scaleX,
+    height: rect.height / scaleY,
+    top: rect.top / scaleY,
+    right: rect.right / scaleX,
+    bottom: rect.bottom / scaleY,
+    left: rect.left / scaleX,
+    x: rect.left / scaleX,
+    y: rect.top / scaleY
+  };
+}
 ;// CONCATENATED MODULE: ../engrid-scripts/node_modules/@popperjs/core/lib/dom-utils/getWindow.js
 function getWindow(node) {
   if (node == null) {
@@ -25,6 +64,17 @@ function getWindow(node) {
   }
 
   return node;
+}
+;// CONCATENATED MODULE: ../engrid-scripts/node_modules/@popperjs/core/lib/dom-utils/getWindowScroll.js
+
+function getWindowScroll(node) {
+  var win = getWindow(node);
+  var scrollLeft = win.pageXOffset;
+  var scrollTop = win.pageYOffset;
+  return {
+    scrollLeft: scrollLeft,
+    scrollTop: scrollTop
+  };
 }
 ;// CONCATENATED MODULE: ../engrid-scripts/node_modules/@popperjs/core/lib/dom-utils/instanceOf.js
 
@@ -50,46 +100,6 @@ function isShadowRoot(node) {
 }
 
 
-;// CONCATENATED MODULE: ../engrid-scripts/node_modules/@popperjs/core/lib/dom-utils/getBoundingClientRect.js
-
-var round = Math.round;
-function getBoundingClientRect(element, includeScale) {
-  if (includeScale === void 0) {
-    includeScale = false;
-  }
-
-  var rect = element.getBoundingClientRect();
-  var scaleX = 1;
-  var scaleY = 1;
-
-  if (isHTMLElement(element) && includeScale) {
-    // Fallback to 1 in case both values are `0`
-    scaleX = rect.width / element.offsetWidth || 1;
-    scaleY = rect.height / element.offsetHeight || 1;
-  }
-
-  return {
-    width: round(rect.width / scaleX),
-    height: round(rect.height / scaleY),
-    top: round(rect.top / scaleY),
-    right: round(rect.right / scaleX),
-    bottom: round(rect.bottom / scaleY),
-    left: round(rect.left / scaleX),
-    x: round(rect.left / scaleX),
-    y: round(rect.top / scaleY)
-  };
-}
-;// CONCATENATED MODULE: ../engrid-scripts/node_modules/@popperjs/core/lib/dom-utils/getWindowScroll.js
-
-function getWindowScroll(node) {
-  var win = getWindow(node);
-  var scrollLeft = win.pageXOffset;
-  var scrollTop = win.pageYOffset;
-  return {
-    scrollLeft: scrollLeft,
-    scrollTop: scrollTop
-  };
-}
 ;// CONCATENATED MODULE: ../engrid-scripts/node_modules/@popperjs/core/lib/dom-utils/getHTMLElementScroll.js
 function getHTMLElementScroll(element) {
   return {
@@ -540,7 +550,8 @@ function popperGenerator(generatorOptions) {
     var isDestroyed = false;
     var instance = {
       state: state,
-      setOptions: function setOptions(options) {
+      setOptions: function setOptions(setOptionsAction) {
+        var options = typeof setOptionsAction === 'function' ? setOptionsAction(state.options) : setOptionsAction;
         cleanupModifierEffects();
         state.options = Object.assign({}, defaultOptions, state.options, options);
         state.scrollParents = {
@@ -856,8 +867,9 @@ function popperOffsets(_ref) {
 ;// CONCATENATED MODULE: ../engrid-scripts/node_modules/@popperjs/core/lib/utils/math.js
 var math_max = Math.max;
 var math_min = Math.min;
-var math_round = Math.round;
+var round = Math.round;
 ;// CONCATENATED MODULE: ../engrid-scripts/node_modules/@popperjs/core/lib/modifiers/computeStyles.js
+
 
 
 
@@ -881,8 +893,8 @@ function roundOffsetsByDPR(_ref) {
   var win = window;
   var dpr = win.devicePixelRatio || 1;
   return {
-    x: math_round(math_round(x * dpr) / dpr) || 0,
-    y: math_round(math_round(y * dpr) / dpr) || 0
+    x: round(round(x * dpr) / dpr) || 0,
+    y: round(round(y * dpr) / dpr) || 0
   };
 }
 
@@ -892,6 +904,7 @@ function mapToStyles(_ref2) {
   var popper = _ref2.popper,
       popperRect = _ref2.popperRect,
       placement = _ref2.placement,
+      variation = _ref2.variation,
       offsets = _ref2.offsets,
       position = _ref2.position,
       gpuAcceleration = _ref2.gpuAcceleration,
@@ -918,7 +931,7 @@ function mapToStyles(_ref2) {
     if (offsetParent === getWindow(popper)) {
       offsetParent = getDocumentElement(popper);
 
-      if (getComputedStyle(offsetParent).position !== 'static') {
+      if (getComputedStyle(offsetParent).position !== 'static' && position === 'absolute') {
         heightProp = 'scrollHeight';
         widthProp = 'scrollWidth';
       }
@@ -927,14 +940,14 @@ function mapToStyles(_ref2) {
 
     offsetParent = offsetParent;
 
-    if (placement === enums_top) {
+    if (placement === enums_top || (placement === left || placement === right) && variation === end) {
       sideY = bottom; // $FlowFixMe[prop-missing]
 
       y -= offsetParent[heightProp] - popperRect.height;
       y *= gpuAcceleration ? 1 : -1;
     }
 
-    if (placement === left) {
+    if (placement === left || (placement === enums_top || placement === bottom) && variation === end) {
       sideX = right; // $FlowFixMe[prop-missing]
 
       x -= offsetParent[widthProp] - popperRect.width;
@@ -949,7 +962,7 @@ function mapToStyles(_ref2) {
   if (gpuAcceleration) {
     var _Object$assign;
 
-    return Object.assign({}, commonStyles, (_Object$assign = {}, _Object$assign[sideY] = hasY ? '0' : '', _Object$assign[sideX] = hasX ? '0' : '', _Object$assign.transform = (win.devicePixelRatio || 1) < 2 ? "translate(" + x + "px, " + y + "px)" : "translate3d(" + x + "px, " + y + "px, 0)", _Object$assign));
+    return Object.assign({}, commonStyles, (_Object$assign = {}, _Object$assign[sideY] = hasY ? '0' : '', _Object$assign[sideX] = hasX ? '0' : '', _Object$assign.transform = (win.devicePixelRatio || 1) <= 1 ? "translate(" + x + "px, " + y + "px)" : "translate3d(" + x + "px, " + y + "px, 0)", _Object$assign));
   }
 
   return Object.assign({}, commonStyles, (_Object$assign2 = {}, _Object$assign2[sideY] = hasY ? y + "px" : '', _Object$assign2[sideX] = hasX ? x + "px" : '', _Object$assign2.transform = '', _Object$assign2));
@@ -969,6 +982,7 @@ function computeStyles(_ref4) {
 
   var commonStyles = {
     placement: getBasePlacement(state.placement),
+    variation: getVariation(state.placement),
     popper: state.elements.popper,
     popperRect: state.rects.popper,
     gpuAcceleration: gpuAcceleration
@@ -1393,11 +1407,10 @@ function detectOverflow(state, options) {
       padding = _options$padding === void 0 ? 0 : _options$padding;
   var paddingObject = mergePaddingObject(typeof padding !== 'number' ? padding : expandToHashMap(padding, basePlacements));
   var altContext = elementContext === popper ? reference : popper;
-  var referenceElement = state.elements.reference;
   var popperRect = state.rects.popper;
   var element = state.elements[altBoundary ? altContext : elementContext];
   var clippingClientRect = getClippingRect(isElement(element) ? element : element.contextElement || getDocumentElement(state.elements.popper), boundary, rootBoundary);
-  var referenceClientRect = getBoundingClientRect(referenceElement);
+  var referenceClientRect = getBoundingClientRect(state.elements.reference);
   var popperOffsets = computeOffsets({
     reference: referenceClientRect,
     element: popperRect,
@@ -1935,7 +1948,7 @@ var popper_createPopper = /*#__PURE__*/popperGenerator({
 
 ;// CONCATENATED MODULE: ../engrid-scripts/node_modules/tippy.js/dist/tippy.esm.js
 /**!
-* tippy.js v6.3.1
+* tippy.js v6.3.7
 * (c) 2017-2021 atomiks
 * MIT License
 */
@@ -1950,6 +1963,9 @@ var SVG_ARROW_CLASS = "tippy-svg-arrow";
 var TOUCH_OPTIONS = {
   passive: true,
   capture: true
+};
+var TIPPY_DEFAULT_APPEND_TO = function TIPPY_DEFAULT_APPEND_TO() {
+  return document.body;
 };
 
 function tippy_esm_hasOwnProperty(obj, key) {
@@ -2076,7 +2092,7 @@ function getOwnerDocument(elementOrElements) {
       element = _normalizeToArray[0]; // Elements created via a <template> have an ownerDocument with no reference to the body
 
 
-  return (element == null ? void 0 : (_element$ownerDocumen = element.ownerDocument) == null ? void 0 : _element$ownerDocumen.body) ? element.ownerDocument : document;
+  return element != null && (_element$ownerDocumen = element.ownerDocument) != null && _element$ownerDocumen.body ? element.ownerDocument : document;
 }
 function isCursorOutsideInteractiveBorder(popperTreeData, event) {
   var clientX = event.clientX,
@@ -2111,6 +2127,26 @@ function updateTransitionEndListener(box, action, listener) {
   ['transitionend', 'webkitTransitionEnd'].forEach(function (event) {
     box[method](event, listener);
   });
+}
+/**
+ * Compared to xxx.contains, this function works for dom structures with shadow
+ * dom
+ */
+
+function actualContains(parent, child) {
+  var target = child;
+
+  while (target) {
+    var _target$getRootNode;
+
+    if (parent.contains(target)) {
+      return true;
+    }
+
+    target = target.getRootNode == null ? void 0 : (_target$getRootNode = target.getRootNode()) == null ? void 0 : _target$getRootNode.host;
+  }
+
+  return false;
 }
 
 var currentInput = {
@@ -2175,8 +2211,8 @@ function bindGlobalEventListeners() {
 }
 
 var isBrowser = typeof window !== 'undefined' && typeof document !== 'undefined';
-var ua = isBrowser ? navigator.userAgent : '';
-var isIE = /MSIE |Trident\//.test(ua);
+var isIE11 = isBrowser ? // @ts-ignore
+!!window.msCrypto : false;
 
 function createMemoryLeakWarning(method) {
   var txt = method === 'destroy' ? 'n already-' : ' ';
@@ -2249,9 +2285,7 @@ var renderProps = {
   zIndex: 9999
 };
 var defaultProps = Object.assign({
-  appendTo: function appendTo() {
-    return document.body;
-  },
+  appendTo: TIPPY_DEFAULT_APPEND_TO,
   aria: {
     content: 'auto',
     expanded: 'auto'
@@ -2286,7 +2320,7 @@ var defaultProps = Object.assign({
   touch: true,
   trigger: 'mouseenter focus',
   triggerTarget: null
-}, pluginProps, {}, renderProps);
+}, pluginProps, renderProps);
 var defaultKeys = Object.keys(defaultProps);
 var setDefaultProps = function setDefaultProps(partialProps) {
   /* istanbul ignore else */
@@ -2304,12 +2338,14 @@ function getExtendedPassedProps(passedProps) {
         defaultValue = plugin.defaultValue;
 
     if (name) {
-      acc[name] = passedProps[name] !== undefined ? passedProps[name] : defaultValue;
+      var _name;
+
+      acc[name] = passedProps[name] !== undefined ? passedProps[name] : (_name = defaultProps[name]) != null ? _name : defaultValue;
     }
 
     return acc;
   }, {});
-  return Object.assign({}, passedProps, {}, pluginProps);
+  return Object.assign({}, passedProps, pluginProps);
 }
 function getDataAttributeProps(reference, plugins) {
   var propKeys = plugins ? Object.keys(getExtendedPassedProps(Object.assign({}, defaultProps, {
@@ -2340,7 +2376,7 @@ function evaluateProps(reference, props) {
   var out = Object.assign({}, props, {
     content: invokeWithArgsOrReturn(props.content, [reference])
   }, props.ignoreAttributes ? {} : getDataAttributeProps(reference, props.plugins));
-  out.aria = Object.assign({}, defaultProps.aria, {}, out.aria);
+  out.aria = Object.assign({}, defaultProps.aria, out.aria);
   out.aria = {
     expanded: out.aria.expanded === 'auto' ? props.interactive : out.aria.expanded,
     content: out.aria.content === 'auto' ? props.interactive ? null : 'describedby' : out.aria.content
@@ -2501,7 +2537,7 @@ var mouseMoveListeners = []; // Used by `hideAll()`
 
 var mountedInstances = [];
 function createTippy(reference, passedProps) {
-  var props = evaluateProps(reference, Object.assign({}, defaultProps, {}, getExtendedPassedProps(removeUndefinedProps(passedProps)))); // ===========================================================================
+  var props = evaluateProps(reference, Object.assign({}, defaultProps, getExtendedPassedProps(removeUndefinedProps(passedProps)))); // ===========================================================================
   // 🔒 Private members
   // ===========================================================================
 
@@ -2599,10 +2635,9 @@ function createTippy(reference, passedProps) {
       instance.clearDelayTimeouts();
     }
   });
-  popper.addEventListener('mouseleave', function (event) {
+  popper.addEventListener('mouseleave', function () {
     if (instance.props.interactive && instance.props.trigger.indexOf('mouseenter') >= 0) {
       getDocument().addEventListener('mousemove', debouncedOnMouseMove);
-      debouncedOnMouseMove(event);
     }
   });
   return instance; // ===========================================================================
@@ -2622,7 +2657,7 @@ function createTippy(reference, passedProps) {
     var _instance$props$rende;
 
     // @ts-ignore
-    return !!((_instance$props$rende = instance.props.render) == null ? void 0 : _instance$props$rende.$$tippy);
+    return !!((_instance$props$rende = instance.props.render) != null && _instance$props$rende.$$tippy);
   }
 
   function getCurrentTarget() {
@@ -2649,8 +2684,12 @@ function createTippy(reference, passedProps) {
     return getValueAtIndexOrReturn(instance.props.delay, isShow ? 0 : 1, defaultProps.delay);
   }
 
-  function handleStyles() {
-    popper.style.pointerEvents = instance.props.interactive && instance.state.isVisible ? '' : 'none';
+  function handleStyles(fromHide) {
+    if (fromHide === void 0) {
+      fromHide = false;
+    }
+
+    popper.style.pointerEvents = instance.props.interactive && !fromHide ? '' : 'none';
     popper.style.zIndex = "" + instance.props.zIndex;
   }
 
@@ -2661,7 +2700,7 @@ function createTippy(reference, passedProps) {
 
     pluginsHooks.forEach(function (pluginHooks) {
       if (pluginHooks[hook]) {
-        pluginHooks[hook].apply(void 0, args);
+        pluginHooks[hook].apply(pluginHooks, args);
       }
     });
 
@@ -2727,15 +2766,18 @@ function createTippy(reference, passedProps) {
       if (didTouchMove || event.type === 'mousedown') {
         return;
       }
-    } // Clicked on interactive popper
+    }
 
+    var actualTarget = event.composedPath && event.composedPath()[0] || event.target; // Clicked on interactive popper
 
-    if (instance.props.interactive && popper.contains(event.target)) {
+    if (instance.props.interactive && actualContains(popper, actualTarget)) {
       return;
     } // Clicked on the event listeners target
 
 
-    if (getCurrentTarget().contains(event.target)) {
+    if (normalizeToArray(instance.props.triggerTarget || reference).some(function (el) {
+      return actualContains(el, actualTarget);
+    })) {
       if (currentInput.isTouch) {
         return;
       }
@@ -2863,7 +2905,7 @@ function createTippy(reference, passedProps) {
           break;
 
         case 'focus':
-          on(isIE ? 'focusout' : 'blur', onBlurOrFocusOut);
+          on(isIE11 ? 'focusout' : 'blur', onBlurOrFocusOut);
           break;
 
         case 'focusin':
@@ -3089,7 +3131,7 @@ function createTippy(reference, passedProps) {
 
     var node = getCurrentTarget();
 
-    if (instance.props.interactive && appendTo === defaultProps.appendTo || appendTo === 'parent') {
+    if (instance.props.interactive && appendTo === TIPPY_DEFAULT_APPEND_TO || appendTo === 'parent') {
       parentNode = node.parentNode;
     } else {
       parentNode = invokeWithArgsOrReturn(appendTo, [node]);
@@ -3101,6 +3143,7 @@ function createTippy(reference, passedProps) {
       parentNode.appendChild(popper);
     }
 
+    instance.state.isMounted = true;
     createPopperInstance();
     /* istanbul ignore else */
 
@@ -3203,7 +3246,7 @@ function createTippy(reference, passedProps) {
     invokeHook('onBeforeUpdate', [instance, partialProps]);
     removeListeners();
     var prevProps = instance.props;
-    var nextProps = evaluateProps(reference, Object.assign({}, instance.props, {}, partialProps, {
+    var nextProps = evaluateProps(reference, Object.assign({}, prevProps, removeUndefinedProps(partialProps), {
       ignoreAttributes: true
     }));
     instance.props = nextProps;
@@ -3330,7 +3373,6 @@ function createTippy(reference, passedProps) {
       // popper has been positioned for the first time
 
       (_instance$popperInsta2 = instance.popperInstance) == null ? void 0 : _instance$popperInsta2.forceUpdate();
-      instance.state.isMounted = true;
       invokeHook('onMount', [instance]);
 
       if (instance.props.animation && getIsDefaultRenderFn()) {
@@ -3375,7 +3417,7 @@ function createTippy(reference, passedProps) {
 
     cleanupInteractiveMouseListeners();
     removeDocumentPress();
-    handleStyles();
+    handleStyles(true);
 
     if (getIsDefaultRenderFn()) {
       var _getDefaultTemplateCh4 = getDefaultTemplateChildren(),
@@ -3561,10 +3603,19 @@ var createSingleton = function createSingleton(tippyInstances, optionalProps) {
 
   var individualInstances = tippyInstances;
   var references = [];
+  var triggerTargets = [];
   var currentTarget;
   var overrides = optionalProps.overrides;
   var interceptSetPropsCleanups = [];
   var shownOnCreate = false;
+
+  function setTriggerTargets() {
+    triggerTargets = individualInstances.map(function (instance) {
+      return normalizeToArray(instance.props.triggerTarget || instance.reference);
+    }).reduce(function (acc, item) {
+      return acc.concat(item);
+    }, []);
+  }
 
   function setReferences() {
     references = individualInstances.map(function (instance) {
@@ -3602,7 +3653,7 @@ var createSingleton = function createSingleton(tippyInstances, optionalProps) {
 
 
   function prepareInstance(singleton, target) {
-    var index = references.indexOf(target); // bail-out
+    var index = triggerTargets.indexOf(target); // bail-out
 
     if (target === currentTarget) {
       return;
@@ -3615,13 +3666,16 @@ var createSingleton = function createSingleton(tippyInstances, optionalProps) {
     }, {});
     singleton.setProps(Object.assign({}, overrideProps, {
       getReferenceClientRect: typeof overrideProps.getReferenceClientRect === 'function' ? overrideProps.getReferenceClientRect : function () {
-        return target.getBoundingClientRect();
+        var _references$index;
+
+        return (_references$index = references[index]) == null ? void 0 : _references$index.getBoundingClientRect();
       }
     }));
   }
 
   enableInstances(false);
   setReferences();
+  setTriggerTargets();
   var plugin = {
     fn: function fn() {
       return {
@@ -3651,7 +3705,7 @@ var createSingleton = function createSingleton(tippyInstances, optionalProps) {
   };
   var singleton = tippy(div(), Object.assign({}, removeProperties(optionalProps, ['overrides']), {
     plugins: [plugin].concat(optionalProps.plugins || []),
-    triggerTarget: references,
+    triggerTarget: triggerTargets,
     popperOptions: Object.assign({}, optionalProps.popperOptions, {
       modifiers: [].concat(((_optionalProps$popper = optionalProps.popperOptions) == null ? void 0 : _optionalProps$popper.modifiers) || [], [applyStylesModifier])
     })
@@ -3678,13 +3732,13 @@ var createSingleton = function createSingleton(tippyInstances, optionalProps) {
     } // target is a child tippy instance
 
 
-    if (individualInstances.includes(target)) {
+    if (individualInstances.indexOf(target) >= 0) {
       var ref = target.reference;
       return prepareInstance(singleton, ref);
     } // target is a ReferenceElement
 
 
-    if (references.includes(target)) {
+    if (references.indexOf(target) >= 0) {
       return prepareInstance(singleton, target);
     }
   };
@@ -3727,9 +3781,10 @@ var createSingleton = function createSingleton(tippyInstances, optionalProps) {
     individualInstances = nextInstances;
     enableInstances(false);
     setReferences();
-    interceptSetProps(singleton);
+    setTriggerTargets();
+    interceptSetPropsCleanups = interceptSetProps(singleton);
     singleton.setProps({
-      triggerTarget: references
+      triggerTarget: triggerTargets
     });
   };
 
@@ -3760,7 +3815,9 @@ function delegate(targets, props) {
     trigger: 'manual',
     touch: false
   });
-  var childProps = Object.assign({}, nativeProps, {
+  var childProps = Object.assign({
+    touch: defaultProps.touch
+  }, nativeProps, {
     showOnCreate: true
   });
   var returnValue = tippy(targets, parentProps);
@@ -3886,7 +3943,7 @@ var animateFill = {
     var _instance$props$rende;
 
     // @ts-ignore
-    if (!((_instance$props$rende = instance.props.render) == null ? void 0 : _instance$props$rende.$$tippy)) {
+    if (!((_instance$props$rende = instance.props.render) != null && _instance$props$rende.$$tippy)) {
       if (false) {}
 
       return {};
@@ -4009,6 +4066,7 @@ var followCursor = {
 
       if (isCursorOverReference || !instance.props.interactive) {
         instance.setProps({
+          // @ts-ignore - unneeded DOMRect properties
           getReferenceClientRect: function getReferenceClientRect() {
             var rect = reference.getBoundingClientRect();
             var x = clientX;
@@ -4145,6 +4203,7 @@ var inlinePositioning = {
     var placement;
     var cursorRectIndex = -1;
     var isInternalUpdate = false;
+    var triedPlacements = [];
     var modifier = {
       name: 'tippyInlinePositioning',
       enabled: true,
@@ -4153,8 +4212,14 @@ var inlinePositioning = {
         var state = _ref2.state;
 
         if (isEnabled()) {
-          if (placement !== state.placement) {
+          if (triedPlacements.indexOf(state.placement) !== -1) {
+            triedPlacements = [];
+          }
+
+          if (placement !== state.placement && triedPlacements.indexOf(state.placement) === -1) {
+            triedPlacements.push(state.placement);
             instance.setProps({
+              // @ts-ignore - unneeded DOMRect properties
               getReferenceClientRect: function getReferenceClientRect() {
                 return _getReferenceClientRect(state.placement);
               }
@@ -4191,10 +4256,11 @@ var inlinePositioning = {
           var cursorRect = rects.find(function (rect) {
             return rect.left - 2 <= event.clientX && rect.right + 2 >= event.clientX && rect.top - 2 <= event.clientY && rect.bottom + 2 >= event.clientY;
           });
-          cursorRectIndex = rects.indexOf(cursorRect);
+          var index = rects.indexOf(cursorRect);
+          cursorRectIndex = index > -1 ? index : cursorRectIndex;
         }
       },
-      onUntrigger: function onUntrigger() {
+      onHidden: function onHidden() {
         cursorRectIndex = -1;
       }
     };
@@ -6534,6 +6600,106 @@ const TranslateOptionsDefaults = {
   NL: nlTranslation,
   NLD: nlTranslation
 };
+;// CONCATENATED MODULE: ../engrid-scripts/packages/common/dist/loader.js
+// Ref: https://app.getguru.com/card/iMgx968T/ENgrid-Loader
+
+class Loader {
+  constructor() {
+    this.cssElement = document.querySelector('link[href*="engrid."][rel="stylesheet"]');
+    this.jsElement = document.querySelector('script[src*="engrid."]');
+  } // Returns true if ENgrid should reload (that means the current ENgrid is not the right one)
+  // Returns false if ENgrid should not reload (that means the current ENgrid is the right one)
+
+
+  reload() {
+    var _a, _b, _c;
+
+    const isLoaded = engrid_ENGrid.getBodyData("loaded");
+    const assets = this.getOption("assets");
+
+    if (!assets || isLoaded) {
+      if (engrid_ENGrid.debug) console.log("ENgrid Loader: LOADED");
+      return false;
+    } // Load the right ENgrid
+
+
+    if (engrid_ENGrid.debug) console.log("ENgrid Loader: RELOADING");
+    engrid_ENGrid.setBodyData("loaded", "true"); // Set the loaded flag, so the next time we don't reload
+    // Fetch the desired repo, assets location, and override JS/CSS
+
+    const engrid_repo = this.getOption("repo-name");
+    const engrid_repo_owner = this.getOption("repo-owner");
+    let engrid_js_url = "";
+    let engrid_css_url = "";
+
+    switch (assets) {
+      case "local":
+        if (engrid_ENGrid.debug) console.log("ENgrid Loader: LOADING LOCAL"); // Find a way to guess local URL if there's no engrid_repo
+
+        if (!engrid_repo) {
+          const theme = engrid_ENGrid.getBodyData("theme");
+          engrid_js_url = `https://engrid-${theme}.test/dist/engrid.js`;
+          engrid_css_url = `https://engrid-${theme}.test/dist/engrid.css`;
+        } else {
+          engrid_js_url = `https://engrid-${engrid_repo}.test/dist/engrid.js`;
+          engrid_css_url = `https://engrid-${engrid_repo}.test/dist/engrid.css`;
+        }
+
+        break;
+
+      case "flush":
+        if (engrid_ENGrid.debug) console.log("ENgrid Loader: FLUSHING CACHE");
+        const timestamp = Date.now();
+        engrid_js_url = ((_a = this.jsElement) === null || _a === void 0 ? void 0 : _a.getAttribute("src")) + "?v=" + timestamp;
+        engrid_css_url = ((_b = this.cssElement) === null || _b === void 0 ? void 0 : _b.getAttribute("href")) + "?v=" + timestamp;
+        break;
+
+      default:
+        if (engrid_ENGrid.debug) console.log("ENgrid Loader: LOADING EXTERNAL");
+        engrid_js_url = "https://cdn.jsdelivr.net/gh/" + engrid_repo_owner + "/" + engrid_repo + "@" + assets + "/dist/engrid.js";
+        engrid_css_url = "https://cdn.jsdelivr.net/gh/" + engrid_repo_owner + "/" + engrid_repo + "@" + assets + "/dist/engrid.css";
+    }
+
+    this.setCssFile(engrid_css_url);
+    this.setJsFile(engrid_js_url);
+    (_c = this.jsElement) === null || _c === void 0 ? void 0 : _c.remove();
+    return true;
+  }
+
+  getOption(key) {
+    const urlParam = engrid_ENGrid.getUrlParameter(key); // Only "assets" can be set in URL
+
+    if (urlParam && key === "assets") {
+      return urlParam;
+    } else if (window.EngridLoader && window.EngridLoader.hasOwnProperty(key)) {
+      return window.EngridLoader[key];
+    } else if (this.jsElement && this.jsElement.hasAttribute("data-" + key)) {
+      return this.jsElement.getAttribute("data-" + key);
+    }
+
+    return null;
+  }
+
+  setCssFile(url) {
+    if (this.cssElement) {
+      this.cssElement.setAttribute("href", url);
+    } else {
+      const link = document.createElement("link");
+      link.setAttribute("rel", "stylesheet");
+      link.setAttribute("type", "text/css");
+      link.setAttribute("media", "all");
+      link.setAttribute("href", url);
+      document.head.appendChild(link);
+    }
+  }
+
+  setJsFile(url) {
+    const script = document.createElement("script");
+    script.setAttribute("src", url);
+    document.head.appendChild(script);
+  }
+
+}
 // EXTERNAL MODULE: ../engrid-scripts/packages/common/node_modules/strongly-typed-events/dist/index.js
 var dist = __webpack_require__(590);
 ;// CONCATENATED MODULE: ../engrid-scripts/packages/common/dist/events/en-form.js
@@ -7243,9 +7409,11 @@ class App extends engrid_ENGrid {
       return enURLPattern.test(referrer);
     };
 
+    const loader = new Loader();
     this.options = Object.assign(Object.assign({}, OptionsDefaults), options); // Add Options to window
 
-    window.EngridOptions = this.options; // Document Load
+    window.EngridOptions = this.options;
+    if (loader.reload()) return; // Document Load
 
     if (document.readyState !== "loading") {
       this.run();
@@ -7274,9 +7442,7 @@ class App extends engrid_ENGrid {
 
   run() {
     // Enable debug if available is the first thing
-    if (this.options.Debug || App.getUrlParameter("debug") == "true") App.setBodyData("debug", ""); // IE Warning
-
-    new IE(); // Page Background
+    if (this.options.Debug || App.getUrlParameter("debug") == "true") App.setBodyData("debug", ""); // Page Background
 
     new PageBackground(); // TODO: Abstract everything to the App class so we can remove custom-methods
 
@@ -7351,7 +7517,9 @@ class App extends engrid_ENGrid {
 
     new setRecurrFreq(); // Upsell Lightbox
 
-    new UpsellLightbox(); // On the end of the script, after all subscribers defined, let's load the current value
+    new UpsellLightbox(); // Amount Labels
+
+    new AmountLabel(); // On the end of the script, after all subscribers defined, let's load the current value
 
     this._amount.load();
 
@@ -7368,7 +7536,9 @@ class App extends engrid_ENGrid {
 
     if (this.options.CapitalizeFields) new CapitalizeFields(); // Auto Year Class
 
-    if (this.options.AutoYear) new AutoYear(); // Autocomplete Class
+    if (this.options.AutoYear) new AutoYear(); // Credit Card Numbers Only
+
+    new CreditCardNumbers(); // Autocomplete Class
 
     new Autocomplete(); // Ecard Class
 
@@ -7569,6 +7739,40 @@ class App extends engrid_ENGrid {
         App.setBodyData("country", countrySelect.value);
       });
     }
+  }
+
+}
+;// CONCATENATED MODULE: ../engrid-scripts/packages/common/dist/amount-label.js
+// This script checks if the donations amounts are numbers and if they are, appends the correct currency symbol
+
+class AmountLabel {
+  constructor() {
+    this._frequency = DonationFrequency.getInstance();
+
+    if (!this.shouldRun()) {
+      // If we're not on a Donation Page, get out
+      return;
+    }
+
+    this._frequency.onFrequencyChange.subscribe(s => window.setTimeout(this.fixAmountLabels.bind(this), 100)); // Run the main function on page load so we can analyze the amounts of the current frequency
+
+
+    window.setTimeout(this.fixAmountLabels.bind(this), 300);
+  } // Should we run the script?
+
+
+  shouldRun() {
+    return engrid_ENGrid.getPageType() === "DONATION";
+  } // Fix Amount Labels
+
+
+  fixAmountLabels() {
+    let amounts = document.querySelectorAll(".en__field--donationAmt label");
+    amounts.forEach(element => {
+      if (!isNaN(element.innerText)) {
+        element.innerText = engrid_ENGrid.getOption("CurrencySymbol") + element.innerText;
+      }
+    });
   }
 
 }
@@ -7790,6 +7994,26 @@ class CapitalizeFields {
       if (engrid_ENGrid.debug) console.log("Capitalized", field.value);
     }
 
+    return true;
+  }
+
+}
+;// CONCATENATED MODULE: ../engrid-scripts/packages/common/dist/credit-card-numbers.js
+// This class removes any non-numeric characters from the credit card field
+
+class CreditCardNumbers {
+  constructor() {
+    this._form = EnForm.getInstance();
+    this.ccField = document.getElementById("en__field_transaction_ccnumber");
+
+    if (this.ccField) {
+      this._form.onSubmit.subscribe(() => this.onlyNumbersCC());
+    }
+  }
+
+  onlyNumbersCC() {
+    const onlyNumbers = this.ccField.value.replace(/\D/g, "");
+    this.ccField.value = onlyNumbers;
     return true;
   }
 
@@ -8737,143 +8961,6 @@ if (contentFooter && isInViewport(contentFooter)) {
 } else {
   document.getElementsByTagName("BODY")[0].setAttribute("data-engrid-footer-below-fold", "");
 }
-;// CONCATENATED MODULE: ../engrid-scripts/packages/common/dist/cookie.js
-/**
-Example:
-import * as cookie from "./cookie";
-
-cookie.set('name', 'value');
-cookie.get('name'); // => 'value'
-cookie.remove('name');
-cookie.set('name', 'value', { expires: 7 }); // 7 Days cookie
-cookie.set('name', 'value', { expires: 7, path: '' }); // Set Path
-cookie.remove('name', { path: '' });
- */
-function stringifyAttribute(name, value) {
-  if (!value) {
-    return "";
-  }
-
-  let stringified = "; " + name;
-
-  if (value === true) {
-    return stringified; // boolean attributes shouldn't have a value
-  }
-
-  return stringified + "=" + value;
-}
-
-function stringifyAttributes(attributes) {
-  if (typeof attributes.expires === "number") {
-    let expires = new Date();
-    expires.setMilliseconds(expires.getMilliseconds() + attributes.expires * 864e5);
-    attributes.expires = expires;
-  }
-
-  return stringifyAttribute("Expires", attributes.expires ? attributes.expires.toUTCString() : "") + stringifyAttribute("Domain", attributes.domain) + stringifyAttribute("Path", attributes.path) + stringifyAttribute("Secure", attributes.secure) + stringifyAttribute("SameSite", attributes.sameSite);
-}
-
-function encode(name, value, attributes) {
-  return encodeURIComponent(name).replace(/%(23|24|26|2B|5E|60|7C)/g, decodeURIComponent) // allowed special characters
-  .replace(/\(/g, "%28").replace(/\)/g, "%29") + // replace opening and closing parens
-  "=" + encodeURIComponent(value) // allowed special characters
-  .replace(/%(23|24|26|2B|3A|3C|3E|3D|2F|3F|40|5B|5D|5E|60|7B|7D|7C)/g, decodeURIComponent) + stringifyAttributes(attributes);
-}
-function parse(cookieString) {
-  let result = {};
-  let cookies = cookieString ? cookieString.split("; ") : [];
-  let rdecode = /(%[\dA-F]{2})+/gi;
-
-  for (let i = 0; i < cookies.length; i++) {
-    let parts = cookies[i].split("=");
-    let cookie = parts.slice(1).join("=");
-
-    if (cookie.charAt(0) === '"') {
-      cookie = cookie.slice(1, -1);
-    }
-
-    try {
-      let name = parts[0].replace(rdecode, decodeURIComponent);
-      result[name] = cookie.replace(rdecode, decodeURIComponent);
-    } catch (e) {// ignore cookies with invalid name/value encoding
-    }
-  }
-
-  return result;
-}
-function getAll() {
-  return parse(document.cookie);
-}
-function get(name) {
-  return getAll()[name];
-}
-function set(name, value, attributes) {
-  document.cookie = encode(name, value, Object.assign({
-    path: "/"
-  }, attributes));
-}
-function remove(name, attributes) {
-  set(name, "", Object.assign(Object.assign({}, attributes), {
-    expires: -1
-  }));
-}
-;// CONCATENATED MODULE: ../engrid-scripts/packages/common/dist/ie.js
-
-class IE {
-  constructor() {
-    this.debug = false;
-    this.overlay = document.createElement("div");
-
-    const isIE = () => {
-      return navigator.userAgent.indexOf("MSIE") !== -1 || navigator.appVersion.indexOf("Trident/") > -1;
-    }; // If it's not IE, get out!
-
-
-    if (!isIE()) return;
-    const markup = `
-    <div class="ieModal-container">
-        <a href="#" class="button-close"></a>
-        <div id="ieModalContent">
-        <strong>Attention: </strong>
-        Your browser is no longer supported and will not receive any further security updates. Websites may no longer display or behave correctly as they have in the past. 
-        Please transition to using <a href="https://www.microsoft.com/edge">Microsoft Edge</a>, Microsoft's latest browser, to continue enjoying the modern web.
-        </div>
-    </div>`;
-    let overlay = document.createElement("div");
-    overlay.id = "ieModal";
-    overlay.classList.add("is-hidden");
-    overlay.innerHTML = markup;
-    const closeButton = overlay.querySelector(".button-close");
-    closeButton.addEventListener("click", this.close.bind(this));
-    document.addEventListener("keyup", e => {
-      if (e.key === "Escape") {
-        closeButton.click();
-      }
-    });
-    this.overlay = overlay;
-    document.body.appendChild(overlay);
-    this.open();
-  }
-
-  open() {
-    const hideModal = get("hide_ieModal"); // Get cookie
-    // If we have a cookie AND no Debug, get out
-
-    if (hideModal && !this.debug) return; // Show Modal
-
-    this.overlay.classList.remove("is-hidden");
-  }
-
-  close(e) {
-    e.preventDefault();
-    set("hide_ieModal", "1", {
-      expires: 1
-    }); // Create one day cookie
-
-    this.overlay.classList.add("is-hidden");
-  }
-
-}
 ;// CONCATENATED MODULE: ../engrid-scripts/packages/common/dist/iframe.js
 
 const sendIframeHeight = () => {
@@ -9518,6 +9605,86 @@ class ShowHideRadioCheckboxes {
   }
 
 }
+;// CONCATENATED MODULE: ../engrid-scripts/packages/common/dist/cookie.js
+/**
+Example:
+import * as cookie from "./cookie";
+
+cookie.set('name', 'value');
+cookie.get('name'); // => 'value'
+cookie.remove('name');
+cookie.set('name', 'value', { expires: 7 }); // 7 Days cookie
+cookie.set('name', 'value', { expires: 7, path: '' }); // Set Path
+cookie.remove('name', { path: '' });
+ */
+function stringifyAttribute(name, value) {
+  if (!value) {
+    return "";
+  }
+
+  let stringified = "; " + name;
+
+  if (value === true) {
+    return stringified; // boolean attributes shouldn't have a value
+  }
+
+  return stringified + "=" + value;
+}
+
+function stringifyAttributes(attributes) {
+  if (typeof attributes.expires === "number") {
+    let expires = new Date();
+    expires.setMilliseconds(expires.getMilliseconds() + attributes.expires * 864e5);
+    attributes.expires = expires;
+  }
+
+  return stringifyAttribute("Expires", attributes.expires ? attributes.expires.toUTCString() : "") + stringifyAttribute("Domain", attributes.domain) + stringifyAttribute("Path", attributes.path) + stringifyAttribute("Secure", attributes.secure) + stringifyAttribute("SameSite", attributes.sameSite);
+}
+
+function encode(name, value, attributes) {
+  return encodeURIComponent(name).replace(/%(23|24|26|2B|5E|60|7C)/g, decodeURIComponent) // allowed special characters
+  .replace(/\(/g, "%28").replace(/\)/g, "%29") + // replace opening and closing parens
+  "=" + encodeURIComponent(value) // allowed special characters
+  .replace(/%(23|24|26|2B|3A|3C|3E|3D|2F|3F|40|5B|5D|5E|60|7B|7D|7C)/g, decodeURIComponent) + stringifyAttributes(attributes);
+}
+function parse(cookieString) {
+  let result = {};
+  let cookies = cookieString ? cookieString.split("; ") : [];
+  let rdecode = /(%[\dA-F]{2})+/gi;
+
+  for (let i = 0; i < cookies.length; i++) {
+    let parts = cookies[i].split("=");
+    let cookie = parts.slice(1).join("=");
+
+    if (cookie.charAt(0) === '"') {
+      cookie = cookie.slice(1, -1);
+    }
+
+    try {
+      let name = parts[0].replace(rdecode, decodeURIComponent);
+      result[name] = cookie.replace(rdecode, decodeURIComponent);
+    } catch (e) {// ignore cookies with invalid name/value encoding
+    }
+  }
+
+  return result;
+}
+function getAll() {
+  return parse(document.cookie);
+}
+function get(name) {
+  return getAll()[name];
+}
+function set(name, value, attributes) {
+  document.cookie = encode(name, value, Object.assign({
+    path: "/"
+  }, attributes));
+}
+function remove(name, attributes) {
+  set(name, "", Object.assign(Object.assign({}, attributes), {
+    expires: -1
+  }));
+}
 ;// CONCATENATED MODULE: ../engrid-scripts/packages/common/dist/translate-fields.js
 
  // This class works when the user has added ".simple_country_select" as a class in page builder for the Country select
@@ -9590,7 +9757,10 @@ class TranslateFields {
       const fieldWrapper = field.closest(".en__field");
 
       if (fieldWrapper) {
-        const fieldLabel = fieldWrapper.querySelector(".en__field__label");
+        const fieldLabel = fieldWrapper.querySelector(".en__field__label"); // Check if there's the simple country select class
+
+        const simpleCountrySelect = fieldLabel.querySelector(".engrid-simple-country");
+        let simpleCountrySelectClone = simpleCountrySelect ? simpleCountrySelect.cloneNode(true) : null;
 
         if (field instanceof HTMLInputElement && field.placeholder != "") {
           if (!fieldLabel || fieldLabel.innerHTML == field.placeholder) {
@@ -9602,6 +9772,10 @@ class TranslateFields {
         if (fieldLabel) {
           fieldLabel.dataset.original = fieldLabel.innerHTML;
           fieldLabel.innerHTML = translation;
+
+          if (simpleCountrySelectClone) {
+            fieldLabel.appendChild(simpleCountrySelectClone);
+          }
         }
       }
     }
@@ -9613,7 +9787,14 @@ class TranslateFields {
       if (field instanceof HTMLInputElement && field.dataset.original) {
         field.placeholder = field.dataset.original;
       } else {
+        // Check if there's the simple country select class
+        const simpleCountrySelect = field.querySelector(".engrid-simple-country");
+        let simpleCountrySelectClone = simpleCountrySelect ? simpleCountrySelect.cloneNode(true) : null;
         field.innerHTML = field.dataset.original;
+
+        if (simpleCountrySelectClone) {
+          field.appendChild(simpleCountrySelectClone);
+        }
       }
 
       field.removeAttribute("data-original");
@@ -10413,14 +10594,12 @@ class SimpleCountrySelect {
   constructor() {
     this.countryWrapper = document.querySelector(".simple_country_select");
     this.countrySelect = document.querySelector("#en__field_supporter_country");
-    this.countriesNames = new Intl.DisplayNames(["en"], {
-      type: "region"
-    });
     this.country = null;
     const engridAutofill = get("engrid-autofill");
-    const submissionFailed = !!(engrid_ENGrid.checkNested(window.EngagingNetworks, "require", "_defined", "enjs", "checkSubmissionFailed") && window.EngagingNetworks.require._defined.enjs.checkSubmissionFailed()); // Only run if there's no engrid-autofill cookie
+    const submissionFailed = !!(engrid_ENGrid.checkNested(window.EngagingNetworks, "require", "_defined", "enjs", "checkSubmissionFailed") && window.EngagingNetworks.require._defined.enjs.checkSubmissionFailed());
+    const hasIntlSupport = !!engrid_ENGrid.checkNested(window.Intl, "DisplayNames"); // Only run if there's no engrid-autofill cookie && if it has Intl support
 
-    if (!engridAutofill && !submissionFailed) {
+    if (!engridAutofill && !submissionFailed && hasIntlSupport) {
       fetch(`https://${window.location.hostname}/cdn-cgi/trace`).then(res => res.text()).then(t => {
         let data = t.replace(/[\r\n]+/g, '","').replace(/\=+/g, '":"');
         data = '{"' + data.slice(0, data.lastIndexOf('","')) + '"}';
@@ -10428,25 +10607,25 @@ class SimpleCountrySelect {
         this.country = jsondata.loc;
         this.init(); // console.log("Country:", this.country);
       });
+    } else {
+      this.init();
     }
   }
 
   init() {
     if (this.countrySelect) {
       if (this.country) {
-        // We are setting the country by Name because the ISO code is not always the same. They have 2 and 3 letter codes.
-        this.setCountryByName(this.countriesNames.of(this.country));
+        const countriesNames = new Intl.DisplayNames(["en"], {
+          type: "region"
+        }); // We are setting the country by Name because the ISO code is not always the same. They have 2 and 3 letter codes.
+
+        this.setCountryByName(countriesNames.of(this.country));
       }
 
-      let countrySelectLabel = this.countrySelect.options[this.countrySelect.selectedIndex].innerHTML;
       let countrySelectValue = this.countrySelect.options[this.countrySelect.selectedIndex].value; // @TODO Update so that it reads "(Outside X?)" where X is the Value of the Country Select. No need for long form version of it.
 
-      if (countrySelectValue == "US") {
-        countrySelectValue = " US";
-      }
-
-      if (countrySelectLabel == "United States") {
-        countrySelectLabel = "the United States";
+      if (countrySelectValue.toUpperCase() == "US" || countrySelectValue.toUpperCase() == "USA" || countrySelectValue.toUpperCase() == "UNITED STATES") {
+        countrySelectValue = "the US";
       }
 
       let countryWrapper = document.querySelector(".simple_country_select");
@@ -10459,33 +10638,26 @@ class SimpleCountrySelect {
         // @TODO Update so that this follows the same pattern / HTML structure as the Tippy tooltips which are added to labels. REF: https://github.com/4site-interactive-studios/engrid-aiusa/blob/6e4692d4f9a28b9668d6c1bfed5622ac0cc5bdb9/src/scripts/main.js#L42
 
         if (addressLabel) {
-          let labelText = addressLabel.innerHTML; // Wrap the address label in a div to break out of the flexbox
-
-          this.wrap(addressLabel, document.createElement("div")); // Add our link INSIDE the address label
-          // Includes both long form and short form variants
+          let labelText = addressLabel.innerHTML; // Add our link INSIDE the address label
 
           let newEl = document.createElement("span");
-          newEl.innerHTML = ' <label id="en_custom_field_simple_country_select_long" class="en__field__label"><a href="javascript:void(0)">(Outside ' + countrySelectLabel + '?)</a></label><label id="en_custom_field_simple_country_select_short" class="en__field__label"><a href="javascript:void(0)">(Outside ' + countrySelectValue + "?)</a></label>";
+          newEl.innerHTML = '<label class="engrid-simple-country"><a href="javascript:void(0)">(Outside ' + countrySelectValue + "?)</a></label>";
           addressLabel.innerHTML = `${labelText}${newEl.innerHTML}`;
-          addressLabel.querySelectorAll("a").forEach(el => {
-            el.addEventListener("click", this.showCountrySelect.bind(this));
-          }); //this.insertAfter(newEl, addressLabel);
+          addressLabel.addEventListener("click", ev => {
+            var _a;
+
+            ev.preventDefault();
+
+            if (((_a = ev.target) === null || _a === void 0 ? void 0 : _a.tagName) === "A") {
+              this.showCountrySelect(ev);
+            }
+          });
         }
-      }
+      } // Deal with the auto-fill for the country
+
+
+      this.countrySelect.addEventListener("change", this.writeLink.bind(this));
     }
-  } // Helper function to insert HTML after a node
-
-
-  insertAfter(el, referenceNode) {
-    const parentElement = referenceNode.parentNode;
-    parentElement.insertBefore(el, referenceNode.nextSibling);
-  } // Helper function to wrap a target in a new element
-
-
-  wrap(el, wrapper) {
-    const parentElement = el.parentNode;
-    parentElement.insertBefore(wrapper, el);
-    wrapper.appendChild(el);
   }
 
   showCountrySelect(e) {
@@ -10499,6 +10671,16 @@ class SimpleCountrySelect {
     this.countrySelect.focus(); // Reinstate Country Select tab index
 
     this.countrySelect.removeAttribute("tabIndex");
+  }
+
+  writeLink() {
+    let countryName = this.countrySelect.options[this.countrySelect.selectedIndex].value;
+    let addressLabel = document.querySelector(".engrid-simple-country");
+
+    if (addressLabel) {
+      let labelLink = `<a href="javascript:void(0)">(Outside ${countryName}?)</a>`;
+      addressLabel.innerHTML = labelLink;
+    }
   }
 
   setCountryByName(countryName) {
@@ -11373,6 +11555,8 @@ class RememberMe {
 }
 ;// CONCATENATED MODULE: ../engrid-scripts/packages/common/dist/index.js
  // Runs first so it can change the DOM markup before any markup dependent code fires
+
+
 
 
 
@@ -12292,6 +12476,10 @@ class DonationLightboxForm {
         block: "start",
         inline: "start"
       });
+    }
+
+    if (sectionId > 0) {
+      this.sendMessage("status", "footer");
     }
   } // Scroll to an element's section
 
