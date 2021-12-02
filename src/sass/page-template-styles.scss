@@ -1,3 +1,14 @@
+@keyframes bounceRight {
+  0% {
+    transform: scaleX(-1) translateY(0);
+  }
+  50% {
+    transform: scaleX(-1) translateY(-10px);
+  }
+  100% {
+    transform: scaleX(-1) translateY(0);
+  }
+}
 @keyframes bounce {
   0% {
     transform: translateY(0);
@@ -276,12 +287,24 @@
       color: var(--color_primary);
       position: absolute;
       top: -30px;
-      left: -30px;
       width: 20px;
       height: 40px;
+      display: none;
+      &.right {
+        transform: scaleX(-1);
+        right: -30px;
+        display: block;
+      }
+      &.left {
+        left: -30px;
+        display: block;
+      }
     }
     &.bounce {
-      svg {
+      svg.right {
+        animation: bounceRight 0.5s infinite;
+      }
+      svg.left {
         animation: bounce 0.5s infinite;
       }
     }
