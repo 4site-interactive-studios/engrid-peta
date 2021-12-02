@@ -4960,6 +4960,16 @@ header .indicator__percentage{
     color:#fff;
   }
 }
+
+[class*=showifamount]{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height .3s ease-in-out;
+}
+
+[class*=showifamount].engrid-open{
+  max-height:100%;
+}
 [data-engrid-theme]{
   --engrid__page_padding:0px;
   --engrid__page_margin:0px;
@@ -7051,7 +7061,7 @@ body:not([data-engrid-debug]) #debug-bar{
   font-family:proxima-nova;
   font-style:normal;
   font-weight:700;
-  src:url(https://use.typekit.net/af/71f83c/00000000000000003b9b093b/27/l?fvd=n7&subset_id=2&v=3) format("woff2"), url(https://use.typekit.net/af/71f83c/00000000000000003b9b093b/27/d?fvd=n7&subset_id=2&v=3) format("woff"), url(https://use.typekit.net/af/71f83c/00000000000000003b9b093b/27/a?fvd=n7&subset_id=2&v=3) format("opentype");
+  src:url(https://use.typekit.net/af/71f83c/00000000000000003b9b093b/27/l?subset_id=2&fvd=n7&v=3) format("woff2"), url(https://use.typekit.net/af/71f83c/00000000000000003b9b093b/27/d?subset_id=2&fvd=n7&v=3) format("woff"), url(https://use.typekit.net/af/71f83c/00000000000000003b9b093b/27/a?subset_id=2&fvd=n7&v=3) format("opentype");
 }
 
 @font-face{
@@ -7059,7 +7069,7 @@ body:not([data-engrid-debug]) #debug-bar{
   font-family:proxima-nova;
   font-style:normal;
   font-weight:800;
-  src:url(https://use.typekit.net/af/a3eee8/00000000000000003b9b093c/27/l?fvd=n8&subset_id=2&v=3) format("woff2"), url(https://use.typekit.net/af/a3eee8/00000000000000003b9b093c/27/d?fvd=n8&subset_id=2&v=3) format("woff"), url(https://use.typekit.net/af/a3eee8/00000000000000003b9b093c/27/a?fvd=n8&subset_id=2&v=3) format("opentype");
+  src:url(https://use.typekit.net/af/a3eee8/00000000000000003b9b093c/27/l?subset_id=2&fvd=n8&v=3) format("woff2"), url(https://use.typekit.net/af/a3eee8/00000000000000003b9b093c/27/d?subset_id=2&fvd=n8&v=3) format("woff"), url(https://use.typekit.net/af/a3eee8/00000000000000003b9b093c/27/a?subset_id=2&fvd=n8&v=3) format("opentype");
 }
 
 @font-face{
@@ -7067,7 +7077,7 @@ body:not([data-engrid-debug]) #debug-bar{
   font-family:proxima-nova;
   font-style:normal;
   font-weight:600;
-  src:url(https://use.typekit.net/af/27776b/00000000000000003b9b0939/27/l?fvd=n6&subset_id=2&v=3) format("woff2"), url(https://use.typekit.net/af/27776b/00000000000000003b9b0939/27/d?fvd=n6&subset_id=2&v=3) format("woff"), url(https://use.typekit.net/af/27776b/00000000000000003b9b0939/27/a?fvd=n6&subset_id=2&v=3) format("opentype");
+  src:url(https://use.typekit.net/af/27776b/00000000000000003b9b0939/27/l?subset_id=2&fvd=n6&v=3) format("woff2"), url(https://use.typekit.net/af/27776b/00000000000000003b9b0939/27/d?subset_id=2&fvd=n6&v=3) format("woff"), url(https://use.typekit.net/af/27776b/00000000000000003b9b0939/27/a?subset_id=2&fvd=n6&v=3) format("opentype");
 }
 
 @font-face{
@@ -7075,7 +7085,7 @@ body:not([data-engrid-debug]) #debug-bar{
   font-family:proxima-nova;
   font-style:normal;
   font-weight:400;
-  src:url(https://use.typekit.net/af/4838bd/00000000000000003b9b0934/27/l?fvd=n4&subset_id=2&v=3) format("woff2"), url(https://use.typekit.net/af/4838bd/00000000000000003b9b0934/27/d?fvd=n4&subset_id=2&v=3) format("woff"), url(https://use.typekit.net/af/4838bd/00000000000000003b9b0934/27/a?fvd=n4&subset_id=2&v=3) format("opentype");
+  src:url(https://use.typekit.net/af/4838bd/00000000000000003b9b0934/27/l?subset_id=2&fvd=n4&v=3) format("woff2"), url(https://use.typekit.net/af/4838bd/00000000000000003b9b0934/27/d?subset_id=2&fvd=n4&v=3) format("woff"), url(https://use.typekit.net/af/4838bd/00000000000000003b9b0934/27/a?subset_id=2&fvd=n4&v=3) format("opentype");
 }
 
 @font-face{
@@ -7083,7 +7093,7 @@ body:not([data-engrid-debug]) #debug-bar{
   font-family:proxima-nova;
   font-style:normal;
   font-weight:300;
-  src:url(https://use.typekit.net/af/437c3d/00000000000000003b9b0932/27/l?fvd=n3&subset_id=2&v=3) format("woff2"), url(https://use.typekit.net/af/437c3d/00000000000000003b9b0932/27/d?fvd=n3&subset_id=2&v=3) format("woff"), url(https://use.typekit.net/af/437c3d/00000000000000003b9b0932/27/a?fvd=n3&subset_id=2&v=3) format("opentype");
+  src:url(https://use.typekit.net/af/437c3d/00000000000000003b9b0932/27/l?subset_id=2&fvd=n3&v=3) format("woff2"), url(https://use.typekit.net/af/437c3d/00000000000000003b9b0932/27/d?subset_id=2&fvd=n3&v=3) format("woff"), url(https://use.typekit.net/af/437c3d/00000000000000003b9b0932/27/a?subset_id=2&fvd=n3&v=3) format("opentype");
 }
 
 @font-face{
@@ -7091,7 +7101,7 @@ body:not([data-engrid-debug]) #debug-bar{
   font-family:nimbus-sans;
   font-style:normal;
   font-weight:400;
-  src:url(https://use.typekit.net/af/da0c19/00000000000000000001518d/27/l?fvd=n4&subset_id=2&v=3) format("woff2"), url(https://use.typekit.net/af/da0c19/00000000000000000001518d/27/d?fvd=n4&subset_id=2&v=3) format("woff"), url(https://use.typekit.net/af/da0c19/00000000000000000001518d/27/a?fvd=n4&subset_id=2&v=3) format("opentype");
+  src:url(https://use.typekit.net/af/da0c19/00000000000000000001518d/27/l?subset_id=2&fvd=n4&v=3) format("woff2"), url(https://use.typekit.net/af/da0c19/00000000000000000001518d/27/d?subset_id=2&fvd=n4&v=3) format("woff"), url(https://use.typekit.net/af/da0c19/00000000000000000001518d/27/a?subset_id=2&fvd=n4&v=3) format("opentype");
 }
 
 @font-face{
@@ -7099,7 +7109,7 @@ body:not([data-engrid-debug]) #debug-bar{
   font-family:nimbus-sans;
   font-style:normal;
   font-weight:900;
-  src:url(https://use.typekit.net/af/bfd933/000000000000000000010122/27/l?fvd=n9&subset_id=2&v=3) format("woff2"), url(https://use.typekit.net/af/bfd933/000000000000000000010122/27/d?fvd=n9&subset_id=2&v=3) format("woff"), url(https://use.typekit.net/af/bfd933/000000000000000000010122/27/a?fvd=n9&subset_id=2&v=3) format("opentype");
+  src:url(https://use.typekit.net/af/bfd933/000000000000000000010122/27/l?subset_id=2&fvd=n9&v=3) format("woff2"), url(https://use.typekit.net/af/bfd933/000000000000000000010122/27/d?subset_id=2&fvd=n9&v=3) format("woff"), url(https://use.typekit.net/af/bfd933/000000000000000000010122/27/a?subset_id=2&fvd=n9&v=3) format("opentype");
 }
 
 .tk-proxima-nova{

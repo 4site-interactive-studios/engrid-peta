@@ -74,13 +74,13 @@ export default class DonationLightboxForm {
       // If Form Submission Failed
       if (
         this.checkNested(
-          EngagingNetworks,
+          window.EngagingNetworks,
           "require",
           "_defined",
           "enjs",
           "checkSubmissionFailed"
         ) &&
-        EngagingNetworks.require._defined.enjs.checkSubmissionFailed()
+        window.EngagingNetworks.require._defined.enjs.checkSubmissionFailed()
       ) {
         console.log("DonationLightboxForm: Submission Failed");
         // Submission failed
@@ -271,7 +271,7 @@ export default class DonationLightboxForm {
                 name: document.querySelector("#en__field_supporter_firstName")
                   .value,
                 amount:
-                  EngagingNetworks.require._defined.enjs.getDonationTotal(),
+                  window.EngagingNetworks.require._defined.enjs.getDonationTotal(),
                 frequency: this.frequency.getInstance().frequency,
               })
             );
@@ -360,7 +360,15 @@ export default class DonationLightboxForm {
     }
 
     // Validate Amount
-    const amount = EngagingNetworks.require._defined.enjs.getDonationTotal();
+    const amount = this.checkNested(
+      window.EngagingNetworks,
+      "require",
+      "_defined",
+      "enjs",
+      "getDonationTotal"
+    )
+      ? window.EngagingNetworks.require._defined.enjs.getDonationTotal()
+      : 0;
     const amountBlock = form.querySelector(".en__field--donationAmt");
     const amountSection = this.getSectionId(amountBlock);
     if (sectionId === false || sectionId == amountSection) {
@@ -618,10 +626,17 @@ export default class DonationLightboxForm {
   }
   changeSubmitButton() {
     const submit = document.querySelector(".section-navigation__submit");
-    const amount =
-      "$" + EngagingNetworks.require._defined.enjs.getDonationTotal();
+    const amount = this.checkNested(
+      window.EngagingNetworks,
+      "require",
+      "_defined",
+      "enjs",
+      "getDonationTotal"
+    )
+      ? "$" + window.EngagingNetworks.require._defined.enjs.getDonationTotal()
+      : null;
     let frequency = this.frequency.getInstance().frequency;
-    let label = submit.dataset.label;
+    let label = submit ? submit.dataset.label : "";
     frequency = frequency === "no" ? "" : "<small>/mo</small>";
 
     if (amount) {
