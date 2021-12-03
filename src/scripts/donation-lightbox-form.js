@@ -1,4 +1,5 @@
-import { elementScrollIntoView } from "seamless-scroll-polyfill";
+import smoothscroll from "smoothscroll-polyfill";
+smoothscroll.polyfill();
 export default class DonationLightboxForm {
   constructor(DonationAmount, DonationFrequency) {
     this.amount = DonationAmount;
@@ -305,7 +306,7 @@ export default class DonationLightboxForm {
     const section = document.querySelector(`[data-section-id="${sectionId}"]`);
     if (this.sections[sectionId]) {
       console.log(section);
-      elementScrollIntoView(this.sections[sectionId], {
+      this.sections[sectionId].scrollIntoView({
         behavior: "smooth",
         block: "start",
         inline: "start",

@@ -13452,36 +13452,54 @@ class ShowIfAmount {
 // Events
 
 
-;// CONCATENATED MODULE: ./node_modules/seamless-scroll-polyfill/dist/esm/common.js
+;// CONCATENATED MODULE: ./node_modules/seamless-scroll-polyfill/lib/common.js
+const checkBehavior = (behavior) => {
+    return behavior === undefined || behavior === "auto" || behavior === "instant" || behavior === "smooth";
+};
+function elementScrollXY(x, y) {
+    this.scrollLeft = x;
+    this.scrollTop = y;
+}
+const failedExecute = (method, object, reason = "cannot convert to dictionary.") => `Failed to execute '${method}' on '${object}': ${reason}`;
+const failedExecuteInvalidEnumValue = (method, object, value) => failedExecute(method, object, `The provided value '${value}' is not a valid enum value of type ScrollBehavior.`);
+/* eslint-disable */
+const backupMethod = (proto, method, fallback) => {
+    const backup = `__SEAMLESS.BACKUP$${method}`;
+    if (!proto[backup] && proto[method] && !proto[method]?.__isPolyfill) {
+        proto[backup] = proto[method];
+    }
+    return proto[backup] || fallback;
+};
+/* eslint-enable */
+const isObject = (value) => {
+    const type = typeof value;
+    return value !== null && (type === "object" || type === "function");
+};
+const isScrollBehaviorSupported = () => "scrollBehavior" in window.document.documentElement.style;
+const markPolyfill = (method) => {
+    Object.defineProperty(method, "__isPolyfill", { value: true });
+};
+const modifyPrototypes = (prop, func) => {
+    markPolyfill(func);
+    [HTMLElement.prototype, SVGElement.prototype, Element.prototype].forEach((prototype) => {
+        backupMethod(prototype, prop);
+        prototype[prop] = func;
+    });
+};
+/**
+ * - On Chrome and Firefox, document.scrollingElement will return the <html> element.
+ * - Safari, document.scrollingElement will return the <body> element.
+ * - On Edge, document.scrollingElement will return the <body> element.
+ * - IE11 does not support document.scrollingElement, but you can assume its <html>.
+ */
+const scrollingElement = (element) => element.ownerDocument.scrollingElement || element.ownerDocument.documentElement;
+//# sourceMappingURL=common.js.map
+;// CONCATENATED MODULE: ./node_modules/seamless-scroll-polyfill/lib/scroll-step.js
 const ease = (k) => {
     return 0.5 * (1 - Math.cos(Math.PI * k));
 };
+const now = () => window.performance?.now?.() ?? window.Date.now();
 const DURATION = 500;
-const common_isScrollBehaviorSupported = () => "scrollBehavior" in document.documentElement.style;
-const common_original = {
-    _elementScroll: undefined,
-    get elementScroll() {
-        return (this._elementScroll || (this._elementScroll = HTMLElement.prototype.scroll ||
-            HTMLElement.prototype.scrollTo ||
-            function (x, y) {
-                this.scrollLeft = x;
-                this.scrollTop = y;
-            }));
-    },
-    _elementScrollIntoView: undefined,
-    get elementScrollIntoView() {
-        return (this._elementScrollIntoView || (this._elementScrollIntoView = HTMLElement.prototype.scrollIntoView));
-    },
-    _windowScroll: undefined,
-    get windowScroll() {
-        return (this._windowScroll || (this._windowScroll = window.scroll || window.scrollTo));
-    },
-};
-const common_modifyPrototypes = (modification) => {
-    const prototypes = [HTMLElement.prototype, SVGElement.prototype, Element.prototype];
-    prototypes.forEach((prototype) => modification(prototype));
-};
-const now = () => { var _a, _b, _c; return (_c = (_b = (_a = window.performance) === null || _a === void 0 ? void 0 : _a.now) === null || _b === void 0 ? void 0 : _b.call(_a)) !== null && _c !== void 0 ? _c : Date.now(); };
 const step = (context) => {
     const currentTime = now();
     const elapsed = (currentTime - context.timeStamp) / (context.duration || DURATION);
@@ -13494,10 +13512,14 @@ const step = (context) => {
     const currentX = context.startX + (context.targetX - context.startX) * value;
     const currentY = context.startY + (context.targetY - context.startY) * value;
     context.method(currentX, currentY);
-    context.rafId = requestAnimationFrame(() => {
+    context.rafId = window.requestAnimationFrame(() => {
         step(context);
     });
 };
+//# sourceMappingURL=scroll-step.js.map
+;// CONCATENATED MODULE: ./node_modules/seamless-scroll-polyfill/lib/scroll.js
+
+
 // https://drafts.csswg.org/cssom-view/#normalize-non-finite-values
 const nonFinite = (value) => {
     if (!isFinite(value)) {
@@ -13505,44 +13527,46 @@ const nonFinite = (value) => {
     }
     return Number(value);
 };
-const common_isObject = (value) => {
-    const type = typeof value;
-    return value !== null && (type === "object" || type === "function");
+const isConnected = (node) => {
+    return (node.isConnected ??
+        (!node.ownerDocument ||
+            // eslint-disable-next-line no-bitwise
+            !(node.ownerDocument.compareDocumentPosition(node) & /** DOCUMENT_POSITION_DISCONNECTED */ 1)));
 };
-//# sourceMappingURL=common.js.map
-;// CONCATENATED MODULE: ./node_modules/seamless-scroll-polyfill/dist/esm/Element.scroll.js
-
-const elementScroll = (element, options) => {
-    var _a, _b;
-    const originalBoundFunc = common_original.elementScroll.bind(element);
-    if (options.left === undefined && options.top === undefined) {
+const scrollWithOptions = (element, options, config) => {
+    if (!isConnected(element)) {
         return;
     }
     const startX = element.scrollLeft;
     const startY = element.scrollTop;
-    const targetX = nonFinite((_a = options.left) !== null && _a !== void 0 ? _a : startX);
-    const targetY = nonFinite((_b = options.top) !== null && _b !== void 0 ? _b : startY);
+    const targetX = nonFinite(options.left ?? startX);
+    const targetY = nonFinite(options.top ?? startY);
+    if (targetX === startX && targetY === startY) {
+        return;
+    }
+    const fallback = backupMethod(HTMLElement.prototype, "scroll", elementScrollXY);
+    const method = backupMethod(Object.getPrototypeOf(element), "scroll", fallback).bind(element);
     if (options.behavior !== "smooth") {
-        return originalBoundFunc(targetX, targetY);
+        method(targetX, targetY);
+        return;
     }
     const removeEventListener = () => {
         window.removeEventListener("wheel", cancelScroll);
         window.removeEventListener("touchmove", cancelScroll);
     };
     const context = {
+        ...config,
         timeStamp: now(),
-        duration: options.duration,
         startX,
         startY,
         targetX,
         targetY,
         rafId: 0,
-        method: originalBoundFunc,
-        timingFunc: options.timingFunc,
+        method,
         callback: removeEventListener,
     };
     const cancelScroll = () => {
-        cancelAnimationFrame(context.rafId);
+        window.cancelAnimationFrame(context.rafId);
         removeEventListener();
     };
     window.addEventListener("wheel", cancelScroll, {
@@ -13555,24 +13579,36 @@ const elementScroll = (element, options) => {
     });
     step(context);
 };
-const elementScrollPolyfill = (animationOptions) => {
-    if (isScrollBehaviorSupported()) {
-        return;
+const isWindow = (obj) => obj.window === obj;
+const createScroll = (scrollName) => (target, scrollOptions, config) => {
+    const [element, scrollType] = isWindow(target)
+        ? [scrollingElement(target.document.documentElement), "Window"]
+        : [target, "Element"];
+    const options = scrollOptions ?? {};
+    if (!isObject(options)) {
+        throw new TypeError(failedExecute(scrollName, scrollType));
     }
-    const originalFunc = original.elementScroll;
-    modifyPrototypes((prototype) => (prototype.scroll = function scroll() {
-        if (arguments.length === 1) {
-            const scrollOptions = arguments[0];
-            if (!isObject(scrollOptions)) {
-                throw new TypeError("Failed to execute 'scroll' on 'Element': parameter 1 ('options') is not an object.");
-            }
-            return elementScroll(this, { ...scrollOptions, ...animationOptions });
-        }
-        return originalFunc.apply(this, arguments);
-    }));
+    if (!checkBehavior(options.behavior)) {
+        throw new TypeError(failedExecuteInvalidEnumValue(scrollName, scrollType, options.behavior));
+    }
+    if (scrollName === "scrollBy") {
+        options.left = nonFinite(options.left) + element.scrollLeft;
+        options.top = nonFinite(options.top) + element.scrollTop;
+    }
+    scrollWithOptions(element, options, config);
 };
-//# sourceMappingURL=Element.scroll.js.map
-;// CONCATENATED MODULE: ./node_modules/seamless-scroll-polyfill/dist/esm/Element.scrollIntoView.js
+const scroll_scroll = createScroll("scroll");
+const scrollTo = createScroll("scrollTo");
+const scrollBy = createScroll("scrollBy");
+const elementScroll = scroll_scroll;
+const elementScrollTo = (/* unused pure expression or super */ null && (scrollTo));
+const elementScrollBy = (/* unused pure expression or super */ null && (scrollBy));
+const windowScroll = (/* unused pure expression or super */ null && (scroll_scroll));
+const windowScrollTo = (/* unused pure expression or super */ null && (scrollTo));
+const windowScrollBy = (/* unused pure expression or super */ null && (scrollBy));
+//# sourceMappingURL=scroll.js.map
+;// CONCATENATED MODULE: ./node_modules/seamless-scroll-polyfill/lib/scrollIntoView.js
+/* eslint-disable no-bitwise */
 
 
 // https://drafts.csswg.org/css-writing-modes-4/#block-flow
@@ -13598,9 +13634,7 @@ const normalizeWritingMode = (writingMode) => {
     }
     return 0 /* HorizontalTb */;
 };
-// https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/core/dom/element.cc;l=1097-1189;drc=6a7533d4a1e9f2372223a9d912a9e53a6fa35ae0
-const toPhysicalAlignment = (options, writingMode, isLTR) => {
-    let [xPos, yPos] = [options.block || "start", options.inline || "nearest"];
+const calcPhysicalAxis = (writingMode, isLTR, hPos, vPos) => {
     /**  0b{vertical}{horizontal}  0: normal, 1: reverse */
     let layout = 0b00;
     /**
@@ -13632,7 +13666,7 @@ const toPhysicalAlignment = (options, writingMode, isLTR) => {
         case 0 /* HorizontalTb */:
             // swap horizontal and vertical
             layout = (layout >> 1) | ((layout & 1) << 1);
-            [xPos, yPos] = [yPos, xPos];
+            [hPos, vPos] = [vPos, hPos];
             break;
         /**
          * ↓←
@@ -13666,7 +13700,16 @@ const toPhysicalAlignment = (options, writingMode, isLTR) => {
             layout ^= 2 /* ReverseVertical */;
             break;
     }
-    return [xPos, yPos].map((value, index) => {
+    return [layout, hPos, vPos];
+};
+const isXReversed = (computedStyle) => {
+    const layout = calcPhysicalAxis(normalizeWritingMode(computedStyle.writingMode), computedStyle.direction !== "rtl", undefined, undefined)[0];
+    return (layout & 1) === 1;
+};
+// https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/core/dom/element.cc;l=1097-1189;drc=6a7533d4a1e9f2372223a9d912a9e53a6fa35ae0
+const toPhysicalAlignment = (options, writingMode, isLTR) => {
+    const [layout, hPos, vPos] = calcPhysicalAxis(writingMode, isLTR, options.block || "start", options.inline || "nearest");
+    return [hPos, vPos].map((value, index) => {
         switch (value) {
             case "center":
                 return 1 /* CenterAlways */;
@@ -13690,7 +13733,10 @@ const toPhysicalAlignment = (options, writingMode, isLTR) => {
  * │ target │   frame
  * └────────┘ ┗ ━ ━ ━ ┛
  */
-const alignNearest = (scrollingEdgeStart, scrollingEdgeEnd, scrollingSize, scrollingBorderStart, scrollingBorderEnd, elementEdgeStart, elementEdgeEnd, elementSize) => {
+const mapNearest = (align, scrollingEdgeStart, scrollingEdgeEnd, scrollingSize, elementEdgeStart, elementEdgeEnd, elementSize) => {
+    if (align !== 0 /* ToEdgeIfNeeded */) {
+        return align;
+    }
     /**
      * If element edge A and element edge B are both outside scrolling box edge A and scrolling box edge B
      *
@@ -13712,7 +13758,7 @@ const alignNearest = (scrollingEdgeStart, scrollingEdgeEnd, scrollingSize, scrol
      */
     if ((elementEdgeStart < scrollingEdgeStart && elementEdgeEnd > scrollingEdgeEnd) ||
         (elementEdgeStart > scrollingEdgeStart && elementEdgeEnd < scrollingEdgeEnd)) {
-        return 0;
+        return null;
     }
     /**
      * If element edge A is outside scrolling box edge A and element height is less than scrolling box height
@@ -13755,7 +13801,7 @@ const alignNearest = (scrollingEdgeStart, scrollingEdgeEnd, scrollingSize, scrol
      */
     if ((elementEdgeStart <= scrollingEdgeStart && elementSize <= scrollingSize) ||
         (elementEdgeEnd >= scrollingEdgeEnd && elementSize >= scrollingSize)) {
-        return elementEdgeStart - scrollingEdgeStart - scrollingBorderStart;
+        return 2 /* LeftOrTop */;
     }
     /**
      * If element edge B is outside scrolling box edge B and element height is less than scrolling box height
@@ -13799,273 +13845,162 @@ const alignNearest = (scrollingEdgeStart, scrollingEdgeEnd, scrollingSize, scrol
      */
     if ((elementEdgeEnd > scrollingEdgeEnd && elementSize < scrollingSize) ||
         (elementEdgeStart < scrollingEdgeStart && elementSize > scrollingSize)) {
-        return elementEdgeEnd - scrollingEdgeEnd + scrollingBorderEnd;
+        return 3 /* RightOrBottom */;
     }
-    return 0;
+    return null;
 };
 const canOverflow = (overflow) => {
     return overflow !== "visible" && overflow !== "clip";
 };
 const getFrameElement = (element) => {
-    if (!element.ownerDocument || !element.ownerDocument.defaultView) {
-        return null;
-    }
     try {
-        return element.ownerDocument.defaultView.frameElement;
+        return element.ownerDocument.defaultView?.frameElement || null;
     }
-    catch (e) {
+    catch {
         return null;
     }
-};
-const isHiddenByFrame = (element) => {
-    const frame = getFrameElement(element);
-    if (!frame) {
-        return false;
-    }
-    return frame.clientHeight < element.scrollHeight || frame.clientWidth < element.scrollWidth;
 };
 const isScrollable = (element, computedStyle) => {
     if (element.clientHeight < element.scrollHeight || element.clientWidth < element.scrollWidth) {
-        return canOverflow(computedStyle.overflowY) || canOverflow(computedStyle.overflowX) || isHiddenByFrame(element);
+        return (canOverflow(computedStyle.overflowY) ||
+            canOverflow(computedStyle.overflowX) ||
+            element === scrollingElement(element));
     }
     return false;
 };
 const parentElement = (element) => {
-    const parentNode = element.parentNode;
-    if (parentNode !== null && parentNode.nodeType === Node.DOCUMENT_FRAGMENT_NODE) {
-        return parentNode.host;
+    const pNode = element.parentNode;
+    const pElement = element.parentElement;
+    if (pElement === null && pNode !== null) {
+        if (pNode.nodeType === /** Node.DOCUMENT_FRAGMENT_NODE */ 11) {
+            return pNode.host;
+        }
+        if (pNode.nodeType === /** Node.DOCUMENT_NODE */ 9) {
+            return getFrameElement(element);
+        }
     }
-    return parentNode;
+    return pElement;
 };
-const clamp = (value, width) => {
-    if (value < -width) {
-        return -width;
+const clamp = (value, min, max) => {
+    if (value < min) {
+        return min;
     }
-    if (value > width) {
-        return width;
+    if (value > max) {
+        return max;
     }
     return value;
 };
-const isCSSPropertySupported = (property) => property in document.documentElement.style;
-const getSupportedScrollMarginProperty = () => {
+const getSupportedScrollMarginProperty = (ownerDocument) => {
     // Webkit uses "scroll-snap-margin" https://bugs.webkit.org/show_bug.cgi?id=189265.
-    return ["scroll-margin", "scroll-snap-margin"].filter(isCSSPropertySupported)[0];
+    return ["scroll-margin", "scroll-snap-margin"].filter((property) => property in ownerDocument.documentElement.style)[0];
 };
-const getElementScrollSnapArea = (element, computedStyle) => {
-    const { top, right, bottom, left } = element.getBoundingClientRect();
-    const [scrollMarginTop, scrollMarginRight, scrollMarginBottom, scrollMarginLeft] = [
-        "top",
-        "right",
-        "bottom",
-        "left",
-    ].map((edge) => {
-        const scrollProperty = getSupportedScrollMarginProperty();
+const getElementScrollSnapArea = (element, elementRect, computedStyle) => {
+    const { top, right, bottom, left } = elementRect;
+    const scrollProperty = getSupportedScrollMarginProperty(element.ownerDocument);
+    if (!scrollProperty) {
+        return [top, right, bottom, left];
+    }
+    const scrollMarginValue = (edge) => {
         const value = computedStyle.getPropertyValue(`${scrollProperty}-${edge}`);
         return parseInt(value, 10) || 0;
-    });
-    return [top - scrollMarginTop, right + scrollMarginRight, bottom + scrollMarginBottom, left - scrollMarginLeft];
+    };
+    return [
+        top - scrollMarginValue("top"),
+        right + scrollMarginValue("right"),
+        bottom + scrollMarginValue("bottom"),
+        left - scrollMarginValue("left"),
+    ];
 };
-const elementScrollIntoView = (element, options) => {
-    if (element.isConnected === false) {
-        return;
+const calcAlignEdge = (align, start, end) => {
+    switch (align) {
+        case 1 /* CenterAlways */:
+            return (start + end) / 2;
+        case 3 /* RightOrBottom */:
+            return end;
+        case 2 /* LeftOrTop */:
+        case 0 /* ToEdgeIfNeeded */:
+            return start;
     }
-    // On Chrome and Firefox, document.scrollingElement will return the <html> element.
-    // Safari, document.scrollingElement will return the <body> element.
-    // On Edge, document.scrollingElement will return the <body> element.
-    // IE11 does not support document.scrollingElement, but you can assume its <html>.
-    // Used to handle the top most element that can be scrolled
-    const scrollingElement = document.scrollingElement || document.documentElement;
+};
+const getFrameViewport = (frame, frameRect) => {
+    const visualViewport = frame.ownerDocument.defaultView?.visualViewport;
+    const [x, y, width, height] = frame === scrollingElement(frame)
+        ? [0, 0, visualViewport?.width ?? frame.clientWidth, visualViewport?.height ?? frame.clientHeight]
+        : [frameRect.left, frameRect.top, frame.clientWidth, frame.clientHeight];
+    const left = x + frame.clientLeft;
+    const top = y + frame.clientTop;
+    const right = left + width;
+    const bottom = top + height;
+    return [top, right, bottom, left];
+};
+const computeScrollIntoView = (element, options) => {
     // Collect all the scrolling boxes, as defined in the spec: https://drafts.csswg.org/cssom-view/#scrolling-box
-    const frames = [];
-    const documentElementStyle = getComputedStyle(document.documentElement);
-    for (let cursor = parentElement(element); cursor !== null; cursor = parentElement(cursor)) {
-        // Stop when we reach the viewport
-        if (cursor === scrollingElement) {
-            frames.push(cursor);
-            break;
-        }
-        const cursorStyle = getComputedStyle(cursor);
-        // Skip document.body if it's not the scrollingElement and documentElement isn't independently scrollable
-        if (cursor === document.body &&
-            isScrollable(cursor, cursorStyle) &&
-            !isScrollable(document.documentElement, documentElementStyle)) {
-            continue;
-        }
-        // Now we check if the element is scrollable,
-        // this code only runs if the loop haven't already hit the viewport or a custom boundary
-        if (isScrollable(cursor, cursorStyle)) {
-            frames.push(cursor);
-        }
-        if (cursorStyle.position === "fixed") {
-            break;
-        }
+    const actions = [];
+    let ownerDocument = element.ownerDocument;
+    let ownerWindow = ownerDocument.defaultView;
+    if (!ownerWindow) {
+        return actions;
     }
-    // Support pinch-zooming properly, making sure elements scroll into the visual viewport
-    // Browsers that don't support visualViewport
-    // will report the layout viewport dimensions on document.documentElement.clientWidth/Height
-    // and viewport dimensions on window.innerWidth/Height
-    // https://www.quirksmode.org/mobile/viewports2.html
-    // https://bokand.github.io/viewport/index.html
-    const viewportWidth = window.visualViewport ? window.visualViewport.width : innerWidth;
-    const viewportHeight = window.visualViewport ? window.visualViewport.height : innerHeight;
-    // Newer browsers supports scroll[X|Y], page[X|Y]Offset is
-    const viewportX = window.scrollX || window.pageXOffset;
-    const viewportY = window.scrollY || window.pageYOffset;
-    const computedStyle = getComputedStyle(element);
-    const [targetTop, targetRight, targetBottom, targetLeft] = getElementScrollSnapArea(element, computedStyle);
-    const targetHeight = targetBottom - targetTop;
-    const targetWidth = targetRight - targetLeft;
+    const computedStyle = window.getComputedStyle(element);
+    const isLTR = computedStyle.direction !== "rtl";
     const writingMode = normalizeWritingMode(computedStyle.writingMode ||
         computedStyle.getPropertyValue("-webkit-writing-mode") ||
         computedStyle.getPropertyValue("-ms-writing-mode"));
-    const isLTR = computedStyle.direction !== "rtl";
-    const [alignX, alignY] = toPhysicalAlignment(options, writingMode, isLTR);
-    let targetBlock = (() => {
-        switch (alignY) {
-            case 1 /* CenterAlways */:
-                return targetTop + targetHeight / 2;
-            case 2 /* LeftOrTop */:
-            case 0 /* ToEdgeIfNeeded */:
-                return targetTop;
-            case 3 /* RightOrBottom */:
-                return targetBottom;
-        }
-    })();
-    let targetInline = (() => {
-        switch (alignX) {
-            case 1 /* CenterAlways */:
-                return targetLeft + targetWidth / 2;
-            case 3 /* RightOrBottom */:
-                return targetRight;
-            case 2 /* LeftOrTop */:
-            case 0 /* ToEdgeIfNeeded */:
-                return targetLeft;
-        }
-    })();
-    const actions = [];
-    frames.forEach((frame) => {
-        const { height, width, top, right, bottom, left } = frame.getBoundingClientRect();
-        const frameStyle = getComputedStyle(frame);
-        const borderLeft = parseInt(frameStyle.borderLeftWidth, 10);
-        const borderTop = parseInt(frameStyle.borderTopWidth, 10);
-        const borderRight = parseInt(frameStyle.borderRightWidth, 10);
-        const borderBottom = parseInt(frameStyle.borderBottomWidth, 10);
-        let blockScroll = 0;
-        let inlineScroll = 0;
-        // The property existance checks for offfset[Width|Height] is because only HTMLElement objects have them,
-        // but any Element might pass by here
-        // @TODO find out if the "as HTMLElement" overrides can be dropped
-        const scrollbarWidth = "offsetWidth" in frame
-            ? frame.offsetWidth - frame.clientWidth - borderLeft - borderRight
-            : 0;
-        const scrollbarHeight = "offsetHeight" in frame
-            ? frame.offsetHeight - frame.clientHeight - borderTop - borderBottom
-            : 0;
-        if (scrollingElement === frame) {
-            // Handle viewport logic (document.documentElement or document.body)
-            switch (alignY) {
-                case 2 /* LeftOrTop */: {
-                    blockScroll = targetBlock;
-                    break;
-                }
-                case 3 /* RightOrBottom */: {
-                    blockScroll = targetBlock - viewportHeight;
-                    break;
-                }
-                case 1 /* CenterAlways */: {
-                    blockScroll = targetBlock - viewportHeight / 2;
-                    break;
-                }
-                case 0 /* ToEdgeIfNeeded */: {
-                    blockScroll = alignNearest(viewportY, viewportY + viewportHeight, viewportHeight, borderTop, borderBottom, viewportY + targetBlock, viewportY + targetBlock + targetHeight, targetHeight);
-                    break;
-                }
+    const [alignH, alignV] = toPhysicalAlignment(options, writingMode, isLTR);
+    let [top, right, bottom, left] = getElementScrollSnapArea(element, element.getBoundingClientRect(), computedStyle);
+    for (let frame = parentElement(element); frame !== null; frame = parentElement(frame)) {
+        if (ownerDocument !== frame.ownerDocument) {
+            ownerDocument = frame.ownerDocument;
+            ownerWindow = ownerDocument.defaultView;
+            if (!ownerWindow) {
+                break;
             }
-            switch (alignX) {
-                case 2 /* LeftOrTop */: {
-                    inlineScroll = targetInline;
-                    break;
-                }
-                case 3 /* RightOrBottom */: {
-                    inlineScroll = targetInline - viewportWidth;
-                    break;
-                }
-                case 1 /* CenterAlways */: {
-                    inlineScroll = targetInline - viewportWidth / 2;
-                    break;
-                }
-                case 0 /* ToEdgeIfNeeded */: {
-                    inlineScroll = alignNearest(viewportX, viewportX + viewportWidth, viewportWidth, borderLeft, borderRight, viewportX + targetInline, viewportX + targetInline + targetWidth, targetWidth);
-                    break;
-                }
-            }
-            blockScroll += viewportY;
-            inlineScroll += viewportX;
+            const { left: dX, top: dY } = frame.getBoundingClientRect();
+            top += dY;
+            right += dX;
+            bottom += dY;
+            left += dX;
         }
-        else {
-            // Handle each scrolling frame that might exist between the target and the viewport
-            switch (alignY) {
-                case 2 /* LeftOrTop */: {
-                    blockScroll = targetBlock - top - borderTop;
-                    break;
-                }
-                case 3 /* RightOrBottom */: {
-                    blockScroll = targetBlock - bottom + borderBottom + scrollbarHeight;
-                    break;
-                }
-                case 1 /* CenterAlways */: {
-                    blockScroll = targetBlock - (top + height / 2) + scrollbarHeight / 2;
-                    break;
-                }
-                case 0 /* ToEdgeIfNeeded */: {
-                    blockScroll = alignNearest(top, bottom, height, borderTop, borderBottom + scrollbarHeight, targetBlock, targetBlock + targetHeight, targetHeight);
-                    break;
-                }
-            }
-            switch (alignX) {
-                case 2 /* LeftOrTop */: {
-                    inlineScroll = targetInline - left - borderLeft;
-                    break;
-                }
-                case 3 /* RightOrBottom */: {
-                    inlineScroll = targetInline - right + borderRight + scrollbarWidth;
-                    break;
-                }
-                case 1 /* CenterAlways */: {
-                    inlineScroll = targetInline - (left + width / 2) + scrollbarWidth / 2;
-                    break;
-                }
-                case 0 /* ToEdgeIfNeeded */: {
-                    inlineScroll = alignNearest(left, right, width, borderLeft, borderRight + scrollbarWidth, targetInline, targetInline + targetWidth, targetWidth);
-                    break;
-                }
-            }
-            const { scrollLeft, scrollTop } = frame;
-            // Ensure scroll coordinates are not out of bounds while applying scroll offsets
-            blockScroll = clamp(scrollTop + blockScroll, frame.scrollHeight - height + scrollbarHeight);
-            inlineScroll = clamp(scrollLeft + inlineScroll, frame.scrollWidth - width + scrollbarWidth);
-            // Cache the offset so that parent frames can scroll this into view correctly
-            targetBlock += scrollTop - blockScroll;
-            targetInline += scrollLeft - inlineScroll;
+        const frameStyle = ownerWindow.getComputedStyle(frame);
+        if (frameStyle.position === "fixed") {
+            break;
         }
-        actions.push(() => elementScroll(frame, { ...options, top: blockScroll, left: inlineScroll }));
-    });
-    actions.forEach((run) => run());
-};
-const elementScrollIntoViewPolyfill = (animationOptions) => {
-    if (isScrollBehaviorSupported()) {
-        return;
+        if (!isScrollable(frame, frameStyle)) {
+            continue;
+        }
+        const frameRect = frame.getBoundingClientRect();
+        const [frameTop, frameRight, frameBottom, frameLeft] = getFrameViewport(frame, frameRect);
+        const eAlignH = mapNearest(alignH, frameLeft, frameRight, frame.clientWidth, left, right, right - left);
+        const eAlignV = mapNearest(alignV, frameTop, frameBottom, frame.clientHeight, top, bottom, bottom - top);
+        const diffX = eAlignH === null ? 0 : calcAlignEdge(eAlignH, left, right) - calcAlignEdge(eAlignH, frameLeft, frameRight);
+        const diffY = eAlignV === null ? 0 : calcAlignEdge(eAlignV, top, bottom) - calcAlignEdge(eAlignV, frameTop, frameBottom);
+        const moveX = isXReversed(frameStyle)
+            ? clamp(diffX, -frame.scrollWidth + frame.clientWidth - frame.scrollLeft, -frame.scrollLeft)
+            : clamp(diffX, -frame.scrollLeft, frame.scrollWidth - frame.clientWidth - frame.scrollLeft);
+        const moveY = clamp(diffY, -frame.scrollTop, frame.scrollHeight - frame.clientHeight - frame.scrollTop);
+        actions.push([
+            frame,
+            { left: frame.scrollLeft + moveX, top: frame.scrollTop + moveY, behavior: options.behavior },
+        ]);
+        top = Math.max(top - moveY, frameTop);
+        right = Math.min(right - moveX, frameRight);
+        bottom = Math.min(bottom - moveY, frameBottom);
+        left = Math.max(left - moveX, frameLeft);
     }
-    const originalFunc = original.elementScrollIntoView;
-    modifyPrototypes((prototype) => (prototype.scrollIntoView = function scrollIntoView() {
-        const scrollIntoViewOptions = arguments[0];
-        if (arguments.length === 1 && isObject(scrollIntoViewOptions)) {
-            return elementScrollIntoView(this, { ...scrollIntoViewOptions, ...animationOptions });
-        }
-        return originalFunc.apply(this, arguments);
-    }));
+    return actions;
 };
-//# sourceMappingURL=Element.scrollIntoView.js.map
+const scrollIntoView = (element, scrollIntoViewOptions, config) => {
+    const options = scrollIntoViewOptions || {};
+    if (!checkBehavior(options.behavior)) {
+        throw new TypeError(failedExecuteInvalidEnumValue("scrollIntoView", "Element", options.behavior));
+    }
+    const actions = computeScrollIntoView(element, options);
+    actions.forEach(([frame, scrollToOptions]) => {
+        elementScroll(frame, scrollToOptions, config);
+    });
+};
+const elementScrollIntoView = scrollIntoView;
+//# sourceMappingURL=scrollIntoView.js.map
 ;// CONCATENATED MODULE: ./src/scripts/donation-lightbox-form.js
 
 class DonationLightboxForm {

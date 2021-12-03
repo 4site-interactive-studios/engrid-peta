@@ -3976,6 +3976,7 @@ input[type=text].en__ticket__quantity{
   border:none !important;
   box-shadow:none !important;
   flex-basis:auto;
+  height:-moz-fit-content !important;
   height:fit-content !important;
   padding-left:0;
   padding-right:0;
