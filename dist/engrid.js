@@ -1,10 +1,39 @@
+/*!
+ * 
+ *                ((((
+ *          ((((((((
+ *       (((((((
+ *     (((((((           ****
+ *   (((((((          *******
+ *  ((((((((       **********     *********       ****    ***
+ *  ((((((((    ************   **************     ***    ****
+ *  ((((((   *******  *****   *****        *     **    ******        *****
+ *  (((   *******    ******   ******            ****  ********   ************
+ *      *******      *****     **********      ****    ****     ****      ****
+ *    *********************         *******   *****   ****     ***************
+ *     ********************            ****   ****    ****    ****
+ *                 *****    *****   *******  *****   *****     *****     **
+ *                *****     *************    ****    *******     **********
+ *
+ *  ENGRID PAGE TEMPLATE ASSETS
+ *
+ *  Date: Thursday, February 17, 2022 @ 21:01:40 ET
+ *  By: fernando
+ *  ENGrid styles: v0.9.6
+ *  ENGrid scripts: v0.9.5
+ *
+ *  Created by 4Site Studios
+ *  Come work with us or join our team, we would love to hear from you
+ *  https://www.4sitestudios.com/en
+ *
+ */
 /******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ 2705:
 /***/ ((__unused_webpack_module, exports) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.DispatchError = void 0;
@@ -34,6 +63,7 @@ exports.DispatchError = DispatchError;
 /***/ 9885:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.DispatcherBase = void 0;
@@ -283,6 +313,7 @@ exports.DispatcherBase = DispatcherBase;
 /***/ 1637:
 /***/ ((__unused_webpack_module, exports) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.DispatcherWrapper = void 0;
@@ -410,6 +441,7 @@ exports.DispatcherWrapper = DispatcherWrapper;
 /***/ 4155:
 /***/ ((__unused_webpack_module, exports) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.EventListBase = void 0;
@@ -461,6 +493,7 @@ exports.EventListBase = EventListBase;
 /***/ 2849:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.PromiseDispatcherBase = void 0;
@@ -543,6 +576,7 @@ exports.PromiseDispatcherBase = PromiseDispatcherBase;
 /***/ 4220:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.SubscriptionChangeEventDispatcher = void 0;
@@ -574,6 +608,7 @@ exports.SubscriptionChangeEventDispatcher = SubscriptionChangeEventDispatcher;
 /***/ 7278:
 /***/ ((__unused_webpack_module, exports) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.PromiseSubscription = void 0;
@@ -636,6 +671,7 @@ exports.PromiseSubscription = PromiseSubscription;
 /***/ 8326:
 /***/ ((__unused_webpack_module, exports) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.Subscription = void 0;
@@ -689,6 +725,7 @@ exports.Subscription = Subscription;
 /***/ 516:
 /***/ ((__unused_webpack_module, exports) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.HandlingBase = void 0;
@@ -783,6 +820,7 @@ exports.HandlingBase = HandlingBase;
 /***/ 4844:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 
 /*!
  * Strongly Typed Events for TypeScript - Core
@@ -821,6 +859,7 @@ Object.defineProperty(exports, "SubscriptionChangeEventDispatcher", ({ enumerabl
 /***/ 5638:
 /***/ ((__unused_webpack_module, exports) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.EventManagement = void 0;
@@ -860,6 +899,7 @@ exports.EventManagement = EventManagement;
 /***/ 4402:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.EventDispatcher = void 0;
@@ -931,6 +971,7 @@ exports.EventDispatcher = EventDispatcher;
 /***/ 9411:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.EventHandlingBase = void 0;
@@ -952,6 +993,7 @@ exports.EventHandlingBase = EventHandlingBase;
 /***/ 2453:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.EventList = void 0;
@@ -983,6 +1025,7 @@ exports.EventList = EventList;
 /***/ 7891:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.NonUniformEventList = void 0;
@@ -1029,6 +1072,7 @@ exports.NonUniformEventList = NonUniformEventList;
 /***/ 3111:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 
 /*!
  * Strongly Typed Events for TypeScript - Core
@@ -1055,6 +1099,7 @@ Object.defineProperty(exports, "NonUniformEventList", ({ enumerable: true, get: 
 /***/ 4729:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.SignalDispatcher = void 0;
@@ -1111,6 +1156,7 @@ exports.SignalDispatcher = SignalDispatcher;
 /***/ 4243:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.SignalHandlingBase = void 0;
@@ -1143,6 +1189,7 @@ exports.SignalHandlingBase = SignalHandlingBase;
 /***/ 7991:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.SignalList = void 0;
@@ -1185,6 +1232,7 @@ exports.SignalList = SignalList;
 /***/ 1254:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 
 /*!
  * Strongly Typed Events for TypeScript - Promise Signals
@@ -1209,6 +1257,7 @@ Object.defineProperty(exports, "SignalList", ({ enumerable: true, get: function 
 /***/ 9360:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.NonUniformSimpleEventList = void 0;
@@ -1255,6 +1304,7 @@ exports.NonUniformSimpleEventList = NonUniformSimpleEventList;
 /***/ 4624:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.SimpleEventDispatcher = void 0;
@@ -1323,6 +1373,7 @@ exports.SimpleEventDispatcher = SimpleEventDispatcher;
 /***/ 1269:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.SimpleEventHandlingBase = void 0;
@@ -1344,6 +1395,7 @@ exports.SimpleEventHandlingBase = SimpleEventHandlingBase;
 /***/ 5570:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.SimpleEventList = void 0;
@@ -1375,6 +1427,7 @@ exports.SimpleEventList = SimpleEventList;
 /***/ 5931:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.NonUniformSimpleEventList = exports.SimpleEventList = exports.SimpleEventHandlingBase = exports.SimpleEventDispatcher = void 0;
@@ -1393,6 +1446,7 @@ Object.defineProperty(exports, "SimpleEventList", ({ enumerable: true, get: func
 /***/ 5363:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 var __webpack_unused_export__;
 
 /*!
@@ -1447,9 +1501,447 @@ __webpack_unused_export__ = ({ enumerable: true, get: function () { return ste_p
 
 /***/ }),
 
+/***/ 523:
+/***/ ((module) => {
+
+/* smoothscroll v0.4.4 - 2019 - Dustan Kasten, Jeremias Menichelli - MIT License */
+(function () {
+  'use strict';
+
+  // polyfill
+  function polyfill() {
+    // aliases
+    var w = window;
+    var d = document;
+
+    // return if scroll behavior is supported and polyfill is not forced
+    if (
+      'scrollBehavior' in d.documentElement.style &&
+      w.__forceSmoothScrollPolyfill__ !== true
+    ) {
+      return;
+    }
+
+    // globals
+    var Element = w.HTMLElement || w.Element;
+    var SCROLL_TIME = 468;
+
+    // object gathering original scroll methods
+    var original = {
+      scroll: w.scroll || w.scrollTo,
+      scrollBy: w.scrollBy,
+      elementScroll: Element.prototype.scroll || scrollElement,
+      scrollIntoView: Element.prototype.scrollIntoView
+    };
+
+    // define timing method
+    var now =
+      w.performance && w.performance.now
+        ? w.performance.now.bind(w.performance)
+        : Date.now;
+
+    /**
+     * indicates if a the current browser is made by Microsoft
+     * @method isMicrosoftBrowser
+     * @param {String} userAgent
+     * @returns {Boolean}
+     */
+    function isMicrosoftBrowser(userAgent) {
+      var userAgentPatterns = ['MSIE ', 'Trident/', 'Edge/'];
+
+      return new RegExp(userAgentPatterns.join('|')).test(userAgent);
+    }
+
+    /*
+     * IE has rounding bug rounding down clientHeight and clientWidth and
+     * rounding up scrollHeight and scrollWidth causing false positives
+     * on hasScrollableSpace
+     */
+    var ROUNDING_TOLERANCE = isMicrosoftBrowser(w.navigator.userAgent) ? 1 : 0;
+
+    /**
+     * changes scroll position inside an element
+     * @method scrollElement
+     * @param {Number} x
+     * @param {Number} y
+     * @returns {undefined}
+     */
+    function scrollElement(x, y) {
+      this.scrollLeft = x;
+      this.scrollTop = y;
+    }
+
+    /**
+     * returns result of applying ease math function to a number
+     * @method ease
+     * @param {Number} k
+     * @returns {Number}
+     */
+    function ease(k) {
+      return 0.5 * (1 - Math.cos(Math.PI * k));
+    }
+
+    /**
+     * indicates if a smooth behavior should be applied
+     * @method shouldBailOut
+     * @param {Number|Object} firstArg
+     * @returns {Boolean}
+     */
+    function shouldBailOut(firstArg) {
+      if (
+        firstArg === null ||
+        typeof firstArg !== 'object' ||
+        firstArg.behavior === undefined ||
+        firstArg.behavior === 'auto' ||
+        firstArg.behavior === 'instant'
+      ) {
+        // first argument is not an object/null
+        // or behavior is auto, instant or undefined
+        return true;
+      }
+
+      if (typeof firstArg === 'object' && firstArg.behavior === 'smooth') {
+        // first argument is an object and behavior is smooth
+        return false;
+      }
+
+      // throw error when behavior is not supported
+      throw new TypeError(
+        'behavior member of ScrollOptions ' +
+          firstArg.behavior +
+          ' is not a valid value for enumeration ScrollBehavior.'
+      );
+    }
+
+    /**
+     * indicates if an element has scrollable space in the provided axis
+     * @method hasScrollableSpace
+     * @param {Node} el
+     * @param {String} axis
+     * @returns {Boolean}
+     */
+    function hasScrollableSpace(el, axis) {
+      if (axis === 'Y') {
+        return el.clientHeight + ROUNDING_TOLERANCE < el.scrollHeight;
+      }
+
+      if (axis === 'X') {
+        return el.clientWidth + ROUNDING_TOLERANCE < el.scrollWidth;
+      }
+    }
+
+    /**
+     * indicates if an element has a scrollable overflow property in the axis
+     * @method canOverflow
+     * @param {Node} el
+     * @param {String} axis
+     * @returns {Boolean}
+     */
+    function canOverflow(el, axis) {
+      var overflowValue = w.getComputedStyle(el, null)['overflow' + axis];
+
+      return overflowValue === 'auto' || overflowValue === 'scroll';
+    }
+
+    /**
+     * indicates if an element can be scrolled in either axis
+     * @method isScrollable
+     * @param {Node} el
+     * @param {String} axis
+     * @returns {Boolean}
+     */
+    function isScrollable(el) {
+      var isScrollableY = hasScrollableSpace(el, 'Y') && canOverflow(el, 'Y');
+      var isScrollableX = hasScrollableSpace(el, 'X') && canOverflow(el, 'X');
+
+      return isScrollableY || isScrollableX;
+    }
+
+    /**
+     * finds scrollable parent of an element
+     * @method findScrollableParent
+     * @param {Node} el
+     * @returns {Node} el
+     */
+    function findScrollableParent(el) {
+      while (el !== d.body && isScrollable(el) === false) {
+        el = el.parentNode || el.host;
+      }
+
+      return el;
+    }
+
+    /**
+     * self invoked function that, given a context, steps through scrolling
+     * @method step
+     * @param {Object} context
+     * @returns {undefined}
+     */
+    function step(context) {
+      var time = now();
+      var value;
+      var currentX;
+      var currentY;
+      var elapsed = (time - context.startTime) / SCROLL_TIME;
+
+      // avoid elapsed times higher than one
+      elapsed = elapsed > 1 ? 1 : elapsed;
+
+      // apply easing to elapsed time
+      value = ease(elapsed);
+
+      currentX = context.startX + (context.x - context.startX) * value;
+      currentY = context.startY + (context.y - context.startY) * value;
+
+      context.method.call(context.scrollable, currentX, currentY);
+
+      // scroll more if we have not reached our destination
+      if (currentX !== context.x || currentY !== context.y) {
+        w.requestAnimationFrame(step.bind(w, context));
+      }
+    }
+
+    /**
+     * scrolls window or element with a smooth behavior
+     * @method smoothScroll
+     * @param {Object|Node} el
+     * @param {Number} x
+     * @param {Number} y
+     * @returns {undefined}
+     */
+    function smoothScroll(el, x, y) {
+      var scrollable;
+      var startX;
+      var startY;
+      var method;
+      var startTime = now();
+
+      // define scroll context
+      if (el === d.body) {
+        scrollable = w;
+        startX = w.scrollX || w.pageXOffset;
+        startY = w.scrollY || w.pageYOffset;
+        method = original.scroll;
+      } else {
+        scrollable = el;
+        startX = el.scrollLeft;
+        startY = el.scrollTop;
+        method = scrollElement;
+      }
+
+      // scroll looping over a frame
+      step({
+        scrollable: scrollable,
+        method: method,
+        startTime: startTime,
+        startX: startX,
+        startY: startY,
+        x: x,
+        y: y
+      });
+    }
+
+    // ORIGINAL METHODS OVERRIDES
+    // w.scroll and w.scrollTo
+    w.scroll = w.scrollTo = function() {
+      // avoid action when no arguments are passed
+      if (arguments[0] === undefined) {
+        return;
+      }
+
+      // avoid smooth behavior if not required
+      if (shouldBailOut(arguments[0]) === true) {
+        original.scroll.call(
+          w,
+          arguments[0].left !== undefined
+            ? arguments[0].left
+            : typeof arguments[0] !== 'object'
+              ? arguments[0]
+              : w.scrollX || w.pageXOffset,
+          // use top prop, second argument if present or fallback to scrollY
+          arguments[0].top !== undefined
+            ? arguments[0].top
+            : arguments[1] !== undefined
+              ? arguments[1]
+              : w.scrollY || w.pageYOffset
+        );
+
+        return;
+      }
+
+      // LET THE SMOOTHNESS BEGIN!
+      smoothScroll.call(
+        w,
+        d.body,
+        arguments[0].left !== undefined
+          ? ~~arguments[0].left
+          : w.scrollX || w.pageXOffset,
+        arguments[0].top !== undefined
+          ? ~~arguments[0].top
+          : w.scrollY || w.pageYOffset
+      );
+    };
+
+    // w.scrollBy
+    w.scrollBy = function() {
+      // avoid action when no arguments are passed
+      if (arguments[0] === undefined) {
+        return;
+      }
+
+      // avoid smooth behavior if not required
+      if (shouldBailOut(arguments[0])) {
+        original.scrollBy.call(
+          w,
+          arguments[0].left !== undefined
+            ? arguments[0].left
+            : typeof arguments[0] !== 'object' ? arguments[0] : 0,
+          arguments[0].top !== undefined
+            ? arguments[0].top
+            : arguments[1] !== undefined ? arguments[1] : 0
+        );
+
+        return;
+      }
+
+      // LET THE SMOOTHNESS BEGIN!
+      smoothScroll.call(
+        w,
+        d.body,
+        ~~arguments[0].left + (w.scrollX || w.pageXOffset),
+        ~~arguments[0].top + (w.scrollY || w.pageYOffset)
+      );
+    };
+
+    // Element.prototype.scroll and Element.prototype.scrollTo
+    Element.prototype.scroll = Element.prototype.scrollTo = function() {
+      // avoid action when no arguments are passed
+      if (arguments[0] === undefined) {
+        return;
+      }
+
+      // avoid smooth behavior if not required
+      if (shouldBailOut(arguments[0]) === true) {
+        // if one number is passed, throw error to match Firefox implementation
+        if (typeof arguments[0] === 'number' && arguments[1] === undefined) {
+          throw new SyntaxError('Value could not be converted');
+        }
+
+        original.elementScroll.call(
+          this,
+          // use left prop, first number argument or fallback to scrollLeft
+          arguments[0].left !== undefined
+            ? ~~arguments[0].left
+            : typeof arguments[0] !== 'object' ? ~~arguments[0] : this.scrollLeft,
+          // use top prop, second argument or fallback to scrollTop
+          arguments[0].top !== undefined
+            ? ~~arguments[0].top
+            : arguments[1] !== undefined ? ~~arguments[1] : this.scrollTop
+        );
+
+        return;
+      }
+
+      var left = arguments[0].left;
+      var top = arguments[0].top;
+
+      // LET THE SMOOTHNESS BEGIN!
+      smoothScroll.call(
+        this,
+        this,
+        typeof left === 'undefined' ? this.scrollLeft : ~~left,
+        typeof top === 'undefined' ? this.scrollTop : ~~top
+      );
+    };
+
+    // Element.prototype.scrollBy
+    Element.prototype.scrollBy = function() {
+      // avoid action when no arguments are passed
+      if (arguments[0] === undefined) {
+        return;
+      }
+
+      // avoid smooth behavior if not required
+      if (shouldBailOut(arguments[0]) === true) {
+        original.elementScroll.call(
+          this,
+          arguments[0].left !== undefined
+            ? ~~arguments[0].left + this.scrollLeft
+            : ~~arguments[0] + this.scrollLeft,
+          arguments[0].top !== undefined
+            ? ~~arguments[0].top + this.scrollTop
+            : ~~arguments[1] + this.scrollTop
+        );
+
+        return;
+      }
+
+      this.scroll({
+        left: ~~arguments[0].left + this.scrollLeft,
+        top: ~~arguments[0].top + this.scrollTop,
+        behavior: arguments[0].behavior
+      });
+    };
+
+    // Element.prototype.scrollIntoView
+    Element.prototype.scrollIntoView = function() {
+      // avoid smooth behavior if not required
+      if (shouldBailOut(arguments[0]) === true) {
+        original.scrollIntoView.call(
+          this,
+          arguments[0] === undefined ? true : arguments[0]
+        );
+
+        return;
+      }
+
+      // LET THE SMOOTHNESS BEGIN!
+      var scrollableParent = findScrollableParent(this);
+      var parentRects = scrollableParent.getBoundingClientRect();
+      var clientRects = this.getBoundingClientRect();
+
+      if (scrollableParent !== d.body) {
+        // reveal element inside parent
+        smoothScroll.call(
+          this,
+          scrollableParent,
+          scrollableParent.scrollLeft + clientRects.left - parentRects.left,
+          scrollableParent.scrollTop + clientRects.top - parentRects.top
+        );
+
+        // reveal parent in viewport unless is fixed
+        if (w.getComputedStyle(scrollableParent).position !== 'fixed') {
+          w.scrollBy({
+            left: parentRects.left,
+            top: parentRects.top,
+            behavior: 'smooth'
+          });
+        }
+      } else {
+        // reveal element in viewport
+        w.scrollBy({
+          left: clientRects.left,
+          top: clientRects.top,
+          behavior: 'smooth'
+        });
+      }
+    };
+  }
+
+  if (true) {
+    // commonjs
+    module.exports = { polyfill: polyfill };
+  } else {}
+
+}());
+
+
+/***/ }),
+
 /***/ 6357:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.NonUniformPromiseEventList = void 0;
@@ -1496,6 +1988,7 @@ exports.NonUniformPromiseEventList = NonUniformPromiseEventList;
 /***/ 5072:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.PromiseEventDispatcher = void 0;
@@ -1561,6 +2054,7 @@ exports.PromiseEventDispatcher = PromiseEventDispatcher;
 /***/ 7873:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.PromiseEventHandlingBase = void 0;
@@ -1582,6 +2076,7 @@ exports.PromiseEventHandlingBase = PromiseEventHandlingBase;
 /***/ 4414:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.PromiseEventList = void 0;
@@ -1613,6 +2108,7 @@ exports.PromiseEventList = PromiseEventList;
 /***/ 6586:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 
 /*!
  * Strongly Typed Events for TypeScript - Core
@@ -1639,6 +2135,7 @@ Object.defineProperty(exports, "NonUniformPromiseEventList", ({ enumerable: true
 /***/ 4383:
 /***/ ((__unused_webpack_module, exports) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.DispatchError = void 0;
@@ -1668,6 +2165,7 @@ exports.DispatchError = DispatchError;
 /***/ 894:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.DispatcherBase = void 0;
@@ -1917,6 +2415,7 @@ exports.DispatcherBase = DispatcherBase;
 /***/ 9757:
 /***/ ((__unused_webpack_module, exports) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.DispatcherWrapper = void 0;
@@ -2044,6 +2543,7 @@ exports.DispatcherWrapper = DispatcherWrapper;
 /***/ 5930:
 /***/ ((__unused_webpack_module, exports) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.EventListBase = void 0;
@@ -2095,6 +2595,7 @@ exports.EventListBase = EventListBase;
 /***/ 7541:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.PromiseDispatcherBase = void 0;
@@ -2177,6 +2678,7 @@ exports.PromiseDispatcherBase = PromiseDispatcherBase;
 /***/ 2545:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.SubscriptionChangeEventDispatcher = void 0;
@@ -2208,6 +2710,7 @@ exports.SubscriptionChangeEventDispatcher = SubscriptionChangeEventDispatcher;
 /***/ 8452:
 /***/ ((__unused_webpack_module, exports) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.PromiseSubscription = void 0;
@@ -2270,6 +2773,7 @@ exports.PromiseSubscription = PromiseSubscription;
 /***/ 365:
 /***/ ((__unused_webpack_module, exports) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.Subscription = void 0;
@@ -2323,6 +2827,7 @@ exports.Subscription = Subscription;
 /***/ 954:
 /***/ ((__unused_webpack_module, exports) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.HandlingBase = void 0;
@@ -2417,6 +2922,7 @@ exports.HandlingBase = HandlingBase;
 /***/ 2874:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 
 /*!
  * Strongly Typed Events for TypeScript - Core
@@ -2455,6 +2961,7 @@ Object.defineProperty(exports, "SubscriptionChangeEventDispatcher", ({ enumerabl
 /***/ 4796:
 /***/ ((__unused_webpack_module, exports) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.EventManagement = void 0;
@@ -2494,6 +3001,7 @@ exports.EventManagement = EventManagement;
 /***/ 5890:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.PromiseSignalDispatcher = void 0;
@@ -2545,6 +3053,7 @@ exports.PromiseSignalDispatcher = PromiseSignalDispatcher;
 /***/ 205:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.PromiseSignalHandlingBase = void 0;
@@ -2566,6 +3075,7 @@ exports.PromiseSignalHandlingBase = PromiseSignalHandlingBase;
 /***/ 3146:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.PromiseSignalList = void 0;
@@ -2597,6 +3107,7 @@ exports.PromiseSignalList = PromiseSignalList;
 /***/ 6838:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 
 /*!
  * Strongly Typed Events for TypeScript - Promise Signals
@@ -2621,6 +3132,7 @@ Object.defineProperty(exports, "PromiseSignalList", ({ enumerable: true, get: fu
 /***/ 6463:
 /***/ ((__unused_webpack_module, exports) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.DispatchError = void 0;
@@ -2650,6 +3162,7 @@ exports.DispatchError = DispatchError;
 /***/ 1368:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.DispatcherBase = void 0;
@@ -2899,6 +3412,7 @@ exports.DispatcherBase = DispatcherBase;
 /***/ 6982:
 /***/ ((__unused_webpack_module, exports) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.DispatcherWrapper = void 0;
@@ -3026,6 +3540,7 @@ exports.DispatcherWrapper = DispatcherWrapper;
 /***/ 2177:
 /***/ ((__unused_webpack_module, exports) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.EventListBase = void 0;
@@ -3077,6 +3592,7 @@ exports.EventListBase = EventListBase;
 /***/ 2300:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.PromiseDispatcherBase = void 0;
@@ -3159,6 +3675,7 @@ exports.PromiseDispatcherBase = PromiseDispatcherBase;
 /***/ 4303:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.SubscriptionChangeEventDispatcher = void 0;
@@ -3190,6 +3707,7 @@ exports.SubscriptionChangeEventDispatcher = SubscriptionChangeEventDispatcher;
 /***/ 9703:
 /***/ ((__unused_webpack_module, exports) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.PromiseSubscription = void 0;
@@ -3252,6 +3770,7 @@ exports.PromiseSubscription = PromiseSubscription;
 /***/ 4683:
 /***/ ((__unused_webpack_module, exports) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.Subscription = void 0;
@@ -3305,6 +3824,7 @@ exports.Subscription = Subscription;
 /***/ 5673:
 /***/ ((__unused_webpack_module, exports) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.HandlingBase = void 0;
@@ -3399,6 +3919,7 @@ exports.HandlingBase = HandlingBase;
 /***/ 8486:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 
 /*!
  * Strongly Typed Events for TypeScript - Core
@@ -3437,6 +3958,7 @@ Object.defineProperty(exports, "SubscriptionChangeEventDispatcher", ({ enumerabl
 /***/ 8209:
 /***/ ((__unused_webpack_module, exports) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.EventManagement = void 0;
@@ -3476,6 +3998,7 @@ exports.EventManagement = EventManagement;
 /***/ 4537:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.NonUniformPromiseSimpleEventList = void 0;
@@ -3522,6 +4045,7 @@ exports.NonUniformPromiseSimpleEventList = NonUniformPromiseSimpleEventList;
 /***/ 8921:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.PromiseSimpleEventDispatcher = void 0;
@@ -3580,6 +4104,7 @@ exports.PromiseSimpleEventDispatcher = PromiseSimpleEventDispatcher;
 /***/ 532:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.PromiseSimpleEventHandlingBase = void 0;
@@ -3601,6 +4126,7 @@ exports.PromiseSimpleEventHandlingBase = PromiseSimpleEventHandlingBase;
 /***/ 7929:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.PromiseSimpleEventList = void 0;
@@ -3632,6 +4158,7 @@ exports.PromiseSimpleEventList = PromiseSimpleEventList;
 /***/ 9176:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 
 /*!
  * Strongly Typed Events for TypeScript - Core
@@ -3658,6 +4185,7 @@ Object.defineProperty(exports, "PromiseSimpleEventList", ({ enumerable: true, ge
 /***/ 8181:
 /***/ ((__unused_webpack_module, exports) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.DispatchError = void 0;
@@ -3687,6 +4215,7 @@ exports.DispatchError = DispatchError;
 /***/ 3040:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.DispatcherBase = void 0;
@@ -3936,6 +4465,7 @@ exports.DispatcherBase = DispatcherBase;
 /***/ 3122:
 /***/ ((__unused_webpack_module, exports) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.DispatcherWrapper = void 0;
@@ -4063,6 +4593,7 @@ exports.DispatcherWrapper = DispatcherWrapper;
 /***/ 7955:
 /***/ ((__unused_webpack_module, exports) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.EventListBase = void 0;
@@ -4114,6 +4645,7 @@ exports.EventListBase = EventListBase;
 /***/ 2490:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.PromiseDispatcherBase = void 0;
@@ -4196,6 +4728,7 @@ exports.PromiseDispatcherBase = PromiseDispatcherBase;
 /***/ 1002:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.SubscriptionChangeEventDispatcher = void 0;
@@ -4227,6 +4760,7 @@ exports.SubscriptionChangeEventDispatcher = SubscriptionChangeEventDispatcher;
 /***/ 9347:
 /***/ ((__unused_webpack_module, exports) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.PromiseSubscription = void 0;
@@ -4289,6 +4823,7 @@ exports.PromiseSubscription = PromiseSubscription;
 /***/ 2229:
 /***/ ((__unused_webpack_module, exports) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.Subscription = void 0;
@@ -4342,6 +4877,7 @@ exports.Subscription = Subscription;
 /***/ 1605:
 /***/ ((__unused_webpack_module, exports) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.HandlingBase = void 0;
@@ -4436,6 +4972,7 @@ exports.HandlingBase = HandlingBase;
 /***/ 3310:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
+"use strict";
 
 /*!
  * Strongly Typed Events for TypeScript - Core
@@ -4474,6 +5011,7 @@ Object.defineProperty(exports, "SubscriptionChangeEventDispatcher", ({ enumerabl
 /***/ 2234:
 /***/ ((__unused_webpack_module, exports) => {
 
+"use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.EventManagement = void 0;
@@ -4513,6 +5051,7 @@ exports.EventManagement = EventManagement;
 /***/ 3861:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
@@ -5418,13 +5957,21 @@ function mapToStyles(_ref2) {
       adaptive = _ref2.adaptive,
       roundOffsets = _ref2.roundOffsets,
       isFixed = _ref2.isFixed;
+  var _offsets$x = offsets.x,
+      x = _offsets$x === void 0 ? 0 : _offsets$x,
+      _offsets$y = offsets.y,
+      y = _offsets$y === void 0 ? 0 : _offsets$y;
 
-  var _ref3 = roundOffsets === true ? roundOffsetsByDPR(offsets) : typeof roundOffsets === 'function' ? roundOffsets(offsets) : offsets,
-      _ref3$x = _ref3.x,
-      x = _ref3$x === void 0 ? 0 : _ref3$x,
-      _ref3$y = _ref3.y,
-      y = _ref3$y === void 0 ? 0 : _ref3$y;
+  var _ref3 = typeof roundOffsets === 'function' ? roundOffsets({
+    x: x,
+    y: y
+  }) : {
+    x: x,
+    y: y
+  };
 
+  x = _ref3.x;
+  y = _ref3.y;
   var hasX = offsets.hasOwnProperty('x');
   var hasY = offsets.hasOwnProperty('y');
   var sideX = left;
@@ -5469,6 +6016,17 @@ function mapToStyles(_ref2) {
     position: position
   }, adaptive && unsetSides);
 
+  var _ref4 = roundOffsets === true ? roundOffsetsByDPR({
+    x: x,
+    y: y
+  }) : {
+    x: x,
+    y: y
+  };
+
+  x = _ref4.x;
+  y = _ref4.y;
+
   if (gpuAcceleration) {
     var _Object$assign;
 
@@ -5478,9 +6036,9 @@ function mapToStyles(_ref2) {
   return Object.assign({}, commonStyles, (_Object$assign2 = {}, _Object$assign2[sideY] = hasY ? y + "px" : '', _Object$assign2[sideX] = hasX ? x + "px" : '', _Object$assign2.transform = '', _Object$assign2));
 }
 
-function computeStyles(_ref4) {
-  var state = _ref4.state,
-      options = _ref4.options;
+function computeStyles(_ref5) {
+  var state = _ref5.state,
+      options = _ref5.options;
   var _options$gpuAccelerat = options.gpuAcceleration,
       gpuAcceleration = _options$gpuAccelerat === void 0 ? true : _options$gpuAccelerat,
       _options$adaptive = options.adaptive,
@@ -5843,7 +6401,7 @@ function getClippingParents(element) {
 
 
   return clippingParents.filter(function (clippingParent) {
-    return isElement(clippingParent) && contains(clippingParent, clipperElement) && getNodeName(clippingParent) !== 'body' && (canEscapeClipping ? getComputedStyle(clippingParent).position !== 'static' : true);
+    return isElement(clippingParent) && contains(clippingParent, clipperElement) && getNodeName(clippingParent) !== 'body';
   });
 } // Gets the maximum area that the element is visible in due to any number of
 // clipping parents
@@ -8965,6 +9523,18 @@ tippy.setDefaultProps({
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
@@ -8984,8 +9554,9 @@ tippy.setDefaultProps({
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+// This entry need to be wrapped in an IIFE because it need to be in strict mode.
 (() => {
+"use strict";
 
 ;// CONCATENATED MODULE: ./node_modules/@4site/engrid-common/dist/deprecated.js
 // A way to gracefully handle deprecation.
@@ -9040,6 +9611,10 @@ const OptionsDefaults = {
     ThousandsSeparator: "",
     DecimalSeparator: ".",
     DecimalPlaces: 2,
+    MinAmount: 1,
+    MaxAmount: 100000,
+    MinAmountMessage: "Amount must be at least $1",
+    MaxAmountMessage: "Amount must be less than $100,000",
     SkipToMainContentLink: true,
     SrcDefer: true,
     NeverBounceAPI: null,
@@ -9132,6 +9707,7 @@ const TranslateOptionsDefaults = {
 
 class Loader {
     constructor() {
+        this.logger = new EngridLogger("Logger", "gold", "black", "🔁");
         this.cssElement = document.querySelector('link[href*="engrid."][rel="stylesheet"]');
         this.jsElement = document.querySelector('script[src*="engrid."]');
     }
@@ -9140,15 +9716,13 @@ class Loader {
     reload() {
         var _a, _b, _c;
         const isLoaded = engrid_ENGrid.getBodyData("loaded");
-        const assets = this.getOption("assets");
-        if (!assets || isLoaded) {
-            if (engrid_ENGrid.debug)
-                console.log("ENgrid Loader: LOADED");
+        let assets = this.getOption("assets");
+        if (isLoaded || !assets) {
+            this.logger.success("ENgrid Loader: LOADED");
             return false;
         }
         // Load the right ENgrid
-        if (engrid_ENGrid.debug)
-            console.log("ENgrid Loader: RELOADING");
+        this.logger.log("ENgrid Loader: RELOADING");
         engrid_ENGrid.setBodyData("loaded", "true"); // Set the loaded flag, so the next time we don't reload
         // Fetch the desired repo, assets location, and override JS/CSS
         const engrid_repo = this.getOption("repo-name");
@@ -9157,8 +9731,7 @@ class Loader {
         let engrid_css_url = "";
         switch (assets) {
             case "local":
-                if (engrid_ENGrid.debug)
-                    console.log("ENgrid Loader: LOADING LOCAL");
+                this.logger.log("ENgrid Loader: LOADING LOCAL");
                 // Find a way to guess local URL if there's no engrid_repo
                 if (!engrid_repo) {
                     const theme = engrid_ENGrid.getBodyData("theme");
@@ -9171,16 +9744,17 @@ class Loader {
                 }
                 break;
             case "flush":
-                if (engrid_ENGrid.debug)
-                    console.log("ENgrid Loader: FLUSHING CACHE");
+                this.logger.log("ENgrid Loader: FLUSHING CACHE");
                 const timestamp = Date.now();
-                engrid_js_url = ((_a = this.jsElement) === null || _a === void 0 ? void 0 : _a.getAttribute("src")) + "?v=" + timestamp;
-                engrid_css_url =
-                    ((_b = this.cssElement) === null || _b === void 0 ? void 0 : _b.getAttribute("href")) + "?v=" + timestamp;
+                const jsCurrentURL = new URL(((_a = this.jsElement) === null || _a === void 0 ? void 0 : _a.getAttribute("src")) || "");
+                jsCurrentURL.searchParams.set("v", timestamp.toString());
+                engrid_js_url = jsCurrentURL.toString();
+                const cssCurrentURL = new URL(((_b = this.cssElement) === null || _b === void 0 ? void 0 : _b.getAttribute("href")) || "");
+                cssCurrentURL.searchParams.set("v", timestamp.toString());
+                engrid_css_url = cssCurrentURL.toString();
                 break;
             default:
-                if (engrid_ENGrid.debug)
-                    console.log("ENgrid Loader: LOADING EXTERNAL");
+                this.logger.log("ENgrid Loader: LOADING EXTERNAL");
                 engrid_js_url =
                     "https://cdn.jsdelivr.net/gh/" +
                         engrid_repo_owner +
@@ -9244,6 +9818,7 @@ var dist = __webpack_require__(5363);
 
 class EnForm {
     constructor() {
+        this.logger = new EngridLogger("EnForm");
         this._onSubmit = new dist/* SignalDispatcher */.nz();
         this._onValidate = new dist/* SignalDispatcher */.nz();
         this._onError = new dist/* SignalDispatcher */.nz();
@@ -9258,18 +9833,15 @@ class EnForm {
     }
     dispatchSubmit() {
         this._onSubmit.dispatch();
-        if (engrid_ENGrid.debug)
-            console.log("dispatchSubmit");
+        this.logger.log("dispatchSubmit");
     }
     dispatchValidate() {
         this._onValidate.dispatch();
-        if (engrid_ENGrid.debug)
-            console.log("dispatchValidate");
+        this.logger.log("dispatchValidate");
     }
     dispatchError() {
         this._onError.dispatch();
-        if (engrid_ENGrid.debug)
-            console.log("dispatchError");
+        this.logger.log("dispatchError");
     }
     submitForm() {
         const enForm = document.querySelector("form .en__submit button");
@@ -9279,8 +9851,7 @@ class EnForm {
             if (enModal)
                 enModal.classList.add("is-submitting");
             enForm.click();
-            if (engrid_ENGrid.debug)
-                console.log("submitForm");
+            this.logger.log("submitForm");
         }
     }
     get onSubmit() {
@@ -9311,16 +9882,20 @@ class DonationAmount {
         // Watch Radios Inputs for Changes
         document.addEventListener("change", (e) => {
             const element = e.target;
-            if (element && element.name == radios) {
-                element.value = this.removeCommas(element.value);
-                this.amount = parseFloat(element.value);
+            if (element) {
+                if (element.name == radios) {
+                    this.amount = parseFloat(element.value);
+                }
+                else if (element.name == other) {
+                    element.value = this.preformatFloat(element.value);
+                    this.amount = parseFloat(element.value);
+                }
             }
         });
         // Watch Other Amount Field
         const otherField = document.querySelector(`[name='${this._other}']`);
         if (otherField) {
             otherField.addEventListener("keyup", (e) => {
-                otherField.value = this.removeCommas(otherField.value);
                 this.amount = parseFloat(otherField.value);
             });
         }
@@ -9392,17 +9967,26 @@ class DonationAmount {
         const otherWrapper = otherField.parentNode;
         otherWrapper.classList.add("en__field__item--hidden");
     }
-    // Remove commas
-    removeCommas(v) {
-        // replace 5,00 with 5.00
-        if (v.length > 3 && v.charAt(v.length - 3) == ",") {
-            v = v.substr(0, v.length - 3) + "." + v.substr(v.length - 2, 2);
+    preformatFloat(float) {
+        if (!float) {
+            return "";
         }
-        else if (v.length > 2 && v.charAt(v.length - 2) == ",") {
-            v = v.substr(0, v.length - 2) + "." + v.substr(v.length - 1, 1);
+        //Index of first comma
+        const posC = float.indexOf(",");
+        if (posC === -1) {
+            //No commas found, treat as float
+            return float;
         }
-        // replace any remaining commas
-        return v.replace(/,/g, "");
+        //Index of first full stop
+        const posFS = float.indexOf(".");
+        if (posFS === -1) {
+            //Uses commas and not full stops - swap them (e.g. 1,23 --> 1.23)
+            return float.replace(/\,/g, ".");
+        }
+        //Uses both commas and full stops - ensure correct order and remove 1000s separators
+        return posC < posFS
+            ? float.replace(/\,/g, "")
+            : float.replace(/\./g, "").replace(",", ".");
     }
 }
 
@@ -9464,6 +10048,18 @@ class engrid_ENGrid {
         this.enParseDependencies();
         return;
     }
+    // Create a hidden input field
+    static createHiddenInput(name, value = "") {
+        const input = document.createElement("input");
+        input.type = "hidden";
+        input.name = name;
+        input.classList.add("en__field__input");
+        input.classList.add("en__field__input--text");
+        input.classList.add("engrid-added-input");
+        input.value = value;
+        engrid_ENGrid.enForm.appendChild(input);
+        return input;
+    }
     // Trigger EN Dependencies
     static enParseDependencies() {
         var _a, _b, _c, _d, _e;
@@ -9514,6 +10110,9 @@ class engrid_ENGrid {
                     break;
                 case "emailsubscribeform":
                     return "SUBSCRIBEFORM";
+                    break;
+                case "supporterhub":
+                    return "SUPPORTERHUB";
                     break;
                 default:
                     return "DONATION";
@@ -9629,6 +10228,32 @@ class engrid_ENGrid {
             obj = obj[args[i]];
         }
         return true;
+    }
+    static setError(querySelector, errorMessage) {
+        const errorElement = document.querySelector(querySelector);
+        if (errorElement) {
+            errorElement.classList.add("en__field--validationFailed");
+            let errorMessageElement = errorElement.querySelector(".en__field__error");
+            if (!errorMessageElement) {
+                errorMessageElement = document.createElement("div");
+                errorMessageElement.classList.add("en__field__error");
+                errorMessageElement.innerHTML = errorMessage;
+                errorElement.insertBefore(errorMessageElement, errorElement.firstChild);
+            }
+            else {
+                errorMessageElement.innerHTML = errorMessage;
+            }
+        }
+    }
+    static removeError(querySelector) {
+        const errorElement = document.querySelector(querySelector);
+        if (errorElement) {
+            errorElement.classList.remove("en__field--validationFailed");
+            const errorMessageElement = errorElement.querySelector(".en__field__error");
+            if (errorMessageElement) {
+                errorElement.removeChild(errorMessageElement);
+            }
+        }
     }
 }
 
@@ -9841,6 +10466,7 @@ class App extends engrid_ENGrid {
         this._fees = ProcessingFees.getInstance();
         this._amount = DonationAmount.getInstance("transaction.donationAmt", "transaction.donationAmt.other");
         this._frequency = DonationFrequency.getInstance();
+        this.logger = new EngridLogger("App", "black", "white", "🍏");
         this.shouldScroll = () => {
             // If you find a error, scroll
             if (document.querySelector(".en__errorHeader")) {
@@ -9881,8 +10507,15 @@ class App extends engrid_ENGrid {
         };
     }
     run() {
-        // Enable debug if available is the first thing
+        if (!engrid_ENGrid.checkNested(window.EngagingNetworks, "require", "_defined", "enjs")) {
+            this.logger.danger("Engaging Networks JS Framework NOT FOUND");
+            setTimeout(() => {
+                this.run();
+            }, 10);
+            return;
+        }
         if (this.options.Debug || App.getUrlParameter("debug") == "true")
+            // Enable debug if available is the first thing
             App.setBodyData("debug", "");
         // Page Background
         new PageBackground();
@@ -9891,7 +10524,6 @@ class App extends engrid_ENGrid {
         preventAutocomplete();
         watchInmemField();
         watchGiveBySelectField();
-        SetEnFieldOtherAmountRadioStepValue();
         simpleUnsubscribe();
         contactDetailLabels();
         easyEdit();
@@ -9924,11 +10556,17 @@ class App extends engrid_ENGrid {
         this._form.onError.subscribe(() => this.onError());
         this._form.onValidate.subscribe(() => this.onValidate());
         // Event Listener Examples
-        this._amount.onAmountChange.subscribe((s) => console.log(`Live Amount: ${s}`));
-        this._frequency.onFrequencyChange.subscribe((s) => console.log(`Live Frequency: ${s}`));
-        this._form.onSubmit.subscribe((s) => console.log("Submit: ", s));
-        this._form.onError.subscribe((s) => console.log("Error:", s));
+        this._amount.onAmountChange.subscribe((s) => this.logger.success(`Live Amount: ${s}`));
+        this._frequency.onFrequencyChange.subscribe((s) => {
+            this.logger.success(`Live Frequency: ${s}`);
+            setTimeout(() => {
+                this._amount.load();
+            }, 150);
+        });
+        this._form.onSubmit.subscribe((s) => this.logger.success("Submit: " + s));
+        this._form.onError.subscribe((s) => this.logger.danger("Error: " + s));
         window.enOnSubmit = () => {
+            this._form.submit = true;
             this._form.dispatchSubmit();
             return this._form.submit;
         };
@@ -9936,6 +10574,7 @@ class App extends engrid_ENGrid {
             this._form.dispatchError();
         };
         window.enOnValidate = () => {
+            this._form.validate = true;
             this._form.dispatchValidate();
             return this._form.validate;
         };
@@ -9991,6 +10630,8 @@ class App extends engrid_ENGrid {
         if (this.options.NeverBounceAPI)
             new NeverBounce(this.options.NeverBounceAPI, this.options.NeverBounceDateField, this.options.NeverBounceStatusField, this.options.NeverBounceDateFormat);
         new ShowIfAmount();
+        new OtherAmount();
+        new MinMaxAmount();
         this.setDataAttributes();
     }
     onLoad() {
@@ -9999,16 +10640,14 @@ class App extends engrid_ENGrid {
         }
         if (this.inIframe()) {
             // Scroll to top of iFrame
-            if (App.debug)
-                console.log("iFrame Event - window.onload");
+            this.logger.log("iFrame Event - window.onload");
             sendIframeHeight();
             window.parent.postMessage({
                 scroll: this.shouldScroll(),
             }, "*");
             // On click fire the resize event
             document.addEventListener("click", (e) => {
-                if (App.debug)
-                    console.log("iFrame Event - click");
+                this.logger.log("iFrame Event - click");
                 setTimeout(() => {
                     sendIframeHeight();
                 }, 100);
@@ -10020,22 +10659,19 @@ class App extends engrid_ENGrid {
             this.options.onResize();
         }
         if (this.inIframe()) {
-            if (App.debug)
-                console.log("iFrame Event - window.onload");
+            this.logger.log("iFrame Event - window.onload");
             sendIframeHeight();
         }
     }
     onValidate() {
         if (this.options.onValidate) {
-            if (App.debug)
-                console.log("Client onValidate Triggered");
+            this.logger.log("Client onValidate Triggered");
             this.options.onValidate();
         }
     }
     onSubmit() {
         if (this.options.onSubmit) {
-            if (App.debug)
-                console.log("Client onSubmit Triggered");
+            this.logger.log("Client onSubmit Triggered");
             this.options.onSubmit();
         }
         if (this.inIframe()) {
@@ -10044,8 +10680,7 @@ class App extends engrid_ENGrid {
     }
     onError() {
         if (this.options.onError) {
-            if (App.debug)
-                console.log("Client onError Triggered");
+            this.logger.danger("Client onError Triggered");
             this.options.onError();
         }
     }
@@ -10062,13 +10697,20 @@ class App extends engrid_ENGrid {
             // Add the data-engrid-embedded attribute when inside an iFrame if it wasn't already added by a script in the Page Template
             App.setBodyData("embedded", "");
             // Fire the resize event
-            if (App.debug)
-                console.log("iFrame Event - First Resize");
+            this.logger.log("iFrame Event - First Resize");
             sendIframeHeight();
         }
     }
     // Use this function to add any Data Attributes to the Body tag
     setDataAttributes() {
+        // Add the Page Type as a Data Attribute on the video
+        if (engrid_ENGrid.checkNested(window, "pageJson", "pageType")) {
+            App.setBodyData("page-type", window.pageJson.pageType);
+            this.logger.log("Page Type: " + window.pageJson.pageType);
+        }
+        else {
+            this.logger.log("Page Type: Not Found");
+        }
         // Add a body banner data attribute if the banner contains no image
         // @TODO Should this account for video?
         // @TODO Should we merge this with the script that checks the background image?
@@ -10179,10 +10821,10 @@ class AmountLabel {
     // Fix Amount Labels
     fixAmountLabels() {
         let amounts = document.querySelectorAll(".en__field--donationAmt label");
+        const currencySymbol = engrid_ENGrid.getOption("CurrencySymbol") || "";
         amounts.forEach((element) => {
             if (!isNaN(element.innerText)) {
-                element.innerText =
-                    engrid_ENGrid.getOption("CurrencySymbol") + element.innerText;
+                element.innerText = currencySymbol + element.innerText;
             }
         });
     }
@@ -10535,7 +11177,6 @@ const enInput = (() => {
     // get DOM elements
     const init = () => {
         const formInput = document.querySelectorAll(".en__field--text, .en__field--email:not(.en__field--checkbox), .en__field--telephone, .en__field--number, .en__field--textarea, .en__field--select, .en__field--checkbox");
-        const otherInputs = document.querySelectorAll(".en__field__input--other");
         Array.from(formInput).forEach((e) => {
             // @TODO Currently checkboxes always return as having a value, since they do but they're just not checked. Need to update and account for that, should also do Radio's while we're at it
             let element = e.querySelector("input, textarea, select");
@@ -10543,25 +11184,6 @@ const enInput = (() => {
                 e.classList.add("has-value");
             }
             bindEvents(e);
-        });
-        /* @TODO Review Engaging Networks to see if this is still needed */
-        /************************************
-         * Automatically select other radio input when an amount is entered into it.
-         ***********************************/
-        Array.from(otherInputs).forEach((e) => {
-            ["focus", "input"].forEach((evt) => {
-                e.addEventListener(evt, (ev) => {
-                    const target = ev.target;
-                    if (target && target.parentNode && target.parentNode.parentNode) {
-                        const targetWrapper = target.parentNode;
-                        targetWrapper.classList.remove("en__field__item--hidden");
-                        if (targetWrapper.parentNode) {
-                            const lastRadioInput = targetWrapper.parentNode.querySelector(".en__field__item:nth-last-child(2) input");
-                            lastRadioInput.checked = !0;
-                        }
-                    }
-                }, false);
-            });
         });
     };
     return {
@@ -10763,19 +11385,29 @@ const debugBar = () => {
     }
 };
 const inputPlaceholder = () => {
-    // FIND ALL COMMON INPUT FIELDS
-    let enFieldDonationAmt = document.querySelector(".en__field--donationAmt.en__field--withOther .en__field__input--other");
+    // Personal Information
     let enFieldFirstName = document.querySelector("input#en__field_supporter_firstName");
     let enFieldLastName = document.querySelector("input#en__field_supporter_lastName");
     let enFieldEmailAddress = document.querySelector("input#en__field_supporter_emailAddress");
-    let enFieldPhoneNumber = document.querySelector("#inputen__field_supporter_phoneNumber");
+    let enFieldPhoneNumber = document.querySelector("input#en__field_supporter_phoneNumber");
+    let enFieldPhoneNumberRequired = document.querySelector(".en__mandatory > * > input#en__field_supporter_phoneNumber");
     let enFieldPhoneNumber2 = document.querySelector("input#en__field_supporter_phoneNumber2");
+    let enFieldPhoneNumber2Required = document.querySelector(".en__mandatory > * > input#en__field_supporter_phoneNumber2");
+    // Address
     let enFieldCountry = document.querySelector("input#en__field_supporter_country");
     let enFieldAddress1 = document.querySelector("input#en__field_supporter_address1");
     let enFieldAddress2 = document.querySelector("input#en__field_supporter_address2");
     let enFieldCity = document.querySelector("input#en__field_supporter_city");
-    // let enFieldRegion = document.querySelector("input#en__field_supporter_region") as HTMLInputElement
+    let enFieldRegion = document.querySelector("input#en__field_supporter_region");
     let enFieldPostcode = document.querySelector("input#en__field_supporter_postcode");
+    // Donation
+    let enFieldDonationAmt = document.querySelector(".en__field--donationAmt.en__field--withOther .en__field__input--other");
+    let enFieldCcnumber = document.querySelector("input#en__field_transaction_ccnumber");
+    let enFieldCcexpire = document.querySelector("input#en__field_transaction_ccexpire");
+    let enFieldCcvv = document.querySelector("input#en__field_transaction_ccvv");
+    let enFieldBankAccountNumber = document.querySelector("input#en__field_supporter_bankAccountNumber");
+    let enFieldBankRoutingNumber = document.querySelector("input#en__field_supporter_bankRoutingNumber");
+    // In Honor
     let enFieldHonname = document.querySelector("input#en__field_transaction_honname");
     let enFieldInfname = document.querySelector("input#en__field_transaction_infname");
     let enFieldInfemail = document.querySelector("input#en__field_transaction_infemail");
@@ -10784,21 +11416,32 @@ const inputPlaceholder = () => {
     let enFieldInfadd2 = document.querySelector("input#en__field_transaction_infadd2");
     let enFieldInfcity = document.querySelector("input#en__field_transaction_infcity");
     let enFieldInfpostcd = document.querySelector("input#en__field_transaction_infpostcd");
+    // Miscillaneous
     let enFieldGftrsn = document.querySelector("input#en__field_transaction_gftrsn");
-    let enFieldCcnumber = document.querySelector("input#en__field_transaction_ccnumber");
-    let enFieldCcexpire = document.querySelector("input#en__field_transaction_ccexpire");
-    let enFieldCcvv = document.querySelector("input#en__field_transaction_ccvv");
-    let enFieldBankAccountNumber = document.querySelector("input#en__field_supporter_bankAccountNumber");
-    let enFieldBankRoutingNumber = document.querySelector("input#en__field_supporter_bankRoutingNumber");
+    // Shipping Infromation
+    let enFieldShippingFirstName = document.querySelector("input#en__field_transaction_shipfname");
+    let enFieldShippingLastName = document.querySelector("input#en__field_transaction_shiplname");
+    let enFieldShippingEmailAddress = document.querySelector("input#en__field_transaction_shipemail");
+    let enFieldShippingCountry = document.querySelector("input#en__field_transaction_shipcountry");
+    let enFieldShippingAddress1 = document.querySelector("input#en__field_transaction_shipadd1");
+    let enFieldShippingAddress2 = document.querySelector("input#en__field_transaction_shipadd2");
+    let enFieldShippingCity = document.querySelector("input#en__field_transaction_shipcity");
+    let enFieldShippingRegion = document.querySelector("input#en__field_transaction_shipregion");
+    let enFieldShippingPostcode = document.querySelector("input#en__field_transaction_shippostcode");
+    // Billing Infromation
+    let enFieldBillingCountry = document.querySelector("input#en__field_supporter_billingCountry");
+    let enFieldBillingAddress1 = document.querySelector("input#en__field_supporter_billingAddress1");
+    let enFieldBillingAddress2 = document.querySelector("input#en__field_supporter_billingAddress2");
+    let enFieldBillingCity = document.querySelector("input#en__field_supporter_billingCity");
+    let enFieldBillingRegion = document.querySelector("input#en__field_supporter_billingRegion");
+    let enFieldBillingPostcode = document.querySelector("input#en__field_supporter_billingPostcode");
     // CHANGE FIELD INPUT TYPES
     if (enFieldDonationAmt) {
-        enFieldDonationAmt.setAttribute("inputmode", "numeric");
+        enFieldDonationAmt.setAttribute("inputmode", "decimal");
     }
     // ADD FIELD PLACEHOLDERS
     const enAddInputPlaceholder = document.querySelector("[data-engrid-add-input-placeholders]");
-    if (enAddInputPlaceholder && enFieldDonationAmt) {
-        enFieldDonationAmt.placeholder = "Other Amount";
-    }
+    // Personal Information
     if (enAddInputPlaceholder && enFieldFirstName) {
         enFieldFirstName.placeholder = "First Name";
     }
@@ -10808,12 +11451,27 @@ const inputPlaceholder = () => {
     if (enAddInputPlaceholder && enFieldEmailAddress) {
         enFieldEmailAddress.placeholder = "Email Address";
     }
-    if (enAddInputPlaceholder && enFieldPhoneNumber) {
+    if (enAddInputPlaceholder &&
+        enFieldPhoneNumber &&
+        enFieldPhoneNumberRequired) {
         enFieldPhoneNumber.placeholder = "Phone Number";
     }
-    if (enAddInputPlaceholder && enFieldPhoneNumber2) {
+    else if (enAddInputPlaceholder &&
+        enFieldPhoneNumber &&
+        !enFieldPhoneNumberRequired) {
+        enFieldPhoneNumber.placeholder = "Phone Number (Optional)";
+    }
+    if (enAddInputPlaceholder &&
+        enFieldPhoneNumber2 &&
+        enFieldPhoneNumber2Required) {
+        enFieldPhoneNumber2.placeholder = "000-000-0000";
+    }
+    else if (enAddInputPlaceholder &&
+        enFieldPhoneNumber2 &&
+        !enFieldPhoneNumber2Required) {
         enFieldPhoneNumber2.placeholder = "000-000-0000 (Optional)";
     }
+    // Address
     if (enAddInputPlaceholder && enFieldCountry) {
         enFieldCountry.placeholder = "Country";
     }
@@ -10826,36 +11484,15 @@ const inputPlaceholder = () => {
     if (enAddInputPlaceholder && enFieldCity) {
         enFieldCity.placeholder = "City";
     }
-    // if (enAddInputPlaceholder && enFieldRegion){enFieldRegion.placeholder = "TBD";}
+    if (enAddInputPlaceholder && enFieldRegion) {
+        enFieldRegion.placeholder = "Region";
+    }
     if (enAddInputPlaceholder && enFieldPostcode) {
         enFieldPostcode.placeholder = "Postal Code";
     }
-    if (enAddInputPlaceholder && enFieldHonname) {
-        enFieldHonname.placeholder = "Honoree Name";
-    }
-    if (enAddInputPlaceholder && enFieldInfname) {
-        enFieldInfname.placeholder = "Recipient Name";
-    }
-    if (enAddInputPlaceholder && enFieldInfemail) {
-        enFieldInfemail.placeholder = "Recipient Email Address";
-    }
-    if (enAddInputPlaceholder && enFieldInfcountry) {
-        enFieldInfcountry.placeholder = "TBD";
-    }
-    if (enAddInputPlaceholder && enFieldInfadd1) {
-        enFieldInfadd1.placeholder = "Recipient Street Address";
-    }
-    if (enAddInputPlaceholder && enFieldInfadd2) {
-        enFieldInfadd2.placeholder = "Recipient Apt., ste., bldg.";
-    }
-    if (enAddInputPlaceholder && enFieldInfcity) {
-        enFieldInfcity.placeholder = "Recipient City";
-    }
-    if (enAddInputPlaceholder && enFieldInfpostcd) {
-        enFieldInfpostcd.placeholder = "Recipient Postal Code";
-    }
-    if (enAddInputPlaceholder && enFieldGftrsn) {
-        enFieldGftrsn.placeholder = "Reason for your gift";
+    // Donation
+    if (enAddInputPlaceholder && enFieldDonationAmt) {
+        enFieldDonationAmt.placeholder = "Other";
     }
     if (enAddInputPlaceholder && enFieldCcnumber) {
         enFieldCcnumber.placeholder = "•••• •••• •••• ••••";
@@ -10871,6 +11508,82 @@ const inputPlaceholder = () => {
     }
     if (enAddInputPlaceholder && enFieldBankRoutingNumber) {
         enFieldBankRoutingNumber.placeholder = "Bank Routing Number";
+    }
+    // In Honor
+    if (enAddInputPlaceholder && enFieldHonname) {
+        enFieldHonname.placeholder = "Honoree Name";
+    }
+    if (enAddInputPlaceholder && enFieldInfname) {
+        enFieldInfname.placeholder = "Recipient Name";
+    }
+    if (enAddInputPlaceholder && enFieldInfemail) {
+        enFieldInfemail.placeholder = "Recipient Email Address";
+    }
+    if (enAddInputPlaceholder && enFieldInfcountry) {
+        enFieldInfcountry.placeholder = "Country";
+    }
+    if (enAddInputPlaceholder && enFieldInfadd1) {
+        enFieldInfadd1.placeholder = "Recipient Street Address";
+    }
+    if (enAddInputPlaceholder && enFieldInfadd2) {
+        enFieldInfadd2.placeholder = "Recipient Apt., ste., bldg.";
+    }
+    if (enAddInputPlaceholder && enFieldInfcity) {
+        enFieldInfcity.placeholder = "Recipient City";
+    }
+    if (enAddInputPlaceholder && enFieldInfpostcd) {
+        enFieldInfpostcd.placeholder = "Recipient Postal Code";
+    }
+    // Miscillaneous
+    if (enAddInputPlaceholder && enFieldGftrsn) {
+        enFieldGftrsn.placeholder = "Reason for your gift";
+    }
+    // Shipping Infromation
+    if (enAddInputPlaceholder && enFieldShippingFirstName) {
+        enFieldShippingFirstName.placeholder = "Shipping First Name";
+    }
+    if (enAddInputPlaceholder && enFieldShippingLastName) {
+        enFieldShippingLastName.placeholder = "Shipping Last Name";
+    }
+    if (enAddInputPlaceholder && enFieldShippingEmailAddress) {
+        enFieldShippingEmailAddress.placeholder = "Shipping Email Address";
+    }
+    if (enAddInputPlaceholder && enFieldShippingCountry) {
+        enFieldShippingCountry.placeholder = "Shipping Country";
+    }
+    if (enAddInputPlaceholder && enFieldShippingAddress1) {
+        enFieldShippingAddress1.placeholder = "Shipping Street Address";
+    }
+    if (enAddInputPlaceholder && enFieldShippingAddress2) {
+        enFieldShippingAddress2.placeholder = "Shipping Apt., ste., bldg.";
+    }
+    if (enAddInputPlaceholder && enFieldShippingCity) {
+        enFieldShippingCity.placeholder = "Shipping City";
+    }
+    if (enAddInputPlaceholder && enFieldShippingRegion) {
+        enFieldShippingRegion.placeholder = "Shipping Region";
+    }
+    if (enAddInputPlaceholder && enFieldShippingPostcode) {
+        enFieldShippingPostcode.placeholder = "Shipping Postal Code";
+    }
+    // Billing Information
+    if (enAddInputPlaceholder && enFieldBillingCountry) {
+        enFieldBillingCountry.placeholder = "Billing Country";
+    }
+    if (enAddInputPlaceholder && enFieldBillingAddress1) {
+        enFieldBillingAddress1.placeholder = "Billing Street Address";
+    }
+    if (enAddInputPlaceholder && enFieldBillingAddress2) {
+        enFieldBillingAddress2.placeholder = "Billing Apt., ste., bldg.";
+    }
+    if (enAddInputPlaceholder && enFieldBillingCity) {
+        enFieldBillingCity.placeholder = "Billing City";
+    }
+    if (enAddInputPlaceholder && enFieldBillingRegion) {
+        enFieldBillingRegion.placeholder = "Billing Region";
+    }
+    if (enAddInputPlaceholder && enFieldBillingPostcode) {
+        enFieldBillingPostcode.placeholder = "Billing Postal Code";
     }
 };
 const preventAutocomplete = () => {
@@ -10932,7 +11645,6 @@ const watchGiveBySelectField = () => {
                 removeClassesByPrefix(enGrid, prefix);
                 enGrid.classList.add("has-give-by-ach");
             }
-            enFieldPaymentType.value = "ach";
             enFieldPaymentType.value = "ACH";
         }
         else if (enFieldGiveBySelectCurrentValue &&
@@ -10970,7 +11682,6 @@ const watchGiveBySelectField = () => {
                 removeClassesByPrefix(enGrid, prefix);
                 enGrid.classList.add("has-give-by-check");
             }
-            enFieldPaymentType.value = "ach";
             enFieldPaymentType.value = "ACH";
         }
         else if (enFieldGiveBySelectCurrentValue &&
@@ -10980,7 +11691,6 @@ const watchGiveBySelectField = () => {
                 enGrid.classList.add("has-give-by-paypal");
             }
             enFieldPaymentType.value = "paypal";
-            enFieldPaymentType.value = "Paypal";
         }
         else if (enFieldGiveBySelectCurrentValue &&
             enFieldGiveBySelectCurrentValue.value.toLowerCase() == "applepay") {
@@ -11008,19 +11718,6 @@ let field_expiration_parts = document.querySelectorAll(".en__field--ccexpire .en
 const field_country = document.getElementById("en__field_supporter_country");
 let field_expiration_month = field_expiration_parts[0];
 let field_expiration_year = field_expiration_parts[1];
-/* The Donation Other Giving Amount is a "Number" type input field.
-   It also has its step value set to .01 so it increments up/down by once whole cent.
-   This step also client-side prevents users from entering a fraction of a penny.
-   And it has a min set to 5 so nothing less can be submitted
-*/
-const SetEnFieldOtherAmountRadioStepValue = () => {
-    const enFieldOtherAmountRadio = document.querySelector(".en__field--donationAmt .en__field__input--other");
-    if (enFieldOtherAmountRadio) {
-        enFieldOtherAmountRadio.setAttribute("step", ".01");
-        enFieldOtherAmountRadio.setAttribute("type", "number");
-        enFieldOtherAmountRadio.setAttribute("min", "5");
-    }
-};
 /*
  * Helpers
  */
@@ -11093,9 +11790,13 @@ const handleCCUpdate = () => {
         mastercard: ["mastercard", "master card", "mc"],
         discover: ["discover", "di"],
     };
-    const payment_text = field_payment_type.options[field_payment_type.selectedIndex].text;
-    if (card_type && payment_text != card_type) {
-        field_payment_type.value = Array.from(field_payment_type.options).filter((d) => card_values[card_type].includes(d.value.toLowerCase()))[0].value;
+    const selected_card_value = card_type
+        ? Array.from(field_payment_type.options).filter((d) => card_values[card_type].includes(d.value.toLowerCase()))[0].value
+        : "";
+    if (field_payment_type.value != selected_card_value) {
+        field_payment_type.value = selected_card_value;
+        const paymentTypeChangeEvent = new Event("change", { bubbles: true });
+        field_payment_type.dispatchEvent(paymentTypeChangeEvent);
     }
 };
 const handleExpUpdate = (e) => {
@@ -11436,6 +12137,10 @@ class LiveVariables {
     }
     loadingSubmitButton() {
         const submit = document.querySelector(".en__submit button");
+        // Don't add the Loading element if the button is from an Ajax form (like the supporter hub)
+        if (submit.closest(".en__hubOverlay") !== null) {
+            return true;
+        }
         let submitButtonOriginalHTML = submit.innerHTML;
         let submitButtonProcessingHTML = "<span class='loader-wrapper'><span class='loader loader-quart'></span><span class='submit-button-text-wrapper'>" +
             submitButtonOriginalHTML +
@@ -11538,11 +12243,11 @@ class UpsellLightbox {
         this._amount = DonationAmount.getInstance();
         this._fees = ProcessingFees.getInstance();
         this._frequency = DonationFrequency.getInstance();
+        this.logger = new EngridLogger("UpsellLightbox", "black", "pink", "🪟");
         let options = "EngridUpsell" in window ? window.EngridUpsell : {};
         this.options = Object.assign(Object.assign({}, UpsellOptionsDefaults), options);
         if (!this.shouldRun()) {
-            if (engrid_ENGrid.debug)
-                console.log("Upsell script should NOT run");
+            this.logger.log("Upsell script should NOT run");
             // If we're not on a Donation Page, get out
             return;
         }
@@ -11639,8 +12344,7 @@ class UpsellLightbox {
         if (otherField) {
             otherField.addEventListener("keyup", this.popupOtherField.bind(this));
         }
-        if (engrid_ENGrid.debug)
-            console.log("Upsell script rendered");
+        this.logger.log("Upsell script rendered");
     }
     // Should we run the script?
     shouldRun() {
@@ -11689,6 +12393,8 @@ class UpsellLightbox {
             let val = this.options.amountRange[i];
             if (upsellAmount == 0 && amount <= val.max) {
                 upsellAmount = val.suggestion;
+                if (upsellAmount === 0)
+                    return 0;
                 if (typeof upsellAmount !== "number") {
                     const suggestionMath = upsellAmount.replace("amount", amount.toFixed(2));
                     upsellAmount = parseFloat(Function('"use strict";return (' + suggestionMath + ")")());
@@ -11710,18 +12416,15 @@ class UpsellLightbox {
         if (freq == "onetime" &&
             !this.overlay.classList.contains("is-submitting") &&
             upsellAmount > 0) {
-            if (engrid_ENGrid.debug) {
-                console.log("Upsell Frequency", this._frequency.frequency);
-                console.log("Upsell Amount", this._amount.amount);
-                console.log("Upsell Suggested Amount", upsellAmount);
-            }
+            this.logger.log("Upsell Frequency " + this._frequency.frequency);
+            this.logger.log("Upsell Amount " + this._amount.amount);
+            this.logger.log("Upsell Suggested Amount " + upsellAmount);
             return true;
         }
         return false;
     }
     open() {
-        if (engrid_ENGrid.debug)
-            console.log("Upsell Script Triggered");
+        this.logger.log("Upsell script opened");
         if (!this.shouldOpen()) {
             // In the circumstance when the form fails to validate via server-side validation, the page will reload
             // When that happens, we should place the original amount saved in sessionStorage into the upsell original amount field
@@ -11772,8 +12475,7 @@ class UpsellLightbox {
         e.preventDefault();
         if (e.target instanceof Element &&
             ((_a = document.querySelector("#upsellYesButton")) === null || _a === void 0 ? void 0 : _a.contains(e.target))) {
-            if (engrid_ENGrid.debug)
-                console.log("Upsold");
+            this.logger.success("Upsold");
             this.setOriginalAmount(this._amount.amount.toString());
             const upsoldAmount = this.getUpsellAmount();
             this._frequency.setFrequency("monthly");
@@ -12219,8 +12921,8 @@ class TranslateFields {
                 break;
             case "CA":
             case "CAN":
-                this.setStateValues("Province/State", [
-                    { label: "Select Province/State", value: "" },
+                this.setStateValues("Province", [
+                    { label: "Select Province", value: "" },
                     { label: "Alberta", value: "AB" },
                     { label: "British Columbia", value: "BC" },
                     { label: "Manitoba", value: "MB" },
@@ -12237,8 +12939,8 @@ class TranslateFields {
                 ]);
                 break;
             case "Canada":
-                this.setStateValues("Province/State", [
-                    { label: "Select Province/State", value: "" },
+                this.setStateValues("Province", [
+                    { label: "Select Province", value: "" },
                     { label: "Alberta", value: "Alberta" },
                     { label: "British Columbia", value: "British Columbia" },
                     { label: "Manitoba", value: "Manitoba" },
@@ -12402,7 +13104,7 @@ class TranslateFields {
 class SimpleCountrySelect {
     constructor() {
         this.countryWrapper = document.querySelector(".simple_country_select");
-        this.countrySelect = document.querySelector("#en__field_supporter_country");
+        this.countrySelect = document.querySelector("select#en__field_supporter_country");
         this.country = null;
         const engridAutofill = get("engrid-autofill");
         const submissionFailed = !!(engrid_ENGrid.checkNested(window.EngagingNetworks, "require", "_defined", "enjs", "checkSubmissionFailed") && window.EngagingNetworks.require._defined.enjs.checkSubmissionFailed());
@@ -13299,14 +14001,14 @@ class RememberMe {
 class ShowIfAmount {
     constructor() {
         this._amount = DonationAmount.getInstance();
+        this.logger = new EngridLogger("ShowIfAmount", "yellow", "black", "👀");
         this._elements = document.querySelectorAll('[class*="showifamount"]');
         if (this._elements.length > 0) {
             this._amount.onAmountChange.subscribe(() => this.init());
             this.init();
             return;
         }
-        if (engrid_ENGrid.debug)
-            console.log("Show If Amount: NO ELEMENTS FOUND");
+        this.logger.log("Show If Amount: NO ELEMENTS FOUND");
     }
     init() {
         const amount = this._amount.amount;
@@ -13333,8 +14035,7 @@ class ShowIfAmount {
         if (showifamountClass) {
             let amountCheck = showifamountClass.split("-").slice(-1)[0];
             if (amount < Number(amountCheck)) {
-                if (engrid_ENGrid.debug)
-                    console.log("Show If Amount (lessthan):", element);
+                this.logger.log("(lessthan):", element);
                 element.classList.add("engrid-open");
             }
             else {
@@ -13347,8 +14048,7 @@ class ShowIfAmount {
         if (showifamountClass) {
             let amountCheck = showifamountClass.split("-").slice(-1)[0];
             if (amount <= Number(amountCheck)) {
-                if (engrid_ENGrid.debug)
-                    console.log("Show If Amount (lessthanorequalto):", element);
+                this.logger.log("(lessthanorequalto):", element);
                 element.classList.add("engrid-open");
             }
             else {
@@ -13361,8 +14061,7 @@ class ShowIfAmount {
         if (showifamountClass) {
             let amountCheck = showifamountClass.split("-").slice(-1)[0];
             if (amount == Number(amountCheck)) {
-                if (engrid_ENGrid.debug)
-                    console.log("Show If Amount (equalto):", element);
+                this.logger.log("(equalto):", element);
                 element.classList.add("engrid-open");
             }
             else {
@@ -13375,8 +14074,7 @@ class ShowIfAmount {
         if (showifamountClass) {
             let amountCheck = showifamountClass.split("-").slice(-1)[0];
             if (amount >= Number(amountCheck)) {
-                if (engrid_ENGrid.debug)
-                    console.log("Show If Amount (greaterthanorequalto):", element);
+                this.logger.log("(greaterthanorequalto):", element);
                 element.classList.add("engrid-open");
             }
             else {
@@ -13389,8 +14087,7 @@ class ShowIfAmount {
         if (showifamountClass) {
             let amountCheck = showifamountClass.split("-").slice(-1)[0];
             if (amount > Number(amountCheck)) {
-                if (engrid_ENGrid.debug)
-                    console.log("Show If Amount (greaterthan):", element);
+                this.logger.log("(greaterthan):", element);
                 element.classList.add("engrid-open");
             }
             else {
@@ -13403,10 +14100,8 @@ class ShowIfAmount {
         if (showifamountClass) {
             let amountCheckMin = showifamountClass.split("-").slice(-2, -1)[0];
             let amountCheckMax = showifamountClass.split("-").slice(-1)[0];
-            if (amount >= Number(amountCheckMin) &&
-                amount <= Number(amountCheckMax)) {
-                if (engrid_ENGrid.debug)
-                    console.log("Show If Amount (between):", element);
+            if (amount > Number(amountCheckMin) && amount < Number(amountCheckMax)) {
+                this.logger.log("(between):", element);
                 element.classList.add("engrid-open");
             }
             else {
@@ -13416,8 +14111,194 @@ class ShowIfAmount {
     }
 }
 
+;// CONCATENATED MODULE: ./node_modules/@4site/engrid-common/dist/other-amount.js
+// This class automatically select other radio input when an amount is entered into it.
+
+class OtherAmount {
+    constructor() {
+        this.logger = new EngridLogger("OtherAmount", "green", "black", "💰");
+        "focusin input".split(" ").forEach((e) => {
+            var _a;
+            // We're attaching this event to the body because sometimes the other amount input is not in the DOM yet and comes via AJAX.
+            (_a = document.querySelector("body")) === null || _a === void 0 ? void 0 : _a.addEventListener(e, (event) => {
+                const target = event.target;
+                if (target.classList.contains("en__field__input--other")) {
+                    this.logger.log("Other Amount Field Focused");
+                    this.setRadioInput();
+                }
+            });
+        });
+    }
+    setRadioInput() {
+        const target = document.querySelector(".en__field--donationAmt .en__field__input--other");
+        if (target && target.parentNode && target.parentNode.parentNode) {
+            const targetWrapper = target.parentNode;
+            targetWrapper.classList.remove("en__field__item--hidden");
+            if (targetWrapper.parentNode) {
+                const lastRadioInput = targetWrapper.parentNode.querySelector(".en__field__item:nth-last-child(2) input");
+                lastRadioInput.checked = !0;
+            }
+        }
+    }
+}
+
+;// CONCATENATED MODULE: ./node_modules/@4site/engrid-common/dist/logger.js
+
+/**
+ * A better logger. It only works if debug is enabled.
+ */
+class EngridLogger {
+    constructor(prefix, color, background, emoji) {
+        this.prefix = "";
+        this.color = "black";
+        this.background = "white";
+        this.emoji = "";
+        if (emoji) {
+            this.emoji = emoji;
+        }
+        else {
+            switch (color) {
+                case "red":
+                    this.emoji = "🔴";
+                    break;
+                case "green":
+                    this.emoji = "🟢";
+                    break;
+                case "blue":
+                    this.emoji = "🔵";
+                    break;
+                case "yellow":
+                    this.emoji = "🟡";
+                    this.background = "black";
+                    break;
+                case "purple":
+                    this.emoji = "🟣";
+                    break;
+                case "black":
+                default:
+                    this.emoji = "⚫";
+                    break;
+            }
+        }
+        if (prefix) {
+            this.prefix = `[ENgrid ${prefix}]`;
+        }
+        if (color) {
+            this.color = color;
+        }
+        if (background) {
+            this.background = background;
+        }
+    }
+    get log() {
+        if (!engrid_ENGrid.debug) {
+            return () => { };
+        }
+        return console.log.bind(window.console, "%c" + this.emoji + " " + this.prefix + " %s", `color: ${this.color}; background: ${this.background}; font-size: 1.2em; padding: 4px; border-radius: 2px; font-family: monospace;`);
+    }
+    get success() {
+        if (!engrid_ENGrid.debug) {
+            return () => { };
+        }
+        return console.log.bind(window.console, "%c ✅ " + this.prefix + " %s", `color: green; background: white; font-size: 1.2em; padding: 4px; border-radius: 2px; font-family: monospace;`);
+    }
+    get danger() {
+        if (!engrid_ENGrid.debug) {
+            return () => { };
+        }
+        return console.log.bind(window.console, "%c ⛔️ " + this.prefix + " %s", `color: red; background: white; font-size: 1.2em; padding: 4px; border-radius: 2px; font-family: monospace;`);
+    }
+    get warn() {
+        if (!engrid_ENGrid.debug) {
+            return () => { };
+        }
+        return console.warn.bind(window.console, "%c" + this.emoji + " " + this.prefix + " %s", `color: ${this.color}; background: ${this.background}; font-size: 1.2em; padding: 4px; border-radius: 2px; font-family: monospace;`);
+    }
+    get dir() {
+        if (!engrid_ENGrid.debug) {
+            return () => { };
+        }
+        return console.dir.bind(window.console, "%c" + this.emoji + " " + this.prefix + " %s", `color: ${this.color}; background: ${this.background}; font-size: 1.2em; padding: 4px; border-radius: 2px; font-family: monospace;`);
+    }
+    get error() {
+        if (!engrid_ENGrid.debug) {
+            return () => { };
+        }
+        return console.error.bind(window.console, "%c" + this.emoji + " " + this.prefix + " %s", `color: ${this.color}; background: ${this.background}; font-size: 1.2em; padding: 4px; border-radius: 2px; font-family: monospace;`);
+    }
+}
+
+;// CONCATENATED MODULE: ./node_modules/@4site/engrid-common/dist/min-max-amount.js
+// This script checks if the donations amounts are numbers and if they are, appends the correct currency symbol
+
+class MinMaxAmount {
+    constructor() {
+        var _a, _b;
+        this._form = EnForm.getInstance();
+        this._amount = DonationAmount.getInstance();
+        this.minAmount = (_a = engrid_ENGrid.getOption("MinAmount")) !== null && _a !== void 0 ? _a : 1;
+        this.maxAmount = (_b = engrid_ENGrid.getOption("MaxAmount")) !== null && _b !== void 0 ? _b : 100000;
+        this.minAmountMessage = engrid_ENGrid.getOption("MinAmountMessage");
+        this.maxAmountMessage = engrid_ENGrid.getOption("MaxAmountMessage");
+        this.logger = new EngridLogger("MinMaxAmount", "white", "purple", "🔢");
+        if (!this.shouldRun()) {
+            // If we're not on a Donation Page, get out
+            return;
+        }
+        this._amount.onAmountChange.subscribe((s) => window.setTimeout(this.liveValidate.bind(this), 1000) // Wait 1 second for the amount to be updated
+        );
+        this._form.onValidate.subscribe(this.enOnValidate.bind(this));
+    }
+    // Should we run the script?
+    shouldRun() {
+        return engrid_ENGrid.getPageType() === "DONATION";
+    }
+    // Don't submit the form if the amount is not valid
+    enOnValidate() {
+        const otherAmount = document.querySelector("[name='transaction.donationAmt.other']");
+        if (this._amount.amount < this.minAmount) {
+            this.logger.log("Amount is less than min amount: " + this.minAmount);
+            if (otherAmount) {
+                otherAmount.focus();
+            }
+            this._form.validate = false;
+        }
+        else if (this._amount.amount > this.maxAmount) {
+            this.logger.log("Amount is greater than max amount: " + this.maxAmount);
+            if (otherAmount) {
+                otherAmount.focus();
+            }
+            this._form.validate = false;
+        }
+        window.setTimeout(this.liveValidate.bind(this), 300);
+    }
+    // Disable Submit Button if the amount is not valid
+    liveValidate() {
+        if (this._amount.amount < this.minAmount) {
+            this.logger.log("Amount is less than min amount: " + this.minAmount);
+            engrid_ENGrid.setError(".en__field--withOther", this.minAmountMessage || "Invalid Amount");
+        }
+        else if (this._amount.amount > this.maxAmount) {
+            this.logger.log("Amount is greater than max amount: " + this.maxAmount);
+            engrid_ENGrid.setError(".en__field--withOther", this.maxAmountMessage || "Invalid Amount");
+        }
+        else {
+            engrid_ENGrid.removeError(".en__field--withOther");
+        }
+    }
+}
+
 ;// CONCATENATED MODULE: ./node_modules/@4site/engrid-common/dist/index.js
+document
+    .getElementsByTagName("body")[0]
+    .setAttribute("data-engrid-scripts-js-loading", "started");
+document
+    .getElementsByTagName("body")[0]
+    .setAttribute("data-engrid-client-js-loading", "waiting");
  // Runs first so it can change the DOM markup before any markup dependent code fires
+
+
+
 
 
 
@@ -13451,558 +14332,16 @@ class ShowIfAmount {
 
 // Events
 
+document
+    .getElementsByTagName("body")[0]
+    .setAttribute("data-engrid-scripts-js-loading", "finished");
 
-;// CONCATENATED MODULE: ./node_modules/seamless-scroll-polyfill/lib/common.js
-const checkBehavior = (behavior) => {
-    return behavior === undefined || behavior === "auto" || behavior === "instant" || behavior === "smooth";
-};
-function elementScrollXY(x, y) {
-    this.scrollLeft = x;
-    this.scrollTop = y;
-}
-const failedExecute = (method, object, reason = "cannot convert to dictionary.") => `Failed to execute '${method}' on '${object}': ${reason}`;
-const failedExecuteInvalidEnumValue = (method, object, value) => failedExecute(method, object, `The provided value '${value}' is not a valid enum value of type ScrollBehavior.`);
-/* eslint-disable */
-const backupMethod = (proto, method, fallback) => {
-    const backup = `__SEAMLESS.BACKUP$${method}`;
-    if (!proto[backup] && proto[method] && !proto[method]?.__isPolyfill) {
-        proto[backup] = proto[method];
-    }
-    return proto[backup] || fallback;
-};
-/* eslint-enable */
-const isObject = (value) => {
-    const type = typeof value;
-    return value !== null && (type === "object" || type === "function");
-};
-const isScrollBehaviorSupported = () => "scrollBehavior" in window.document.documentElement.style;
-const markPolyfill = (method) => {
-    Object.defineProperty(method, "__isPolyfill", { value: true });
-};
-const modifyPrototypes = (prop, func) => {
-    markPolyfill(func);
-    [HTMLElement.prototype, SVGElement.prototype, Element.prototype].forEach((prototype) => {
-        backupMethod(prototype, prop);
-        prototype[prop] = func;
-    });
-};
-/**
- * - On Chrome and Firefox, document.scrollingElement will return the <html> element.
- * - Safari, document.scrollingElement will return the <body> element.
- * - On Edge, document.scrollingElement will return the <body> element.
- * - IE11 does not support document.scrollingElement, but you can assume its <html>.
- */
-const scrollingElement = (element) => element.ownerDocument.scrollingElement || element.ownerDocument.documentElement;
-//# sourceMappingURL=common.js.map
-;// CONCATENATED MODULE: ./node_modules/seamless-scroll-polyfill/lib/scroll-step.js
-const ease = (k) => {
-    return 0.5 * (1 - Math.cos(Math.PI * k));
-};
-const now = () => window.performance?.now?.() ?? window.Date.now();
-const DURATION = 500;
-const step = (context) => {
-    const currentTime = now();
-    const elapsed = (currentTime - context.timeStamp) / (context.duration || DURATION);
-    if (elapsed > 1) {
-        context.method(context.targetX, context.targetY);
-        context.callback();
-        return;
-    }
-    const value = (context.timingFunc || ease)(elapsed);
-    const currentX = context.startX + (context.targetX - context.startX) * value;
-    const currentY = context.startY + (context.targetY - context.startY) * value;
-    context.method(currentX, currentY);
-    context.rafId = window.requestAnimationFrame(() => {
-        step(context);
-    });
-};
-//# sourceMappingURL=scroll-step.js.map
-;// CONCATENATED MODULE: ./node_modules/seamless-scroll-polyfill/lib/scroll.js
-
-
-// https://drafts.csswg.org/cssom-view/#normalize-non-finite-values
-const nonFinite = (value) => {
-    if (!isFinite(value)) {
-        return 0;
-    }
-    return Number(value);
-};
-const isConnected = (node) => {
-    return (node.isConnected ??
-        (!node.ownerDocument ||
-            // eslint-disable-next-line no-bitwise
-            !(node.ownerDocument.compareDocumentPosition(node) & /** DOCUMENT_POSITION_DISCONNECTED */ 1)));
-};
-const scrollWithOptions = (element, options, config) => {
-    if (!isConnected(element)) {
-        return;
-    }
-    const startX = element.scrollLeft;
-    const startY = element.scrollTop;
-    const targetX = nonFinite(options.left ?? startX);
-    const targetY = nonFinite(options.top ?? startY);
-    if (targetX === startX && targetY === startY) {
-        return;
-    }
-    const fallback = backupMethod(HTMLElement.prototype, "scroll", elementScrollXY);
-    const method = backupMethod(Object.getPrototypeOf(element), "scroll", fallback).bind(element);
-    if (options.behavior !== "smooth") {
-        method(targetX, targetY);
-        return;
-    }
-    const removeEventListener = () => {
-        window.removeEventListener("wheel", cancelScroll);
-        window.removeEventListener("touchmove", cancelScroll);
-    };
-    const context = {
-        ...config,
-        timeStamp: now(),
-        startX,
-        startY,
-        targetX,
-        targetY,
-        rafId: 0,
-        method,
-        callback: removeEventListener,
-    };
-    const cancelScroll = () => {
-        window.cancelAnimationFrame(context.rafId);
-        removeEventListener();
-    };
-    window.addEventListener("wheel", cancelScroll, {
-        passive: true,
-        once: true,
-    });
-    window.addEventListener("touchmove", cancelScroll, {
-        passive: true,
-        once: true,
-    });
-    step(context);
-};
-const isWindow = (obj) => obj.window === obj;
-const createScroll = (scrollName) => (target, scrollOptions, config) => {
-    const [element, scrollType] = isWindow(target)
-        ? [scrollingElement(target.document.documentElement), "Window"]
-        : [target, "Element"];
-    const options = scrollOptions ?? {};
-    if (!isObject(options)) {
-        throw new TypeError(failedExecute(scrollName, scrollType));
-    }
-    if (!checkBehavior(options.behavior)) {
-        throw new TypeError(failedExecuteInvalidEnumValue(scrollName, scrollType, options.behavior));
-    }
-    if (scrollName === "scrollBy") {
-        options.left = nonFinite(options.left) + element.scrollLeft;
-        options.top = nonFinite(options.top) + element.scrollTop;
-    }
-    scrollWithOptions(element, options, config);
-};
-const scroll_scroll = createScroll("scroll");
-const scrollTo = createScroll("scrollTo");
-const scrollBy = createScroll("scrollBy");
-const elementScroll = scroll_scroll;
-const elementScrollTo = (/* unused pure expression or super */ null && (scrollTo));
-const elementScrollBy = (/* unused pure expression or super */ null && (scrollBy));
-const windowScroll = (/* unused pure expression or super */ null && (scroll_scroll));
-const windowScrollTo = (/* unused pure expression or super */ null && (scrollTo));
-const windowScrollBy = (/* unused pure expression or super */ null && (scrollBy));
-//# sourceMappingURL=scroll.js.map
-;// CONCATENATED MODULE: ./node_modules/seamless-scroll-polyfill/lib/scrollIntoView.js
-/* eslint-disable no-bitwise */
-
-
-// https://drafts.csswg.org/css-writing-modes-4/#block-flow
-const normalizeWritingMode = (writingMode) => {
-    switch (writingMode) {
-        case "horizontal-tb":
-        case "lr":
-        case "lr-tb":
-        case "rl":
-        case "rl-tb":
-            return 0 /* HorizontalTb */;
-        case "vertical-rl":
-        case "tb":
-        case "tb-rl":
-            return 1 /* VerticalRl */;
-        case "vertical-lr":
-        case "tb-lr":
-            return 2 /* VerticalLr */;
-        case "sideways-rl":
-            return 3 /* SidewaysRl */;
-        case "sideways-lr":
-            return 4 /* SidewaysLr */;
-    }
-    return 0 /* HorizontalTb */;
-};
-const calcPhysicalAxis = (writingMode, isLTR, hPos, vPos) => {
-    /**  0b{vertical}{horizontal}  0: normal, 1: reverse */
-    let layout = 0b00;
-    /**
-     * WritingMode.VerticalLr: ↓→
-     * | 1 | 4 |   |
-     * | 2 | 5 |   |
-     * | 3 |   |   |
-     *
-     * RTL: ↑→
-     * | 3 |   |   |
-     * | 2 | 5 |   |
-     * | 1 | 4 |   |
-     */
-    if (!isLTR) {
-        layout ^= 2 /* ReverseVertical */;
-    }
-    switch (writingMode) {
-        /**
-         * ↓→
-         * | 1 | 2 | 3 |
-         * | 4 | 5 |   |
-         * |   |   |   |
-         *
-         * RTL: ↓←
-         * | 3 | 2 | 1 |
-         * |   | 5 | 4 |
-         * |   |   |   |
-         */
-        case 0 /* HorizontalTb */:
-            // swap horizontal and vertical
-            layout = (layout >> 1) | ((layout & 1) << 1);
-            [hPos, vPos] = [vPos, hPos];
-            break;
-        /**
-         * ↓←
-         * |   | 4 | 1 |
-         * |   | 5 | 2 |
-         * |   |   | 3 |
-         *
-         * RTL: ↑←
-         * |   |   | 3 |
-         * |   | 5 | 2 |
-         * |   | 4 | 1 |
-         */
-        case 1 /* VerticalRl */:
-        case 3 /* SidewaysRl */:
-            //  reverse horizontal
-            layout ^= 1 /* ReverseHorizontal */;
-            break;
-        /**
-         * ↑→
-         * | 3 |   |   |
-         * | 2 | 5 |   |
-         * | 1 | 4 |   |
-         *
-         * RTL: ↓→
-         * | 1 | 4 |   |
-         * | 2 | 5 |   |
-         * | 3 |   |   |
-         */
-        case 4 /* SidewaysLr */:
-            // reverse vertical
-            layout ^= 2 /* ReverseVertical */;
-            break;
-    }
-    return [layout, hPos, vPos];
-};
-const isXReversed = (computedStyle) => {
-    const layout = calcPhysicalAxis(normalizeWritingMode(computedStyle.writingMode), computedStyle.direction !== "rtl", undefined, undefined)[0];
-    return (layout & 1) === 1;
-};
-// https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/core/dom/element.cc;l=1097-1189;drc=6a7533d4a1e9f2372223a9d912a9e53a6fa35ae0
-const toPhysicalAlignment = (options, writingMode, isLTR) => {
-    const [layout, hPos, vPos] = calcPhysicalAxis(writingMode, isLTR, options.block || "start", options.inline || "nearest");
-    return [hPos, vPos].map((value, index) => {
-        switch (value) {
-            case "center":
-                return 1 /* CenterAlways */;
-            case "nearest":
-                return 0 /* ToEdgeIfNeeded */;
-            default: {
-                const reverse = (layout >> index) & 1;
-                return (value === "start") === !reverse ? 2 /* LeftOrTop */ : 3 /* RightOrBottom */;
-            }
-        }
-    });
-};
-// code from stipsan/compute-scroll-into-view
-// https://github.com/stipsan/compute-scroll-into-view/blob/5396c6b78af5d0bbce11a7c4e93cc3146546fcd3/src/index.ts
-/**
- * Find out which edge to align against when logical scroll position is "nearest"
- * Interesting fact: "nearest" works similarily to "if-needed", if the element is fully visible it will not scroll it
- *
- * Legends:
- * ┌────────┐ ┏ ━ ━ ━ ┓
- * │ target │   frame
- * └────────┘ ┗ ━ ━ ━ ┛
- */
-const mapNearest = (align, scrollingEdgeStart, scrollingEdgeEnd, scrollingSize, elementEdgeStart, elementEdgeEnd, elementSize) => {
-    if (align !== 0 /* ToEdgeIfNeeded */) {
-        return align;
-    }
-    /**
-     * If element edge A and element edge B are both outside scrolling box edge A and scrolling box edge B
-     *
-     *          ┌──┐
-     *        ┏━│━━│━┓
-     *          │  │
-     *        ┃ │  │ ┃        do nothing
-     *          │  │
-     *        ┗━│━━│━┛
-     *          └──┘
-     *
-     *  If element edge C and element edge D are both outside scrolling box edge C and scrolling box edge D
-     *
-     *    ┏ ━ ━ ━ ━ ┓
-     *   ┌───────────┐
-     *   │┃         ┃│        do nothing
-     *   └───────────┘
-     *    ┗ ━ ━ ━ ━ ┛
-     */
-    if ((elementEdgeStart < scrollingEdgeStart && elementEdgeEnd > scrollingEdgeEnd) ||
-        (elementEdgeStart > scrollingEdgeStart && elementEdgeEnd < scrollingEdgeEnd)) {
-        return null;
-    }
-    /**
-     * If element edge A is outside scrolling box edge A and element height is less than scrolling box height
-     *
-     *          ┌──┐
-     *        ┏━│━━│━┓         ┏━┌━━┐━┓
-     *          └──┘             │  │
-     *  from  ┃      ┃     to  ┃ └──┘ ┃
-     *
-     *        ┗━ ━━ ━┛         ┗━ ━━ ━┛
-     *
-     * If element edge B is outside scrolling box edge B and element height is greater than scrolling box height
-     *
-     *        ┏━ ━━ ━┓         ┏━┌━━┐━┓
-     *                           │  │
-     *  from  ┃ ┌──┐ ┃     to  ┃ │  │ ┃
-     *          │  │             │  │
-     *        ┗━│━━│━┛         ┗━│━━│━┛
-     *          │  │             └──┘
-     *          │  │
-     *          └──┘
-     *
-     * If element edge C is outside scrolling box edge C and element width is less than scrolling box width
-     *
-     *       from                 to
-     *    ┏ ━ ━ ━ ━ ┓         ┏ ━ ━ ━ ━ ┓
-     *  ┌───┐                 ┌───┐
-     *  │ ┃ │       ┃         ┃   │     ┃
-     *  └───┘                 └───┘
-     *    ┗ ━ ━ ━ ━ ┛         ┗ ━ ━ ━ ━ ┛
-     *
-     * If element edge D is outside scrolling box edge D and element width is greater than scrolling box width
-     *
-     *       from                 to
-     *    ┏ ━ ━ ━ ━ ┓         ┏ ━ ━ ━ ━ ┓
-     *        ┌───────────┐   ┌───────────┐
-     *    ┃   │     ┃     │   ┃         ┃ │
-     *        └───────────┘   └───────────┘
-     *    ┗ ━ ━ ━ ━ ┛         ┗ ━ ━ ━ ━ ┛
-     */
-    if ((elementEdgeStart <= scrollingEdgeStart && elementSize <= scrollingSize) ||
-        (elementEdgeEnd >= scrollingEdgeEnd && elementSize >= scrollingSize)) {
-        return 2 /* LeftOrTop */;
-    }
-    /**
-     * If element edge B is outside scrolling box edge B and element height is less than scrolling box height
-     *
-     *        ┏━ ━━ ━┓         ┏━ ━━ ━┓
-     *
-     *  from  ┃      ┃     to  ┃ ┌──┐ ┃
-     *          ┌──┐             │  │
-     *        ┗━│━━│━┛         ┗━└━━┘━┛
-     *          └──┘
-     *
-     * If element edge A is outside scrolling box edge A and element height is greater than scrolling box height
-     *
-     *          ┌──┐
-     *          │  │
-     *          │  │             ┌──┐
-     *        ┏━│━━│━┓         ┏━│━━│━┓
-     *          │  │             │  │
-     *  from  ┃ └──┘ ┃     to  ┃ │  │ ┃
-     *                           │  │
-     *        ┗━ ━━ ━┛         ┗━└━━┘━┛
-     *
-     * If element edge C is outside scrolling box edge C and element width is greater than scrolling box width
-     *
-     *           from                 to
-     *        ┏ ━ ━ ━ ━ ┓         ┏ ━ ━ ━ ━ ┓
-     *  ┌───────────┐           ┌───────────┐
-     *  │     ┃     │   ┃       │ ┃         ┃
-     *  └───────────┘           └───────────┘
-     *        ┗ ━ ━ ━ ━ ┛         ┗ ━ ━ ━ ━ ┛
-     *
-     * If element edge D is outside scrolling box edge D and element width is less than scrolling box width
-     *
-     *           from                 to
-     *        ┏ ━ ━ ━ ━ ┓         ┏ ━ ━ ━ ━ ┓
-     *                ┌───┐             ┌───┐
-     *        ┃       │ ┃ │       ┃     │   ┃
-     *                └───┘             └───┘
-     *        ┗ ━ ━ ━ ━ ┛         ┗ ━ ━ ━ ━ ┛
-     *
-     */
-    if ((elementEdgeEnd > scrollingEdgeEnd && elementSize < scrollingSize) ||
-        (elementEdgeStart < scrollingEdgeStart && elementSize > scrollingSize)) {
-        return 3 /* RightOrBottom */;
-    }
-    return null;
-};
-const canOverflow = (overflow) => {
-    return overflow !== "visible" && overflow !== "clip";
-};
-const getFrameElement = (element) => {
-    try {
-        return element.ownerDocument.defaultView?.frameElement || null;
-    }
-    catch {
-        return null;
-    }
-};
-const isScrollable = (element, computedStyle) => {
-    if (element.clientHeight < element.scrollHeight || element.clientWidth < element.scrollWidth) {
-        return (canOverflow(computedStyle.overflowY) ||
-            canOverflow(computedStyle.overflowX) ||
-            element === scrollingElement(element));
-    }
-    return false;
-};
-const parentElement = (element) => {
-    const pNode = element.parentNode;
-    const pElement = element.parentElement;
-    if (pElement === null && pNode !== null) {
-        if (pNode.nodeType === /** Node.DOCUMENT_FRAGMENT_NODE */ 11) {
-            return pNode.host;
-        }
-        if (pNode.nodeType === /** Node.DOCUMENT_NODE */ 9) {
-            return getFrameElement(element);
-        }
-    }
-    return pElement;
-};
-const clamp = (value, min, max) => {
-    if (value < min) {
-        return min;
-    }
-    if (value > max) {
-        return max;
-    }
-    return value;
-};
-const getSupportedScrollMarginProperty = (ownerDocument) => {
-    // Webkit uses "scroll-snap-margin" https://bugs.webkit.org/show_bug.cgi?id=189265.
-    return ["scroll-margin", "scroll-snap-margin"].filter((property) => property in ownerDocument.documentElement.style)[0];
-};
-const getElementScrollSnapArea = (element, elementRect, computedStyle) => {
-    const { top, right, bottom, left } = elementRect;
-    const scrollProperty = getSupportedScrollMarginProperty(element.ownerDocument);
-    if (!scrollProperty) {
-        return [top, right, bottom, left];
-    }
-    const scrollMarginValue = (edge) => {
-        const value = computedStyle.getPropertyValue(`${scrollProperty}-${edge}`);
-        return parseInt(value, 10) || 0;
-    };
-    return [
-        top - scrollMarginValue("top"),
-        right + scrollMarginValue("right"),
-        bottom + scrollMarginValue("bottom"),
-        left - scrollMarginValue("left"),
-    ];
-};
-const calcAlignEdge = (align, start, end) => {
-    switch (align) {
-        case 1 /* CenterAlways */:
-            return (start + end) / 2;
-        case 3 /* RightOrBottom */:
-            return end;
-        case 2 /* LeftOrTop */:
-        case 0 /* ToEdgeIfNeeded */:
-            return start;
-    }
-};
-const getFrameViewport = (frame, frameRect) => {
-    const visualViewport = frame.ownerDocument.defaultView?.visualViewport;
-    const [x, y, width, height] = frame === scrollingElement(frame)
-        ? [0, 0, visualViewport?.width ?? frame.clientWidth, visualViewport?.height ?? frame.clientHeight]
-        : [frameRect.left, frameRect.top, frame.clientWidth, frame.clientHeight];
-    const left = x + frame.clientLeft;
-    const top = y + frame.clientTop;
-    const right = left + width;
-    const bottom = top + height;
-    return [top, right, bottom, left];
-};
-const computeScrollIntoView = (element, options) => {
-    // Collect all the scrolling boxes, as defined in the spec: https://drafts.csswg.org/cssom-view/#scrolling-box
-    const actions = [];
-    let ownerDocument = element.ownerDocument;
-    let ownerWindow = ownerDocument.defaultView;
-    if (!ownerWindow) {
-        return actions;
-    }
-    const computedStyle = window.getComputedStyle(element);
-    const isLTR = computedStyle.direction !== "rtl";
-    const writingMode = normalizeWritingMode(computedStyle.writingMode ||
-        computedStyle.getPropertyValue("-webkit-writing-mode") ||
-        computedStyle.getPropertyValue("-ms-writing-mode"));
-    const [alignH, alignV] = toPhysicalAlignment(options, writingMode, isLTR);
-    let [top, right, bottom, left] = getElementScrollSnapArea(element, element.getBoundingClientRect(), computedStyle);
-    for (let frame = parentElement(element); frame !== null; frame = parentElement(frame)) {
-        if (ownerDocument !== frame.ownerDocument) {
-            ownerDocument = frame.ownerDocument;
-            ownerWindow = ownerDocument.defaultView;
-            if (!ownerWindow) {
-                break;
-            }
-            const { left: dX, top: dY } = frame.getBoundingClientRect();
-            top += dY;
-            right += dX;
-            bottom += dY;
-            left += dX;
-        }
-        const frameStyle = ownerWindow.getComputedStyle(frame);
-        if (frameStyle.position === "fixed") {
-            break;
-        }
-        if (!isScrollable(frame, frameStyle)) {
-            continue;
-        }
-        const frameRect = frame.getBoundingClientRect();
-        const [frameTop, frameRight, frameBottom, frameLeft] = getFrameViewport(frame, frameRect);
-        const eAlignH = mapNearest(alignH, frameLeft, frameRight, frame.clientWidth, left, right, right - left);
-        const eAlignV = mapNearest(alignV, frameTop, frameBottom, frame.clientHeight, top, bottom, bottom - top);
-        const diffX = eAlignH === null ? 0 : calcAlignEdge(eAlignH, left, right) - calcAlignEdge(eAlignH, frameLeft, frameRight);
-        const diffY = eAlignV === null ? 0 : calcAlignEdge(eAlignV, top, bottom) - calcAlignEdge(eAlignV, frameTop, frameBottom);
-        const moveX = isXReversed(frameStyle)
-            ? clamp(diffX, -frame.scrollWidth + frame.clientWidth - frame.scrollLeft, -frame.scrollLeft)
-            : clamp(diffX, -frame.scrollLeft, frame.scrollWidth - frame.clientWidth - frame.scrollLeft);
-        const moveY = clamp(diffY, -frame.scrollTop, frame.scrollHeight - frame.clientHeight - frame.scrollTop);
-        actions.push([
-            frame,
-            { left: frame.scrollLeft + moveX, top: frame.scrollTop + moveY, behavior: options.behavior },
-        ]);
-        top = Math.max(top - moveY, frameTop);
-        right = Math.min(right - moveX, frameRight);
-        bottom = Math.min(bottom - moveY, frameBottom);
-        left = Math.max(left - moveX, frameLeft);
-    }
-    return actions;
-};
-const scrollIntoView = (element, scrollIntoViewOptions, config) => {
-    const options = scrollIntoViewOptions || {};
-    if (!checkBehavior(options.behavior)) {
-        throw new TypeError(failedExecuteInvalidEnumValue("scrollIntoView", "Element", options.behavior));
-    }
-    const actions = computeScrollIntoView(element, options);
-    actions.forEach(([frame, scrollToOptions]) => {
-        elementScroll(frame, scrollToOptions, config);
-    });
-};
-const elementScrollIntoView = scrollIntoView;
-//# sourceMappingURL=scrollIntoView.js.map
+// EXTERNAL MODULE: ./node_modules/smoothscroll-polyfill/dist/smoothscroll.js
+var smoothscroll = __webpack_require__(523);
+var smoothscroll_default = /*#__PURE__*/__webpack_require__.n(smoothscroll);
 ;// CONCATENATED MODULE: ./src/scripts/donation-lightbox-form.js
 
+smoothscroll_default().polyfill();
 class DonationLightboxForm {
   constructor(DonationAmount, DonationFrequency) {
     this.amount = DonationAmount;
@@ -14086,6 +14425,18 @@ class DonationLightboxForm {
           }
         }
       }
+
+      document.querySelectorAll("form.en__component input.en__field__input").forEach(e => {
+        e.addEventListener("focus", event => {
+          // Run after 50ms - We need this or else some browsers will disregard the scroll due to the focus event
+          const sectionId = this.getSectionId(e);
+          setTimeout(() => {
+            if (sectionId > 0 && this.validateForm(sectionId - 1)) {
+              this.scrollToElement(e);
+            }
+          }, 50);
+        });
+      });
     }
 
     let paymentOpts = document.querySelector(".payment-options");
@@ -14270,7 +14621,7 @@ class DonationLightboxForm {
 
     if (this.sections[sectionId]) {
       console.log(section);
-      elementScrollIntoView(this.sections[sectionId], {
+      this.sections[sectionId].scrollIntoView({
         behavior: "smooth",
         block: "start",
         inline: "start"

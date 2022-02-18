@@ -115,6 +115,19 @@ export default class DonationLightboxForm {
           }
         }
       }
+      document
+        .querySelectorAll("form.en__component input.en__field__input")
+        .forEach((e) => {
+          e.addEventListener("focus", (event) => {
+            // Run after 50ms - We need this or else some browsers will disregard the scroll due to the focus event
+            const sectionId = this.getSectionId(e);
+            setTimeout(() => {
+              if (sectionId > 0 && this.validateForm(sectionId - 1)) {
+                this.scrollToElement(e);
+              }
+            }, 50);
+          });
+        });
     }
     let paymentOpts = document.querySelector(".payment-options");
     if (paymentOpts) {

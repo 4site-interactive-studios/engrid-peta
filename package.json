@@ -1,5 +1,5 @@
 {
-  "name": "@4site/engrid",
+  "name": "@4site/engrid-peta",
   "version": "2.0.0",
   "private": false,
   "description": "Page Template Framework for Engaging Networks",
@@ -8,7 +8,9 @@
     "start": "webpack --watch  --config webpack.prod.js",
     "build": "npm run production & npm run minify",
     "production": "webpack --config webpack.prod.js",
-    "minify": "webpack --config webpack.min.js"
+    "minify": "webpack --config webpack.min.js",
+    "update": "npm update @4site/engrid-common @4site/engrid-styles",
+    "rebuild": "npm run update;npm run build"
   },
   "keywords": [
     "Engaging Networks",
@@ -22,7 +24,7 @@
   ],
   "author": "4Site Studios",
   "license": "Unlicense",
-  "url": "https://github.com/4site-interactive-studios/engrid",
+  "url": "https://github.com/4site-interactive-studios/engrid-peta",
   "devDependencies": {
     "@4site/engrid-common": "*",
     "@4site/engrid-styles": "*",
@@ -39,21 +41,17 @@
     "css-minimizer-webpack-plugin": "^3.0.2",
     "file-loader": "^6.2.0",
     "fork-ts-checker-webpack-plugin": "6.2.12",
-    "html-loader": "^2.1.2",
-    "html-webpack-plugin": "^5.3.1",
     "mini-css-extract-plugin": "^1.6.2",
-    "node-sass": "^6.0.1",
+    "sass": "^1.48.0",
     "popper.js": "^1.16.1",
     "postcss-loader": "^6.1.0",
     "postcss-preset-env": "^6.7.0",
-    "posthtml-include": "^1.7.1",
-    "posthtml-loader": "^2.0.1",
+    "prettier": "2.4.1",
     "sass-loader": "^12.1.0",
     "style-loader": "^3.0.0",
     "typescript": "^3.9.7",
     "webpack": "^5.37.0",
     "webpack-cli": "^4.7.0",
-    "webpack-dev-server": "^3.11.2",
     "webpack-merge": "^5.7.3"
   },
   "dependencies": {
@@ -62,14 +60,15 @@
     "clean-webpack-plugin": "^3.0.0",
     "sanitize.css": "^12.0.1",
     "smoothscroll-polyfill": "^0.4.4",
-    "strongly-typed-events": "^1.7.3"
+    "strongly-typed-events": "^1.7.3",
+    "terser-webpack-plugin": "^5.2.3"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/4site-interactive-studios/engrid.git"
+    "url": "git+https://github.com/4site-interactive-studios/engrid-peta.git"
   },
   "bugs": {
-    "url": "https://github.com/4site-interactive-studios/engrid/issues"
+    "url": "https://github.com/4site-interactive-studios/engrid-peta/issues"
   },
   "homepage": "https://github.com/4site-interactive-studios/engrid#readme"
 }
