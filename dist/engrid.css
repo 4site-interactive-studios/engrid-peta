@@ -19,7 +19,7 @@
  *
  *  ENGRID PAGE TEMPLATE ASSETS
  *
- *  Date: Thursday, February 17, 2022 @ 21:01:40 ET
+ *  Date: Thursday, March 24, 2022 @ 22:43:08 ET
  *  By: fernando
  *  ENGrid styles: v0.9.6
  *  ENGrid scripts: v0.9.5
@@ -6707,7 +6707,7 @@ body:not([data-engrid-debug]) #debug-bar{
   }
 }
 [data-engrid-theme=peta]{
-  --color_primary:#418fde;
+  --color_primary:#2375c9;
   --default_font-family:"proxima-nova", sans-serif;
   --default_color:#4f606c;
   --default_font-size:16px;
@@ -7131,7 +7131,7 @@ body:not([data-engrid-debug]) #debug-bar{
   padding:60px 45px;
 }
 [data-engrid-theme=peta][data-thank-you] footer{
-  background-image:url('data:image/svg+xml;utf8,<svg fill="none" height="132" viewBox="0 0 400 132" width="400" xmlns="http://www.w3.org/2000/svg"> <path d="M0 110.582L400 0v128c0 2.209-1.791 4-4 4H0v-21.418z" fill="%23A3D1D6"></path> <path d="M0 73.5L400 132H0V73.5z" fill="%23418FDE"></path></svg>');
+  background-image:url('data:image/svg+xml;utf8,<svg fill="none" height="132" viewBox="0 0 400 132" width="400" xmlns="http://www.w3.org/2000/svg"> <path d="M0 110.582L400 0v128c0 2.209-1.791 4-4 4H0v-21.418z" fill="%23A3D1D6"></path> <path d="M0 73.5L400 132H0V73.5z" fill="%232375c9"></path></svg>');
   background-position:bottom;
   background-repeat:no-repeat;
   background-size:contain;
