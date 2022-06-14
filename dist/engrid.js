@@ -17,7 +17,7 @@
  *
  *  ENGRID PAGE TEMPLATE ASSETS
  *
- *  Date: Thursday, March 24, 2022 @ 22:43:08 ET
+ *  Date: Tuesday, June 14, 2022 @ 11:21:56 ET
  *  By: fernando
  *  ENGrid styles: v0.9.6
  *  ENGrid scripts: v0.9.5
@@ -14340,6 +14340,12 @@ document
 var smoothscroll = __webpack_require__(523);
 var smoothscroll_default = /*#__PURE__*/__webpack_require__.n(smoothscroll);
 ;// CONCATENATED MODULE: ./src/scripts/donation-lightbox-form.js
+const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
+if (isSafari) {
+  window.__forceSmoothScrollPolyfill__ = true;
+}
+
 
 smoothscroll_default().polyfill();
 class DonationLightboxForm {
