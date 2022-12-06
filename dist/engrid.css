@@ -19,7 +19,7 @@
  *
  *  ENGRID PAGE TEMPLATE ASSETS
  *
- *  Date: Tuesday, June 14, 2022 @ 11:21:56 ET
+ *  Date: Tuesday, December 6, 2022 @ 17:36:24 ET
  *  By: fernando
  *  ENGrid styles: v0.9.6
  *  ENGrid scripts: v0.9.5
@@ -6798,7 +6798,6 @@ body:not([data-engrid-debug]) #debug-bar{
   font-size:20px;
   font-weight:700;
   height:20px;
-  left:14px;
   left:19px;
   line-height:0;
   position:absolute;
@@ -6869,7 +6868,7 @@ body:not([data-engrid-debug]) #debug-bar{
 [data-engrid-theme=peta] .monthly-upsell-message.bounce svg.left{
   animation:bounce .5s infinite;
 }
-[data-engrid-theme=peta][data-engrid-transaction-recurring-frequency=no] .monthly-upsell-message p strong{
+[data-engrid-theme=peta][data-engrid-transaction-recurring-frequency=onetime] .monthly-upsell-message p strong{
   background-position-x:0;
 }
 [data-engrid-theme=peta]:not(#en__pagebuilder) .en__field:not(.en__field--checkbox)>.en__field__label{
@@ -6905,6 +6904,7 @@ body:not([data-engrid-debug]) #debug-bar{
 [data-engrid-theme=peta] form.en__component>.en__component .section-navigation button{
   align-items:center;
   -webkit-backface-visibility:hidden;
+  backface-visibility:hidden;
   border:0;
   border-radius:2px;
   color:#fff;
@@ -6923,7 +6923,7 @@ body:not([data-engrid-debug]) #debug-bar{
   padding:0 12px;
   position:relative;
   text-transform:uppercase;
-  -webkit-transform:translateZ(0);
+  transform:translateZ(0);
 }
 [data-engrid-theme=peta] form.en__component>.en__component .section-navigation button small{
   font-size:10px;

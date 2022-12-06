@@ -229,13 +229,10 @@
         width: 11px;
         height: 20px;
         top: 50%;
-        left: 14px;
         font-size: 20px;
         font-weight: 700;
         left: 19px;
         line-height: 0;
-        position: absolute;
-        top: 50%;
         transform: translateY(-50%);
         color: var(--h1_color);
       }
@@ -309,7 +306,7 @@
       }
     }
   }
-  &[data-engrid-transaction-recurring-frequency="no"] {
+  &[data-engrid-transaction-recurring-frequency="onetime"] {
     .monthly-upsell-message {
       p {
         strong {
@@ -390,7 +387,9 @@
         letter-spacing: 0.84px;
         margin-bottom: 0;
         -webkit-transform: translateZ(0);
+        transform: translateZ(0);
         -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
         small {
           font-size: 10px;
           font-weight: 400;

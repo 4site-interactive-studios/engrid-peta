@@ -17,7 +17,7 @@
  *
  *  ENGRID PAGE TEMPLATE ASSETS
  *
- *  Date: Tuesday, June 14, 2022 @ 11:21:56 ET
+ *  Date: Tuesday, December 6, 2022 @ 17:36:24 ET
  *  By: fernando
  *  ENGrid styles: v0.9.6
  *  ENGrid scripts: v0.9.5
@@ -14418,7 +14418,11 @@ class DonationLightboxForm {
           if (error) {
             // Check if error contains "problem processing" to send a smaller message
             if (error.innerHTML.toLowerCase().indexOf("problem processing") > -1) {
-              this.sendMessage("error", "Sorry! There's a problem processing your donation.");
+              this.sendMessage("error", `
+                Sorry! There's a problem processing your donation.<br>
+                Please email <strong>DonorE@peta.org</strong> or <br>
+                call <strong>757-213-8731</strong> between 9-5 p.m. ET, Mon-Fri for assistance.
+                `);
               this.scrollToElement(document.querySelector(".en__field--ccnumber"));
             } else {
               this.sendMessage("error", error.textContent);
@@ -14973,7 +14977,7 @@ class DonationLightboxForm {
   bounceArrow(freq) {
     const arrow = document.querySelector(".monthly-upsell-message");
 
-    if (arrow && freq === "no") {
+    if (arrow && freq === "onetime") {
       arrow.classList.add("bounce");
       setTimeout(() => {
         arrow.classList.remove("bounce");
@@ -14986,7 +14990,7 @@ class DonationLightboxForm {
     const amount = this.checkNested(window.EngagingNetworks, "require", "_defined", "enjs", "getDonationTotal") ? "$" + window.EngagingNetworks.require._defined.enjs.getDonationTotal() : null;
     let frequency = this.frequency.getInstance().frequency;
     let label = submit ? submit.dataset.label : "";
-    frequency = frequency === "no" ? "" : "<small>/mo</small>";
+    frequency = frequency === "onetime" ? "" : "<small>/mo</small>";
 
     if (amount) {
       label = label.replace("$AMOUNT", amount);
