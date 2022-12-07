@@ -17,7 +17,7 @@
  *
  *  ENGRID PAGE TEMPLATE ASSETS
  *
- *  Date: Tuesday, December 6, 2022 @ 17:36:24 ET
+ *  Date: Wednesday, December 7, 2022 @ 09:27:39 ET
  *  By: fernando
  *  ENGrid styles: v0.9.6
  *  ENGrid scripts: v0.9.5
@@ -14420,8 +14420,9 @@ class DonationLightboxForm {
             if (error.innerHTML.toLowerCase().indexOf("problem processing") > -1) {
               this.sendMessage("error", `
                 Sorry! There's a problem processing your donation.<br>
-                Please email <strong>DonorE@peta.org</strong> or <br>
-                call <strong>757-213-8731</strong> between 9-5 p.m. ET, Mon-Fri for assistance.
+                Please email <strong>DonorE@peta.org</strong> or call <br>
+                <strong>757-213-8731</strong> between 9 a.m. and 5 p.m. ET,<br> 
+                Monday through Friday for assistance.
                 `);
               this.scrollToElement(document.querySelector(".en__field--ccnumber"));
             } else {
