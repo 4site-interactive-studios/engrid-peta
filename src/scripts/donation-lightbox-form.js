@@ -101,9 +101,9 @@ export default class DonationLightboxForm {
                 "error",
                 `
                 Sorry! There's a problem processing your donation.<br>
-                Please email <strong>DonorE@peta.org</strong> or call <br>
-                <strong>757-213-8731</strong> between 9 a.m. and 5 p.m. ET,<br> 
-                Monday through Friday for assistance.
+                Please check your payment details and resubmit.<br>
+                If the problem persists, e-mail <strong>DonorE@peta.org</strong><br> 
+                or call <strong>757-213-8731</strong> Mon.-Fri. 9 a.m.-5 p.m. ET. 
                 `
               );
               this.scrollToElement(
