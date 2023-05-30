@@ -17,7 +17,7 @@
  *
  *  ENGRID PAGE TEMPLATE ASSETS
  *
- *  Date: Tuesday, May 30, 2023 @ 17:14:33 ET
+ *  Date: Thursday, December 15, 2022 @ 21:59:10 ET
  *  By: fernando
  *  ENGrid styles: v0.9.6
  *  ENGrid scripts: v0.9.5
@@ -14361,21 +14361,38 @@ class DonationLightboxForm {
       this.sendMessage("status", "loaded");
       this.sendMessage("status", "celebrate");
       this.sendMessage("class", "thank-you");
-      document.querySelector("body").dataset.thankYou = "true"; // Try to get the first name
+      document.querySelector("body").dataset.thankYou = "true"; // Get Query Strings
 
-      const thisClass = this;
-      const pageDataUrl = location.protocol + "//" + location.host + location.pathname + "/pagedata";
-      fetch(pageDataUrl).then(function (response) {
-        return response.json();
-      }).then(function (json) {
-        if (json.hasOwnProperty("firstName") && json.firstName !== null) {
-          thisClass.sendMessage("firstname", json.firstName);
-        } else {
-          thisClass.sendMessage("firstname", "Friend");
+      const urlParams = new URLSearchParams(window.location.search);
+
+      if (urlParams.get("name")) {
+        let engrid = document.querySelector("#engrid");
+
+        if (engrid) {
+          let engridContent = engrid.innerHTML;
+          engridContent = engridContent.replace("{user_data~First Name}", urlParams.get("name"));
+          engridContent = engridContent.replace("{receipt_data~recurringFrequency}", urlParams.get("frequency"));
+          engridContent = engridContent.replace("{receipt_data~amount}", "$" + urlParams.get("amount"));
+          engrid.innerHTML = engridContent;
+          this.sendMessage("firstname", urlParams.get("name"));
         }
-      }).catch(error => {
-        console.error("PageData Error:", error);
-      });
+      } else {
+        // Try to get the first name
+        const thisClass = this;
+        const pageDataUrl = location.protocol + "//" + location.host + location.pathname + "/pagedata";
+        fetch(pageDataUrl).then(function (response) {
+          return response.json();
+        }).then(function (json) {
+          if (json.hasOwnProperty("firstName") && json.firstName !== null) {
+            thisClass.sendMessage("firstname", json.firstName);
+          } else {
+            thisClass.sendMessage("firstname", "Friend");
+          }
+        }).catch(error => {
+          console.error("PageData Error:", error);
+        });
+      }
+
       return false;
     }
 
