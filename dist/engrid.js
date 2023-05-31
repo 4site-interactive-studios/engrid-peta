@@ -17,7 +17,7 @@
  *
  *  ENGRID PAGE TEMPLATE ASSETS
  *
- *  Date: Thursday, December 15, 2022 @ 21:59:10 ET
+ *  Date: Tuesday, May 30, 2023 @ 20:14:21 ET
  *  By: fernando
  *  ENGrid styles: v0.9.6
  *  ENGrid scripts: v0.9.5
@@ -14370,11 +14370,11 @@ class DonationLightboxForm {
 
         if (engrid) {
           let engridContent = engrid.innerHTML;
-          engridContent = engridContent.replace("{user_data~First Name}", urlParams.get("name"));
-          engridContent = engridContent.replace("{receipt_data~recurringFrequency}", urlParams.get("frequency"));
-          engridContent = engridContent.replace("{receipt_data~amount}", "$" + urlParams.get("amount"));
+          engridContent = engridContent.replace("{user_data~First Name}", atob(urlParams.get("name")));
+          engridContent = engridContent.replace("{receipt_data~recurringFrequency}", atob(urlParams.get("frequency")));
+          engridContent = engridContent.replace("{receipt_data~amount}", "$" + atob(urlParams.get("amount")));
           engrid.innerHTML = engridContent;
-          this.sendMessage("firstname", urlParams.get("name"));
+          this.sendMessage("firstname", atob(urlParams.get("name")));
         }
       } else {
         // Try to get the first name

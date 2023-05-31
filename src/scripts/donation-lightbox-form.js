@@ -28,18 +28,18 @@ export default class DonationLightboxForm {
           let engridContent = engrid.innerHTML;
           engridContent = engridContent.replace(
             "{user_data~First Name}",
-            urlParams.get("name")
+            atob(urlParams.get("name"))
           );
           engridContent = engridContent.replace(
             "{receipt_data~recurringFrequency}",
-            urlParams.get("frequency")
+            atob(urlParams.get("frequency"))
           );
           engridContent = engridContent.replace(
             "{receipt_data~amount}",
-            "$" + urlParams.get("amount")
+            "$" + atob(urlParams.get("amount"))
           );
           engrid.innerHTML = engridContent;
-          this.sendMessage("firstname", urlParams.get("name"));
+          this.sendMessage("firstname", atob(urlParams.get("name")));
         }
       } else {
         // Try to get the first name
