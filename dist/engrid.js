@@ -17,7 +17,7 @@
  *
  *  ENGRID PAGE TEMPLATE ASSETS
  *
- *  Date: Tuesday, May 30, 2023 @ 20:14:21 ET
+ *  Date: Monday, June 5, 2023 @ 09:50:54 ET
  *  By: fernando
  *  ENGrid styles: v0.9.6
  *  ENGrid scripts: v0.9.5
@@ -14361,36 +14361,22 @@ class DonationLightboxForm {
       this.sendMessage("status", "loaded");
       this.sendMessage("status", "celebrate");
       this.sendMessage("class", "thank-you");
-      document.querySelector("body").dataset.thankYou = "true"; // Get Query Strings
+      document.querySelector("body").dataset.thankYou = "true"; // Get First Name, Frequency, and Amount from Local Storage
 
-      const urlParams = new URLSearchParams(window.location.search);
+      const donorData = JSON.parse(localStorage.getItem("DonationLightboxForm"));
+      console.log("DonationLightboxForm: donorData", donorData);
+      const firstName = donorData.firstName || "Friend";
+      const frequency = donorData.frequency || "";
+      const amount = donorData.amount || "";
+      let engrid = document.querySelector("#engrid");
 
-      if (urlParams.get("name")) {
-        let engrid = document.querySelector("#engrid");
-
-        if (engrid) {
-          let engridContent = engrid.innerHTML;
-          engridContent = engridContent.replace("{user_data~First Name}", atob(urlParams.get("name")));
-          engridContent = engridContent.replace("{receipt_data~recurringFrequency}", atob(urlParams.get("frequency")));
-          engridContent = engridContent.replace("{receipt_data~amount}", "$" + atob(urlParams.get("amount")));
-          engrid.innerHTML = engridContent;
-          this.sendMessage("firstname", atob(urlParams.get("name")));
-        }
-      } else {
-        // Try to get the first name
-        const thisClass = this;
-        const pageDataUrl = location.protocol + "//" + location.host + location.pathname + "/pagedata";
-        fetch(pageDataUrl).then(function (response) {
-          return response.json();
-        }).then(function (json) {
-          if (json.hasOwnProperty("firstName") && json.firstName !== null) {
-            thisClass.sendMessage("firstname", json.firstName);
-          } else {
-            thisClass.sendMessage("firstname", "Friend");
-          }
-        }).catch(error => {
-          console.error("PageData Error:", error);
-        });
+      if (engrid) {
+        let engridContent = engrid.innerHTML;
+        engridContent = engridContent.replace("{user_data~First Name}", firstName);
+        engridContent = engridContent.replace("{receipt_data~recurringFrequency}", frequency);
+        engridContent = engridContent.replace("{receipt_data~amount}", "$" + amount);
+        engrid.innerHTML = engridContent;
+        this.sendMessage("firstname", firstName);
       }
 
       return false;
@@ -14595,10 +14581,21 @@ class DonationLightboxForm {
 
         if (this.validateForm()) {
           // Send Basic User Data to Parent
+          const firstName = document.querySelector("#en__field_supporter_firstName").value;
+          const frequency = this.frequency.getInstance().frequency;
+
+          const amount = window.EngagingNetworks.require._defined.enjs.getDonationTotal();
+
           this.sendMessage("donationinfo", JSON.stringify({
-            name: document.querySelector("#en__field_supporter_firstName").value,
-            amount: window.EngagingNetworks.require._defined.enjs.getDonationTotal(),
-            frequency: this.frequency.getInstance().frequency
+            name: firstName,
+            amount: amount,
+            frequency: frequency
+          })); // Save First Name, Frequency, and Amount to Local Storage
+
+          localStorage.setItem("DonationLightboxForm", JSON.stringify({
+            firstName,
+            frequency,
+            amount
           })); // Only shows cortain if payment is not paypal
 
           const paymentType = document.querySelector("#en__field_transaction_paymenttype").value;
