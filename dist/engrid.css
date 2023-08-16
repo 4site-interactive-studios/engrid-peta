@@ -19,7 +19,7 @@
  *
  *  ENGRID PAGE TEMPLATE ASSETS
  *
- *  Date: Monday, June 5, 2023 @ 09:50:54 ET
+ *  Date: Wednesday, August 16, 2023 @ 17:41:41 ET
  *  By: fernando
  *  ENGrid styles: v0.9.6
  *  ENGrid scripts: v0.9.5
@@ -6904,7 +6904,7 @@ body:not([data-engrid-debug]) #debug-bar{
 [data-engrid-theme=peta] form.en__component>.en__component .section-navigation button{
   align-items:center;
   -webkit-backface-visibility:hidden;
-  backface-visibility:hidden;
+          backface-visibility:hidden;
   border:0;
   border-radius:2px;
   color:#fff;
@@ -7072,9 +7072,6 @@ body:not([data-engrid-debug]) #debug-bar{
 [data-engrid-theme=peta] .en__component--copyblock a{
   color:var(--color_primary);
 }
-[data-engrid-theme=peta][data-engrid-embedded]{
-  height:100vh;
-}
 [data-engrid-theme=peta][data-engrid-embedded] form.en__component{
   display:grid;
   grid-auto-flow:column;
@@ -7083,13 +7080,21 @@ body:not([data-engrid-debug]) #debug-bar{
   scroll-snap-type:x mandatory;
 }
 [data-engrid-theme=peta][data-engrid-embedded] form.en__component>.en__component{
-  height:100vh;
+  max-height:var(--section_height, auto);
+  min-height:var(--section_height, auto);
+  overflow:hidden;
   padding:45px;
   scroll-snap-align:start;
+  transition:max-height .3s linear;
   width:350px;
+}
+[data-engrid-theme=peta][data-engrid-embedded] form.en__component>.en__component.active{
+  max-height:10000px;
+  overflow:auto;
 }
 [data-engrid-theme=peta][data-engrid-embedded] form.en__component>.en__component>.en__component{
   height:100%;
+  padding-bottom:60px;
 }
 [data-engrid-theme=peta][data-engrid-embedded] form.en__component .en__component--row>.en__component--column .en__component:first-of-type>:first-child{
   margin-top:0;

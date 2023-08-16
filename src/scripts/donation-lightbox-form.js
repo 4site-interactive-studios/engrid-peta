@@ -147,6 +147,17 @@ export default class DonationLightboxForm {
         urlParams.get("color")
       );
     }
+    // Check if theres a height value in the url
+    if (urlParams.get("height")) {
+      document.body.style.setProperty(
+        "--section_height",
+        urlParams.get("height")
+      );
+    } else {
+      document.body.style.setProperty("--section_height", "550px");
+    }
+    // Add an active class to the first section
+    this.sections[0].classList.add("active");
     // Check your IP Country
     fetch(`https://${window.location.hostname}/cdn-cgi/trace`)
       .then((res) => res.text())
@@ -204,6 +215,17 @@ export default class DonationLightboxForm {
   // Check if is iFrame
   isIframe() {
     return window.self !== window.top;
+  }
+  sendIframeHeight(scroll = false) {
+    let height = document.body.offsetHeight;
+    const data = {
+      frameHeight: height,
+    };
+    if (scroll) {
+      data.scroll = true;
+    }
+    window.parent.postMessage(data, "*");
+    console.log("Sent height & scroll:", data);
   }
   // Build Section Navigation
   buildSectionNavigation() {
@@ -316,18 +338,23 @@ export default class DonationLightboxForm {
   }
   // Scroll to a section
   scrollToSection(sectionId) {
-    console.log("DonationLightboxForm: scrollToSection", sectionId);
+    console.log("DonationMultistepForm: scrollToSection", sectionId);
     const section = document.querySelector(`[data-section-id="${sectionId}"]`);
+    // Remove the active class from all sections
     if (this.sections[sectionId]) {
       console.log(section);
+      this.sections.forEach((section) => {
+        section.classList.remove("active");
+      });
       this.sections[sectionId].scrollIntoView({
         behavior: "smooth",
-        block: "start",
-        inline: "start",
+        block: "nearest",
+        // inline: "center",
       });
-    }
-    if (sectionId > 0) {
-      this.sendMessage("status", "footer");
+      this.sections[sectionId].classList.add("active");
+      window.setTimeout(() => {
+        this.sendIframeHeight(true);
+      }, 400);
     }
   }
   // Scroll to an element's section
@@ -498,7 +525,10 @@ export default class DonationLightboxForm {
       if (sectionId === false || sectionId == fieldSection) {
         if (!fieldElement.value) {
           this.scrollToElement(fieldElement);
-          this.sendMessage("error", "Please enter " + fieldLabel.textContent);
+          this.sendMessage(
+            "error",
+            "Please enter " + fieldLabel.textContent.toLowerCase()
+          );
           field.classList.add("has-error");
           hasError = true;
           return false;

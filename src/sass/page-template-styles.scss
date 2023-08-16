@@ -386,9 +386,7 @@
         font-style: normal;
         letter-spacing: 0.84px;
         margin-bottom: 0;
-        -webkit-transform: translateZ(0);
         transform: translateZ(0);
-        -webkit-backface-visibility: hidden;
         backface-visibility: hidden;
         small {
           font-size: 10px;
@@ -652,7 +650,7 @@
   }
 
   &[data-engrid-embedded] {
-    height: 100vh;
+    // height: 100vh;
     form.en__component {
       scroll-snap-type: x mandatory;
       margin: 0 auto;
@@ -662,13 +660,23 @@
       // scroll-behavior: smooth;
 
       & > .en__component {
-        height: 100vh;
+        // height: 100vh;
         width: $one_col_body-column_max-width + 45px + 45px;
         padding: 45px;
         scroll-snap-align: start;
 
+        transition: 0.3s max-height linear;
+        max-height: var(--section_height, auto);
+        min-height: var(--section_height, auto);
+        overflow: hidden;
+        &.active {
+          max-height: 10000px;
+          overflow: auto;
+        }
+
         & > .en__component {
           height: 100%;
+          padding-bottom: 60px;
         }
       }
 

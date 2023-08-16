@@ -17,7 +17,7 @@
  *
  *  ENGRID PAGE TEMPLATE ASSETS
  *
- *  Date: Monday, June 5, 2023 @ 09:50:54 ET
+ *  Date: Wednesday, August 16, 2023 @ 17:41:41 ET
  *  By: fernando
  *  ENGrid styles: v0.9.6
  *  ENGrid scripts: v0.9.5
@@ -14453,8 +14453,17 @@ class DonationLightboxForm {
 
     if (urlParams.get("color")) {
       document.body.style.setProperty("--color_primary", urlParams.get("color"));
-    } // Check your IP Country
+    } // Check if theres a height value in the url
 
+
+    if (urlParams.get("height")) {
+      document.body.style.setProperty("--section_height", urlParams.get("height"));
+    } else {
+      document.body.style.setProperty("--section_height", "550px");
+    } // Add an active class to the first section
+
+
+    this.sections[0].classList.add("active"); // Check your IP Country
 
     fetch(`https://${window.location.hostname}/cdn-cgi/trace`).then(res => res.text()).then(t => {
       let data = t.replace(/[\r\n]+/g, '","').replace(/\=+/g, '":"');
@@ -14517,6 +14526,21 @@ class DonationLightboxForm {
 
   isIframe() {
     return window.self !== window.top;
+  }
+
+  sendIframeHeight() {
+    let scroll = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+    let height = document.body.offsetHeight;
+    const data = {
+      frameHeight: height
+    };
+
+    if (scroll) {
+      data.scroll = true;
+    }
+
+    window.parent.postMessage(data, "*");
+    console.log("Sent height & scroll:", data);
   } // Build Section Navigation
 
 
@@ -14624,20 +14648,23 @@ class DonationLightboxForm {
 
 
   scrollToSection(sectionId) {
-    console.log("DonationLightboxForm: scrollToSection", sectionId);
-    const section = document.querySelector(`[data-section-id="${sectionId}"]`);
+    console.log("DonationMultistepForm: scrollToSection", sectionId);
+    const section = document.querySelector(`[data-section-id="${sectionId}"]`); // Remove the active class from all sections
 
     if (this.sections[sectionId]) {
       console.log(section);
+      this.sections.forEach(section => {
+        section.classList.remove("active");
+      });
       this.sections[sectionId].scrollIntoView({
         behavior: "smooth",
-        block: "start",
-        inline: "start"
-      });
-    }
+        block: "nearest" // inline: "center",
 
-    if (sectionId > 0) {
-      this.sendMessage("status", "footer");
+      });
+      this.sections[sectionId].classList.add("active");
+      window.setTimeout(() => {
+        this.sendIframeHeight(true);
+      }, 400);
     }
   } // Scroll to an element's section
 
@@ -14820,7 +14847,7 @@ class DonationLightboxForm {
       if (sectionId === false || sectionId == fieldSection) {
         if (!fieldElement.value) {
           this.scrollToElement(fieldElement);
-          this.sendMessage("error", "Please enter " + fieldLabel.textContent);
+          this.sendMessage("error", "Please enter " + fieldLabel.textContent.toLowerCase());
           field.classList.add("has-error");
           hasError = true;
           return false;
