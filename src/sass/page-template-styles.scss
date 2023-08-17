@@ -205,11 +205,11 @@
 /* Add your custom theme styles here */
 [data-engrid-theme="peta"] {
   // Zoom Out If Screen Is 320px or less
-  @media only screen and (max-width: 320px) {
-    #engrid {
-      zoom: 0.85;
-    }
-  }
+  // @media only screen and (max-width: 320px) {
+  //   #engrid {
+  //     zoom: 0.85;
+  //   }
+  // }
 
   .radio-to-buttons_recurrfreq {
     --recurring-frequency__button_count: 2;
