@@ -688,6 +688,10 @@
         padding-top: 0;
       }
 
+      .en__component--copyblock h2:first-of-type {
+        margin-top: 0;
+      }
+
       .en__component--row
         > .en__component--column
         .en__component:last-of-type
