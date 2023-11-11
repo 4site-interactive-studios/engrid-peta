@@ -17,7 +17,7 @@
  *
  *  ENGRID PAGE TEMPLATE ASSETS
  *
- *  Date: Wednesday, September 13, 2023 @ 19:30:16 ET
+ *  Date: Friday, November 10, 2023 @ 21:16:39 ET
  *  By: fernando
  *  ENGrid styles: v0.9.6
  *  ENGrid scripts: v0.9.5
@@ -15190,7 +15190,16 @@ const options = {
   Debug: App.getUrlParameter("debug") == "true" ? true : false,
   onLoad: () => {
     window.DonationLightboxForm = DonationLightboxForm;
-    new DonationLightboxForm(DonationAmount, DonationFrequency);
+    new DonationLightboxForm(DonationAmount, DonationFrequency); // Check if the field External Reference 6 is present, if not, create it
+
+    const extRef6 = document.querySelector("input[name='en_txn6']");
+    const refURL = window.location != window.parent.location ? document.referrer : document.location.href;
+
+    if (!extRef6) {
+      App.createHiddenInput("en_txn6", refURL);
+    } else {
+      extRef6.value = refURL;
+    }
   },
   onResize: () => console.log("Starter Theme Window Resized")
 };

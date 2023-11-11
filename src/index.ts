@@ -29,6 +29,19 @@ const options: Options = {
   onLoad: () => {
     (<any>window).DonationLightboxForm = DonationLightboxForm;
     new DonationLightboxForm(DonationAmount, DonationFrequency);
+    // Check if the field External Reference 6 is present, if not, create it
+    const extRef6 = document.querySelector(
+      "input[name='en_txn6']"
+    ) as HTMLInputElement;
+    const refURL =
+      window.location != window.parent.location
+        ? document.referrer
+        : document.location.href;
+    if (!extRef6) {
+      App.createHiddenInput("en_txn6", refURL);
+    } else {
+      extRef6.value = refURL;
+    }
   },
   onResize: () => console.log("Starter Theme Window Resized"),
 };
