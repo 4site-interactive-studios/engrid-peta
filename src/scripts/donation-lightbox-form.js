@@ -72,7 +72,7 @@ export default class DonationLightboxForm {
       ) {
         console.log("DonationLightboxForm: Submission Failed");
         // Submission failed
-        if (this.validateForm()) {
+        if (this.validateForm(false, false)) {
           // Front-End Validation Passed, get first Error Message
           const error = document.querySelector("li.en__error");
           if (error) {
@@ -330,7 +330,24 @@ export default class DonationLightboxForm {
               });
               document.querySelector("form.en__component").target = "_blank";
             }
-            document.querySelector("form.en__component").submit();
+            if (
+              this.checkNested(
+                window.EngagingNetworks,
+                "require",
+                "_defined",
+                "enDefaults",
+                "validation",
+                "_getSubmitPromise"
+              )
+            ) {
+              window.EngagingNetworks.require._defined.enDefaults.validation
+                ._getSubmitPromise()
+                .then(function () {
+                  document.querySelector("form.en__component").submit();
+                });
+            } else {
+              document.querySelector("form.en__component").requestSubmit();
+            }
           }
         });
       section.querySelector(".en__component").append(sectionNavigation);
@@ -375,7 +392,8 @@ export default class DonationLightboxForm {
   }
 
   // Validate the form
-  validateForm(sectionId = false) {
+  // checkCard was added to avoid checking the card if there was a server-side error (the card would be empty)
+  validateForm(sectionId = false, checkCard = true) {
     const form = document.querySelector("form.en__component");
 
     // Validate Frequency
@@ -402,15 +420,7 @@ export default class DonationLightboxForm {
     }
 
     // Validate Amount
-    const amount = this.checkNested(
-      window.EngagingNetworks,
-      "require",
-      "_defined",
-      "enjs",
-      "getDonationTotal"
-    )
-      ? window.EngagingNetworks.require._defined.enjs.getDonationTotal()
-      : 0;
+    const amount = EngagingNetworks.require._defined.enjs.getDonationTotal();
     const amountBlock = form.querySelector(".en__field--donationAmt");
     const amountSection = this.getSectionId(amountBlock);
     if (sectionId === false || sectionId == amountSection) {
@@ -434,12 +444,21 @@ export default class DonationLightboxForm {
     const ccnumber = form.querySelector("#en__field_transaction_ccnumber");
     const ccnumberBlock = form.querySelector(".en__field--ccnumber");
     const ccnumberSection = this.getSectionId(ccnumberBlock);
+    const isDigitalWalletPayment = [
+      "paypal",
+      "paypaltouch",
+      "stripedigitalwallet",
+    ].includes(paymentType.value);
     console.log(
       "DonationLightboxForm: validateForm",
       ccnumberBlock,
       ccnumberSection
     );
-    if (sectionId === false || sectionId == ccnumberSection) {
+    if (
+      !isDigitalWalletPayment &&
+      (sectionId === false || sectionId == ccnumberSection) &&
+      checkCard
+    ) {
       if (!paymentType || !paymentType.value) {
         this.scrollToElement(paymentType);
         this.sendMessage("error", "Please add your credit card information");
@@ -448,72 +467,71 @@ export default class DonationLightboxForm {
         }
         return false;
       }
-      // If payment type is not paypal, check credit card expiration and cvv
-      if (paymentType.value !== "paypal") {
-        if (!ccnumber || !ccnumber.value) {
-          this.scrollToElement(ccnumber);
-          this.sendMessage("error", "Please add your credit card information");
-          if (ccnumberBlock) {
-            ccnumberBlock.classList.add("has-error");
-          }
-          return false;
-        } else {
-          if (ccnumberBlock) {
-            ccnumberBlock.classList.remove("has-error");
-          }
-        }
-        if (/^\d+$/.test(ccnumber.value) === false) {
-          this.scrollToElement(ccnumber);
-          this.sendMessage("error", "Only numbers are allowed on credit card");
-          if (ccnumberBlock) {
-            ccnumberBlock.classList.add("has-error");
-          }
-          return false;
-        } else {
-          if (ccnumberBlock) {
-            ccnumberBlock.classList.remove("has-error");
-          }
-        }
-        const ccexpire = form.querySelectorAll("[name='transaction.ccexpire']");
-        const ccexpireBlock = form.querySelector(".en__field--ccexpire");
-        let ccexpireValid = true;
-        ccexpire.forEach((e) => {
-          if (!e.value) {
-            this.scrollToElement(ccexpireBlock);
-            this.sendMessage("error", "Please enter a valid expiration date");
-            if (ccexpireBlock) {
-              ccexpireBlock.classList.add("has-error");
-            }
-            ccexpireValid = false;
-            return false;
-          }
-        });
-        if (!ccexpireValid && ccexpireBlock) {
-          return false;
-        } else {
-          if (ccexpireBlock) {
-            ccexpireBlock.classList.remove("has-error");
-          }
-        }
 
-        const cvv = form.querySelector("#en__field_transaction_ccvv");
-        const cvvBlock = form.querySelector(".en__field--ccvv");
-        if (!cvv || !cvv.value) {
-          this.scrollToElement(cvv);
-          this.sendMessage("error", "Please enter a valid CVV");
-          if (cvvBlock) {
-            cvvBlock.classList.add("has-error");
+      const ccValid =
+        ccnumber instanceof HTMLInputElement
+          ? !!ccnumber.value
+          : ccnumber.classList.contains("vgs-collect-container__valid");
+
+      if (!ccValid) {
+        this.scrollToElement(ccnumber);
+        this.sendMessage("error", "Please enter a valid credit card number");
+        if (ccnumberBlock) {
+          ccnumberBlock.classList.add("has-error");
+        }
+        return false;
+      } else {
+        if (ccnumberBlock) {
+          ccnumberBlock.classList.remove("has-error");
+        }
+      }
+
+      const ccexpire = form.querySelectorAll("[name='transaction.ccexpire']");
+      const ccexpireBlock = form.querySelector(".en__field--ccexpire");
+      let ccexpireValid = true;
+      ccexpire.forEach((e) => {
+        if (!e.value) {
+          this.scrollToElement(ccexpireBlock);
+          this.sendMessage("error", "Please enter a valid expiration date");
+          if (ccexpireBlock) {
+            ccexpireBlock.classList.add("has-error");
           }
+          ccexpireValid = false;
           return false;
-        } else {
-          if (cvvBlock) {
-            cvvBlock.classList.remove("has-error");
-          }
+        }
+      });
+      if (!ccexpireValid && ccexpireBlock) {
+        return false;
+      } else {
+        if (ccexpireBlock) {
+          ccexpireBlock.classList.remove("has-error");
+        }
+      }
+
+      const cvv = form.querySelector("#en__field_transaction_ccvv");
+      const cvvBlock = form.querySelector(".en__field--ccvv");
+      const cvvValid =
+        cvv instanceof HTMLInputElement
+          ? !!cvv.value
+          : cvv.classList.contains("vgs-collect-container__valid");
+
+      if (!cvvValid) {
+        this.scrollToElement(cvv);
+        this.sendMessage("error", "Please enter a valid CVV");
+        if (cvvBlock) {
+          cvvBlock.classList.add("has-error");
+        }
+        return false;
+      } else {
+        if (cvvBlock) {
+          cvvBlock.classList.remove("has-error");
         }
       }
     }
     // Validate Everything else
-    const mandatoryFields = form.querySelectorAll(".en__mandatory");
+    const mandatoryFields = form.querySelectorAll(
+      ".en__mandatory:not(.en__hidden)"
+    );
     let hasError = false;
     mandatoryFields.forEach((field) => {
       if (hasError) {
