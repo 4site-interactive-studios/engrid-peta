@@ -17,7 +17,7 @@
  *
  *  ENGRID PAGE TEMPLATE ASSETS
  *
- *  Date: Wednesday, March 6, 2024 @ 08:39:46 ET
+ *  Date: Thursday, April 18, 2024 @ 16:15:40 ET
  *  By: fernando
  *  ENGrid styles: v0.17.19
  *  ENGrid scripts: v0.17.20
@@ -22419,7 +22419,11 @@ class DonationLightboxForm {
           if (paymentType != "paypal") {
             this.sendMessage("status", "loading");
           } else {
-            // If Paypal, submit the form on a new tab
+            // If Paypal, add en__hidden to the cc container and submit the form on a new tab
+            const ccContainer = document.querySelector(".en__component--formblock:has(.en__field--vgs)");
+            if (ccContainer) {
+              ccContainer.classList.add("en__hidden");
+            }
             const thisClass = this;
             document.addEventListener("visibilitychange", function () {
               if (document.visibilityState === "visible") {

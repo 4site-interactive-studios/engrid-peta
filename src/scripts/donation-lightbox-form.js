@@ -319,7 +319,13 @@ export default class DonationLightboxForm {
             if (paymentType != "paypal") {
               this.sendMessage("status", "loading");
             } else {
-              // If Paypal, submit the form on a new tab
+              // If Paypal, add en__hidden to the cc container and submit the form on a new tab
+              const ccContainer = document.querySelector(
+                ".en__component--formblock:has(.en__field--vgs)"
+              );
+              if (ccContainer) {
+                ccContainer.classList.add("en__hidden");
+              }
               const thisClass = this;
               document.addEventListener("visibilitychange", function () {
                 if (document.visibilityState === "visible") {
