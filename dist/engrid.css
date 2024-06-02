@@ -19,10 +19,10 @@
  *
  *  ENGRID PAGE TEMPLATE ASSETS
  *
- *  Date: Thursday, April 18, 2024 @ 16:15:40 ET
+ *  Date: Sunday, June 2, 2024 @ 24:46:59 ET
  *  By: fernando
- *  ENGrid styles: v0.17.19
- *  ENGrid scripts: v0.17.20
+ *  ENGrid styles: v0.18.8
+ *  ENGrid scripts: v0.18.12
  *
  *  Created by 4Site Studios
  *  Come work with us or join our team, we would love to hear from you
@@ -2539,7 +2539,7 @@ input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-
   display:block;
   width:100% !important;
 }
-input[disabled],input[readonly],textarea[disabled],textarea[readonly]{
+input[disabled],input[readonly],select[disabled],textarea[disabled],textarea[readonly]{
   cursor:not-allowed;
 }
 .en__captcha{
@@ -3216,10 +3216,10 @@ body:not(#en__pagebuilder):not([data-engrid-debug]) .hide-labels .en__field:not(
   padding-right:var(--fields_spacing-inline);
   padding-top:0;
 }
-[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements]:not([data-engrid-payment-type-option-apple-pay=true]) .showif-apple-pay-available,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements]:not([data-engrid-payment-type-option-google-pay=true]) .showif-google-pay-available,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements]:not([data-engrid-payment-type-option-paypal-one-touch=true]) .showif-paypal-one-touch-available,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements]:not([data-engrid-payment-type-option-venmo=true]) .showif-venmo-available,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements]:not([data-engrid-payment-type=paypaltouch]) .showif-paypaltouch-selected,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements]:not([data-engrid-payment-type=stripedigitalwallet]) .showif-stripedigitalwallet-selected{
+[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements]:not([data-engrid-payment-type-option-apple-pay=true]) .showif-apple-pay-available,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements]:not([data-engrid-payment-type-option-daf=true]) .showif-daf-available,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements]:not([data-engrid-payment-type-option-google-pay=true]) .showif-google-pay-available,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements]:not([data-engrid-payment-type-option-paypal-one-touch=true]) .showif-paypal-one-touch-available,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements]:not([data-engrid-payment-type-option-venmo=true]) .showif-venmo-available,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements]:not([data-engrid-payment-type=daf]) .showif-daf-selected,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements]:not([data-engrid-payment-type=paypaltouch]) .showif-paypaltouch-selected,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements]:not([data-engrid-payment-type=stripedigitalwallet]) .showif-stripedigitalwallet-selected{
   display:none;
 }
-[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements][data-engrid-payment-type=paypaltouch] .hideif-paypaltouch-selected,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements][data-engrid-payment-type=stripedigitalwallet] .hideif-stripedigitalwallet-selected,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements][data-engrid-transaction-recurring=n][data-engrid-payment-type-option-paypal-one-touch=true] .en__field--giveBySelect.paypal,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements][data-engrid-transaction-recurring=y] .en__field--giveBySelect.paypaltouch{
+[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements][data-engrid-payment-type=daf] .hideif-daf-selected,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements][data-engrid-payment-type=paypaltouch] .hideif-paypaltouch-selected,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements][data-engrid-payment-type=stripedigitalwallet] .hideif-stripedigitalwallet-selected,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements][data-engrid-transaction-recurring=n][data-engrid-payment-type-option-paypal-one-touch=true] .en__field--giveBySelect.paypal,[data-engrid-theme]:not(#en__pagebuilder):not([data-engrid-debug])[data-conditonally-hide-show-digital-wallet-elements][data-engrid-transaction-recurring=y] .en__field--giveBySelect.paypaltouch{
   display:none;
 }
 [data-engrid-theme] iframe.plaid-link-iframe,[data-engrid-theme] iframe[id^=plaid-link-iframe]{
@@ -5662,6 +5662,26 @@ body[data-engrid-exit-intent-lightbox=open]{
   position:relative;
   width:15px;
 }
+body[data-engrid-page-type=e-card][data-engrid-embedded-ecard=true] .body-main>:not(.en__component--ecardblock),body[data-engrid-page-type=e-card][data-engrid-embedded-ecard=true] .en__component--advrow>div:not(.body-main),body[data-engrid-page-type=e-card][data-engrid-embedded-ecard=true] .en__errorHeader,body[data-engrid-page-type=e-card][data-engrid-embedded-ecard=true] .en__errorList{
+  display:none;
+}
+body[data-engrid-page-type=e-card][data-engrid-embedded-ecard=true] .body-main{
+  grid-row:1 /  -1;
+  max-width:100%;
+  padding:0;
+  width:100%;
+}
+body[data-engrid-page-type=e-card][data-engrid-embedded-ecard=true] .en__component--ecardblock{
+  max-width:100%;
+  width:100%;
+}
+body[data-engrid-page-type=e-card][data-engrid-embedded-ecard=true] .en__ecardrecipients__email input,body[data-engrid-page-type=e-card][data-engrid-embedded-ecard=true] .en__ecardrecipients__name input{
+  width:100%;
+}
+
+body:not([data-engrid-embedded-ecard-sent=true]) .showif-embedded-ecard-sent,body[data-engrid-page-type=e-card][data-engrid-embedded-ecard=true] .en__ecardrecipients__email .en__ecarditems__addrecipient,body[data-engrid-page-type=e-card][data-engrid-embedded-ecard=true] .en__ecardrecipients__list,body[data-engrid-page-type=e-card][data-engrid-embedded-ecard=true] .en__ecardrecipients__name .en__ecarditems__addrecipient{
+  display:none;
+}
 [data-engrid-theme]{
   --engrid__page_padding:0px;
   --engrid__page_margin:0px;
@@ -7860,6 +7880,18 @@ body[data-engrid-debug]:before{
   --error__background-color:#fff8f7;
   --engrid__body-main_padding:0;
 }
+[data-engrid-theme=peta] .showif-digital-wallets{
+  display:none;
+}
+[data-engrid-theme=peta] .showif-card,[data-engrid-theme=peta] .showif-paypal{
+  display:none !important;
+}
+[data-engrid-theme=peta][data-engrid-payment-type=card] .showif-card,[data-engrid-theme=peta][data-engrid-payment-type=paypal] .showif-paypal{
+  display:flex !important;
+}
+[data-engrid-theme=peta][data-engrid-payment-type-option-apple-pay=true] .showif-digital-wallets,[data-engrid-theme=peta][data-engrid-payment-type-option-google-pay=true] .showif-digital-wallets{
+  display:block;
+}
 [data-engrid-theme=peta] .radio-to-buttons_recurrfreq{
   --recurring-frequency__button_count:2;
 }
@@ -8006,6 +8038,12 @@ body[data-engrid-debug]:before{
   font-size:10px;
   font-weight:400;
 }
+[data-engrid-theme=peta] form.en__component>.en__component .section-navigation button.section-navigation__next[data-section-id="2"]{
+  display:none;
+}
+[data-engrid-theme=peta] form.en__component>.en__component .section-navigation button.section-navigation__previous{
+  color:var(--color_primary);
+}
 [data-engrid-theme=peta] form.en__component>.en__component .section-navigation button.section-navigation__previous:before{
   background-color:var(--color_primary);
   border-radius:2px;
@@ -8093,15 +8131,18 @@ body[data-engrid-debug]:before{
   margin-bottom:25px;
   text-align:center;
 }
-[data-engrid-theme=peta] h4.title-line{
+[data-engrid-theme=peta] h4{
   color:#4f606c;
   font-family:var(--font-stack-aiusa-bold-condensed);
   font-size:16px;
+  margin-bottom:10px;
+  text-align:center;
+}
+[data-engrid-theme=peta] h4.title-line{
   font-weight:400;
   margin:0 0 15px;
   overflow:hidden;
   position:relative;
-  text-align:center;
   width:100%;
 }
 [data-engrid-theme=peta] h4.title-line span{
@@ -8121,11 +8162,20 @@ body[data-engrid-debug]:before{
   width:100%;
   z-index:-1;
 }
+[data-engrid-theme=peta] .payment-options{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  justify-content:center;
+}
 [data-engrid-theme=peta] .payment-options button{
+  align-items:center;
   border-radius:2px;
-  display:block;
+  display:flex;
   height:52px;
+  justify-content:center;
   margin-bottom:6px;
+  padding:0 12px;
   width:100%;
 }
 [data-engrid-theme=peta] .payment-options button span{
@@ -8134,13 +8184,37 @@ body[data-engrid-debug]:before{
   text-indent:-100vw;
 }
 [data-engrid-theme=peta] .payment-options button.payment-option-paypal{
-  background-color:#e5ecef;
-  border-color:#e5ecef;
+  background-color:#fcbb32;
+  border-color:#fcbb32;
 }
 [data-engrid-theme=peta] .payment-options button.payment-option-paypal span{
-  background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="82" height="20" fill="none" viewBox="0 0 82 20"><path fill="%23253B80" d="M30.626 4.473h-4.533c-.31 0-.574.225-.622.531l-1.833 11.623c-.037.229.141.436.374.436h2.163c.31 0 .574-.226.623-.532l.494-3.135c.048-.307.312-.532.622-.532h1.435c2.985 0 4.708-1.445 5.158-4.308.203-1.253.009-2.237-.578-2.926-.644-.757-1.786-1.157-3.303-1.157zm.523 4.245c-.248 1.626-1.49 1.626-2.692 1.626h-.684l.48-3.037c.028-.184.187-.32.373-.32h.313c.819 0 1.59 0 1.99.467.238.279.31.692.22 1.264zM44.174 8.665h-2.17c-.185 0-.345.136-.373.32l-.097.606-.151-.22c-.47-.682-1.518-.91-2.564-.91-2.398 0-4.447 1.817-4.846 4.365-.207 1.271.088 2.487.809 3.334.661.78 1.608 1.104 2.734 1.104 1.932 0 3.004-1.242 3.004-1.242l-.097.603c-.036.23.141.437.372.437h1.956c.31 0 .573-.225.622-.532l1.173-7.429c.037-.228-.14-.436-.372-.436zM41.15 12.89c-.21 1.24-1.194 2.072-2.45 2.072-.63 0-1.133-.202-1.456-.585-.321-.38-.443-.922-.341-1.525.195-1.23 1.196-2.09 2.432-2.09.616 0 1.117.206 1.448.592.33.39.462.935.367 1.536zM55.734 8.665h-2.181c-.209 0-.404.104-.522.277l-3.008 4.43-1.275-4.257c-.08-.267-.326-.45-.605-.45H46c-.26 0-.441.255-.359.5l2.403 7.05-2.259 3.189c-.177.25.002.596.308.596h2.179c.207 0 .4-.1.517-.27l7.255-10.472c.173-.25-.005-.593-.31-.593z"/><path fill="%23179BD7" d="M62.955 4.473h-4.533c-.31 0-.574.225-.622.531l-1.833 11.623c-.037.229.141.436.372.436h2.327c.216 0 .4-.158.434-.373l.52-3.294c.048-.307.313-.532.622-.532h1.434c2.987 0 4.709-1.445 5.16-4.308.203-1.253.008-2.237-.579-2.926-.643-.757-1.785-1.157-3.302-1.157zm.523 4.245c-.248 1.626-1.49 1.626-2.692 1.626h-.684l.48-3.037c.03-.184.187-.32.373-.32h.314c.818 0 1.59 0 1.99.467.237.279.31.692.219 1.264zM76.502 8.665h-2.169c-.186 0-.344.136-.372.32l-.096.606-.153-.22c-.47-.682-1.517-.91-2.563-.91-2.398 0-4.446 1.817-4.845 4.365-.207 1.271.087 2.487.808 3.334.663.78 1.608 1.104 2.734 1.104 1.932 0 3.004-1.242 3.004-1.242l-.097.603c-.036.23.141.437.374.437h1.955c.309 0 .573-.225.621-.532l1.174-7.429c.036-.228-.142-.436-.375-.436zm-3.025 4.225c-.208 1.24-1.194 2.072-2.449 2.072-.629 0-1.134-.202-1.457-.585-.32-.38-.442-.922-.34-1.525.196-1.23 1.196-2.09 2.431-2.09.617 0 1.118.206 1.448.592.332.39.463.935.367 1.536zM79.061 4.792l-1.86 11.835c-.036.23.141.436.373.436h1.87c.31 0 .574-.226.622-.532L81.9 4.909c.037-.23-.14-.437-.372-.437h-2.094c-.185 0-.344.136-.373.32z"/><path fill="%23253B80" d="M4.815 19.321l.347-2.201-.772-.018H.703L3.265.856C3.273.807 3.3.761 3.337.73c.038-.033.086-.05.136-.05H9.69c2.064 0 3.488.429 4.231 1.277.349.397.571.813.678 1.27.113.48.115 1.053.005 1.752l-.008.051v.448l.349.198c.293.156.527.334.705.538.299.34.492.772.573 1.284.084.527.056 1.154-.081 1.864-.16.817-.417 1.528-.764 2.11-.32.536-.726.98-1.21 1.325-.46.328-1.009.576-1.628.735-.6.156-1.285.235-2.036.235h-.484c-.346 0-.682.125-.946.348-.264.228-.44.54-.493.88l-.036.199-.613 3.88-.028.142c-.007.045-.02.068-.038.083-.017.014-.04.023-.064.023H4.815z"/><path fill="%23179BD7" d="M15.275 5.081c-.019.119-.04.24-.064.365-.82 4.209-3.624 5.663-7.207 5.663H6.181c-.438 0-.808.318-.876.75l-.934 5.922-.264 1.679c-.044.284.174.54.46.54h3.235c.383 0 .709-.279.77-.657l.031-.164.609-3.865.04-.212c.059-.38.385-.658.768-.658h.484c3.134 0 5.587-1.272 6.304-4.954.3-1.539.145-2.823-.648-3.726-.24-.273-.537-.499-.885-.683z"/><path fill="%23222D65" d="M14.417 4.74c-.125-.037-.254-.07-.387-.1s-.27-.055-.41-.078c-.492-.08-1.03-.117-1.608-.117H7.14c-.12 0-.234.027-.336.076-.225.108-.392.32-.432.581l-1.037 6.566-.03.191c.068-.432.438-.75.876-.75h1.824c3.582 0 6.386-1.455 7.206-5.663.025-.125.045-.246.064-.365-.208-.11-.432-.204-.674-.284-.06-.02-.122-.04-.184-.058z"/><path fill="%23253B80" d="M6.372 5.102c.04-.26.207-.473.432-.58.102-.05.216-.076.336-.076h4.872c.577 0 1.116.037 1.608.117.14.022.277.048.41.077.133.03.262.063.387.1.063.018.124.038.184.057.242.08.467.175.674.284.244-1.555-.002-2.614-.843-3.573C13.505.452 11.832 0 9.691 0H3.474c-.437 0-.81.318-.878.75L.006 17.165c-.05.324.2.617.527.617h3.838l.964-6.113 1.037-6.566z"/></svg>');
-  height:20px;
-  width:82px;
+  background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg viewBox='0 0 700 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M128.38 19.35c-8.399-5.773-19.359-8.667-32.88-8.667H43.154c-4.145 0-6.435 2.073-6.87 6.214L15.02 150.377c-.22 1.31.107 2.51.981 3.6.87 1.093 1.962 1.636 3.271 1.636h24.864c4.361 0 6.758-2.068 7.198-6.216l5.888-35.985c.215-1.744.982-3.162 2.291-4.254 1.308-1.09 2.944-1.804 4.907-2.13 1.963-.324 3.814-.487 5.562-.487 1.743 0 3.814.11 6.217.327 2.397.218 3.925.324 4.58.324 18.756 0 33.478-5.285 44.167-15.866 10.684-10.577 16.032-25.244 16.032-44.004 0-12.868-4.202-22.192-12.597-27.975v.004Zm-26.99 40.08c-1.094 7.636-3.926 12.65-8.506 15.05-4.58 2.403-11.124 3.597-19.629 3.597l-10.797.328 5.563-35.007C68.455 41 69.872 39.8 72.273 39.8h6.218c8.72 0 15.05 1.257 18.975 3.76 3.924 2.51 5.233 7.803 3.924 15.87Z' fill='%23003087'/%3E%3Cpath d='M680.79 10.68h-24.208c-2.405 0-3.82 1.2-4.253 3.6l-21.267 136.1-.328.654c0 1.096.437 2.127 1.311 3.109.868.979 1.963 1.47 3.271 1.47h21.595c4.138 0 6.43-2.067 6.871-6.214l21.265-133.81v-.325c-.002-3.053-1.424-4.58-4.257-4.58v-.003Z' fill='%23009CDE'/%3E%3Cpath d='M388.31 63.36c0-1.087-.438-2.125-1.306-3.105-.875-.981-1.857-1.474-2.945-1.474h-25.19c-2.405 0-4.367 1.096-5.89 3.27l-34.68 51.04-14.394-49.074c-1.096-3.488-3.493-5.236-7.198-5.236h-24.54c-1.093 0-2.075.492-2.942 1.474-.875.98-1.309 2.019-1.309 3.106 0 .44 2.127 6.87 6.38 19.303 4.251 12.434 8.832 25.848 13.74 40.244 4.908 14.394 7.468 22.03 7.688 22.898-17.886 24.43-26.826 37.518-26.826 39.26 0 2.838 1.417 4.254 4.253 4.254h25.191c2.4 0 4.361-1.088 5.89-3.271l83.427-120.4c.433-.433.651-1.193.651-2.29v.002Z' fill='%23003087'/%3E%3Cpath d='M622.89 58.78h-24.865c-3.056 0-4.904 3.6-5.559 10.798-5.677-8.72-16.03-13.088-31.083-13.088-15.704 0-29.065 5.89-40.077 17.668-11.016 11.779-16.52 25.63-16.52 41.55 0 12.872 3.76 23.122 11.284 30.753 7.524 7.639 17.611 11.45 30.266 11.45 6.323 0 12.757-1.31 19.3-3.925 6.544-2.617 11.665-6.105 15.38-10.47 0 .22-.223 1.199-.655 2.943-.44 1.748-.655 3.06-.655 3.926 0 3.494 1.414 5.234 4.254 5.234h22.576c4.138 0 6.541-2.068 7.193-6.216l13.415-85.39c.215-1.308-.11-2.506-.98-3.598-.877-1.087-1.965-1.634-3.274-1.634Zm-42.694 64.453c-5.562 5.453-12.269 8.179-20.12 8.179-6.328 0-11.449-1.742-15.377-5.234-3.928-3.483-5.89-8.282-5.89-14.396 0-8.064 2.726-14.884 8.18-20.446 5.446-5.562 12.214-8.343 20.284-8.343 6.102 0 11.174 1.8 15.212 5.397 4.032 3.599 6.055 8.563 6.055 14.888 0 7.85-2.783 14.505-8.344 19.955Z' fill='%23009CDE'/%3E%3Cpath d='M251.23 58.78h-24.864c-3.058 0-4.908 3.6-5.563 10.798-5.889-8.72-16.25-13.088-31.08-13.088-15.705 0-29.066 5.89-40.079 17.668-11.016 11.779-16.52 25.63-16.52 41.55 0 12.872 3.762 23.122 11.287 30.753 7.525 7.639 17.61 11.45 30.262 11.45 6.104 0 12.433-1.31 18.975-3.925 6.543-2.617 11.778-6.105 15.704-10.47-.875 2.617-1.309 4.908-1.309 6.869 0 3.494 1.417 5.234 4.253 5.234h22.574c4.141 0 6.543-2.068 7.198-6.216l13.413-85.39c.215-1.308-.112-2.506-.98-3.598-.874-1.087-1.963-1.634-3.27-1.634Zm-42.695 64.615c-5.563 5.35-12.382 8.017-20.447 8.017-6.329 0-11.4-1.742-15.214-5.234-3.819-3.483-5.726-8.282-5.726-14.396 0-8.064 2.725-14.884 8.18-20.446 5.45-5.562 12.211-8.343 20.284-8.343 6.104 0 11.175 1.8 15.214 5.398 4.032 3.599 6.052 8.563 6.052 14.888 0 8.069-2.78 14.778-8.343 20.116Z' fill='%23003087'/%3E%3Cpath d='M500.04 19.35c-8.398-5.773-19.356-8.667-32.879-8.667h-52.02c-4.364 0-6.765 2.073-7.197 6.214l-21.266 133.48c-.22 1.312.106 2.51.981 3.6.865 1.093 1.962 1.636 3.271 1.636h26.826c2.617 0 4.361-1.416 5.235-4.252l5.89-37.95c.216-1.743.98-3.161 2.29-4.253 1.31-1.09 2.943-1.803 4.908-2.13 1.962-.324 3.812-.487 5.562-.487 1.743 0 3.814.11 6.214.327 2.4.218 3.931.324 4.58.324 18.76 0 33.48-5.285 44.168-15.866 10.688-10.577 16.031-25.244 16.031-44.004.002-12.867-4.199-22.191-12.594-27.974v.003Zm-33.534 53.82c-4.799 3.272-11.997 4.907-21.592 4.907l-10.47.328 5.562-35.007c.432-2.397 1.85-3.597 4.252-3.597h5.887c4.798 0 8.614.218 11.454.653 2.831.44 5.562 1.799 8.18 4.089 2.617 2.29 3.925 5.618 3.925 9.98 0 9.16-2.402 15.375-7.198 18.648Z' fill='%23009CDE'/%3E%3C/svg%3E");
+  height:30px;
+  width:105px;
+}
+[data-engrid-theme=peta] .payment-options button.payment-option-card{
+  align-items:center;
+  background-color:var(--color_primary);
+  border-color:var(--color_primary);
+  display:flex;
+  justify-content:center;
+}
+[data-engrid-theme=peta] .payment-options button.payment-option-card span{
+  align-items:center;
+  background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg viewBox='0 0 25 25' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.5 10.5h16m-16-1h16m-16 2h16M7 15.5h7m-8.5 3h14a1 1 0 0 0 1-1v-10a1 1 0 0 0-1-1h-14a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1Z' stroke='%23fff' stroke-width='1.2'/%3E%3C/svg%3E");
+  background-position:10px;
+  background-repeat:no-repeat;
+  background-size:30px;
+  color:#fff;
+  display:flex;
+  height:30px;
+  justify-content:center;
+  padding-left:30px;
+  text-indent:0;
+  width:165px;
+}
+[data-engrid-theme=peta] .section-count{
+  display:none;
 }
 [data-engrid-theme=peta] .en__component--copyblock p{
   margin-bottom:6px;

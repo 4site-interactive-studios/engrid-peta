@@ -27,7 +27,7 @@ const options: Options = {
   Debug: App.getUrlParameter("debug") == "true" ? true : false,
   onLoad: () => {
     (<any>window).DonationLightboxForm = DonationLightboxForm;
-    new DonationLightboxForm(DonationAmount, DonationFrequency);
+    new DonationLightboxForm(App, DonationAmount, DonationFrequency);
     // Check if the field External Reference 6 is present, if not, create it
     const extRef6 = document.querySelector(
       "input[name='en_txn6']"
