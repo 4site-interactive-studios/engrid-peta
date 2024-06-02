@@ -217,7 +217,7 @@
 
   &:not(#en__pagebuilder) {
     .showif-digital-wallets {
-      display: none;
+      display: none !important;
     }
     .showif-card {
       display: none !important;
@@ -242,7 +242,7 @@
   &[data-engrid-payment-type-option-apple-pay="true"],
   &[data-engrid-payment-type-option-google-pay="true"] {
     .showif-digital-wallets {
-      display: block;
+      display: block !important;
     }
   }
 
