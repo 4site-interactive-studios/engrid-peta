@@ -19,7 +19,7 @@
  *
  *  ENGRID PAGE TEMPLATE ASSETS
  *
- *  Date: Sunday, June 2, 2024 @ 01:09:31 ET
+ *  Date: Sunday, June 2, 2024 @ 01:14:32 ET
  *  By: fernando
  *  ENGrid styles: v0.18.8
  *  ENGrid scripts: v0.18.12
@@ -7883,7 +7883,10 @@ body[data-engrid-debug]:before{
 [data-engrid-theme=peta] form>.en__component--row.en__component--advrow{
   min-height:auto !important;
 }
-[data-engrid-theme=peta]:not(#en__pagebuilder) .showif-card,[data-engrid-theme=peta]:not(#en__pagebuilder) .showif-digital-wallets,[data-engrid-theme=peta]:not(#en__pagebuilder) .showif-paypal{
+[data-engrid-theme=peta]:not(#en__pagebuilder) .showif-digital-wallets{
+  display:none;
+}
+[data-engrid-theme=peta]:not(#en__pagebuilder) .showif-card,[data-engrid-theme=peta]:not(#en__pagebuilder) .showif-paypal{
   display:none !important;
 }
 [data-engrid-theme=peta][data-engrid-payment-type=card] .showif-card,[data-engrid-theme=peta][data-engrid-payment-type=paypal] .showif-paypal{
