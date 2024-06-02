@@ -211,14 +211,20 @@
   //   }
   // }
 
-  .showif-digital-wallets {
-    display: none;
+  form > .en__component--row.en__component--advrow {
+    min-height: auto !important;
   }
-  .showif-card {
-    display: none !important;
-  }
-  .showif-paypal {
-    display: none !important;
+
+  &:not(#en__pagebuilder) {
+    .showif-digital-wallets {
+      display: none;
+    }
+    .showif-card {
+      display: none !important;
+    }
+    .showif-paypal {
+      display: none !important;
+    }
   }
 
   &[data-engrid-payment-type="paypal"] {
