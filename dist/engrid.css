@@ -19,7 +19,7 @@
  *
  *  ENGRID PAGE TEMPLATE ASSETS
  *
- *  Date: Sunday, June 2, 2024 @ 01:18:49 ET
+ *  Date: Thursday, June 6, 2024 @ 18:24:58 ET
  *  By: fernando
  *  ENGrid styles: v0.18.8
  *  ENGrid scripts: v0.18.12
@@ -7892,6 +7892,9 @@ body[data-engrid-debug]:before{
 [data-engrid-theme=peta][data-engrid-payment-type-option-apple-pay=true] .showif-digital-wallets,[data-engrid-theme=peta][data-engrid-payment-type-option-google-pay=true] .showif-digital-wallets{
   display:block !important;
 }
+[data-engrid-theme=peta][data-engrid-payment-type-option-apple-pay=true] .section-navigation__next[data-section-id="2"],[data-engrid-theme=peta][data-engrid-payment-type-option-google-pay=true] .section-navigation__next[data-section-id="2"]{
+  display:none !important;
+}
 [data-engrid-theme=peta] .radio-to-buttons_recurrfreq{
   --recurring-frequency__button_count:2;
 }
@@ -8037,9 +8040,6 @@ body[data-engrid-debug]:before{
 [data-engrid-theme=peta] form.en__component>.en__component .section-navigation button small{
   font-size:10px;
   font-weight:400;
-}
-[data-engrid-theme=peta] form.en__component>.en__component .section-navigation button.section-navigation__next[data-section-id="2"]{
-  display:none;
 }
 [data-engrid-theme=peta] form.en__component>.en__component .section-navigation button.section-navigation__previous{
   color:var(--color_primary);
@@ -8350,7 +8350,7 @@ body[data-engrid-debug]:before{
   z-index:-1;
 }
 [data-engrid-theme=peta] .en__field--emailAddress #petaEmailValidator.show{
-  bottom:-20px;
+  bottom:-50px;
   opacity:1;
   z-index:3;
 }
