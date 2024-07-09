@@ -7,6 +7,7 @@ smoothscroll.polyfill();
 export default class DonationLightboxForm {
   constructor(App, DonationAmount, DonationFrequency) {
     if (!this.isIframe()) return;
+    this.app = App;
     this.amount = DonationAmount;
     this.frequency = DonationFrequency;
     this.ipCountry = "";
@@ -219,7 +220,7 @@ export default class DonationLightboxForm {
         }
       });
     }
-    App.watchForError(() => {
+    this.app.watchForError(() => {
       this.sendMessage("status", "loaded");
       if (this.validateForm(false, false)) {
         // Front-End Validation Passed, get first Error Message
@@ -545,6 +546,22 @@ export default class DonationLightboxForm {
       const ccnumber = form.querySelector("#en__field_transaction_ccnumber");
       const ccnumberBlock = form.querySelector(".en__field--ccnumber");
       const ccnumberSection = this.getSectionId(ccnumberBlock);
+
+      const vgsBlock = ccnumberBlock
+        ? ccnumberBlock.querySelector(".en__field__input--vgs")
+        : null;
+
+      // If we are at the credit card section, check if there's a credit card number
+      // If there's a valid credit card number, set the payment type to credit card
+
+      if (
+        ccnumberSection === sectionId &&
+        vgsBlock &&
+        vgsBlock.classList.contains("vgs-collect-container__valid")
+      ) {
+        this.app.setPaymentType("card");
+      }
+
       const isDigitalWalletPayment = [
         "paypal",
         "paypaltouch",
