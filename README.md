@@ -1,79 +1,55 @@
-![#](https://raw.githubusercontent.com/4site-interactive-studios/engrid/master/hero.jpg)
+# 4Site's ENGrid Multistep Donation Page Template
 
-# 4Site's ENGrid Page Template Framework
+![ENGrid Multistep Donation Page Template](./multistep-donation-lightbox.png)
 
-<img align="right" width="200" height="200" src="https://engagingnetworks.academy/wp-content/uploads/2019/09/D-D-Partner.png">
+This project is used for the PETA Engaging Networks Multistep Donation Page.
+It can be used as a lightbox, post-action, or embedded iFrame.
 
-This project started as a labor of love for our clients and ourselves. Originating in 2017 as a partnership between Engaging Networks and 4Site Studios to create the first freely available page templates for their platform; we created [Engaging Networks Page Template](https://github.com/4site-interactive-studios/Engaging-Networks-Page-Template). That project was incredibly successful, and those templates are still used today for all new Engaging Networks clients. They're easy for junior developers and code dabblers to ease into, and they include Internet Explorer 11 support.
+## Engaging Networks Library Items
 
-Since then, we've continued to enhance and refine our work, culminating in a complete re-write in late 2019 that was named "ENGrid". Making use of today's latest web technologies Webpack, Typescript, ES6, SCSS, CSS Grids, we've created a new framework for marketers, fundraisers, and everyone in between that will ensure your pages stand out and deliver the performance you're looking for.
-
-Designed and Developed by [4Site Studios](http://4sitestudios.com/en?ms=github) while working with:
-
-- Amnesty International USA
-- Earth Island Institute
-- Human Rights Campaign via Lautman Maska Neill & Company
-- The Humane Society of the United States
-- International Fund for Animal Welfare
-- Mercy for Animals
-- National Trust for Historic Preservation
-- National Wildlife Federation
-- Ocean Conservancy
-- Organic Consumers
-- Oxfam America
-- Oxfam Canada
-- People for the Ethical Treatment of Animals
-- Polaris Project
-- Rainforest Action Network
-- Save Tibet via Schultz and Williams
-
-## ENGrid Features
-
-- Works with all page types (e.g. Donation, e-Card, Email to Target, Event, etc..)
-- Auto Credit Card Type selection based on Credit Card Number
-- Processing Fee Checkbox
-- Donation Upsell Lightbox
-- Comma handling in Other Donation Amount input field
-- Conditional Hide/Show fields (e.g. In Honor of Giving Fields)
-- Give by Check, Card, Paypal
-- Auto update CC Expiration Date fields
-- Live giving variables to insert actively selected gift frequency or gift amount in page copy or in buttons
-- Advocacy "Opt-in Upsell" Lightbox
-- Tweaked UI / UX for an improved e-card "add recipient" experience
-- Per Page Background Image
-- Per Page Layouts (Five Built In)
-- Possibility for Sub-Brands
-- Address Form Field Internationalization - If the user is on a US / English page and selects "France" as their country the Address Form fields will update their labels, change their ordering, and hide/show relevant fields for French Address formatting. Current address formatting support for (United States, Canada, United Kingdom, France, Germany, Netherlands, Australia).
-- Update inputs with improved form field meta info for better auto-fill completion
-- "Remember Me" (Coming Soon)
-- Capitalize first letter of First Name, Last Name, Address 1, City, Region fields on form submit (Coming Soon)
-- Lazy Load all image assets
-- Fastest page load times possible on Engaging Networks
-- IE11 pop-up encouraging users to upgrade their browsers
-- All pages using our page template can be seamlessly embedded in your website with Shortcodes using our WordPress iFrame embed plugin
-
-## ENGrid Resources
-
-- [ENGrid Github Repository](https://github.com/4site-interactive-studios/engrid/)
-- [ENGrid Documentation v1.0](https://docs.google.com/document/d/1Vhiudjm9pcDIgxirsiS7VWhqgqU_a6taVu2VTMOPbHI/edit)
-- [ENGrid Documentation v2.0 (work in progress)](https://docs.google.com/document/d/1zF-86Iq8tCRk4HCv-JaJYZulkC273x-_QODUed9F0Pw/edit#heading=h.pm4j83hi9iqo)
-- [ENGrid Installation Instructions](https://github.com/4site-interactive-studios/engrid/wiki/ENGrid-Installation-Instructions)
-- [Engaging Networks Email Template](https://github.com/4site-interactive-studios/Engaging-Networks-Email-Template)
-- [Community Run EN Slack Channel](https://join.slack.com/t/endevelopers/shared_invite/enQtNTgyMDU5NDEzOTQxLWM1YjkwYmM2NjcxODdhNjI4MmRhMjI1ZTJlNzZlYTM5MmI4OTg3NTlhZTljMDMyMjczZmYyNTBjZmM4ZDY4MTA)
-
-## Engaging Networks Resources
-
-- [Engaging Networks Supportal](https://engagingnetworks.support/)
-- [Engaging Networks Acadmey](https://engagingnetworks.academy/)
-- [Engaging Networks Maintained Example Code Blocks](https://github.com/EngagingNetworks/page-builder-code-blocks)
-- [Engaging Networks Maintained Example Page Styles](https://github.com/EngagingNetworks/page-builder-css-styles)
-
-# Interested in a project or have questions?
-
-We would love to hear from you.
-
-Bryan Casler  
-Director of Digital Strategy  
-4Site Interactive Studios  
-Cell: (315) 877-3420  
-Email: bryan@4sitestudios.com
+1. MDP - iFrame Redirect
+   A Code Block that redirects the user to an alternative page if the user accesses the page directly.
+2. MDP - Title
+   A Text Block that sets the title of the page.
+3. MDP - Appeal Code
+   A Form Block that sets the appeal code of the page.
+4. MDP - Recurring Fields
+   A Form Block that sets the recurring fields of the page.
+5. MDP - Monthly Nudge
+   A Text Block for the monthly nudge message.
+6. MDP - Donation Amount
+    A Form Block for the donation amount buttons.
+7. MDP - Personal Information Title
+    A Text Block for the personal information title.
+8. MDP - Personal Information Fields
+    A Form Block for the personal information fields. 
+9. MDP - Sign Up Message
+    A Text Block for the sign up message.
+10. MDP - Sign Up Message Canada Only
+    A Text Block for the sign up message for Canada only.
+11. MDP - Sign Up Fields
+    A Form Block for the sign up fields.
+12. MDP - Unsubscribe Message Canada Only
+    A Text Block for the unsubscribe message for Canada only.
+13. MDP - Payment Type Title
+    A Text Block for the payment type title.
+14. MDP - Express Checkout Title
+    A Text Block for the express checkout title.
+15. MDP - Express Checkout Buttons
+    A Form Block for the express checkout (digital wallets) buttons.
+16. MDP - Express Checkour "OR" Text
+    A Text Block for the express checkout "OR" text.
+17. MDP - Other Payment Options
+    A Code Block for the other payment options.
+18. MDP - Payment Information Title
+    A Text Block for the payment information title.
+19. MDP - Payment Information Fields
+    A Form Block for the payment information fields.
+20. MDP - Credit Card Flags
+    A Text Block for the credit card flags.
+21. MDP - Billing Address Title
+    A Text Block for the billing address title.
+22. MDP - Billing Address Fields
+    A Form Block for the billing address fields.
+23. MDP - Submit Button
+    A Form Block for the submit button.

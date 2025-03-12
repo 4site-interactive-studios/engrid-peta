@@ -439,6 +439,10 @@ export default class DonationLightboxForm {
   // Scroll to a section
   scrollToSection(sectionId) {
     console.log("DonationLightboxForm: scrollToSection", sectionId);
+    // Show footer when we leave the first section
+    if (sectionId > 0) {
+      this.sendMessage("status", "footer");
+    }
     const section = document.querySelector(`[data-section-id="${sectionId}"]`);
     // Check if the section's display is none
     if (section && window.getComputedStyle(section, null).display === "none") {

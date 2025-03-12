@@ -23,7 +23,7 @@
  *
  *  ENGRID PAGE TEMPLATE ASSETS
  *
- *  Date: Thursday, August 22, 2024 @ 11:27:44 ET
+ *  Date: Wednesday, March 12, 2025 @ 16:43:20 ET
  *  By: fernando
  *  ENGrid styles: v0.18.18
  *  ENGrid scripts: v0.18.18
@@ -21786,6 +21786,10 @@ class DonationLightboxForm {
   // Scroll to a section
   scrollToSection(sectionId) {
     console.log("DonationLightboxForm: scrollToSection", sectionId);
+    // Show footer when we leave the first section
+    if (sectionId > 0) {
+      this.sendMessage("status", "footer");
+    }
     const section = document.querySelector(`[data-section-id="${sectionId}"]`);
     // Check if the section's display is none
     if (section && window.getComputedStyle(section, null).display === "none") {
