@@ -399,7 +399,9 @@
       position: absolute;
       // height: 100px;
       bottom: 0;
-      width: 260px;
+      width: calc(100vw - 80px);
+      padding: 0;
+      box-sizing: border-box;
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
@@ -736,8 +738,9 @@
 
       & > .en__component {
         // height: 100vh;
-        width: $one_col_body-column_max-width + 45px + 45px;
-        padding: 45px;
+        width: 100vw;
+        padding: 40px;
+        box-sizing: border-box;
         scroll-snap-align: start;
 
         transition: 0.3s max-height linear;
