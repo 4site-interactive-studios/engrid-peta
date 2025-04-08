@@ -608,25 +608,57 @@ export default class DonationLightboxForm {
           }
         }
 
-        const ccexpire = form.querySelectorAll("[name='transaction.ccexpire']");
-        const ccexpireBlock = form.querySelector(".en__field--ccexpire");
-        let ccexpireValid = true;
-        ccexpire.forEach((e) => {
-          if (!e.value) {
-            this.scrollToElement(ccexpireBlock);
+        // Validate Expiration Date
+        const isExpireSelect = !!form.querySelector(
+          ".en__field--ccexpire select"
+        );
+
+        if (isExpireSelect) {
+          // If the expiration date is a select, check if it's valid
+          const ccexpire = form.querySelectorAll(
+            "[name='transaction.ccexpire']"
+          );
+          const ccexpireBlock = form.querySelector(".en__field--ccexpire");
+          let ccexpireValid = true;
+          ccexpire.forEach((e) => {
+            if (!e.value) {
+              this.scrollToElement(ccexpireBlock);
+              this.sendMessage("error", "Please enter a valid expiration date");
+              if (ccexpireBlock) {
+                ccexpireBlock.classList.add("has-error");
+              }
+              ccexpireValid = false;
+              return false;
+            }
+          });
+          if (!ccexpireValid && ccexpireBlock) {
+            return false;
+          } else {
+            if (ccexpireBlock) {
+              ccexpireBlock.classList.remove("has-error");
+            }
+          }
+        } else {
+          // If the expiration date is VGS, check if it's valid
+          const ccexpire = form.querySelector(
+            "#en__field_transaction_ccexpire"
+          );
+          const ccexpireBlock = form.querySelector(".en__field--ccexpire");
+          let ccexpireValid = ccexpire
+            ? ccexpire.classList.contains("vgs-collect-container__valid")
+            : false;
+
+          if (!ccexpireValid) {
+            this.scrollToElement(ccexpire);
             this.sendMessage("error", "Please enter a valid expiration date");
             if (ccexpireBlock) {
               ccexpireBlock.classList.add("has-error");
             }
-            ccexpireValid = false;
             return false;
-          }
-        });
-        if (!ccexpireValid && ccexpireBlock) {
-          return false;
-        } else {
-          if (ccexpireBlock) {
-            ccexpireBlock.classList.remove("has-error");
+          } else {
+            if (ccexpireBlock) {
+              ccexpireBlock.classList.remove("has-error");
+            }
           }
         }
 

@@ -3,18 +3,23 @@ import {
   App,
   DonationFrequency,
   DonationAmount,
-} from "@4site/engrid-common"; // Uses ENGrid via NPM
+} from "@4site/engrid-scripts"; // Uses ENGrid via NPM
 // import {
 //   Options,
 //   App,
 //   DonationFrequency,
 //   DonationAmount,
-// } from "../../engrid-scripts/packages/common"; // Uses ENGrid via Visual Studio Workspace
+// } from "../../engrid/packages/scripts"; // Uses ENGrid via Visual Studio Workspace
 import "./sass/main.scss";
 
 import DonationLightboxForm from "./scripts/donation-lightbox-form";
 
 const options: Options = {
+  VGS: {
+    "transaction.ccexpire": {
+      placeholder: "MM/YYYY",
+    },
+  },
   applePay: false,
   CapitalizeFields: true,
   ClickToExpand: true,
